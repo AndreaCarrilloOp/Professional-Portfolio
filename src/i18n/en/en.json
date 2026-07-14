@@ -1,0 +1,147 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "certifications": "Certifications",
+    "contact": "Contact"
+  },
+  "hero": {
+    "eyebrow": "Junior Software Developer | Python | C++ | SQL",
+    "ctaProjects": "View Projects",
+    "ctaContact": "Contact Me",
+    "status": "Available for opportunities",
+    "descriptionLead": "Building",
+    "descriptionHighlight": "responsive web solutions and maintainable code",
+    "descriptionTail": "with Python, C++, SQL, React and functional testing, focused on junior software development opportunities.",
+    "techLabel": "TECHNOLOGIES I WORK WITH",
+    "focusLabel": "Focus areas",
+    "focusOne": "Responsive web development",
+    "focusTwo": "Python, C++ and SQL",
+    "focusThree": "Functional / API testing",
+    "techHint": "Swipe to see more",
+    "primaryActionsLabel": "Primary portfolio actions",
+    "socialLabel": "Professional profiles"
+  },
+  "about": {
+    "eyebrow": "About Me",
+    "title": "Junior profile focused on web development, functional testing and continuous improvement.",
+    "description": "I am a Junior Full Stack Developer with an Information Systems background. I focus on building responsive interfaces, connecting backend logic, working with databases and validating functional flows. I am targeting Junior Developer, Full Stack Junior, SDET Junior or R&D Junior opportunities where I can contribute clear code, fast learning, documentation and continuous improvement.",
+    "statOneValue": "Full Stack Junior",
+    "statOneLabel": "Frontend, backend and SQL",
+    "statTwoValue": "SDET Junior",
+    "statTwoLabel": "Functional and API testing",
+    "statThreeValue": "R&D Junior",
+    "statThreeLabel": "Research and prototypes",
+    "highlightOne": "Clear and maintainable code",
+    "highlightTwo": "Responsive and accessible design",
+    "highlightThree": "Documentation and version control"
+  },
+  "skills": {
+    "eyebrow": "Technical stack",
+    "title": "Skills organized by area",
+    "description": "Core technologies for building interfaces, backend logic, databases, functional testing and professional workflows.",
+    "frontend": {
+      "title": "Frontend"
+    },
+    "backend": {
+      "title": "Backend"
+    },
+    "databases": {
+      "title": "Databases"
+    },
+    "cloud": {
+      "title": "Cloud"
+    },
+    "tools": {
+      "title": "Tools"
+    },
+    "testing": {
+      "title": "Testing / QA"
+    }
+  },
+  "projects": {
+    "eyebrow": "Projects",
+    "title": "Projects with technical evidence",
+    "description": "Selected cases to demonstrate responsive UI, application logic, documentation, deployment, functional testing and good practices for junior development roles.",
+    "repo": "GitHub",
+    "demo": "Demo",
+    "evidenceCta": "View technical evidence",
+    "featured": "Featured project",
+    "roles": {
+      "frontend": "Frontend / UI Developer",
+      "fullstack": "Full Stack Junior",
+      "backend": "Backend / C++ Logic"
+    },
+    "petshop": {
+      "title": "Huellita PetShop",
+      "description": "Responsive web application for organizing a pet product catalog with clear navigation and a consistent experience across screen sizes.",
+      "outcome": "Published site with clearer structure, simple navigation and consistent mobile/desktop experience.",
+      "problem": "A static catalog needed stronger visual hierarchy, product organization and simple navigation.",
+      "contribution": "Responsive layout, section structure, reusable visual components and GitHub Pages publishing."
+    },
+    "tallestBuildings": {
+      "title": "Tallest Buildings Catalog",
+      "description": "Web application built with Nuxt.js 3 and Vue.js presenting the world’s 12 tallest skyscrapers, their cities and architectural firms through related navigation and structured data.",
+      "problem": "Organize building, city and architect information into a clear, responsive and easy-to-explore experience.",
+      "contribution": "Entity-based navigation, dynamic pages, Markdown and JSON content, reusable components and Netlify deployment.",
+      "outcome": "Published catalog featuring 12 skyscrapers, 11 cities and 6 architecture firms with cross-navigation and responsive design."
+    },
+    "scrabble": {
+      "title": "Scrabble C++",
+      "description": "Interactive console board implementation developed in C++, applying object-oriented programming, data structures and algorithmic logic.",
+      "outcome": "Improved algorithmic thinking, rule modeling and logical robustness.",
+      "problem": "Model game rules and data structures while keeping clear logic in a console application.",
+      "contribution": "Class design, board handling, move validation and object-oriented logic organization."
+    },
+    "status": {
+      "published": "Published",
+      "completed": "Completed"
+    },
+    "labels": {
+      "problem": "Problem",
+      "contribution": "Contribution",
+      "outcome": "Outcome"
+    }
+  },
+  "certifications": {
+    "eyebrow": "Certifications",
+    "title": "Featured credentials",
+    "description": "Approved credentials supporting cloud fundamentals, GitHub and modern development tools.",
+    "approved": "Approved",
+    "viewCredential": "View credential"
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Let’s talk about junior opportunities.",
+    "description": "Available for Junior Software Developer opportunities in Costa Rica, remote or hybrid. Email is the main contact channel.",
+    "email": "Primary email",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "availability": "Junior opportunities",
+    "location": "Costa Rica",
+    "mode": "Remote / hybrid",
+    "channelsLabel": "Contact channels"
+  },
+  "footer": {
+    "built": "Designed and developed with React + Vite",
+    "rights": "All rights reserved."
+  },
+  "theme": {
+    "light": "Light mode",
+    "dark": "Dark mode"
+  },
+  "language": {
+    "label": "Language"
+  },
+  "accessibility": {
+    "skipToContent": "Skip to main content",
+    "openMenu": "Open mobile navigation",
+    "closeMenu": "Close mobile navigation",
+    "mainNavigation": "Main navigation",
+    "primaryLinks": "Primary links",
+    "mobileNavigation": "Mobile navigation",
+    "externalLink": "opens in a new tab"
+  }
+}

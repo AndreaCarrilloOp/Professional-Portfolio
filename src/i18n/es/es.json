@@ -1,0 +1,147 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "skills": "Skills",
+    "projects": "Proyectos",
+    "certifications": "Certificaciones",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "eyebrow": "Desarrolladora de Software Junior | Python | C++ | SQL",
+    "ctaProjects": "Ver proyectos",
+    "ctaContact": "Contactar",
+    "status": "Disponible para oportunidades",
+    "descriptionLead": "Desarrollo",
+    "descriptionHighlight": "soluciones web responsivas y código mantenible",
+    "descriptionTail": "con Python, C++, SQL, React y pruebas funcionales, orientada a oportunidades junior de desarrollo de software.",
+    "techLabel": "TECNOLOGÍAS CON LAS QUE TRABAJO",
+    "focusLabel": "Áreas de enfoque",
+    "focusOne": "Desarrollo web responsive",
+    "focusTwo": "Python, C++ y SQL",
+    "focusThree": "Testing funcional / API",
+    "techHint": "Desliza para ver más",
+    "primaryActionsLabel": "Acciones principales del portafolio",
+    "socialLabel": "Perfiles profesionales"
+  },
+  "about": {
+    "eyebrow": "Sobre mí",
+    "title": "Perfil junior orientado a desarrollo web, testing funcional y mejora continua.",
+    "description": "Soy Junior Full Stack Developer con formación en Sistemas de Información. Me enfoco en construir interfaces responsivas, conectar lógica backend, trabajar con bases de datos y validar flujos funcionales. Busco oportunidades Junior Developer, Full Stack Junior, SDET Junior o R&D Junior donde pueda aportar código claro, aprendizaje rápido, documentación y mejora continua.",
+    "statOneValue": "Full Stack Junior",
+    "statOneLabel": "Frontend, backend y SQL",
+    "statTwoValue": "SDET Junior",
+    "statTwoLabel": "Testing funcional y API",
+    "statThreeValue": "R&D Junior",
+    "statThreeLabel": "Investigación y prototipos",
+    "highlightOne": "Código claro y mantenible",
+    "highlightTwo": "Diseño responsive y accesible",
+    "highlightThree": "Documentación y control de versiones"
+  },
+  "skills": {
+    "eyebrow": "Stack técnico",
+    "title": "Skills organizadas por área",
+    "description": "Tecnologías principales para construir interfaces, lógica backend, bases de datos, pruebas funcionales y flujos de trabajo profesionales.",
+    "frontend": {
+      "title": "Frontend"
+    },
+    "backend": {
+      "title": "Backend"
+    },
+    "databases": {
+      "title": "Databases"
+    },
+    "cloud": {
+      "title": "Cloud"
+    },
+    "tools": {
+      "title": "Tools"
+    },
+    "testing": {
+      "title": "Testing / QA"
+    }
+  },
+  "projects": {
+    "eyebrow": "Proyectos",
+    "title": "Proyectos con evidencia técnica",
+    "description": "Casos seleccionados para demostrar UI responsive, lógica de aplicación, documentación, despliegue, testing funcional y buenas prácticas para roles junior de desarrollo.",
+    "repo": "GitHub",
+    "demo": "Demo",
+    "evidenceCta": "Ver evidencia técnica",
+    "featured": "Proyecto destacado",
+    "roles": {
+      "frontend": "Frontend / UI Developer",
+      "fullstack": "Full Stack Junior",
+      "backend": "Backend / Lógica C++"
+    },
+    "petshop": {
+      "title": "Huellita PetShop",
+      "description": "Aplicación web responsiva para organizar un catálogo de productos para mascotas con navegación clara y una experiencia consistente en distintos tamaños de pantalla.",
+      "outcome": "Sitio publicado con estructura clara, navegación simple y experiencia consistente en mobile/desktop.",
+      "problem": "Catálogo estático que necesitaba mejor jerarquía visual, orden de productos y navegación sencilla.",
+      "contribution": "Maquetación responsive, estructura de secciones, componentes visuales reutilizables y publicación en GitHub Pages."
+    },
+    "tallestBuildings": {
+      "title": "Catálogo de rascacielos",
+      "description": "Aplicación web desarrollada con Nuxt.js 3 y Vue.js que presenta los 12 rascacielos más altos del mundo, sus ciudades y firmas arquitectónicas mediante navegación relacionada y datos estructurados.",
+      "problem": "Organizar información de edificios, ciudades y arquitectos en una experiencia clara, responsiva y fácil de explorar.",
+      "contribution": "Diseño de navegación entre entidades, páginas dinámicas, contenido en Markdown y JSON, componentes reutilizables y despliegue en Netlify.",
+      "outcome": "Catálogo publicado con 12 rascacielos, 11 ciudades y 6 oficinas de arquitectura, con navegación cruzada y diseño responsive."
+    },
+    "scrabble": {
+      "title": "Scrabble C++",
+      "description": "Implementación de un tablero interactivo en consola desarrollado en C++, aplicando programación orientada a objetos, estructuras de datos y lógica algorítmica.",
+      "outcome": "Refuerzo de pensamiento algorítmico, modelado de reglas y robustez lógica.",
+      "problem": "Modelar reglas de juego y estructuras de datos manteniendo lógica clara en una aplicación de consola.",
+      "contribution": "Diseño de clases, manejo del tablero, validación de jugadas y organización de lógica orientada a objetos."
+    },
+    "status": {
+      "published": "Publicado",
+      "completed": "Completado"
+    },
+    "labels": {
+      "problem": "Problema",
+      "contribution": "Aporte",
+      "outcome": "Resultado"
+    }
+  },
+  "certifications": {
+    "eyebrow": "Certificaciones",
+    "title": "Credenciales destacadas",
+    "description": "Credenciales aprobadas que respaldan fundamentos de nube, GitHub y herramientas modernas de desarrollo.",
+    "approved": "Aprobada",
+    "viewCredential": "Ver credencial"
+  },
+  "contact": {
+    "eyebrow": "Contacto",
+    "title": "Conversemos sobre oportunidades junior.",
+    "description": "Disponible para oportunidades como Desarrolladora de Software Junior en Costa Rica, en modalidad remota o híbrida. El canal principal de contacto es el correo electrónico.",
+    "email": "Correo principal",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "availability": "Oportunidades junior",
+    "location": "Costa Rica",
+    "mode": "Remoto / híbrido",
+    "channelsLabel": "Canales de contacto"
+  },
+  "footer": {
+    "built": "Diseñado y desarrollado con React + Vite",
+    "rights": "Todos los derechos reservados."
+  },
+  "theme": {
+    "light": "Modo claro",
+    "dark": "Modo oscuro"
+  },
+  "language": {
+    "label": "Idioma"
+  },
+  "accessibility": {
+    "skipToContent": "Saltar al contenido principal",
+    "openMenu": "Abrir navegación móvil",
+    "closeMenu": "Cerrar navegación móvil",
+    "mainNavigation": "Navegación principal",
+    "primaryLinks": "Enlaces principales",
+    "mobileNavigation": "Navegación móvil",
+    "externalLink": "abre en una pestaña nueva"
+  }
+}

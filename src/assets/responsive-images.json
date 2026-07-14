@@ -1,0 +1,193 @@
+{
+  "petshop": {
+    "aspectRatio": 2,
+    "original": {
+      "width": 1600,
+      "height": 800
+    },
+    "webp": [
+      {
+        "width": 480,
+        "height": 240,
+        "url": "/images/responsive/petshop-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 384,
+        "url": "/images/responsive/petshop-768.webp"
+      },
+      {
+        "width": 1200,
+        "height": 600,
+        "url": "/images/responsive/petshop-1200.webp"
+      },
+      {
+        "width": 1600,
+        "height": 800,
+        "url": "/images/responsive/petshop-1600.webp"
+      }
+    ],
+    "avif": [
+      {
+        "width": 480,
+        "height": 240,
+        "url": "/images/responsive/petshop-480.avif"
+      },
+      {
+        "width": 768,
+        "height": 384,
+        "url": "/images/responsive/petshop-768.avif"
+      },
+      {
+        "width": 1200,
+        "height": 600,
+        "url": "/images/responsive/petshop-1200.avif"
+      },
+      {
+        "width": 1600,
+        "height": 800,
+        "url": "/images/responsive/petshop-1600.avif"
+      }
+    ]
+  },
+  "tallestBuildings": {
+    "aspectRatio": 1.6,
+    "original": {
+      "width": 1200,
+      "height": 750
+    },
+    "webp": [
+      {
+        "width": 480,
+        "height": 300,
+        "url": "/images/responsive/tallest-buildings-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 480,
+        "url": "/images/responsive/tallest-buildings-768.webp"
+      },
+      {
+        "width": 1200,
+        "height": 750,
+        "url": "/images/responsive/tallest-buildings-1200.webp"
+      }
+    ],
+    "avif": [
+      {
+        "width": 480,
+        "height": 300,
+        "url": "/images/responsive/tallest-buildings-480.avif"
+      },
+      {
+        "width": 768,
+        "height": 480,
+        "url": "/images/responsive/tallest-buildings-768.avif"
+      },
+      {
+        "width": 1200,
+        "height": 750,
+        "url": "/images/responsive/tallest-buildings-1200.avif"
+      }
+    ]
+  },
+  "scrabble": {
+    "aspectRatio": 1.3881,
+    "original": {
+      "width": 887,
+      "height": 639
+    },
+    "webp": [
+      {
+        "width": 480,
+        "height": 346,
+        "url": "/images/responsive/scrabble-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 553,
+        "url": "/images/responsive/scrabble-768.webp"
+      },
+      {
+        "width": 887,
+        "height": 639,
+        "url": "/images/responsive/scrabble-887.webp"
+      }
+    ],
+    "avif": [
+      {
+        "width": 480,
+        "height": 346,
+        "url": "/images/responsive/scrabble-480.avif"
+      },
+      {
+        "width": 768,
+        "height": 553,
+        "url": "/images/responsive/scrabble-768.avif"
+      },
+      {
+        "width": 887,
+        "height": 639,
+        "url": "/images/responsive/scrabble-887.avif"
+      }
+    ]
+  },
+  "profileLight": {
+    "aspectRatio": 1,
+    "original": {
+      "width": 1200,
+      "height": 1200
+    },
+    "webp": [
+      {
+        "width": 320,
+        "height": 320,
+        "url": "/images/responsive/profile-light-320.webp"
+      },
+      {
+        "width": 460,
+        "height": 460,
+        "url": "/images/responsive/profile-light-460.webp"
+      },
+      {
+        "width": 720,
+        "height": 720,
+        "url": "/images/responsive/profile-light-720.webp"
+      },
+      {
+        "width": 1200,
+        "height": 1200,
+        "url": "/images/responsive/profile-light-1200.webp"
+      }
+    ]
+  },
+  "profileDark": {
+    "aspectRatio": 1,
+    "original": {
+      "width": 1200,
+      "height": 1200
+    },
+    "webp": [
+      {
+        "width": 320,
+        "height": 320,
+        "url": "/images/responsive/profile-dark-320.webp"
+      },
+      {
+        "width": 460,
+        "height": 460,
+        "url": "/images/responsive/profile-dark-460.webp"
+      },
+      {
+        "width": 720,
+        "height": 720,
+        "url": "/images/responsive/profile-dark-720.webp"
+      },
+      {
+        "width": 1200,
+        "height": 1200,
+        "url": "/images/responsive/profile-dark-1200.webp"
+      }
+    ]
+  }
+}
