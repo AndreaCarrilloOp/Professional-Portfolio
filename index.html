@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andrea Carrillo | Desarrolladora de Software Junior</title>
+  <meta
+    name="description"
+    content="Portafolio de Andrea Carrillo, desarrolladora de software junior en Costa Rica. Proyectos con Python, C++, SQL, desarrollo web y pruebas de software."
+  />
+  <meta name="author" content="Andrea Carrillo" />
+  <meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta name="theme-color" content="#E7F0FF" />
+  <script>
+    (() => {
+      try {
+        const storedTheme = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const useDark = storedTheme ? storedTheme === "dark" : prefersDark;
+        const root = document.documentElement;
+
+        root.classList.toggle("dark", useDark);
+        root.dataset.theme = useDark ? "dark" : "light";
+        root.style.colorScheme = useDark ? "dark" : "light";
+        root.style.backgroundColor = useDark ? "#0B1026" : "#E7F0FF";
+        document.querySelector('meta[name="theme-color"]')?.setAttribute(
+          "content",
+          useDark ? "#0B1026" : "#E7F0FF",
+        );
+      } catch {
+        document.documentElement.style.backgroundColor = "#E7F0FF";
+      }
+    })();
+  </script>
+  <style>
+    html { background: #E7F0FF; }
+    html.dark,
+    html[data-theme="dark"] { background: #0B1026; }
+    body,
+    #root { min-height: 100vh; background: transparent; }
+  </style>
+
+  <link rel="canonical" href="__SITE_URL__/" />
+  <link rel="icon" type="image/png" href="%BASE_URL%favicon.png" />
+  <link rel="apple-touch-icon" href="%BASE_URL%apple-touch-icon.png" />
+
+  <meta property="og:site_name" content="Andrea Carrillo Portfolio" />
+  <meta property="og:title" content="Andrea Carrillo | Desarrolladora de Software Junior" />
+  <meta
+    property="og:description"
+    content="Portafolio profesional con proyectos de Python, C++, SQL, desarrollo web, testing funcional y credenciales verificables."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_CR" />
+  <meta property="og:url" content="__SITE_URL__/" />
+  <meta property="og:image" content="__SITE_URL__/og-image.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Vista previa del portafolio profesional de Andrea Carrillo" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Andrea Carrillo | Desarrolladora de Software Junior" />
+  <meta
+    name="twitter:description"
+    content="Proyectos con Python, C++, SQL, desarrollo web y pruebas de software."
+  />
+  <meta name="twitter:image" content="__SITE_URL__/og-image.jpg" />
+  <meta name="twitter:image:alt" content="Vista previa del portafolio profesional de Andrea Carrillo" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Andrea Carrillo",
+      "jobTitle": "Desarrolladora de Software Junior",
+      "url": "__SITE_URL__/",
+      "email": "mailto:valkstack@gmail.com",
+      "sameAs": [
+        "https://github.com/AndreaCarrilloOp",
+        "https://www.linkedin.com/in/andrea-carrillo-vlk/"
+      ],
+      "knowsAbout": [
+        "Python",
+        "C++",
+        "SQL",
+        "React",
+        "JavaScript",
+        "Functional testing",
+        "GitHub",
+        "Microsoft Azure"
+      ]
+    }
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>
