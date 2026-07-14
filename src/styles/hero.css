@@ -1,0 +1,454 @@
+/* Final responsive Hero layout.
+   This file is the single source of truth for Hero sizing and breakpoints. */
+.hero-section {
+  display: grid;
+  align-content: center;
+  gap: 0;
+  padding-top: clamp(102px, 9vw, 126px);
+  padding-bottom: clamp(34px, 4.5vw, 54px);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  gap: clamp(22px, 4vw, 38px);
+  margin-bottom: 0;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 720px);
+  max-width: 720px;
+  min-width: 0;
+  justify-self: center;
+}
+
+.hero-title,
+.hero-role,
+.hero-description {
+  text-wrap: balance;
+}
+
+.hero-title {
+  overflow-wrap: normal;
+}
+
+.hero-role {
+  max-width: 34ch;
+}
+
+.hero-description {
+  max-width: 62ch;
+}
+
+.hero-focus-grid,
+.hero-actions,
+.hero-social-links {
+  justify-content: flex-start;
+}
+
+.hero-visual {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: end center;
+  width: min(100%, 540px);
+  min-height: clamp(340px, 72vw, 510px);
+  justify-self: center;
+  align-self: end;
+  margin-bottom: -2px;
+  overflow: visible;
+  background: transparent;
+}
+
+.portrait-card,
+.portrait-card-shell,
+.theme-profile-image,
+.portrait-card picture,
+.portrait-card img,
+.theme-profile-image .portrait-image {
+  background: transparent;
+}
+
+.portrait-card {
+  position: relative;
+  width: min(100%, 540px);
+  height: clamp(340px, 72vw, 510px);
+  min-height: 0;
+  justify-self: center;
+  align-self: end;
+  margin: 0 0 -2px;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  isolation: isolate;
+}
+
+.portrait-card-shell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.portrait-card picture {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.portrait-card img,
+.theme-profile-image .portrait-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  transform: scale(1.03);
+  transform-origin: center bottom;
+  border: 0;
+  box-shadow: none;
+  filter: drop-shadow(0 22px 28px color-mix(in srgb, var(--satin-black) 18%, transparent)) contrast(1.04) saturate(1.02);
+}
+
+.dark .portrait-card img,
+.dark .theme-profile-image .portrait-image {
+  filter: drop-shadow(0 24px 30px color-mix(in srgb, var(--satin-black) 28%, transparent)) contrast(1.05) saturate(1.02);
+}
+
+.tech-strip {
+  position: relative;
+  z-index: 4;
+  margin-top: 0;
+}
+
+/* Tablet landscape and compact desktop */
+@media (min-width: 900px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.04fr) minmax(390px, 0.96fr);
+    gap: clamp(28px, 3.4vw, 48px);
+    min-height: 500px;
+    align-items: end;
+    justify-items: stretch;
+  }
+
+  .hero-copy {
+    width: min(100%, 600px);
+    max-width: 600px;
+    justify-self: start;
+    align-self: center;
+    padding-bottom: 8px;
+  }
+
+  .hero-title {
+    font-size: clamp(3.35rem, 5vw, 4.75rem);
+  }
+
+  .hero-role {
+    max-width: 31ch;
+  }
+
+  .hero-description {
+    max-width: 560px;
+  }
+
+  .hero-visual {
+    width: 100%;
+    max-width: 510px;
+    min-height: 500px;
+    justify-self: end;
+  }
+
+  .portrait-card {
+    width: min(100%, 510px);
+    height: 500px;
+  }
+
+  .portrait-card img,
+  .theme-profile-image .portrait-image {
+    transform: scale(1.045);
+  }
+}
+
+/* Large desktop */
+@media (min-width: 1280px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.04fr) minmax(470px, 0.96fr);
+    gap: clamp(42px, 4.5vw, 64px);
+    min-height: clamp(530px, 43vw, 590px);
+  }
+
+  .hero-copy {
+    width: min(100%, 640px);
+    max-width: 640px;
+    padding-bottom: clamp(6px, 1vw, 14px);
+  }
+
+  .hero-title {
+    font-size: clamp(4rem, 5.5vw, 5.5rem);
+  }
+
+  .hero-description {
+    max-width: 620px;
+  }
+
+  .hero-visual {
+    max-width: 570px;
+    min-height: clamp(520px, 42vw, 580px);
+  }
+
+  .portrait-card {
+    width: min(100%, 560px);
+    height: clamp(520px, 42vw, 580px);
+  }
+
+  .portrait-card img,
+  .theme-profile-image .portrait-image {
+    transform: scale(1.055);
+  }
+}
+
+/* Tablet portrait */
+@media (min-width: 641px) and (max-width: 899.98px) {
+  .hero-section {
+    width: min(100% - 40px, var(--content-max));
+    padding-top: 104px;
+    padding-bottom: 40px;
+  }
+
+  .hero-grid {
+    gap: 18px;
+  }
+
+  .hero-copy {
+    width: min(100%, 680px);
+  }
+
+  .hero-title {
+    font-size: clamp(3.7rem, 9.5vw, 4.9rem);
+  }
+
+  .hero-role {
+    max-width: 34ch;
+    font-size: clamp(1.35rem, 3.4vw, 1.75rem);
+    line-height: 1.24;
+  }
+
+  .hero-description {
+    max-width: 60ch;
+    font-size: 1.05rem;
+  }
+
+  .hero-focus-grid,
+  .hero-actions,
+  .hero-social-links {
+    justify-content: flex-start;
+  }
+
+  .hero-visual {
+    width: min(100%, 460px);
+    min-height: clamp(370px, 56vw, 450px);
+  }
+
+  .portrait-card {
+    width: min(100%, 460px);
+    height: clamp(370px, 56vw, 450px);
+  }
+
+  .portrait-card img,
+  .theme-profile-image .portrait-image {
+    transform: scale(1.025);
+  }
+}
+
+/* Phones */
+@media (max-width: 640px) {
+  .hero-section {
+    width: min(100% - 28px, var(--content-max));
+    padding-top: 92px;
+    padding-bottom: 30px;
+  }
+
+  .hero-grid {
+    gap: 20px;
+  }
+
+  .hero-copy,
+  .hero-focus-grid,
+  .hero-actions,
+  .hero-social-links {
+    width: 100%;
+  }
+
+  .status-pill {
+    margin-bottom: 18px;
+    font-size: 0.7rem;
+  }
+
+  .hero-title {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+    font-size: clamp(2.55rem, 13vw, 3.8rem);
+    line-height: 0.96;
+    gap: 0.08em;
+  }
+
+  .hero-name-first,
+  .hero-name-last {
+    display: inline;
+  }
+
+  .hero-role {
+    max-width: 28ch;
+    font-size: clamp(1.1rem, 5vw, 1.42rem);
+    line-height: 1.25;
+  }
+
+  .hero-description {
+    max-width: 100%;
+    font-size: 0.97rem;
+    line-height: 1.65;
+  }
+
+  .hero-focus-grid {
+    justify-content: flex-start;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .hero-focus-item {
+    max-width: 100%;
+    padding: 8px 11px;
+    font-size: 0.77rem;
+    white-space: normal;
+  }
+
+  .hero-cta-row {
+    flex-direction: row;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .hero-cta-row .btn {
+    width: auto;
+    min-width: 0;
+    flex: 1 1 160px;
+  }
+
+  .hero-social-links {
+    justify-content: flex-start;
+    margin-top: 14px;
+  }
+
+  .hero-visual {
+    width: min(100%, 380px);
+    min-height: clamp(310px, 87vw, 380px);
+  }
+
+  .portrait-card {
+    width: min(100%, 380px);
+    height: clamp(310px, 87vw, 380px);
+  }
+
+  .portrait-card img,
+  .theme-profile-image .portrait-image {
+    transform: scale(1.01);
+  }
+
+  .tech-strip {
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  .tech-strip-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .tech-swipe-hint {
+    display: block;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .hero-section {
+    width: min(100% - 22px, var(--content-max));
+    padding-top: 88px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.35rem, 13.8vw, 3.35rem);
+  }
+
+  .hero-role {
+    max-width: 24ch;
+    font-size: clamp(1.04rem, 5.2vw, 1.26rem);
+  }
+
+  .hero-description {
+    font-size: 0.94rem;
+  }
+
+  .hero-cta-row {
+    flex-direction: column;
+  }
+
+  .hero-cta-row .btn {
+    width: 100%;
+    flex: 0 0 auto;
+  }
+
+  .hero-visual {
+    width: min(100%, 345px);
+    min-height: clamp(285px, 90vw, 345px);
+  }
+
+  .portrait-card {
+    width: min(100%, 345px);
+    height: clamp(285px, 90vw, 345px);
+  }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+  .hero-title {
+    font-size: clamp(2.15rem, 14.2vw, 2.85rem);
+  }
+
+  .hero-name-first,
+  .hero-name-last {
+    display: block;
+    width: 100%;
+  }
+
+  .hero-role {
+    max-width: 22ch;
+  }
+
+  .hero-focus-item {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .hero-visual {
+    width: min(100%, 320px);
+  }
+
+  .portrait-card {
+    width: min(100%, 320px);
+    height: clamp(270px, 92vw, 320px);
+  }
+}

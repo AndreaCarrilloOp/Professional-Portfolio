@@ -1,0 +1,220 @@
+/*
+ * Andrea Carrillo portfolio — restricted brand palette.
+ *
+ * Approved blue palette:
+ *   #0B1026 · #1B2A4A · #2F4F7A · #6B8FBF · #E7F0FF
+ * Supporting satin neutrals:
+ *   Satin silver #B8BEC9 · Satin black #111318
+ *
+ * All interface colors are direct values, transparent variants or color mixes
+ * derived exclusively from these seven source colors.
+ */
+:root {
+  color-scheme: light;
+
+  /* Immutable brand swatches. */
+  --palette-ink: #0b1026;
+  --palette-navy: #1b2a4a;
+  --palette-steel: #2f4f7a;
+  --palette-sky: #6b8fbf;
+  --palette-ice: #e7f0ff;
+  --satin-silver: #b8bec9;
+  --satin-black: #111318;
+
+  /* Light theme — ice surfaces with navy and steel typography. */
+  --bg: #e7f0ff;
+  --surface: color-mix(in srgb, var(--palette-ice) 86%, var(--satin-silver));
+  --card: color-mix(in srgb, var(--palette-ice) 94%, var(--satin-silver));
+  --card-alt: color-mix(in srgb, var(--palette-ice) 74%, var(--satin-silver));
+  --surface-soft: color-mix(in srgb, var(--palette-ice) 78%, var(--satin-silver));
+  --surface-raised: #e7f0ff;
+  --surface-glass: color-mix(in srgb, var(--palette-ice) 90%, transparent);
+  --surface-deep: #b8bec9;
+  --surface-tint: color-mix(in srgb, var(--palette-ice) 68%, var(--palette-sky));
+  --surface-highlight: color-mix(in srgb, var(--palette-ice) 96%, transparent);
+  --surface-lowlight: color-mix(in srgb, var(--palette-navy) 16%, transparent);
+  --surface-edge: color-mix(in srgb, var(--palette-steel) 70%, var(--satin-silver));
+
+  --text: #0b1026;
+  --muted: #1b2a4a;
+  --line: #2f4f7a;
+  --primary: #2f4f7a;
+  --primary-strong: #1b2a4a;
+  --primary-soft: color-mix(in srgb, var(--palette-steel) 14%, transparent);
+  --secondary: #1b2a4a;
+  --on-primary: #e7f0ff;
+  --focus-ring: #2f4f7a;
+
+  /* Existing component aliases, restricted to the approved palette. */
+  --accent-blue: #2f4f7a;
+  --accent-blue-soft: color-mix(in srgb, var(--palette-steel) 14%, transparent);
+  --accent-cyan: #2f4f7a;
+  --accent-cyan-soft: color-mix(in srgb, var(--palette-sky) 16%, transparent);
+  --accent-teal: #1b2a4a;
+  --accent-teal-soft: color-mix(in srgb, var(--palette-navy) 13%, transparent);
+  --accent-indigo: #2f4f7a;
+  --accent-indigo-soft: color-mix(in srgb, var(--palette-steel) 12%, transparent);
+  --accent-violet: #1b2a4a;
+  --accent-violet-soft: color-mix(in srgb, var(--palette-navy) 12%, transparent);
+  --accent-steel: #2f4f7a;
+  --accent-steel-soft: color-mix(in srgb, var(--satin-silver) 24%, transparent);
+
+  --ambient-primary: color-mix(in srgb, var(--palette-steel) 12%, transparent);
+  --ambient-secondary: color-mix(in srgb, var(--palette-sky) 10%, transparent);
+  --canvas-point: 47, 79, 122;
+  --canvas-line: 107, 143, 191;
+  --canvas-glow: 184, 190, 201;
+
+  /* Satin material effects use only ice, silver, black and palette blues. */
+  --satin-silver-gradient: linear-gradient(
+    135deg,
+    var(--palette-ice) 0%,
+    var(--satin-silver) 48%,
+    var(--palette-sky) 100%
+  );
+  --satin-black-gradient: linear-gradient(
+    135deg,
+    var(--palette-ink) 0%,
+    var(--satin-black) 52%,
+    var(--palette-navy) 100%
+  );
+  --plastic-inset:
+    inset 0 1px 0 var(--surface-highlight),
+    inset 0 -3px 0 var(--surface-lowlight),
+    inset 1px 0 0 color-mix(in srgb, var(--palette-ice) 44%, transparent),
+    inset -1px 0 0 color-mix(in srgb, var(--palette-navy) 10%, transparent);
+  --plastic-ridge:
+    inset 1px 1px 0 var(--surface-highlight),
+    inset -1px -2px 0 var(--surface-lowlight);
+  --plastic-shadow:
+    var(--plastic-ridge),
+    0 14px 26px color-mix(in srgb, var(--palette-navy) 12%, transparent),
+    0 3px 7px color-mix(in srgb, var(--palette-navy) 8%, transparent);
+  --plastic-shadow-strong:
+    var(--plastic-ridge),
+    0 22px 42px color-mix(in srgb, var(--palette-navy) 18%, transparent),
+    0 6px 12px color-mix(in srgb, var(--palette-navy) 10%, transparent);
+  --plastic-bevel: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--palette-ice) 78%, transparent) 0%,
+    color-mix(in srgb, var(--palette-ice) 30%, transparent) 22%,
+    transparent 50%,
+    color-mix(in srgb, var(--palette-navy) 12%, transparent) 100%
+  );
+  --plastic-gloss: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--palette-ice) 58%, transparent),
+    color-mix(in srgb, var(--palette-ice) 14%, transparent) 34%,
+    transparent 56%
+  );
+
+  --gradient-primary: linear-gradient(
+    135deg,
+    var(--palette-steel) 0%,
+    var(--palette-navy) 54%,
+    var(--palette-steel) 100%
+  );
+  --shadow-sm: 0 8px 20px color-mix(in srgb, var(--palette-navy) 8%, transparent);
+  --shadow-md: 0 16px 42px color-mix(in srgb, var(--palette-navy) 12%, transparent);
+  --shadow-lg: 0 24px 64px color-mix(in srgb, var(--palette-navy) 16%, transparent);
+  --shadow: var(--shadow-md);
+  --glow: color-mix(in srgb, var(--palette-sky) 16%, transparent);
+
+  --radius-lg: 24px;
+  --content-max: 1320px;
+  --content-readable: 860px;
+  --content-readable-wide: 980px;
+  --content-gutter: 32px;
+  --target-size: 48px;
+  --button-radius: 14px;
+  --motion-duration-fast: 180ms;
+  --motion-duration-base: 360ms;
+  --motion-duration-reveal: 520ms;
+  --theme-transition-duration: 340ms;
+  --motion-ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.dark {
+  color-scheme: dark;
+
+  /* Dark theme — the same palette with satin silver as the readable accent. */
+  --bg: #0b1026;
+  --surface: #1b2a4a;
+  --card: color-mix(in srgb, var(--palette-navy) 94%, var(--palette-ink));
+  --surface-soft: color-mix(in srgb, var(--palette-navy) 72%, var(--palette-steel));
+  --surface-raised: #1b2a4a;
+  --surface-glass: color-mix(in srgb, var(--palette-navy) 90%, transparent);
+  --surface-deep: #111318;
+  --surface-tint: #2f4f7a;
+  --surface-highlight: color-mix(in srgb, var(--palette-ice) 13%, transparent);
+  --surface-lowlight: color-mix(in srgb, var(--satin-black) 50%, transparent);
+  --surface-edge: color-mix(in srgb, var(--palette-sky) 72%, var(--satin-silver));
+
+  --text: #e7f0ff;
+  --muted: #b8bec9;
+  --line: #6b8fbf;
+  --primary: #b8bec9;
+  --primary-strong: #e7f0ff;
+  --primary-soft: color-mix(in srgb, var(--satin-silver) 15%, transparent);
+  --secondary: #b8bec9;
+  --on-primary: #0b1026;
+  --focus-ring: #e7f0ff;
+
+  --accent-blue: #b8bec9;
+  --accent-blue-soft: color-mix(in srgb, var(--palette-sky) 18%, transparent);
+  --accent-cyan: #e7f0ff;
+  --accent-cyan-soft: color-mix(in srgb, var(--palette-sky) 15%, transparent);
+  --accent-teal: #b8bec9;
+  --accent-teal-soft: color-mix(in srgb, var(--satin-silver) 13%, transparent);
+  --accent-indigo: #e7f0ff;
+  --accent-indigo-soft: color-mix(in srgb, var(--palette-steel) 20%, transparent);
+  --accent-violet: #b8bec9;
+  --accent-violet-soft: color-mix(in srgb, var(--palette-sky) 13%, transparent);
+  --accent-steel: #e7f0ff;
+  --accent-steel-soft: color-mix(in srgb, var(--satin-silver) 14%, transparent);
+
+  --ambient-primary: color-mix(in srgb, var(--palette-sky) 11%, transparent);
+  --ambient-secondary: color-mix(in srgb, var(--satin-silver) 8%, transparent);
+  --canvas-point: 231, 240, 255;
+  --canvas-line: 107, 143, 191;
+  --canvas-glow: 184, 190, 201;
+
+  --plastic-inset:
+    inset 0 1px 0 var(--surface-highlight),
+    inset 0 -3px 0 var(--surface-lowlight),
+    inset 1px 0 0 color-mix(in srgb, var(--palette-ice) 8%, transparent),
+    inset -1px 0 0 color-mix(in srgb, var(--satin-black) 26%, transparent);
+  --plastic-ridge:
+    inset 1px 1px 0 var(--surface-highlight),
+    inset -1px -2px 0 var(--surface-lowlight);
+  --plastic-shadow:
+    var(--plastic-ridge),
+    0 14px 30px color-mix(in srgb, var(--satin-black) 34%, transparent),
+    0 3px 8px color-mix(in srgb, var(--satin-black) 24%, transparent);
+  --plastic-shadow-strong:
+    var(--plastic-ridge),
+    0 24px 56px color-mix(in srgb, var(--satin-black) 46%, transparent),
+    0 6px 14px color-mix(in srgb, var(--satin-black) 30%, transparent);
+  --plastic-bevel: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--palette-ice) 13%, transparent) 0%,
+    color-mix(in srgb, var(--satin-silver) 6%, transparent) 24%,
+    transparent 50%,
+    color-mix(in srgb, var(--satin-black) 30%, transparent) 100%
+  );
+  --plastic-gloss: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--palette-ice) 13%, transparent),
+    color-mix(in srgb, var(--satin-silver) 4%, transparent) 35%,
+    transparent 58%
+  );
+
+  --gradient-primary: var(--satin-silver-gradient);
+  --shadow-sm: 0 8px 20px color-mix(in srgb, var(--satin-black) 24%, transparent);
+  --shadow-md: 0 18px 54px color-mix(in srgb, var(--satin-black) 36%, transparent);
+  --shadow-lg: 0 28px 72px color-mix(in srgb, var(--satin-black) 44%, transparent);
+  --shadow: var(--shadow-md);
+  --glow: color-mix(in srgb, var(--palette-sky) 16%, transparent);
+}

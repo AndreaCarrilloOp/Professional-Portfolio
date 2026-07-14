@@ -1,0 +1,56 @@
+/* Smooth theme switching with a progressive fallback and reduced-motion support. */
+@keyframes theme-fade-out {
+  to { opacity: 0; }
+}
+
+@keyframes theme-fade-in {
+  from { opacity: 0; }
+}
+
+::view-transition-old(root) {
+  animation: theme-fade-out var(--theme-transition-duration) ease-out both;
+}
+
+::view-transition-new(root) {
+  animation: theme-fade-in var(--theme-transition-duration) ease-in both;
+}
+
+html.theme-transitioning,
+html.theme-transitioning body,
+html.theme-transitioning .app-shell,
+html.theme-transitioning .nav-container,
+html.theme-transitioning .mobile-bento-menu,
+html.theme-transitioning .card,
+html.theme-transitioning .project-card,
+html.theme-transitioning .skill-card,
+html.theme-transitioning .cert-card,
+html.theme-transitioning .contact-card,
+html.theme-transitioning .btn,
+html.theme-transitioning .social-link,
+html.theme-transitioning .tech-chip,
+html.theme-transitioning .hero-focus-item,
+html.theme-transitioning .about-stat,
+html.theme-transitioning .tag,
+html.theme-transitioning .icon-button,
+html.theme-transitioning .language-button,
+html.theme-transitioning .bento-button,
+html.theme-transitioning .nav-link,
+html.theme-transitioning .bento-link,
+html.theme-transitioning svg {
+  transition-property: color, background-color, border-color, outline-color, box-shadow, fill, stroke, opacity;
+  transition-duration: var(--theme-transition-duration);
+  transition-timing-function: var(--motion-ease-standard);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.01ms;
+  }
+
+  html.theme-transitioning,
+  html.theme-transitioning body,
+  html.theme-transitioning body * {
+    transition-duration: 0.01ms !important;
+  }
+}
