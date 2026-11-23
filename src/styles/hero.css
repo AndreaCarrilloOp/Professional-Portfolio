@@ -219,7 +219,7 @@
 /* Tablet portrait */
 @media (min-width: 641px) and (max-width: 899.98px) {
   .hero-section {
-    width: min(100% - 40px, var(--content-max));
+    width: min(var(--content-max), calc(100% - var(--content-gutter)));
     padding-top: 104px;
     padding-bottom: 40px;
   }
@@ -272,7 +272,7 @@
 /* Phones */
 @media (max-width: 640px) {
   .hero-section {
-    width: min(100% - 28px, var(--content-max));
+    width: calc(100% - 24px);
     padding-top: 92px;
     padding-bottom: 30px;
   }
@@ -385,7 +385,7 @@
 /* Small phones */
 @media (max-width: 480px) {
   .hero-section {
-    width: min(100% - 22px, var(--content-max));
+    width: calc(100% - 24px);
     padding-top: 88px;
   }
 
@@ -450,5 +450,12 @@
   .portrait-card {
     width: min(100%, 320px);
     height: clamp(270px, 92vw, 320px);
+  }
+}
+
+/* Match the shared page gutters on the smallest screens. */
+@media (max-width: 375px) {
+  .hero-section {
+    width: calc(100% - 20px);
   }
 }
