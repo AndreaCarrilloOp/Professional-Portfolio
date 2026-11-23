@@ -16,9 +16,10 @@ function About() {
   ];
 
   return (
-    <section id="about" className="section-pad">
+    <section id="about" className="section-pad" aria-labelledby="about-heading">
       <div className="content-grid two-columns">
         <SectionHeader
+          headingId="about-heading"
           eyebrowKey="about.eyebrow"
           titleKey="about.title"
           align="left"
