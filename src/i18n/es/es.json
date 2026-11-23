@@ -72,7 +72,8 @@
     "roles": {
       "frontend": "Frontend / UI Developer",
       "fullstack": "Full Stack Junior",
-      "backend": "Backend / Lógica C++"
+      "backend": "Backend / Lógica C++",
+      "wasm": "Desarrollo C++ / WebAssembly"
     },
     "petshop": {
       "title": "Huellita PetShop",
@@ -89,11 +90,12 @@
       "outcome": "Catálogo publicado con 12 rascacielos, 11 ciudades y 6 oficinas de arquitectura, con navegación cruzada y diseño responsive."
     },
     "scrabble": {
-      "title": "Scrabble C++",
-      "description": "Implementación de un tablero interactivo en consola desarrollado en C++, aplicando programación orientada a objetos, estructuras de datos y lógica algorítmica.",
-      "outcome": "Refuerzo de pensamiento algorítmico, modelado de reglas y robustez lógica.",
-      "problem": "Modelar reglas de juego y estructuras de datos manteniendo lógica clara en una aplicación de consola.",
-      "contribution": "Diseño de clases, manejo del tablero, validación de jugadas y organización de lógica orientada a objetos."
+      "title": "Scrabble · Web Edition",
+      "description": "Juego de palabras con motor de reglas en C++17 adaptado al navegador mediante WebAssembly. Incluye tablero 15 × 15, casillas de bonificación y partidas locales para 2 a 4 jugadores.",
+      "outcome": "Juego disponible en GitHub Pages, con motor compartido entre consola y navegador y pruebas para ambas versiones.",
+      "problem": "Llevar la lógica de un juego académico en C++ al navegador sin duplicar su motor de reglas.",
+      "contribution": "Desarrollo del motor en C++, integración mediante Emscripten y WebAssembly, y construcción de la interfaz web responsive.",
+      "imageAlt": "Captura de Scrabble Web Edition: tablero de 15 × 15 casillas con bonificaciones y formulario de nueva partida para jugadores locales."
     },
     "status": {
       "published": "Publicado",
@@ -103,7 +105,8 @@
       "problem": "Problema",
       "contribution": "Aporte",
       "outcome": "Resultado"
-    }
+    },
+    "viewFullImage": "Ampliar captura"
   },
   "certifications": {
     "eyebrow": "Certificaciones",
