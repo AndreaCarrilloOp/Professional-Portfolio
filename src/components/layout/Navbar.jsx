@@ -77,7 +77,7 @@ function Navbar({ darkMode, onToggleTheme }) {
     } else {
       document.body.style.overflow = "";
       if (wasOpenRef.current) {
-        menuButtonRef.current?.focus();
+        window.requestAnimationFrame(() => menuButtonRef.current?.focus());
       }
     }
 
@@ -128,8 +128,19 @@ function Navbar({ darkMode, onToggleTheme }) {
       }
     };
 
+    // Keep keyboard and programmatic focus inside the open modal menu.
+    const onFocusIn = (event) => {
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
+        firstMobileLinkRef.current?.focus();
+      }
+    };
+
     document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
+    document.addEventListener("focusin", onFocusIn);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("focusin", onFocusIn);
+    };
   }, [open]);
 
   const changeLanguage = () => {
@@ -137,6 +148,7 @@ function Navbar({ darkMode, onToggleTheme }) {
   };
 
   const closeMenu = () => setOpen(false);
+  const nextLanguage = i18n.language?.startsWith("es") ? "en" : "es";
 
   const handleNavClick = (id) => {
     setActiveSection(id);
@@ -194,7 +206,7 @@ function Navbar({ darkMode, onToggleTheme }) {
             type="button"
             className="language-button"
             onClick={changeLanguage}
-            aria-label={t("language.label")}
+            aria-label={t("language.switchTo", { language: t(`language.${nextLanguage}`) })}
           >
             {i18n.language?.startsWith("es") ? "EN" : "ES"}
           </button>
