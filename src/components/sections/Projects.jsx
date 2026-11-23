@@ -7,8 +7,9 @@ function Projects() {
   const { t } = useTranslation();
 
   return (
-    <section id="projects" className="section-pad">
+    <section id="projects" className="section-pad" aria-labelledby="projects-heading">
       <SectionHeader
+        headingId="projects-heading"
         eyebrowKey="projects.eyebrow"
         titleKey="projects.title"
         descriptionKey="projects.description"
