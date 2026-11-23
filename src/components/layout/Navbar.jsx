@@ -163,13 +163,13 @@ function Navbar({ darkMode, onToggleTheme }) {
         <a
           href="#home"
           className="brand"
-          aria-label="Andrea Carrillo home"
+          aria-label={t("accessibility.brandHome")}
           onClick={closeMenu}
         >
           AC
         </a>
 
-        <div className="nav-links" aria-label={t("accessibility.primaryLinks")}>
+        <div className="nav-links">
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
             const isActive = activeSection === item.id;
@@ -194,7 +194,6 @@ function Navbar({ darkMode, onToggleTheme }) {
             className="icon-button"
             onClick={onToggleTheme}
             aria-label={darkMode ? t("theme.light") : t("theme.dark")}
-            aria-pressed={darkMode}
           >
             {darkMode ? (
               <FaSun aria-hidden="true" />
