@@ -14,17 +14,6 @@ import {
   FaCertificate,
   FaBug,
 } from "react-icons/fa";
-import {
-  SiReact,
-  SiTailwindcss,
-  SiJavascript,
-  SiLaravel,
-  SiPhp,
-  SiPython,
-  SiMysql,
-  SiGit,
-} from "react-icons/si";
-import { TbBrandCpp } from "react-icons/tb";
 import responsiveImages from "./assets/responsive-images.json";
 
 const BASE_URL_PREFIX = (import.meta.env.BASE_URL || "/").replace(/\/$/, "");
@@ -105,19 +94,6 @@ export const SOCIAL_LINKS = [
   { id: "github", label: "GitHub", href: GITHUB_URL, icon: FaGithub },
   { id: "linkedin", label: "LinkedIn", href: LINKEDIN_URL, icon: FaLinkedin },
   { id: "email", label: "Email", href: EMAIL_URL, icon: FaEnvelope },
-];
-
-export const TECH_STACK = [
-  { id: "react", label: "React", icon: SiReact },
-  { id: "tailwind", label: "Tailwind CSS", icon: SiTailwindcss },
-  { id: "javascript", label: "JavaScript", icon: SiJavascript },
-  { id: "laravel", label: "Laravel", icon: SiLaravel },
-  { id: "php", label: "PHP", icon: SiPhp },
-  { id: "python", label: "Python", icon: SiPython },
-  { id: "cpp", label: "C++", icon: TbBrandCpp },
-  { id: "mysql", label: "MySQL", icon: SiMysql },
-  { id: "git", label: "Git", icon: SiGit },
-  { id: "azure", label: "Azure", icon: FaCloud },
 ];
 
 export const SKILLS = [
