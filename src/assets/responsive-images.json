@@ -92,43 +92,16 @@
     ]
   },
   "scrabble": {
-    "aspectRatio": 1.3881,
+    "aspectRatio": 1.4207650273224044,
     "original": {
-      "width": 887,
-      "height": 639
+      "width": 1300,
+      "height": 915
     },
-    "webp": [
+    "png": [
       {
-        "width": 480,
-        "height": 346,
-        "url": "/images/responsive/scrabble-480.webp"
-      },
-      {
-        "width": 768,
-        "height": 553,
-        "url": "/images/responsive/scrabble-768.webp"
-      },
-      {
-        "width": 887,
-        "height": 639,
-        "url": "/images/responsive/scrabble-887.webp"
-      }
-    ],
-    "avif": [
-      {
-        "width": 480,
-        "height": 346,
-        "url": "/images/responsive/scrabble-480.avif"
-      },
-      {
-        "width": 768,
-        "height": 553,
-        "url": "/images/responsive/scrabble-768.avif"
-      },
-      {
-        "width": 887,
-        "height": 639,
-        "url": "/images/responsive/scrabble-887.avif"
+        "width": 1300,
+        "height": 915,
+        "url": "/images/responsive/scrabble-1300.png"
       }
     ]
   },
