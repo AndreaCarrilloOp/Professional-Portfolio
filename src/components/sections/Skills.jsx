@@ -6,8 +6,8 @@ function Skills() {
   const { t } = useTranslation();
 
   return (
-    <section id="skills" className="section-pad">
-      <SectionHeader eyebrowKey="skills.eyebrow" titleKey="skills.title" descriptionKey="skills.description" />
+    <section id="skills" className="section-pad" aria-labelledby="skills-heading">
+      <SectionHeader headingId="skills-heading" eyebrowKey="skills.eyebrow" titleKey="skills.title" descriptionKey="skills.description" />
       <div className="skills-grid">
         {SKILLS.map(({ id, icon: Icon, titleKey, items }) => (
           <article key={id} className="skill-card card reveal-up">
