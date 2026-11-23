@@ -31,34 +31,34 @@ function Projects() {
                 aria-label={`${t("projects.viewFullImage")}: ${t(project.titleKey)}, ${t("accessibility.externalLink")}`}
               >
                 <picture>
-                {project.image.kind === "responsive" && (
-                  <>
-                    {project.image.avifSrcSet && (
-                      <source
-                        type="image/avif"
-                        srcSet={project.image.avifSrcSet}
-                        sizes={project.image.sizes}
-                      />
-                    )}
-                    {project.image.webpSrcSet && (
-                      <source
-                        type="image/webp"
-                        srcSet={project.image.webpSrcSet}
-                        sizes={project.image.sizes}
-                      />
-                    )}
-                  </>
-                )}
-                <img
-                  src={project.image.fallback}
-                  alt={t(project.imageAltKey || project.titleKey)}
-                  loading="lazy"
-                  decoding="async"
-                  fetchPriority="low"
-                  width={project.image.width}
-                  height={project.image.height}
-                  sizes={project.image.sizes}
-                />
+                  {project.image.kind === "responsive" && (
+                    <>
+                      {project.image.avifSrcSet && (
+                        <source
+                          type="image/avif"
+                          srcSet={project.image.avifSrcSet}
+                          sizes={project.image.sizes}
+                        />
+                      )}
+                      {project.image.webpSrcSet && (
+                        <source
+                          type="image/webp"
+                          srcSet={project.image.webpSrcSet}
+                          sizes={project.image.sizes}
+                        />
+                      )}
+                    </>
+                  )}
+                  <img
+                    src={project.image.fallback}
+                    alt={t(project.imageAltKey || project.titleKey)}
+                    loading="lazy"
+                    decoding="async"
+                    fetchPriority="low"
+                    width={project.image.width}
+                    height={project.image.height}
+                    sizes={project.image.sizes}
+                  />
                 </picture>
               </a>
             </div>
