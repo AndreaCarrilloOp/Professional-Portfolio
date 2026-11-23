@@ -843,18 +843,15 @@ main:focus-visible {
   }
 }
 
-:root {
-  --chrome-max: 1560px;
-  --chrome-gutter: clamp(20px, 3vw, 48px);
-}
-
+/* Unified page width: navigation, sections and footer share one container.
+   A fluid gutter preserves breathing room without large unused side margins. */
 .nav-container,
 .footer {
-  width: min(var(--chrome-max), calc(100% - var(--chrome-gutter)));
+  width: min(var(--content-max), calc(100% - var(--content-gutter)));
 }
 
 .nav-container {
-  padding-inline: clamp(18px, 2vw, 30px) clamp(12px, 1.6vw, 24px);
+  padding-inline: clamp(16px, 2vw, 30px);
 }
 
 .nav-links {
@@ -867,27 +864,22 @@ main:focus-visible {
 }
 
 .footer {
-  padding-inline: clamp(2px, 0.8vw, 12px);
-}
-
-@media (min-width: 1440px) {
-  :root {
-    --chrome-max: 1640px;
-  }
-
-  .nav-container {
-    padding-inline: clamp(22px, 2.2vw, 36px) clamp(16px, 1.8vw, 30px);
-  }
+  padding-inline: 0;
 }
 
 @media (max-width: 720px) {
   .nav-container,
-  .footer {
-    width: min(100% - 20px, var(--chrome-max));
+  .footer,
+  .section-pad {
+    width: calc(100% - 24px);
   }
+}
 
-  .footer {
-    padding-inline: 0;
+@media (max-width: 375px) {
+  .nav-container,
+  .footer,
+  .section-pad {
+    width: calc(100% - 20px);
   }
 }
 
