@@ -133,7 +133,10 @@
     "dark": "Modo oscuro"
   },
   "language": {
-    "label": "Idioma"
+    "label": "Idioma",
+    "switchTo": "Cambiar idioma a {{language}}",
+    "es": "español",
+    "en": "inglés"
   },
   "accessibility": {
     "skipToContent": "Saltar al contenido principal",
