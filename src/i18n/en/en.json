@@ -26,8 +26,8 @@
   },
   "about": {
     "eyebrow": "About Me",
-    "title": "Junior profile focused on web development, functional testing and continuous improvement.",
-    "description": "I am a Junior Full Stack Developer with an Information Systems background. I focus on building responsive interfaces, connecting backend logic, working with databases and validating functional flows. I am targeting Junior Developer, Full Stack Junior, SDET Junior or R&D Junior opportunities where I can contribute clear code, fast learning, documentation and continuous improvement.",
+    "title": "Practical software development.",
+    "description": "I'm a Junior Full Stack Developer with an Information Systems background. I build web interfaces, backend logic, database solutions, and functional tests. I focus on creating clear, useful, and maintainable software.",
     "statOneValue": "Full Stack Junior",
     "statOneLabel": "Frontend, backend and SQL",
     "statTwoValue": "SDET Junior",
@@ -40,8 +40,8 @@
   },
   "skills": {
     "eyebrow": "Technical stack",
-    "title": "Skills organized by area",
-    "description": "Core technologies for building interfaces, backend logic, databases, functional testing and professional workflows.",
+    "title": "Technologies and skills",
+    "description": "Tools organized by specialty.",
     "frontend": {
       "title": "Frontend"
     },
@@ -63,11 +63,11 @@
   },
   "projects": {
     "eyebrow": "Projects",
-    "title": "Projects with technical evidence",
-    "description": "Selected cases to demonstrate responsive UI, application logic, documentation, deployment, functional testing and good practices for junior development roles.",
+    "title": "Selected projects",
+    "description": "Applications with code, demos, and verifiable results.",
     "repo": "GitHub",
     "demo": "Demo",
-    "evidenceCta": "View technical evidence",
+    "evidenceCta": "Technical details",
     "featured": "Featured project",
     "roles": {
       "frontend": "Frontend / UI Developer",
@@ -110,15 +110,15 @@
   },
   "certifications": {
     "eyebrow": "Certifications",
-    "title": "Featured credentials",
-    "description": "Approved credentials supporting cloud fundamentals, GitHub and modern development tools.",
+    "title": "Certifications",
+    "description": "Verifiable credentials in development and cloud technologies.",
     "approved": "Approved",
     "viewCredential": "View credential"
   },
   "contact": {
     "eyebrow": "Contact",
-    "title": "Let’s talk about junior opportunities.",
-    "description": "Available for Junior Software Developer opportunities in Costa Rica, remote or hybrid. Email is the main contact channel.",
+    "title": "Let's connect",
+    "description": "Open to software development opportunities in Costa Rica, remote or hybrid.",
     "email": "Primary email",
     "github": "GitHub",
     "linkedin": "LinkedIn",
