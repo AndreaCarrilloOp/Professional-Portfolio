@@ -17,13 +17,20 @@ function Projects() {
         {PROJECTS.map((project) => (
           <article
             key={project.id}
-            className={`project-card card ${project.featured ? "featured-project" : "compact-project"} reveal-up`}
+            className={`project-card project-card-${project.id} card ${project.featured ? "featured-project" : "compact-project"} reveal-up`}
           >
             <div className="project-media">
               {project.featured && (
                 <span className="project-badge">{t("projects.featured")}</span>
               )}
-              <picture>
+              <a
+                className="project-preview-link"
+                href={project.image.fallback}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${t("projects.viewFullImage")}: ${t(project.titleKey)}, ${t("accessibility.externalLink")}`}
+              >
+                <picture>
                 {project.image.kind === "responsive" && (
                   <>
                     {project.image.avifSrcSet && (
@@ -33,16 +40,18 @@ function Projects() {
                         sizes={project.image.sizes}
                       />
                     )}
-                    <source
-                      type="image/webp"
-                      srcSet={project.image.webpSrcSet}
-                      sizes={project.image.sizes}
-                    />
+                    {project.image.webpSrcSet && (
+                      <source
+                        type="image/webp"
+                        srcSet={project.image.webpSrcSet}
+                        sizes={project.image.sizes}
+                      />
+                    )}
                   </>
                 )}
                 <img
                   src={project.image.fallback}
-                  alt={t(project.titleKey)}
+                  alt={t(project.imageAltKey || project.titleKey)}
                   loading="lazy"
                   decoding="async"
                   fetchPriority="low"
@@ -50,7 +59,8 @@ function Projects() {
                   height={project.image.height}
                   sizes={project.image.sizes}
                 />
-              </picture>
+                </picture>
+              </a>
             </div>
             <div className="project-content">
               <div className="project-meta">
