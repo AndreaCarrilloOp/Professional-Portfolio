@@ -121,10 +121,10 @@
   --glow: color-mix(in srgb, var(--palette-sky) 16%, transparent);
 
   --radius-lg: 24px;
-  --content-max: 1320px;
+  --content-max: 1480px;
   --content-readable: 860px;
   --content-readable-wide: 980px;
-  --content-gutter: 32px;
+  --content-gutter: clamp(24px, 4vw, 72px);
   --target-size: 48px;
   --button-radius: 14px;
   --motion-duration-fast: 180ms;
