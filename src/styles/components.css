@@ -636,7 +636,7 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
-  max-width: min(100%, var(--content-readable-wide));
+  width: 100%;
   margin: 0 auto;
 }
 .cert-card {
