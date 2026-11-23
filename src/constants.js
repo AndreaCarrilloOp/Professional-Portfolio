@@ -42,7 +42,8 @@ const toSrcSet = (variants) =>
 
 const buildResponsiveImage = (key, sizes) => {
   const image = responsiveImages[key];
-  const fallback = image.webp[image.webp.length - 1];
+  const fallbackVariants = image.webp?.length ? image.webp : image.png;
+  const fallback = fallbackVariants[fallbackVariants.length - 1];
 
   return {
     kind: "responsive",
@@ -51,7 +52,7 @@ const buildResponsiveImage = (key, sizes) => {
     height: fallback.height,
     sizes,
     avifSrcSet: image.avif?.length ? toSrcSet(image.avif) : null,
-    webpSrcSet: toSrcSet(image.webp),
+    webpSrcSet: image.webp?.length ? toSrcSet(image.webp) : null,
   };
 };
 
@@ -200,13 +201,15 @@ export const PROJECTS = [
     problemKey: "projects.scrabble.problem",
     contributionKey: "projects.scrabble.contribution",
     outcomeKey: "projects.scrabble.outcome",
-    image: buildResponsiveImage("scrabble", "(max-width: 1024px) 100vw, 44vw"),
+    image: buildResponsiveImage("scrabble", "(max-width: 1024px) 100vw, 65vw"),
+    imageAltKey: "projects.scrabble.imageAlt",
     repo: "https://github.com/AndreaCarrilloOp/SCRABBLE",
-    demo: null,
+    demo: "https://andreacarrilloop.github.io/SCRABBLE/",
     year: "2024",
-    roleKey: "projects.roles.backend",
-    techs: ["C++", "POO", "Algoritmos", "Consola"],
-    statusKey: "projects.status.completed",
+    roleKey: "projects.roles.wasm",
+    techs: ["C++17", "WebAssembly", "Emscripten", "JavaScript"],
+    featured: true,
+    statusKey: "projects.status.published",
   },
 ];
 
