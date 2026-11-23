@@ -23,13 +23,13 @@ function Hero({ darkMode }) {
   };
 
   return (
-    <section id="home" className="hero-section section-pad">
+    <section id="home" className="hero-section section-pad" aria-labelledby="home-heading">
       <div className="hero-grid">
         <div className="hero-copy reveal-up">
           <div className="status-pill">
             <FaRegCircle aria-hidden="true" /> {t("hero.status")}
           </div>
-          <h1 className="hero-title">
+          <h1 id="home-heading" className="hero-title">
             <span className="hero-name-first">Andrea</span>
             <span className="hero-name-last">Carrillo</span>
           </h1>
@@ -40,7 +40,7 @@ function Hero({ darkMode }) {
             {t("hero.descriptionTail")}
           </p>
 
-          <div className="hero-focus-grid" aria-label={t("hero.focusLabel")}>
+          <div className="hero-focus-grid" role="group" aria-label={t("hero.focusLabel")}>
             {focusItems.map((item) => (
               <span key={item} className="hero-focus-item">
                 {t(item)}
@@ -112,6 +112,7 @@ function Hero({ darkMode }) {
 
       <div
         className="tech-strip reveal-up delay-2"
+        role="group"
         aria-label={t("hero.techLabel")}
       >
         <div className="tech-strip-header">
