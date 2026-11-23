@@ -72,7 +72,8 @@
     "roles": {
       "frontend": "Frontend / UI Developer",
       "fullstack": "Full Stack Junior",
-      "backend": "Backend / C++ Logic"
+      "backend": "Backend / C++ Logic",
+      "wasm": "C++ / WebAssembly Development"
     },
     "petshop": {
       "title": "Huellita PetShop",
@@ -89,11 +90,12 @@
       "outcome": "Published catalog featuring 12 skyscrapers, 11 cities and 6 architecture firms with cross-navigation and responsive design."
     },
     "scrabble": {
-      "title": "Scrabble C++",
-      "description": "Interactive console board implementation developed in C++, applying object-oriented programming, data structures and algorithmic logic.",
-      "outcome": "Improved algorithmic thinking, rule modeling and logical robustness.",
-      "problem": "Model game rules and data structures while keeping clear logic in a console application.",
-      "contribution": "Class design, board handling, move validation and object-oriented logic organization."
+      "title": "Scrabble · Web Edition",
+      "description": "Word game powered by a C++17 rules engine adapted for the browser with WebAssembly. Features a 15 × 15 board, bonus squares, and local games for 2–4 players.",
+      "outcome": "Playable on GitHub Pages, sharing its rules engine between console and browser, with tests covering both versions.",
+      "problem": "Bring an academic C++ word game to the browser without duplicating its rules engine.",
+      "contribution": "Built the C++ game engine, integrated Emscripten and WebAssembly, and developed a responsive web interface.",
+      "imageAlt": "Scrabble Web Edition screenshot showing a 15 × 15 board with bonus squares and a local multiplayer new-game form."
     },
     "status": {
       "published": "Published",
@@ -103,7 +105,8 @@
       "problem": "Problem",
       "contribution": "Contribution",
       "outcome": "Outcome"
-    }
+    },
+    "viewFullImage": "View full-size screenshot"
   },
   "certifications": {
     "eyebrow": "Certifications",
