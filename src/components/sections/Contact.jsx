@@ -35,19 +35,20 @@ function Contact() {
   ];
 
   return (
-    <section id="contact" className="section-pad contact-section">
+    <section id="contact" className="section-pad contact-section" aria-labelledby="contact-heading">
       <div className="contact-card card reveal-up">
         <SectionHeader
+          headingId="contact-heading"
           eyebrowKey="contact.eyebrow"
           titleKey="contact.title"
           descriptionKey="contact.description"
         />
-        <div className="contact-meta" aria-label={t("contact.title")}>
+        <div className="contact-meta">
           {contactMeta.map((item) => (
             <span key={item}>{item}</span>
           ))}
         </div>
-        <div className="contact-grid" aria-label={t("contact.channelsLabel")}>
+        <div className="contact-grid" role="group" aria-label={t("contact.channelsLabel")}>
           {contactLinks.map(({ id, label, value, href, icon: Icon, primary }) => {
             const isExternal = !href.startsWith("mailto");
             return (
