@@ -7,8 +7,9 @@ function Certifications() {
   const { t } = useTranslation();
 
   return (
-    <section id="certifications" className="section-pad compact-section">
+    <section id="certifications" className="section-pad compact-section" aria-labelledby="certifications-heading">
       <SectionHeader
+        headingId="certifications-heading"
         eyebrowKey="certifications.eyebrow"
         titleKey="certifications.title"
         descriptionKey="certifications.description"
@@ -22,7 +23,7 @@ function Certifications() {
               href={credentialUrl}
               target="_blank"
               rel="noreferrer"
-              aria-label={`${title}: ${t("certifications.viewCredential")}`}
+              aria-label={`${title}: ${t("certifications.viewCredential")}, ${t("accessibility.externalLink")}`}
             >
               <div className="skill-icon">
                 <Icon aria-hidden="true" />
