@@ -2354,7 +2354,8 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   .nav-container,
   .mobile-bento-menu,
   :where(.about-card, .skill-card, .project-card, .cert-card),
-  .footer {
+  :root:not(.dark) .footer,
+  .dark .footer {
     border: 1px solid CanvasText;
     background: Canvas;
     color: CanvasText;
@@ -2373,10 +2374,13 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
     -webkit-text-fill-color: CanvasText;
   }
 
-  .nav-links > li + li::before,
+  .nav-links > li + li::before {
+    background: CanvasText;
+  }
+
   .footer .footer-contact {
     border-color: CanvasText;
-    background: CanvasText;
+    background: transparent;
   }
 
   .footer .footer-email,
