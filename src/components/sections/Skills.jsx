@@ -13,6 +13,7 @@ function Skills() {
           <article key={id} className="skill-card card reveal-up">
             <div className="skill-icon"><Icon aria-hidden="true" /></div>
             <h3>{t(titleKey)}</h3>
+            <p className="skill-description">{t(`skills.${id}.description`)}</p>
             <div className="tag-cloud">
               {items.map((item) => <span key={item} className="tag">{item}</span>)}
             </div>
