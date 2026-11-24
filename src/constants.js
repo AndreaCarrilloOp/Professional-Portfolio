@@ -204,11 +204,10 @@ export const PROJECTS = [
     problemKey: "projects.distributedLibrary.problem",
     contributionKey: "projects.distributedLibrary.contribution",
     outcomeKey: "projects.distributedLibrary.outcome",
-    image: {
-      kind: "external",
-      fallback:
-        "https://raw.githubusercontent.com/AndreaCarrilloOp/library-microfrontends-microservices/fdbc756f4c90cd16bd0e2fc9d24104b47961c060/Preview.png",
-    },
+    image: buildResponsiveImage(
+      "distributedLibrary",
+      "(max-width: 1024px) 100vw, 44vw",
+    ),
     imageAltKey: "projects.distributedLibrary.imageAlt",
     repo: "https://github.com/AndreaCarrilloOp/library-microfrontends-microservices",
     demo: "https://iframe-shell.vercel.app/",
