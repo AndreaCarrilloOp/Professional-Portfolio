@@ -324,6 +324,9 @@ test("readability and accessibility preferences remain supported", () => {
   const palette = load("scripts/check-palette.mjs");
   assert.ok(styles.includes("@media (prefers-contrast: more)"));
   assert.ok(styles.includes("@media (forced-colors: active)"));
+  assert.ok(styles.includes(":root:not(.dark) .footer,"));
+  assert.ok(styles.includes(".footer .footer-contact {\n    border-color: CanvasText;\n    background: transparent;"));
+  assert.ok(load("scripts/check-contrast.mjs").includes("INVERSE FOOTER"));
   assert.ok(styles.includes("outline: 3px solid Highlight"));
   assert.ok(styles.includes(".constellation-canvas {\n    display: none;"));
   assert.ok(styles.includes("font-size: 0.875rem;"));
