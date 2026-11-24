@@ -56,6 +56,8 @@ const checks = [
   ["alternate light accent / background", "accent-indigo", "bg", 4.5],
   ["alternate dark accent / background", "accent-violet", "bg", 4.5],
   ["warm accent / background", "accent-steel", "bg", 4.5],
+  ["tertiary champagne / background", "accent-champagne", "bg", 4.5],
+  ["tertiary champagne / raised surface", "accent-champagne", "surface-raised", 4.5],
   ["text / raised surface", "text", "surface-raised", 4.5],
   ["muted text / raised surface", "muted", "surface-raised", 4.5],
   ["button text / primary", "on-primary", "primary", 4.5],
@@ -97,11 +99,11 @@ console.log(
 const footerPairs = [
   ["light-page footer text", "palette-white", "satin-black", 4.5],
   ["light-page footer muted", "palette-dark-muted", "satin-black", 4.5],
-  ["light-page footer accent", "palette-violet", "satin-black", 4.5],
+  ["light-page footer accent", "palette-champagne", "satin-black", 4.5],
   ["light-page footer link text", "palette-white", "palette-dark-card", 4.5],
   ["dark-page footer text", "palette-ink", "palette-ice", 4.5],
   ["dark-page footer muted", "palette-muted", "palette-ice", 4.5],
-  ["dark-page footer accent", "palette-steel", "palette-ice", 4.5],
+  ["dark-page footer accent", "palette-bronze", "palette-ice", 4.5],
   ["dark-page footer link text", "palette-ink", "satin-silver", 4.5],
 ];
 console.log("\nINVERSE FOOTER");
