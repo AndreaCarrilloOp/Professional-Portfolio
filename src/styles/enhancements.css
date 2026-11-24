@@ -227,7 +227,11 @@ main:focus-visible {
   }
   .section-pad {
     width: min(100% - 24px, var(--content-max));
-    padding: 74px 0;
+    padding-block: clamp(38px, 6vw, 48px);
+  }
+
+  .compact-section {
+    padding-block: 36px;
   }
   
   
