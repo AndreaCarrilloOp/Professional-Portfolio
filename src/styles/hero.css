@@ -455,7 +455,7 @@
 
 .hero-kicker {
   margin: 0 0 14px;
-  color: var(--primary);
+  color: var(--accent-champagne);
   font-size: clamp(0.76rem, 1vw, 0.86rem);
   font-weight: 800;
   letter-spacing: 0.085em;
