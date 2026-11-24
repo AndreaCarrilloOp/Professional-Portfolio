@@ -2178,7 +2178,7 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   }
 }
 
-/* Graphite dark mode uses deep plum CTAs, keeping light mauve for readable text. */
+/* Graphite dark mode uses deep burgundy CTAs, keeping light mauve for readable text. */
 .dark :where(.btn-primary, .hero-cta-primary) {
   color: var(--palette-ice);
   background: linear-gradient(
