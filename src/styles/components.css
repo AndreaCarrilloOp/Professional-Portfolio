@@ -684,16 +684,12 @@
 /* Contact remains an independently named section inside the footer. */
 .footer-contact {
   width: 100%;
-  min-height: calc(100svh - 160px);
-  display: grid;
-  align-content: center;
   scroll-margin-top: 88px;
   border-bottom: 1px solid var(--line);
 }
 
 @media (max-width: 720px) {
   .footer-contact {
-    min-height: calc(100svh - 144px);
     scroll-margin-top: 80px;
   }
 }
@@ -701,7 +697,7 @@
 .footer-contact-inner {
   width: min(var(--content-max), calc(100% - var(--content-gutter)));
   margin-inline: auto;
-  padding-block: clamp(30px, 3.4vw, 48px);
+  padding-block: clamp(28px, 3vw, 42px);
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
   gap: clamp(24px, 4vw, 64px);
@@ -831,7 +827,7 @@
 .footer-inner {
   width: min(var(--content-max), calc(100% - var(--content-gutter)));
   margin-inline: auto;
-  padding-block: 22px 30px;
+  padding-block: 16px 22px;
   display: flex;
   align-items: center;
   justify-content: space-between;
