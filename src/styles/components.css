@@ -845,10 +845,14 @@
 }
 
 .footer strong {
+  display: inline-block;
+  padding-inline-end: 0.16em;
   color: var(--primary);
   font-size: 1.5rem;
-  letter-spacing: -0.08em;
+  letter-spacing: -0.045em;
   font-family: var(--font-display);
+  line-height: 1.25;
+  white-space: nowrap;
 }
 
 .reveal-up {
