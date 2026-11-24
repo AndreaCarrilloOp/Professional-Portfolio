@@ -1,68 +1,71 @@
-/* ACO Pizarra Mineral: medium stone in light mode; mineral graphite in dark.
- * Accessible semantic tokens with muted petroleum blue; no pure white surfaces.
- * Legacy palette-* aliases remain for existing component compatibility.
+/* ACO — Nebulosa de Medianoche.
+ * Muted cosmic slate for light mode, midnight navy for dark mode.
+ * Indigo and restrained lavender accents; never pure white surfaces.
+ * Semantic colors are checked against WCAG 2.2 AA.
+ * Legacy palette-* aliases retained for component compatibility.
  */
 :root {
   color-scheme: light;
 
   /* Immutable brand swatches. */
-  --palette-ink: #1d2b30;
-  --palette-navy: #183a46;
-  --palette-steel: #244c5a;
-  --palette-sky: #acc3c3;
-  --palette-ice: #aeb8b7;
-  --satin-silver: #c4cdca;
-  --satin-black: #192226;
-  --palette-muted: #36464e;
-  --palette-light-text: #d8e0da;
-  --palette-dark-muted: #b7c3bd;
-  --palette-dark-card: #303d41;
+  --palette-ink: #1c293d;
+  --palette-navy: #263c65;
+  --palette-steel: #43315e;
+  --palette-sky: #adbadd;
+  --palette-ice: #a9b1bf;
+  --satin-silver: #bbc2cb;
+  --satin-black: #151e2c;
+  --palette-muted: #35425a;
+  --palette-light-text: #d7dce8;
+  --palette-dark-muted: #b7c2d8;
+  --palette-dark-card: #273245;
+  --palette-violet: #c6aed9;
 
-  /* Medium-light stone surfaces and legible petroleum blue accents. */
-  --bg: #aeb8b7;
+  /* Blue-grey stone surfaces with indigo and violet typography. */
+  --bg: #a9b1bf;
   --surface: color-mix(in srgb, var(--palette-ice) 55%, var(--satin-silver));
-  --card: #c4cdca;
+  --card: #bbc2cb;
   --card-alt: color-mix(in srgb, var(--satin-silver) 88%, var(--palette-ice));
-  --surface-soft: #b7c3bd;
-  --surface-raised: #c4cdca;
+  --surface-soft: color-mix(in srgb, var(--palette-ice) 66%, var(--satin-silver));
+  --surface-raised: #bbc2cb;
   --surface-glass: color-mix(in srgb, var(--palette-ice) 90%, transparent);
-  --surface-deep: #aeb8b7;
+  --surface-deep: #a9b1bf;
   --surface-tint: color-mix(in srgb, var(--palette-ice) 68%, var(--palette-sky));
   --surface-highlight: color-mix(in srgb, var(--palette-ice) 96%, transparent);
   --surface-lowlight: color-mix(in srgb, var(--palette-navy) 16%, transparent);
   --surface-edge: color-mix(in srgb, var(--palette-steel) 70%, var(--satin-silver));
 
-  --text: #1d2b30;
-  --muted: #36464e;
-  --line: #244c5a;
-  --primary: #183a46;
-  --primary-strong: #183a46;
+  --text: #1c293d;
+  --muted: #35425a;
+  --line: #43315e;
+  --primary: #263c65;
+  --primary-strong: #43315e;
   --primary-soft: color-mix(in srgb, var(--palette-steel) 14%, transparent);
-  --secondary: #183a46;
-  --on-primary: #d8e0da;
-  --focus-ring: #183a46;
+  --secondary: #263c65;
+  --on-primary: #d7dce8;
+  --focus-ring: #263c65;
 
   /* Component aliases inherit the same coordinated palette. */
-  --accent-blue: #183a46;
+  --accent-blue: #263c65;
   --accent-blue-soft: color-mix(in srgb, var(--palette-steel) 14%, transparent);
-  --accent-cyan: #183a46;
+  --accent-cyan: #263c65;
   --accent-cyan-soft: color-mix(in srgb, var(--palette-sky) 16%, transparent);
-  --accent-teal: #183a46;
+  --accent-teal: #263c65;
   --accent-teal-soft: color-mix(in srgb, var(--palette-navy) 13%, transparent);
-  --accent-indigo: #183a46;
+  --accent-indigo: #263c65;
   --accent-indigo-soft: color-mix(in srgb, var(--palette-steel) 12%, transparent);
-  --accent-violet: #183a46;
+  --accent-violet: #43315e;
   --accent-violet-soft: color-mix(in srgb, var(--palette-navy) 12%, transparent);
-  --accent-steel: #244c5a;
+  --accent-steel: #43315e;
   --accent-steel-soft: color-mix(in srgb, var(--satin-silver) 24%, transparent);
 
   --ambient-primary: color-mix(in srgb, var(--palette-steel) 12%, transparent);
   --ambient-secondary: color-mix(in srgb, var(--palette-sky) 10%, transparent);
-  --canvas-point: 24, 58, 70;
-  --canvas-line: 36, 76, 90;
-  --canvas-glow: 172, 195, 195;
+  --canvas-point: 67, 49, 94;
+  --canvas-line: 38, 60, 101;
+  --canvas-glow: 173, 186, 221;
 
-  /* Restrained mineral textures use only shared neutral and petroleum tokens. */
+  /* Restrained celestial textures share all light and dark theme variables. */
   --satin-silver-gradient: linear-gradient(
     135deg,
     var(--palette-ice) 0%,
@@ -136,47 +139,47 @@
 .dark {
   color-scheme: dark;
 
-  /* Graphite surfaces with bright-but-muted silver-sage text accents. */
-  --bg: #192226;
-  --surface: #303d41;
-  --card: #303d41;
+  /* Midnight navy surfaces with silver-blue and lavender accents. */
+  --bg: #151e2c;
+  --surface: #273245;
+  --card: #273245;
   --surface-soft: color-mix(in srgb, var(--palette-dark-card) 82%, var(--palette-navy));
-  --surface-raised: #303d41;
+  --surface-raised: #273245;
   --surface-glass: color-mix(in srgb, var(--palette-dark-card) 90%, transparent);
-  --surface-deep: #192226;
-  --surface-tint: #244c5a;
+  --surface-deep: #151e2c;
+  --surface-tint: color-mix(in srgb, var(--palette-violet) 14%, var(--palette-dark-card));
   --surface-highlight: color-mix(in srgb, var(--palette-ice) 13%, transparent);
   --surface-lowlight: color-mix(in srgb, var(--satin-black) 50%, transparent);
   --surface-edge: color-mix(in srgb, var(--palette-sky) 72%, var(--satin-silver));
 
-  --text: #d8e0da;
-  --muted: #b7c3bd;
-  --line: #acc3c3;
-  --primary: #acc3c3;
-  --primary-strong: #d8e0da;
+  --text: #d7dce8;
+  --muted: #b7c2d8;
+  --line: #adbadd;
+  --primary: #adbadd;
+  --primary-strong: #d7dce8;
   --primary-soft: color-mix(in srgb, var(--palette-sky) 15%, transparent);
-  --secondary: #b7c3bd;
-  --on-primary: #192226;
-  --focus-ring: #d8e0da;
+  --secondary: #b7c2d8;
+  --on-primary: #151e2c;
+  --focus-ring: #d7dce8;
 
-  --accent-blue: #acc3c3;
+  --accent-blue: #adbadd;
   --accent-blue-soft: color-mix(in srgb, var(--palette-sky) 18%, transparent);
-  --accent-cyan: #d8e0da;
+  --accent-cyan: #d7dce8;
   --accent-cyan-soft: color-mix(in srgb, var(--palette-sky) 15%, transparent);
-  --accent-teal: #c4cdca;
+  --accent-teal: #bbc2cb;
   --accent-teal-soft: color-mix(in srgb, var(--satin-silver) 13%, transparent);
-  --accent-indigo: #d8e0da;
+  --accent-indigo: #d7dce8;
   --accent-indigo-soft: color-mix(in srgb, var(--palette-steel) 20%, transparent);
-  --accent-violet: #acc3c3;
+  --accent-violet: #c6aed9;
   --accent-violet-soft: color-mix(in srgb, var(--palette-sky) 13%, transparent);
-  --accent-steel: #d8e0da;
+  --accent-steel: #d7dce8;
   --accent-steel-soft: color-mix(in srgb, var(--satin-silver) 14%, transparent);
 
   --ambient-primary: color-mix(in srgb, var(--palette-sky) 11%, transparent);
-  --ambient-secondary: color-mix(in srgb, var(--satin-silver) 8%, transparent);
-  --canvas-point: 216, 224, 218;
-  --canvas-line: 172, 195, 195;
-  --canvas-glow: 172, 195, 195;
+  --ambient-secondary: color-mix(in srgb, var(--palette-violet) 8%, transparent);
+  --canvas-point: 215, 220, 232;
+  --canvas-line: 198, 174, 217;
+  --canvas-glow: 173, 186, 221;
 
   --plastic-inset:
     inset 0 1px 0 var(--surface-highlight),
@@ -213,5 +216,5 @@
   --shadow-md: 0 18px 54px color-mix(in srgb, var(--satin-black) 36%, transparent);
   --shadow-lg: 0 28px 72px color-mix(in srgb, var(--satin-black) 44%, transparent);
   --shadow: var(--shadow-md);
-  --glow: color-mix(in srgb, var(--palette-sky) 16%, transparent);
+  --glow: color-mix(in srgb, var(--palette-violet) 16%, transparent);
 }
