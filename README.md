@@ -1,194 +1,85 @@
-# Andrea Carrillo Portfolio
+# Professional Portfolio — Andrea Carrillo
 
-[![React](https://img.shields.io/badge/React-19-1B2A4A?logo=react&logoColor=E7F0FF)](https://react.dev/)
-[![Vite](https://img.shields.io/badge/Vite-6-2F4F7A?logo=vite&logoColor=E7F0FF)](https://vite.dev/)
-[![i18next](https://img.shields.io/badge/i18next-Enabled-6B8FBF?logo=i18next&logoColor=0B1026)](https://www.i18next.com/)
-[![pnpm](https://img.shields.io/badge/pnpm-9.15.0-B8BEC9?logo=pnpm&logoColor=111318)](https://pnpm.io/)
-[![Netlify Ready](https://img.shields.io/badge/Netlify-Ready-0B1026?logo=netlify&logoColor=E7F0FF)](https://www.netlify.com/)
-[![WCAG AA](https://img.shields.io/badge/WCAG-AA-1B2A4A?logoColor=E7F0FF)](#accessibility-and-quality)
-
-Professional bilingual portfolio for **Andrea Carrillo Oporto**, focused on **Software Developer** opportunities with emphasis on **Python, C++ and SQL**.
-
-This project was built as a production-ready personal portfolio with a responsive hero section, light and dark themes, accessibility-focused styling, technical SEO, and deployment support for Netlify.
-
-## Screenshots
-
-### Light mode
-
-![Portfolio home in light mode](./docs/screenshots/home-light.png)
-
-### Dark mode
-
-![Portfolio home in dark mode](./docs/screenshots/home-dark.png)
+Bilingual (ES/EN) professional portfolio built with **React 19, Vite 6 and CSS**, deployed on Netlify. The design uses the **Nebulosa de Medianoche** palette, responsive images and accessible light/dark themes.
 
 ## Features
 
-- Responsive one-page portfolio built with **React + Vite**.
-- Bilingual content with **i18next**.
-- Accessible color system aligned to **WCAG AA**.
-- Light and dark themes with smooth transitions.
-- Responsive hero layout optimized for **mobile, tablet and desktop**.
-- Transparent portrait assets with optimized responsive WebP images.
-- Project cards with repository links and live demos where available.
-- Technical SEO: canonical URL, Open Graph, Twitter Card, JSON-LD, robots and sitemap.
-- Netlify-ready configuration with SPA redirects, headers and production build support.
-- Automated palette and contrast validation scripts.
+- Semantic one-page layout with responsive navigation and keyboard focus management.
+- Spanish and English content with i18next.
+- Light/dark themes, reduced-motion support and a decorative constellation canvas.
+- Selected projects, technical skills and verified certification links.
+- Responsive local images with WebP/AVIF when available.
+- Canonical metadata, JSON-LD, social previews, sitemap and robots directives.
 
-## Tech stack
+## Development
 
-### Frontend
-- React 19
-- Vite 6
-- JavaScript (ES Modules)
-- Custom CSS
+**Requirements:** Node.js 20+, Corepack and pnpm 9.15.0.
 
-### Internationalization
-- i18next
-- react-i18next
-- i18next-browser-languagedetector
+```bash
+corepack enable
+pnpm install --frozen-lockfile
+pnpm dev
+```
 
-### UI and utilities
-- React Icons
-- pnpm
+Preview the production build locally:
 
-### Deployment and quality
-- Netlify
-- ESLint
-- Custom scripts for contrast, palette and deploy file generation
+```bash
+pnpm build
+pnpm preview
+```
+
+## Quality checks
+
+```bash
+pnpm check
+```
+
+The check command runs **ESLint, WCAG contrast checks for the defined semantic colors, seven focused static smoke tests and the production build**. These are regression safeguards, **not a substitute for browser-based accessibility testing or a WCAG certification**.
+
+The smoke tests cover translation parity, semantic navigation/contact, carousel accessibility, local image fallbacks, outbound links, SEO/deployment configuration and reduced-motion/theme support. There is no additional test framework or recurring automation.
+
+For a production release, also verify keyboard navigation, 200%/400% zoom, both themes, mobile layouts, screen-reader announcements and Lighthouse/axe results in a real browser.
 
 ## Project structure
 
 ```text
-Portfolio_Plantilla_Professional/
-├── docs/
-│   └── screenshots/
-│       ├── home-dark.png
-│       └── home-light.png
-├── public/
-│   ├── apple-touch-icon.png
-│   ├── favicon.png
-│   ├── og-image.jpg
-│   ├── robots.txt
-│   ├── sitemap.xml
-│   └── images/
-│       └── responsive/
-├── scripts/
-│   ├── check-contrast.mjs
-│   ├── check-palette.mjs
-│   └── generate-deploy-files.mjs
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── i18n/
-│   ├── styles/
-│   ├── App.jsx
-│   ├── constants.js
-│   └── main.jsx
-├── .env.example
-├── .gitignore
-├── .nvmrc
-├── netlify.toml
-├── package.json
-├── pnpm-lock.yaml
-└── vite.config.js
+src/
+  App.jsx
+  constants.js
+  components/
+    layout/
+    sections/
+    ui/
+  i18n/
+  styles/
+  assets/
+public/
+  branding/
+  images/
+scripts/
+  check-contrast.mjs
+  check-site.mjs
+  generate-deploy-files.mjs
 ```
 
-## Getting started
+## Deployment
 
-### Requirements
+Netlify reads `netlify.toml`:
 
-- **Node.js 20+**
-- **Corepack enabled**
-- **pnpm 9.15.0** or compatible
-
-### Installation
-
-```powershell
-corepack enable pnpm
-corepack install --global pnpm@9.15.0
-pnpm install
-```
-
-### Development
-
-```powershell
-pnpm dev
-```
-
-### Production build
-
-```powershell
-pnpm build
-pnpm preview
-```
-
-## Available scripts
-
-```powershell
-pnpm dev
-pnpm lint
-pnpm build
-pnpm preview
-pnpm palette
-pnpm contrast
-pnpm check
-```
-
-### What they do
-
-- `pnpm dev` → starts the local Vite development server.
-- `pnpm lint` → runs ESLint.
-- `pnpm build` → generates the production build and deploy files.
-- `pnpm preview` → previews the production build locally.
-- `pnpm palette` → validates that the approved palette is respected.
-- `pnpm contrast` → checks color contrast ratios.
-- `pnpm check` → runs the full validation pipeline.
-
-## Accessibility and quality
-
-This project was prepared with a quality baseline suitable for publication:
-
-- Semantic HTML structure.
-- Keyboard-focus visibility.
-- Support for `prefers-reduced-motion`.
-- Contrast verification aligned with **WCAG AA**.
-- Controlled design palette.
-- Responsive hero section tuned for desktop, tablet and mobile.
-- Clean deliverable without `node_modules`, `dist` or local environment artifacts.
-
-## Deployment on Netlify
-
-The project is ready to be imported directly into Netlify.
-
-### Expected settings
-
-- **Build command:** `pnpm build`
+- **Build:** `pnpm build`
 - **Publish directory:** `dist`
-- **Node version:** `20`
-- **Package manager:** `pnpm`
+- **Node:** 20
 
-Netlify reads the configuration from `netlify.toml`. The deploy step also regenerates the SEO files using the production URL provided by Netlify.
+The build generates `robots.txt` and `sitemap.xml` for the configured origin. If using a custom domain, set `VITE_SITE_URL` to its public HTTPS origin, or use Netlify's `URL` variable.
 
-For step-by-step deployment instructions, see:
+For deployment details, consult [the Netlify guide](docs/NETLIFY_DEPLOYMENT.md).
 
-- `docs/NETLIFY_DEPLOYMENT.md`
+## Accessibility and maintenance
 
-## SEO
+The site uses HTML landmarks, visible keyboard focus, reduced-motion preferences, high-contrast and forced-color fallbacks. Color checks test declared semantic tokens and the inverse footer, but translucent overlays still require a browser review.
 
-The project includes:
-
-- Canonical URL handling
-- Open Graph tags
-- Twitter Card tags
-- JSON-LD structured data
-- `robots.txt`
-- `sitemap.xml`
-- Optimized social preview image
-
-## License
-
-This portfolio is shared as a personal/professional project for presentation purposes.
+Keep content, styles, and asset paths synchronized when adding a project. Avoid adding third-party dependencies or tests for purely cosmetic CSS changes unless they protect a user-facing behavior.
 
 ---
 
-Created by **Andrea Carrillo Oporto**.
+Portfolio maintained by **Andrea Carrillo Oporto**.
