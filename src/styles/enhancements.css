@@ -2184,7 +2184,7 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
 :root:not(.dark) .footer {
   --footer-background: var(--satin-black);
   --footer-background-raised: var(--palette-dark-card);
-  --footer-text: var(--palette-light-text);
+  --footer-text: var(--palette-white);
   --footer-muted: var(--palette-dark-muted);
   --footer-accent: var(--palette-violet);
   --footer-focus: var(--palette-light-text);
