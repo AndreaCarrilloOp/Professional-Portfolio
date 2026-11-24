@@ -12,6 +12,7 @@ function Navbar({ darkMode, onToggleTheme }) {
   const firstMobileLinkRef = useRef(null);
   const mobileMenuRef = useRef(null);
   const wasOpenRef = useRef(false);
+  const navigatingToSectionRef = useRef(false);
 
   useEffect(() => {
     let ticking = false;
@@ -76,7 +77,7 @@ function Navbar({ darkMode, onToggleTheme }) {
       firstMobileLinkRef.current?.focus();
     } else {
       document.body.style.overflow = "";
-      if (wasOpenRef.current) {
+      if (wasOpenRef.current && !navigatingToSectionRef.current) {
         window.requestAnimationFrame(() => menuButtonRef.current?.focus());
       }
     }
@@ -150,9 +151,29 @@ function Navbar({ darkMode, onToggleTheme }) {
   const closeMenu = () => setOpen(false);
   const nextLanguage = i18n.language?.startsWith("es") ? "en" : "es";
 
-  const handleNavClick = (id) => {
+  const handleNavClick = (event, id) => {
+    const section = document.getElementById(id);
+    if (!section) return;
+
+    event.preventDefault();
+    navigatingToSectionRef.current = open;
     setActiveSection(id);
     closeMenu();
+
+    // Jump directly to the destination instead of scrolling across the page.
+    const navOffset = window.innerWidth <= 720 ? 80 : 88;
+    const destination = section.getBoundingClientRect().top + window.scrollY - navOffset;
+    window.scrollTo({ top: Math.max(0, destination), behavior: "instant" });
+    window.history.pushState(null, "", `#${id}`);
+
+    // Focus follows navigation, including when the mobile dialog is closing.
+    window.requestAnimationFrame(() => {
+      const heading = section.querySelector("h1, h2");
+      const destinationFocus = heading || section;
+      destinationFocus.setAttribute("tabindex", "-1");
+      destinationFocus.focus({ preventScroll: true });
+      navigatingToSectionRef.current = false;
+    });
   };
 
   return (
@@ -164,7 +185,7 @@ function Navbar({ darkMode, onToggleTheme }) {
           href="#home"
           className="brand"
           aria-label={t("accessibility.brandHome")}
-          onClick={closeMenu}
+          onClick={(event) => handleNavClick(event, "home")}
         >
           AC
         </a>
@@ -179,7 +200,7 @@ function Navbar({ darkMode, onToggleTheme }) {
                 href={item.href}
                 className={`nav-link ${isActive ? "nav-link-active" : ""}`}
                 aria-current={isActive ? "location" : undefined}
-                onClick={() => handleNavClick(item.id)}
+                onClick={(event) => handleNavClick(event, item.id)}
               >
                 <Icon className="nav-link-icon" aria-hidden="true" />
                 <span>{t(item.labelKey)}</span>
@@ -248,7 +269,7 @@ function Navbar({ darkMode, onToggleTheme }) {
                 href={item.href}
                 className={`bento-link ${isActive ? "bento-link-active" : ""}`}
                 aria-current={isActive ? "location" : undefined}
-                onClick={() => handleNavClick(item.id)}
+                onClick={(event) => handleNavClick(event, item.id)}
                 tabIndex={open ? 0 : -1}
                 ref={index === 0 ? firstMobileLinkRef : undefined}
               >
