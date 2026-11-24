@@ -75,12 +75,14 @@ test("styles remain structurally balanced and do not force placeholder section h
   assert.match(base, /scroll-behavior:\s*auto/);
 });
 
-test("page includes canonical metadata and deploy configuration permits credential and project images", () => {
+test("page includes canonical metadata and deploy configuration permits credential images and preserves local project assets", () => {
   const html = load("index.html");
   const config = load("netlify.toml");
   for (const tag of ["canonical", "og:image", "twitter:card", "application/ld+json"]) {
     assert.ok(html.includes(tag), `missing SEO metadata: ${tag}`);
   }
   assert.match(config, /img-src [^;]*https:\/\/images\.credly\.com/);
-  assert.match(config, /img-src [^;]*https:\/\/raw\.githubusercontent\.com/);
+  const images = json("src/assets/responsive-images.json");
+  assert.equal(images.distributedLibrary.png[0].url, "/images/responsive/distributed-library.png");
+  assert.match(constants, /buildResponsiveImage\(\s*"distributedLibrary"/);
 });
