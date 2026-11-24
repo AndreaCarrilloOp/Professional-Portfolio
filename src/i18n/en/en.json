@@ -42,13 +42,13 @@
   "skills": {
     "eyebrow": "Expertise",
     "title": "Technical skills",
-    "description": "Areas of work and tools I use in my projects.",
+    "description": "Four areas covering frontend, backend, data, and software delivery.",
     "frontend": {
       "title": "Frontend",
       "description": "Responsive, accessible interfaces."
     },
     "backend": {
-      "title": "Backend",
+      "title": "Backend & APIs",
       "description": "Services, business logic, and integration."
     },
     "databases": {
@@ -56,8 +56,8 @@
       "description": "Data models, queries, and persistence."
     },
     "cloud": {
-      "title": "Cloud & DevOps",
-      "description": "Deployments, containers, and automation."
+      "title": "Cloud, DevOps & quality",
+      "description": "Deployment, automation, and application validation."
     },
     "tools": {
       "title": "Tools",
