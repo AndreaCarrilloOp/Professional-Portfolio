@@ -1767,3 +1767,67 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
     padding-block: 38px;
   }
 }
+
+
+/* WCAG 2.2.2: optional pause without altering marquee speed or mobile swiping. */
+.tech-strip-header .tech-motion-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  margin-left: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--text);
+  background: var(--surface-soft);
+  cursor: pointer;
+  transition: border-color var(--motion-duration-fast) ease;
+}
+
+.tech-strip-header .tech-motion-toggle:hover {
+  border-color: var(--primary);
+}
+
+.tech-strip-header .tech-motion-toggle:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+.tech-strip-paused .tech-track {
+  animation-play-state: paused;
+}
+
+@media (max-width: 720px), (prefers-reduced-motion: reduce) {
+  .tech-strip-header .tech-motion-toggle {
+    display: none;
+  }
+}
+
+/* Preserve four skill cards; use readable sub-groups in the delivery card. */
+.skill-groups {
+  display: grid;
+  gap: 14px;
+  margin-top: auto;
+}
+
+.skill-group {
+  display: grid;
+  gap: 8px;
+}
+
+.skill-group-label {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+/* Zoom/reflow: avoid relying on a fixed minimum viewport width. */
+@media (max-width: 340px) {
+  .skills-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
