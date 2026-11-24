@@ -2303,6 +2303,42 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   line-height: 1.5;
 }
 
+/* Tertiary brand rhythm: repeated accents, never decorative buttons or large gold fills.
+   Bronze in light mode and champagne in dark mode share the same semantic token. */
+.nav-links .nav-link-active,
+.dark .nav-links .nav-link-active {
+  color: var(--accent-champagne);
+}
+
+.nav-links .nav-link-active::after,
+.nav-links .nav-link:hover::after,
+.nav-links .nav-link:focus-visible::after {
+  background: var(--accent-champagne);
+}
+
+.mobile-bento-menu .bento-link-active {
+  border-inline-start-color: var(--accent-champagne);
+}
+
+.mobile-bento-menu .bento-link-active svg,
+.hero-meta .status-pill svg,
+.credential-external {
+  color: var(--accent-champagne);
+}
+
+.projects-grid .project-card,
+.projects-grid .project-card:hover,
+.dark .projects-grid .project-card:hover {
+  border-block-start-color: var(--accent-champagne);
+}
+
+.project-meta span,
+.dark .project-meta span,
+.projects-grid .project-evidence-list dt,
+.skill-group-label {
+  color: var(--accent-champagne);
+}
+
 /* High-contrast preferences use solid surfaces and stronger visual boundaries.
    Core colors remain defined by the existing theme tokens. */
 @media (prefers-contrast: more) {
