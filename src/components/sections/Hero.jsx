@@ -25,14 +25,11 @@ function Hero({ darkMode }) {
     <section id="home" className="hero-section section-pad" aria-labelledby="home-heading">
       <div className="hero-grid">
         <div className="hero-copy reveal-up">
-          <div className="status-pill">
-            <FaRegCircle aria-hidden="true" /> {t("hero.status")}
-          </div>
+          <p className="hero-kicker">{t("hero.eyebrow")}</p>
           <h1 id="home-heading" className="hero-title">
             <span className="hero-name-first">Andrea</span>
             <span className="hero-name-last">Carrillo</span>
           </h1>
-          <p className="hero-role">{t("hero.eyebrow")}</p>
           <p className="hero-description">
             {t("hero.descriptionLead")} {" "}
             <strong>{t("hero.descriptionHighlight")}</strong>{" "}
@@ -51,7 +48,11 @@ function Hero({ darkMode }) {
             </a>
           </div>
 
-          <div className="social-row hero-social-links" role="group" aria-label={t("hero.socialLabel")}>
+          <div className="hero-meta">
+            <p className="status-pill">
+              <FaRegCircle aria-hidden="true" /> {t("hero.status")}
+            </p>
+            <div className="social-row hero-social-links" role="group" aria-label={t("hero.socialLabel")}>
             {heroSocialLinks.map(({ id, label, href, icon: Icon }) => {
               const isExternal = !href.startsWith("mailto");
               return (
@@ -72,6 +73,7 @@ function Hero({ darkMode }) {
                 </a>
               );
             })}
+            </div>
           </div>
         </div>
 
