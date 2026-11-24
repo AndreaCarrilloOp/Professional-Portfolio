@@ -86,3 +86,38 @@ test("page includes canonical metadata and deploy configuration permits credenti
   assert.equal(images.distributedLibrary.png[0].url, "/images/responsive/distributed-library.png");
   assert.match(constants, /buildResponsiveImage\(\s*"distributedLibrary"/);
 });
+
+
+test("SEO metadata is consistent with published projects and site URL", () => {
+  const html = load("index.html");
+  const app = load("src/App.jsx");
+  const buildConfig = load("vite.config.js");
+  const deploy = load("scripts/generate-deploy-files.mjs");
+  const production = "https://andreacarrillo-portafolio.netlify.app";
+
+  assert.match(html, /<link rel="canonical" href="__SITE_URL__\/"/);
+  assert.match(html, /<meta property="og:url" content="__SITE_URL__\/"/);
+  assert.match(html, /<meta property="og:image" content="__SITE_URL__\/og-image\.jpg"/);
+  assert.ok(buildConfig.includes(production), "canonical fallback should be the real portfolio URL");
+  assert.ok(deploy.includes(production), "sitemap fallback should match canonical origin");
+
+  const schemaText = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1];
+  assert.ok(schemaText, "Person JSON-LD should be present");
+  const schema = JSON.parse(schemaText);
+  assert.equal(schema["@type"], "Person");
+  assert.equal(schema.name, "Andrea Carrillo Oporto");
+  assert.deepEqual(schema.subjectOf.map((entry) => entry.name), [
+    "Scrabble Web Edition",
+    "Huellita PetShop",
+    "Distributed Library Platform",
+  ]);
+
+  for (const locale of [spanish, english]) {
+    assert.ok(locale.seo.title.length > 20);
+    assert.ok(locale.seo.description.length >= 70);
+    assert.ok(locale.seo.description.length <= 165);
+    assert.ok(locale.about.approach);
+  }
+  assert.match(app, /document\.title = t\("seo\.title"\)/);
+  assert.match(app, /setMeta\('meta\[property="og:description"\]'/);
+});
