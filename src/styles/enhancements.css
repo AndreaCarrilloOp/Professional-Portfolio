@@ -2189,3 +2189,84 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   );
   border-color: var(--palette-steel);
 }
+
+/* Shared dark footer for both themes: contact and legal strip form one surface.
+   Local tokens prevent the footer palette from altering the rest of the page. */
+.footer,
+.dark .footer {
+  --text: var(--palette-ice);
+  --muted: var(--satin-silver);
+  --primary: var(--palette-sky);
+  --primary-strong: var(--palette-ice);
+  --primary-soft: color-mix(in srgb, var(--palette-sky) 16%, transparent);
+  --secondary: var(--satin-silver);
+  --line: var(--palette-sky);
+  --focus-ring: var(--palette-ice);
+  --card: color-mix(in srgb, var(--palette-ink) 94%, var(--palette-navy));
+  --surface-soft: color-mix(in srgb, var(--palette-ink) 88%, var(--palette-navy));
+  --surface-raised: var(--palette-ink);
+  color: var(--muted);
+  background: linear-gradient(
+    160deg,
+    var(--palette-ink) 0%,
+    var(--satin-black) 78%
+  );
+  border-top: 1px solid color-mix(in srgb, var(--palette-sky) 36%, transparent);
+}
+
+.footer .footer-contact {
+  border-bottom-color: color-mix(in srgb, var(--palette-sky) 25%, transparent);
+}
+
+.footer .footer-contact-title {
+  color: var(--palette-ice);
+}
+
+.footer .footer-contact-intro .eyebrow {
+  color: var(--palette-sky);
+}
+
+.footer .footer-contact-intro p,
+.footer .footer-identity small,
+.footer .footer-credit {
+  color: var(--satin-silver);
+}
+
+/* Do not reuse the hero's decorative gradient for footer identity text. */
+.footer .footer-identity strong {
+  color: var(--palette-ice);
+  background: none;
+  background-clip: border-box;
+  -webkit-background-clip: border-box;
+  -webkit-text-fill-color: var(--palette-ice);
+}
+
+.footer .footer-email,
+.footer .footer-socials a {
+  background: color-mix(in srgb, var(--palette-ink) 92%, var(--palette-navy));
+  border-color: color-mix(in srgb, var(--palette-sky) 35%, transparent);
+  color: var(--palette-ice);
+  box-shadow: none;
+}
+
+.footer .footer-email svg,
+.footer .footer-socials a svg {
+  color: var(--palette-sky);
+}
+
+.footer .footer-email:hover,
+.footer .footer-socials a:hover,
+.footer .footer-email:focus-visible,
+.footer .footer-socials a:focus-visible {
+  background: color-mix(in srgb, var(--palette-ink) 78%, var(--palette-navy));
+  border-color: var(--palette-sky);
+  color: var(--palette-ice);
+  box-shadow: none;
+  transform: none;
+}
+
+.footer .footer-email:focus-visible,
+.footer .footer-socials a:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+}
