@@ -27,6 +27,25 @@ test("technology carousel original structure is preserved", () => {
   assert.doesNotMatch(hero, /techPaused|tech-motion-toggle|tech-track-paused/);
 });
 
+test("ACO branding uses theme-aware SVG assets and accessible home link", () => {
+  const navbar = load("src/components/layout/Navbar.jsx");
+  const html = load("index.html");
+  const css = load("src/styles/enhancements.css");
+  const palette = load("scripts/check-palette.mjs");
+  for (const variant of ["light", "dark"]) {
+    const logo = load("public/branding/aco-" + variant + ".svg");
+    assert.match(logo, /<svg\b/);
+    assert.match(logo, /viewBox="0 0 320 224"/);
+  }
+  assert.match(load("public/branding/favicon.svg"), /viewBox="0 0 64 64"/);
+  assert.ok(navbar.includes('className="brand-logo"'));
+  assert.ok(navbar.includes('darkMode ? "dark" : "light"'));
+  assert.ok(navbar.includes('aria-label={t("accessibility.brandHome")}'));
+  assert.ok(html.includes('%BASE_URL%branding/favicon.svg'));
+  assert.ok(css.includes(".brand .brand-logo"));
+  assert.ok(palette.includes("public/branding/"));
+});
+
 test("only the three approved projects are listed", () => {
   const start = constants.indexOf("export const PROJECTS = [");
   const end = constants.indexOf("export const CERTIFICATIONS = [");

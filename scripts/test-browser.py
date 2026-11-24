@@ -80,6 +80,28 @@ class PortfolioSmokeTests(unittest.TestCase):
         page.locator("#home-heading").wait_for()
         return page
 
+    def test_brand_logo_uses_theme_assets_and_home_link(self) -> None:
+        for width in (390, 1366):
+            with self.subTest(width=width):
+                page = self.page_for(width)
+                try:
+                    brand = page.locator(".brand")
+                    logo = brand.locator("img.brand-logo")
+                    self.assertEqual(logo.get_attribute("alt"), "")
+                    self.assertIn("aco-", logo.get_attribute("src"))
+                    self.assertTrue(logo.evaluate("img => img.complete && img.naturalWidth > 0"))
+                    initial = logo.get_attribute("src")
+                    page.locator(".nav-actions .icon-button").click()
+                    page.wait_for_function(
+                        "(prev) => document.querySelector('.brand-logo')?.getAttribute('src') !== prev",
+                        arg=initial,
+                    )
+                    self.assertTrue(logo.evaluate("img => img.complete && img.naturalWidth > 0"))
+                    brand.click()
+                    self.assertTrue(page.url.endswith("#home"))
+                finally:
+                    page.close()
+
     def test_responsive_layout_and_technology_carousel(self) -> None:
         for width in (320, 390, 768, 1366, 1920):
             with self.subTest(width=width):

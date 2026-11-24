@@ -223,7 +223,13 @@ function Navbar({ darkMode, onToggleTheme }) {
           aria-label={t("accessibility.brandHome")}
           onClick={(event) => handleNavClick(event, "home")}
         >
-          AC
+          <img
+            src={`${import.meta.env.BASE_URL}branding/aco-${darkMode ? "dark" : "light"}.svg`}
+            alt=""
+            width="64"
+            height="45"
+            className="brand-logo"
+          />
         </a>
 
         <div className="nav-links">

@@ -1896,3 +1896,11 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
 .footer-socials a {
   cursor: pointer;
 }
+
+/* ACO brand images retain the home link's accessible name. */
+.brand .brand-logo {
+  display: block;
+  width: 64px;
+  height: 45px;
+  object-fit: contain;
+}
