@@ -22,7 +22,9 @@
     "focusThree": "Automation and testing",
     "techHint": "Swipe to see more",
     "primaryActionsLabel": "Primary portfolio actions",
-    "socialLabel": "Professional profiles"
+    "socialLabel": "Professional profiles",
+    "techPause": "Pause technology animation",
+    "techResume": "Resume technology animation"
   },
   "about": {
     "eyebrow": "About Me",
@@ -57,7 +59,10 @@
     },
     "cloud": {
       "title": "Cloud, DevOps & quality",
-      "description": "Deployment, automation, and application validation."
+      "description": "Deployment, automation, and application validation.",
+      "delivery": "Deployment and automation",
+      "testing": "Testing",
+      "versionControl": "Version control"
     },
     "tools": {
       "title": "Tools",
