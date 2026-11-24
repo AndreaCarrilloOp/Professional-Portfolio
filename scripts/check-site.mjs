@@ -46,11 +46,40 @@ test("both translations preserve page sections and accessible navigation", () =>
     assert.ok(spanish[section] && english[section], `missing ${section} translations`);
   }
   const navbar = load("src/components/layout/Navbar.jsx");
-  for (const id of ["home", "about", "skills", "projects", "certifications", "contact"]) {
-    assert.ok(constants.includes(`href: "#${id}"`), `missing ${id} navigation link`);
-  }
+  const navConfig = constants.slice(
+    constants.indexOf("export const NAV_ITEMS = ["),
+    constants.indexOf("export const SOCIAL_LINKS = ["),
+  );
+  const navIds = [...navConfig.matchAll(/id: "([^"]+)"/g)].map((match) => match[1]);
+  assert.deepEqual(navIds, ["projects", "skills", "about"]);
   assert.match(navbar, /handleNavClick\(event, item.id\)/);
+  assert.match(navbar, /className="nav-contact-cta"/);
+  assert.match(navbar, /className="bento-contact-cta"/);
+  assert.match(navbar, /handleNavClick\(event, "contact"\)/);
+  assert.match(load("src/components/sections/Hero.jsx"), /href="#contact"/);
   assert.match(load("src/components/sections/Contact.jsx"), /id="contact"/);
+});
+
+test("portfolio prioritizes projects and preserves four skills categories", () => {
+  const app = load("src/App.jsx");
+  const order = ["<Hero ", "<Projects />", "<Skills />", "<About />", "<Certifications />"];
+  let previous = -1;
+  for (const component of order) {
+    const position = app.indexOf(component);
+    assert.ok(position > previous, `incorrect section order: ${component}`);
+    previous = position;
+  }
+  const skillsText = constants.slice(
+    constants.indexOf("export const SKILLS = ["),
+    constants.indexOf("export const PROJECTS = ["),
+  );
+  assert.deepEqual(
+    [...skillsText.matchAll(/id: "([^"]+)"/g)].map((x) => x[1]),
+    ["frontend", "backend", "databases", "cloud"],
+  );
+  for (const item of ["React", "FastAPI", "PostgreSQL", "Docker", "pytest", "Figma"]) {
+    assert.ok(skillsText.includes(item), `missing key skill: ${item}`);
+  }
 });
 
 test("footer and app contain one accessible contact region", () => {
