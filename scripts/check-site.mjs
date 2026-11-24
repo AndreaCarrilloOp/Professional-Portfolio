@@ -30,7 +30,7 @@ test("only the three approved projects are listed", () => {
   const end = constants.indexOf("export const CERTIFICATIONS = [");
   const block = constants.slice(start, end);
   const ids = [...block.matchAll(/\bid: "([^"]+)"/g)].map((m) => m[1]);
-  assert.deepEqual(ids, ["scrabble", "petshop", "tallest-buildings"]);
+  assert.deepEqual(ids, ["scrabble", "petshop", "distributed-library"]);
 });
 
 test("all credential cards provide verified destinations and badge assets", () => {
@@ -75,11 +75,12 @@ test("styles remain structurally balanced and do not force placeholder section h
   assert.match(base, /scroll-behavior:\s*auto/);
 });
 
-test("page includes canonical metadata and deploy configuration permits credential images", () => {
+test("page includes canonical metadata and deploy configuration permits credential and project images", () => {
   const html = load("index.html");
   const config = load("netlify.toml");
   for (const tag of ["canonical", "og:image", "twitter:card", "application/ld+json"]) {
     assert.ok(html.includes(tag), `missing SEO metadata: ${tag}`);
   }
   assert.match(config, /img-src [^;]*https:\/\/images\.credly\.com/);
+  assert.match(config, /img-src [^;]*https:\/\/raw\.githubusercontent\.com/);
 });
