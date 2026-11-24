@@ -27,9 +27,14 @@ function getInitialDarkMode() {
   if (documentTheme === "dark") return true;
   if (documentTheme === "light") return false;
 
-  const storedTheme = localStorage.getItem("theme");
-  if (storedTheme === "dark") return true;
-  if (storedTheme === "light") return false;
+  // Storage can be unavailable in privacy-restricted browser contexts.
+  try {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme === "dark") return true;
+    if (storedTheme === "light") return false;
+  } catch {
+    // Fall back to the OS preference.
+  }
 
   return window.matchMedia("(prefers-color-scheme: dark)").matches;
 }
@@ -44,7 +49,11 @@ function applyDocumentTheme(darkMode) {
   root.style.colorScheme = theme;
   root.style.backgroundColor = themeColor;
   document.querySelector('meta[name="theme-color"]')?.setAttribute("content", themeColor);
-  localStorage.setItem("theme", theme);
+  try {
+    localStorage.setItem("theme", theme);
+  } catch {
+    // Theme switching still works for this session without persistence.
+  }
 }
 
 function App() {
@@ -73,9 +82,11 @@ function App() {
     if (!reduceMotion && typeof document.startViewTransition === "function") {
       themeTransitionRef.current = true;
       const transition = document.startViewTransition(commitTheme);
-      transition.finished.finally(() => {
-        themeTransitionRef.current = false;
-      });
+      // A skipped view transition may reject; either way unlock the toggle.
+      transition.finished.then(
+        () => { themeTransitionRef.current = false; },
+        () => { themeTransitionRef.current = false; },
+      );
       return;
     }
 
