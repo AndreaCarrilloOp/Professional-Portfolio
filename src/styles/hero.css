@@ -293,7 +293,7 @@
 
   .status-pill {
     margin-bottom: 18px;
-    font-size: 0.7rem;
+    font-size: 0.82rem;
   }
 
   .hero-title {
@@ -509,7 +509,7 @@
   display: inline-flex;
   align-items: center;
   margin: 0;
-  font-size: 0.7rem;
+  font-size: 0.82rem;
   line-height: 1.5;
   letter-spacing: 0.025em;
   white-space: normal;
@@ -538,8 +538,8 @@
 @media (max-width: 640px) {
   .hero-kicker {
     margin-bottom: 12px;
-    font-size: 0.73rem;
-    letter-spacing: 0.06em;
+    font-size: 0.82rem;
+    letter-spacing: 0.045em;
   }
 
   .hero-copy .hero-title {
