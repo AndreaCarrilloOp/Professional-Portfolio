@@ -19,31 +19,31 @@ function Certifications() {
         descriptionKey="certifications.description"
       />
 
-      <div className="credential-badges" role="list">
+      <ul className="credential-badges">
         {CERTIFICATIONS.map(({ id, title, code, badgeImage, credentialUrl }) => (
-          <a
-            key={id}
-            role="listitem"
-            className="credential-badge"
-            href={credentialUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`${code} — ${title}: ${t("certifications.viewCredential")}, ${t("accessibility.externalLink")}`}
-            title={title}
-          >
-            <img
-              src={badgeImage}
-              width="60"
-              height="60"
-              loading="lazy"
-              decoding="async"
-              alt=""
-            />
-            <span className="credential-code">{code}</span>
-            <FaExternalLinkAlt aria-hidden="true" className="credential-external" />
-          </a>
+          <li key={id}>
+            <a
+              className="credential-badge"
+              href={credentialUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${code} — ${title}: ${t("certifications.viewCredential")}, ${t("accessibility.externalLink")}`}
+              title={title}
+            >
+              <img
+                src={badgeImage}
+                width="60"
+                height="60"
+                loading="lazy"
+                decoding="async"
+                alt=""
+              />
+              <span className="credential-code">{code}</span>
+              <FaExternalLinkAlt aria-hidden="true" className="credential-external" />
+            </a>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }
