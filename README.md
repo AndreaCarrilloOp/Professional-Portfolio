@@ -1,6 +1,6 @@
 # Professional Portfolio — Andrea Carrillo
 
-Bilingual (ES/EN) professional portfolio built with **React 19, Vite 6 and CSS**, deployed on Netlify. The design uses the **Azul Medianoche & Ciruela** palette (midnight navy `#0C1229`, steel-blue `#96A9BF`, deep plum `#4B2848` and soft plum `#C9A7BF`), responsive images and accessible light/dark themes.
+Bilingual (ES/EN) professional portfolio built with **React 19, Vite 6 and CSS**, deployed on Netlify. The design uses the **Azul Medianoche · Ciruela · Champagne** palette (midnight navy `#0C1229`, steel-blue `#96A9BF`, deep plum `#4B2848` and restrained gold `#D2B77E` / bronze `#4B3620` accents), responsive images and accessible light/dark themes.
 
 ## Features
 
