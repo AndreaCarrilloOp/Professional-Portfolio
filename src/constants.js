@@ -125,6 +125,11 @@ export const SKILLS = [
     titleKey: "skills.cloud.title",
     descriptionKey: "skills.cloud.description",
     items: ["Docker", "Azure", "GitHub Actions", "Netlify", "pytest", "Postman", "Git", "GitHub"],
+    groups: [
+      { labelKey: "skills.cloud.delivery", items: ["Docker", "Azure", "Netlify", "GitHub Actions"] },
+      { labelKey: "skills.cloud.testing", items: ["pytest", "Postman"] },
+      { labelKey: "skills.cloud.versionControl", items: ["Git", "GitHub"] },
+    ],
   },
 ];
 
