@@ -150,7 +150,7 @@ main:focus-visible {
 }
 
 
-.dark .btn-primary {
+.dark .btn-primary:not(.hero-cta-primary) {
   box-shadow:
     inset 0 1px 0 color-mix(in srgb, var(--palette-ice) 36%, transparent),
     inset 0 -4px 0 color-mix(in srgb, var(--satin-black) 30%, transparent),
@@ -691,34 +691,39 @@ main:focus-visible {
 }
 
 .hero-cta-row .btn {
-  min-height: 54px;
-  border-radius: 999px;
+  min-height: 52px;
+  border-radius: 10px;
+  font-weight: 700;
 }
 
 .hero-cta-primary {
   min-width: 176px;
-  padding-inline: 22px 13px;
-  justify-content: space-between;
-  box-shadow:
-    inset 0 1px 0 color-mix(in srgb, var(--palette-ice) 38%, transparent),
-    inset 0 -3px 0 color-mix(in srgb, var(--satin-black) 18%, transparent),
-    0 18px 36px color-mix(in srgb, var(--primary) 22%, transparent);
+  justify-content: center;
+  gap: 10px;
+  padding-inline: 22px;
+  color: var(--on-primary);
+  background: var(--primary);
+  border: 1px solid var(--primary);
+  box-shadow: none;
 }
 
-.btn-icon-pill {
-  display: inline-grid;
-  place-items: center;
-  width: 32px;
-  height: 32px;
-  margin-left: 4px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--on-primary) 18%, transparent);
-  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--palette-ice) 20%, transparent);
+.hero-cta-arrow {
+  width: 0.88rem;
+  height: 0.88rem;
+  flex-shrink: 0;
 }
 
-.btn-icon-pill svg {
-  width: 0.92rem;
-  height: 0.92rem;
+.hero-cta-primary:hover,
+.hero-cta-primary:focus-visible {
+  color: var(--on-primary);
+  background: var(--primary-strong);
+  border-color: var(--primary-strong);
+  box-shadow: none;
+  transform: none;
+}
+
+.hero-cta-primary:active {
+  transform: none;
 }
 
 .hero-cta-secondary {
@@ -1066,8 +1071,7 @@ main:focus-visible {
   color: var(--component-accent, var(--primary));
 }
 
-.btn-primary,
-.hero-cta-primary {
+.btn-primary:not(.hero-cta-primary) {
   background:
     linear-gradient(180deg, color-mix(in srgb, var(--palette-ice) 38%, transparent), color-mix(in srgb, var(--palette-ice) 10%, transparent) 28%, transparent 50%),
     var(--gradient-primary);
@@ -1151,7 +1155,7 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
     var(--satin-black-gradient);
 }
 
-.dark :where(.btn-primary, .hero-cta-primary) {
+.dark .btn-primary:not(.hero-cta-primary) {
   color: var(--on-primary);
   background:
     linear-gradient(
@@ -2163,8 +2167,8 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   }
 }
 
-/* Graphite dark mode uses deep burgundy CTAs, keeping light mauve for readable text. */
-.dark :where(.btn-primary, .hero-cta-primary) {
+/* Other primary buttons keep their existing dark-theme treatment; the Hero CTA is solid. */
+.dark .btn-primary:not(.hero-cta-primary) {
   color: var(--palette-ice);
   background: linear-gradient(
     180deg,
