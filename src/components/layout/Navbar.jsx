@@ -44,10 +44,11 @@ function Navbar({ darkMode, onToggleTheme }) {
   }, []);
 
   useEffect(() => {
-    const sectionIds = NAV_ITEMS.map((item) => item.href.replace("#", ""));
-    const sections = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter(Boolean);
+    // Track all sections, including anchors that are deliberately absent
+    // from the compact navigation, so hidden links never appear active.
+    const sections = Array.from(
+      document.querySelectorAll("main section[id], footer #contact"),
+    );
 
     if (sections.length === 0) return undefined;
 
@@ -213,6 +214,7 @@ function Navbar({ darkMode, onToggleTheme }) {
           <a
             href="#contact"
             className="nav-contact-cta"
+            aria-current={activeSection === "contact" ? "location" : undefined}
             onClick={(event) => handleNavClick(event, "contact")}
           >
             {t("nav.contact")}
@@ -292,6 +294,7 @@ function Navbar({ darkMode, onToggleTheme }) {
         <a
           href="#contact"
           className="bento-contact-cta"
+          aria-current={activeSection === "contact" ? "location" : undefined}
           onClick={(event) => handleNavClick(event, "contact")}
           tabIndex={open ? 0 : -1}
         >
