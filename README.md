@@ -14,7 +14,7 @@ Bilingual (ES/EN) professional portfolio built with **React 19, Vite 6 and CSS**
 
 ## Development
 
-**Requirements:** Node.js 20+, Corepack and pnpm 9.15.0.
+**Requirements:** Node.js 24 LTS, Corepack and pnpm 9.15.0.
 
 ```bash
 corepack enable
@@ -69,11 +69,11 @@ Netlify reads `netlify.toml`:
 
 - **Build:** `pnpm build`
 - **Publish directory:** `dist`
-- **Node:** 20
+- **Node:** 24 LTS
 
 The build generates `robots.txt` and `sitemap.xml` for the configured origin. If using a custom domain, set `VITE_SITE_URL` to its public HTTPS origin, or use Netlify's `URL` variable.
 
-For deployment details, consult [the Netlify guide](docs/NETLIFY_DEPLOYMENT.md).
+For deployment details, see the Netlify configuration in `netlify.toml` and the [official Netlify documentation](https://docs.netlify.com/).
 
 ## Accessibility and maintenance
 
