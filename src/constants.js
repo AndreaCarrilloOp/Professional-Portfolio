@@ -198,24 +198,25 @@ export const PROJECTS = [
     statusKey: "projects.status.published",
   },
   {
-    id: "tallest-buildings",
-    titleKey: "projects.tallestBuildings.title",
-    descriptionKey: "projects.tallestBuildings.description",
-    problemKey: "projects.tallestBuildings.problem",
-    contributionKey: "projects.tallestBuildings.contribution",
-    outcomeKey: "projects.tallestBuildings.outcome",
-    image: buildResponsiveImage(
-      "tallestBuildings",
-      "(max-width: 1024px) 100vw, 44vw",
-    ),
-    repo: "https://github.com/AndreaCarrilloOp/tallest-buildings",
-    demo: "https://tallestbuildings.netlify.app/",
-    year: "2025",
-    roleKey: "projects.roles.frontend",
-    techs: ["Nuxt.js 3", "Vue.js 3", "JSON", "Netlify"],
+    id: "distributed-library",
+    titleKey: "projects.distributedLibrary.title",
+    descriptionKey: "projects.distributedLibrary.description",
+    problemKey: "projects.distributedLibrary.problem",
+    contributionKey: "projects.distributedLibrary.contribution",
+    outcomeKey: "projects.distributedLibrary.outcome",
+    image: {
+      kind: "external",
+      fallback:
+        "https://raw.githubusercontent.com/AndreaCarrilloOp/library-microfrontends-microservices/fdbc756f4c90cd16bd0e2fc9d24104b47961c060/Preview.png",
+    },
+    imageAltKey: "projects.distributedLibrary.imageAlt",
+    repo: "https://github.com/AndreaCarrilloOp/library-microfrontends-microservices",
+    demo: "https://iframe-shell.vercel.app/",
+    year: "2026",
+    roleKey: "projects.roles.distributed",
+    techs: ["Vue 3", "Microservices", "PostgreSQL", "Cloudflare D1"],
     statusKey: "projects.status.published",
-  },
-];
+  },];
 
 export const CERTIFICATIONS = [
   {
