@@ -156,7 +156,7 @@ function Navbar({ darkMode, onToggleTheme }) {
       const section = document.getElementById(id);
       if (!section) return;
 
-      navigatingToSectionRef.current = open;
+      navigatingToSectionRef.current = true;
       setOpen(false);
       setActiveSection(id);
       const navOffset = window.innerWidth <= 720 ? 80 : 88;
