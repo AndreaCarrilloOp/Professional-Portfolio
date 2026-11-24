@@ -224,3 +224,21 @@ test("light-mode constellations have legible but decorative contrast", () => {
   assert.ok(css.includes("@media (prefers-reduced-motion: reduce)"));
   assert.ok(canvas.includes('aria-hidden="true"'));
 });
+
+test("navbar uses semantic lists and text-first active states", () => {
+  const navbar = load("src/components/layout/Navbar.jsx");
+  const css = load("src/styles/enhancements.css");
+  assert.ok(navbar.includes('<ul className="nav-links">'));
+  assert.ok(navbar.includes('<ul className="bento-grid">'));
+  assert.ok(navbar.includes('aria-current={isActive ? "location" : undefined}'));
+  assert.ok(navbar.includes('aria-expanded={open}'));
+  assert.ok(navbar.includes('aria-haspopup="dialog"'));
+  assert.ok(navbar.includes('role="dialog"'));
+  assert.ok(navbar.includes('ref={index === 0 ? firstMobileLinkRef : undefined}'));
+  assert.ok(!navbar.includes('className="bento-index"'));
+  const navStyles = css.slice(css.indexOf("/* Navigation refinement: text links"));
+  assert.ok(navStyles.includes(".nav-links .nav-link-active::after"));
+  assert.ok(navStyles.includes("border-inline-start-color: var(--primary)"));
+  assert.ok(navStyles.includes(".nav-actions .icon-button"));
+  assert.ok(navStyles.includes("@media (prefers-reduced-motion: reduce)"));
+});
