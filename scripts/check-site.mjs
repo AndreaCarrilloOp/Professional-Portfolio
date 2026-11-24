@@ -84,7 +84,7 @@ test("noninteractive tags are semantic lists and only clickable badges stay roun
   assert.match(skills, /<li key=\{item\} className="tag">/);
   assert.match(projects, /<ul className="tag-cloud"/);
   assert.match(projects, /<li className="tag" key=\{tech\}>/);
-  assert.match(css, /\.tag-cloud > \.tag:nth-child\(n\)/);
+  assert.ok(css.includes(".tag-cloud > .tag:nth-child(n)"));
   assert.match(css, /\.skills-grid \.skill-card[\s\S]*?border-radius: 0/);
   assert.match(css, /\.projects-grid \.project-card[\s\S]*?border-radius: 0/);
   assert.match(load("src/styles/components.css"), /\.credential-badge \{[\s\S]*?border-radius: 16px/);
