@@ -8,13 +8,13 @@
     "contact": "Contacto"
   },
   "hero": {
-    "eyebrow": "Desarrollo Backend · Full Stack",
+    "eyebrow": "Desarrolladora Full Stack",
     "ctaProjects": "Ver proyectos",
     "ctaContact": "Contactar",
     "status": "Abierta a oportunidades",
     "descriptionLead": "Desarrollo",
-    "descriptionHighlight": "aplicaciones web y APIs backend",
-    "descriptionTail": "con énfasis en datos, automatización y calidad del software.",
+    "descriptionHighlight": "aplicaciones web de extremo a extremo",
+    "descriptionTail": "desde interfaces y APIs hasta bases de datos, con enfoque en calidad y automatización.",
     "techLabel": "TECNOLOGÍAS CON LAS QUE TRABAJO",
     "focusLabel": "Áreas de enfoque",
     "focusOne": "Backend y APIs",
@@ -129,7 +129,7 @@
   "contact": {
     "eyebrow": "Contacto",
     "title": "Conversemos",
-    "description": "Abierta a oportunidades de desarrollo Backend y Full Stack en Costa Rica o remoto.",
+    "description": "Abierta a oportunidades como desarrolladora Full Stack en Costa Rica o remoto.",
     "email": "Correo principal",
     "github": "GitHub",
     "linkedin": "LinkedIn",
@@ -163,8 +163,8 @@
     "brandHome": "Andrea Carrillo, ir al inicio"
   },
   "seo": {
-    "title": "Andrea Carrillo Oporto | Desarrollo Backend y Full Stack",
-    "description": "Portafolio de Andrea Carrillo Oporto. Desarrollo Backend y Full Stack: proyectos de C++, WebAssembly, aplicaciones web, microservicios y bases de datos.",
+    "title": "Andrea Carrillo Oporto | Desarrolladora Full Stack",
+    "description": "Portafolio de Andrea Carrillo Oporto, desarrolladora Full Stack. Proyectos de aplicaciones web, APIs, bases de datos, C++, WebAssembly y microservicios.",
     "imageAlt": "Portafolio profesional de Andrea Carrillo Oporto",
     "locale": "es_CR"
   }
