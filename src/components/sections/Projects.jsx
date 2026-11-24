@@ -53,9 +53,9 @@ function Projects() {
                     loading="lazy"
                     decoding="async"
                     fetchPriority="low"
-                    width={project.image.width}
-                    height={project.image.height}
-                    sizes={project.image.sizes}
+                    width={project.image.width || undefined}
+                    height={project.image.height || undefined}
+                    sizes={project.image.sizes || undefined}
                   />
                 </picture>
               </a>
