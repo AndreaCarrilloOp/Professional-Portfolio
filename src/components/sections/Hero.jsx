@@ -119,7 +119,7 @@ function Hero({ darkMode }) {
           <span>{t("hero.techLabel")}</span>
           <small className="tech-swipe-hint">{t("hero.techHint")}</small>
         </div>
-        <div className="tech-carousel">
+        <div className="tech-carousel" tabIndex={0} role="region" aria-label={t("hero.techLabel")}>
           <div className="tech-track">
             {TECH_STACK.map(({ id, label, icon: Icon }) => (
               <div className="tech-chip" key={id}>
