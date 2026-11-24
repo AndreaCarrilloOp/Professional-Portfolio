@@ -19,7 +19,7 @@ import ConstellationBackground from "./components/ui/ConstellationBackground";
 
 const THEME_COLORS = {
   light: "#A9B1BF",
-  dark: "#151e2c",
+  dark: "#151E2C",
 };
 
 function getInitialDarkMode() {
