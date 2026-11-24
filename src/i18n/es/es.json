@@ -22,7 +22,9 @@
     "focusThree": "Automatización y pruebas",
     "techHint": "Desliza para ver más",
     "primaryActionsLabel": "Acciones principales del portafolio",
-    "socialLabel": "Perfiles profesionales"
+    "socialLabel": "Perfiles profesionales",
+    "techPause": "Pausar movimiento de tecnologías",
+    "techResume": "Reanudar movimiento de tecnologías"
   },
   "about": {
     "eyebrow": "Sobre mí",
@@ -57,7 +59,10 @@
     },
     "cloud": {
       "title": "Cloud, DevOps y calidad",
-      "description": "Despliegue, automatización y validación de aplicaciones."
+      "description": "Despliegue, automatización y validación de aplicaciones.",
+      "delivery": "Despliegue y automatización",
+      "testing": "Pruebas",
+      "versionControl": "Control de versiones"
     },
     "tools": {
       "title": "Herramientas",
