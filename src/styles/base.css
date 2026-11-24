@@ -3,9 +3,15 @@
   box-sizing: border-box;
 }
 html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 92px;
+  /* Anchor navigation jumps directly to the target section. */
+  scroll-behavior: auto;
+  scroll-padding-top: 88px;
   background: var(--bg);
+}
+@media (max-width: 720px) {
+  html {
+    scroll-padding-top: 80px;
+  }
 }
 body {
   margin: 0;
@@ -85,11 +91,11 @@ main,
 .section-pad {
   width: min(var(--content-max), calc(100% - var(--content-gutter)));
   margin: 0 auto;
-  padding: 88px 0;
+  /* Natural section height; avoid excess blank space on wide screens. */
+  padding: clamp(48px, 4.5vw, 68px) 0;
 }
 .compact-section {
-  padding-top: 60px;
-  padding-bottom: 60px;
+  padding-block: clamp(36px, 3.5vw, 52px);
 }
 .sr-only {
   position: absolute;
@@ -103,10 +109,7 @@ main,
   border: 0;
 }
 
-section.section-pad:not(.hero-section) {
-  content-visibility: auto;
-  contain-intrinsic-size: 720px;
-}
+/* Sections retain their real height so hash links land accurately. */
 
 .nav-shell {
   position: fixed;
