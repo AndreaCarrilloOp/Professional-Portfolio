@@ -26,8 +26,8 @@
   },
   "about": {
     "eyebrow": "About Me",
-    "title": "Software development focused on practical solutions.",
-    "description": "I am a Junior Full Stack Developer with a background in Information Systems. I build interfaces, backend services, and database integrations, and I validate features through testing. I aim to contribute clear code, documentation, and continuous improvement to software teams.",
+    "title": "Practical software development",
+    "description": "I am a software developer with an Information Systems background. I work on web applications, backend services, and databases.",
     "statOneValue": "Backend",
     "statOneLabel": "APIs and integration",
     "statTwoValue": "Data",
@@ -36,12 +36,13 @@
     "statThreeLabel": "Interfaces and services",
     "highlightOne": "Clear and maintainable code",
     "highlightTwo": "Responsive and accessible design",
-    "highlightThree": "Documentation and version control"
+    "highlightThree": "Documentation and version control",
+    "approach": "I focus on solving problems through maintainable code, system integration, testing, and documentation."
   },
   "skills": {
-    "eyebrow": "Technical stack",
+    "eyebrow": "Expertise",
     "title": "Technical skills",
-    "description": "Technologies organized by the type of solution I build.",
+    "description": "Areas of work and tools I use in my projects.",
     "frontend": {
       "title": "Frontend",
       "description": "Responsive, accessible interfaces."
@@ -55,7 +56,7 @@
       "description": "Data models, queries, and persistence."
     },
     "cloud": {
-      "title": "Cloud",
+      "title": "Cloud & DevOps",
       "description": "Deployments, containers, and automation."
     },
     "tools": {
@@ -63,14 +64,14 @@
       "description": "Development and collaboration tools."
     },
     "testing": {
-      "title": "Testing / QA",
+      "title": "Testing & quality",
       "description": "Tests to verify application behavior."
     }
   },
   "projects": {
     "eyebrow": "Projects",
     "title": "Selected projects",
-    "description": "Three projects demonstrating application logic, web development, and distributed architecture.",
+    "description": "Three projects covering C++ application logic, web development, and distributed systems.",
     "repo": "GitHub",
     "demo": "Demo",
     "evidenceCta": "View technical evidence",
@@ -120,7 +121,7 @@
   "certifications": {
     "eyebrow": "Credentials",
     "title": "Certifications",
-    "description": "AZ-900, GH-900, and SC-900. Select a badge to verify the credential.",
+    "description": "Verifiable credentials from Microsoft and GitHub.",
     "approved": "Approved",
     "viewCredential": "View credential",
     "credentialPending": "Certification earned · verification link pending"
