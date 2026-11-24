@@ -152,9 +152,9 @@ function App() {
       <Navbar darkMode={darkMode} onToggleTheme={toggleTheme} />
       <main id="main-content" tabIndex="-1">
         <Hero darkMode={darkMode} />
-        <About />
-        <Skills />
         <Projects />
+        <Skills />
+        <About />
         <Certifications />
       </main>
       <Footer />
