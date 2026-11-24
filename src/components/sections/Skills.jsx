@@ -19,16 +19,16 @@ function Skills() {
                 {groups.map((group) => (
                   <div className="skill-group" key={group.labelKey}>
                     <p className="skill-group-label">{t(group.labelKey)}</p>
-                    <div className="tag-cloud">
-                      {group.items.map((item) => <span key={item} className="tag">{item}</span>)}
-                    </div>
+                    <ul className="tag-cloud">
+                      {group.items.map((item) => <li key={item} className="tag">{item}</li>)}
+                    </ul>
                   </div>
                 ))}
               </div>
             ) : (
-              <div className="tag-cloud">
-                {items.map((item) => <span key={item} className="tag">{item}</span>)}
-              </div>
+              <ul className="tag-cloud">
+                {items.map((item) => <li key={item} className="tag">{item}</li>)}
+              </ul>
             )}
           </article>
         ))}
