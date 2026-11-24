@@ -1661,3 +1661,13 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
     gap: 12px;
   }
 }
+
+/* Keep keyboard focus rings immediate; never animate outline width. */
+.nav-link {
+  transition-property: color, background-color, border-color, box-shadow;
+}
+
+.nav-link:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 4px;
+}
