@@ -881,7 +881,7 @@ main:focus-visible {
     radial-gradient(circle at 78% 10%, color-mix(in srgb, var(--accent-cyan-soft) 82%, transparent), transparent 30rem),
     radial-gradient(circle at 12% 26%, color-mix(in srgb, var(--accent-indigo-soft) 70%, transparent), transparent 34rem),
     radial-gradient(circle at 92% 72%, color-mix(in srgb, var(--accent-teal-soft) 52%, transparent), transparent 28rem),
-    linear-gradient(180deg, var(--bg) 0%, var(--surface) 58%, var(--surface-deep) 100%);
+    linear-gradient(180deg, var(--bg) 0%, var(--surface) 58%, color-mix(in srgb, var(--palette-ice) 78%, var(--satin-silver)) 100%);
 }
 .dark .app-shell {
   background:
@@ -2176,4 +2176,16 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   .dark .nav-container > .nav-links {
     display: none;
   }
+}
+
+/* Graphite dark mode uses deep plum CTAs, keeping light mauve for readable text. */
+.dark :where(.btn-primary, .hero-cta-primary) {
+  color: var(--palette-ice);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--palette-steel) 88%, var(--palette-sky)),
+    var(--palette-steel) 56%,
+    var(--palette-navy)
+  );
+  border-color: var(--palette-steel);
 }
