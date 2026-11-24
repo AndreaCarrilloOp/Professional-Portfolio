@@ -5,10 +5,10 @@ const FRAME_INTERVAL_MS = 1000 / 30;
 const FRAME_REFERENCE_MS = 1000 / 60;
 
 const LIGHT_PALETTE = {
-  // Petroleum-blue constellations stay readable against medium stone.
-  point: [24, 58, 70],
-  line: [36, 76, 90],
-  glow: [172, 195, 195],
+  // Indigo stars and lavender haze against medium-blue slate.
+  point: [67, 49, 94],
+  line: [38, 60, 101],
+  glow: [173, 186, 221],
   lineAlpha: 0.27,
   glowAlpha: 0.12,
   pointAlpha: 0.84,
@@ -16,9 +16,9 @@ const LIGHT_PALETTE = {
 };
 
 const DARK_PALETTE = {
-  point: [216, 224, 218],
-  line: [172, 195, 195],
-  glow: [172, 195, 195],
+  point: [215, 220, 232],
+  line: [198, 174, 217],
+  glow: [173, 186, 221],
   lineAlpha: 0.14,
   glowAlpha: 0.1,
   pointAlpha: 0.78,
