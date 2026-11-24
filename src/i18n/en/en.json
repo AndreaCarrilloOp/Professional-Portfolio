@@ -119,7 +119,8 @@
       "contribution": "Built and integrated web interfaces, serverless endpoints, independent databases, and cross-entity navigation.",
       "outcome": "Academic platform deployed with an integration shell and individually published services.",
       "imageAlt": "Preview of the distributed library platform integrated through its web application shell."
-    }
+    },
+    "technologiesLabel": "Technologies used"
   },
   "certifications": {
     "eyebrow": "Credentials",
