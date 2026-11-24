@@ -1524,6 +1524,7 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
 }
 
 .section-header .eyebrow {
+  color: var(--accent-champagne);
   font-size: 0.73rem;
   letter-spacing: 0.065em;
 }
@@ -2186,7 +2187,7 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   --footer-background-raised: var(--palette-dark-card);
   --footer-text: var(--palette-white);
   --footer-muted: var(--palette-dark-muted);
-  --footer-accent: var(--palette-violet);
+  --footer-accent: var(--palette-champagne);
   --footer-focus: var(--palette-light-text);
   --footer-border: color-mix(in srgb, var(--palette-sky) 34%, transparent);
   --footer-link-surface: var(--palette-dark-card);
@@ -2198,7 +2199,7 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   --footer-background-raised: var(--satin-silver);
   --footer-text: var(--palette-ink);
   --footer-muted: var(--palette-muted);
-  --footer-accent: var(--palette-steel);
+  --footer-accent: var(--palette-bronze);
   --footer-focus: var(--palette-steel);
   --footer-border: color-mix(in srgb, var(--palette-steel) 35%, transparent);
   --footer-link-surface: color-mix(in srgb, var(--palette-ice) 90%, var(--satin-silver));
