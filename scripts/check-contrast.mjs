@@ -52,10 +52,10 @@ const checks = [
   ["primary text / background", "primary", "bg", 4.5],
   ["secondary text / background", "secondary", "bg", 4.5],
   ["light accent / background", "accent-cyan", "bg", 4.5],
-  ["navy/silver accent / background", "accent-teal", "bg", 4.5],
+  ["neutral accent / background", "accent-teal", "bg", 4.5],
   ["alternate light accent / background", "accent-indigo", "bg", 4.5],
   ["alternate dark accent / background", "accent-violet", "bg", 4.5],
-  ["steel/silver accent / background", "accent-steel", "bg", 4.5],
+  ["warm accent / background", "accent-steel", "bg", 4.5],
   ["text / raised surface", "text", "surface-raised", 4.5],
   ["muted text / raised surface", "muted", "surface-raised", 4.5],
   ["button text / primary", "on-primary", "primary", 4.5],
@@ -87,9 +87,9 @@ const satinBlack = readHexToken(themes.light, "satin-black");
 const satinRatio = contrast(satinSilver, satinBlack);
 const satinPasses = satinRatio >= 4.5;
 failed ||= !satinPasses;
-console.log(`\nSATIN NEUTRALS`);
+console.log(`\nWARM NEUTRALS`);
 console.log(
-  `${satinPasses ? "PASS" : "FAIL"}  ${satinRatio.toFixed(2)}:1  satin silver / satin black (minimum 4.5:1)`,
+  `${satinPasses ? "PASS" : "FAIL"}  ${satinRatio.toFixed(2)}:1  sand / graphite (minimum 4.5:1)`,
 );
 
 if (failed) {
