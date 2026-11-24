@@ -1941,3 +1941,189 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
     opacity: 0.72;
   }
 }
+
+/* Navigation refinement: text links with a small active rule rather than
+   button-like pills; real actions keep their clear control affordances. */
+.nav-links,
+.dark .nav-links {
+  display: flex;
+  gap: clamp(12px, 1.35vw, 22px);
+  align-items: center;
+  margin-block: 0;
+  margin-inline: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  list-style: none;
+}
+
+.nav-links > li {
+  display: flex;
+  min-width: 0;
+}
+
+.nav-links .nav-link {
+  position: relative;
+  min-height: 44px;
+  padding: 10px 2px 13px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color var(--motion-duration-fast) ease;
+}
+
+.nav-links .nav-link::after {
+  display: block;
+  inset-inline: 0;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+  width: auto;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--primary);
+  opacity: 0;
+  transform: scaleX(0.35);
+  transform-origin: center;
+  transition:
+    opacity var(--motion-duration-fast) ease,
+    transform var(--motion-duration-fast) var(--motion-ease-standard);
+}
+
+.nav-links .nav-link-active,
+.nav-links .nav-link:hover,
+.nav-links .nav-link:focus-visible,
+.dark .nav-links .nav-link-active,
+.dark .nav-links .nav-link:hover,
+.dark .nav-links .nav-link:focus-visible {
+  color: var(--text);
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+.nav-links .nav-link-active {
+  font-weight: 780;
+}
+
+.nav-links .nav-link-active::after,
+.nav-links .nav-link:hover::after,
+.nav-links .nav-link:focus-visible::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.nav-actions {
+  gap: 6px;
+}
+
+.nav-actions .icon-button,
+.nav-actions .language-button,
+.nav-actions .bento-button {
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 12px;
+  border-color: color-mix(in srgb, var(--primary) 24%, transparent);
+  background: color-mix(in srgb, var(--card) 52%, transparent);
+  box-shadow: none;
+}
+
+.nav-actions .icon-button:hover,
+.nav-actions .language-button:hover,
+.nav-actions .bento-button:hover,
+.nav-actions .icon-button:focus-visible,
+.nav-actions .language-button:focus-visible,
+.nav-actions .bento-button:focus-visible {
+  background: var(--primary-soft);
+  border-color: color-mix(in srgb, var(--primary) 48%, transparent);
+  box-shadow: none;
+}
+
+.nav-contact-cta {
+  min-height: 44px;
+  padding-inline: 18px;
+  border-color: color-mix(in srgb, var(--primary) 42%, transparent);
+  border-radius: 12px;
+}
+
+.mobile-bento-menu .bento-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mobile-bento-menu .bento-grid > li {
+  min-width: 0;
+}
+
+.mobile-bento-menu .bento-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 54px;
+  padding: 12px 14px;
+  border: 0;
+  border-inline-start: 2px solid transparent;
+  border-block-end: 1px solid color-mix(in srgb, var(--line) 24%, transparent);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--muted);
+  font-size: 0.94rem;
+  font-weight: 650;
+  text-align: start;
+}
+
+.mobile-bento-menu .bento-grid > li:last-child .bento-link {
+  border-block-end-color: transparent;
+}
+
+.mobile-bento-menu .bento-link svg {
+  flex: 0 0 auto;
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--primary);
+  filter: none;
+}
+
+.mobile-bento-menu .bento-link-active,
+.mobile-bento-menu .bento-link:hover,
+.mobile-bento-menu .bento-link:focus-visible {
+  transform: none;
+  border-inline-start-color: var(--primary);
+  background: color-mix(in srgb, var(--primary-soft) 65%, transparent);
+  box-shadow: none;
+  color: var(--text);
+}
+
+.mobile-bento-menu .bento-link-active {
+  font-weight: 780;
+}
+
+.mobile-bento-menu .bento-contact-cta {
+  border-radius: 12px;
+}
+
+@media (max-width: 1100px) and (min-width: 1025px) {
+  .nav-links {
+    gap: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-links .nav-link::after {
+    transition: none;
+  }
+}
