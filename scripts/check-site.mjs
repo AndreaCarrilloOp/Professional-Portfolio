@@ -102,6 +102,9 @@ test("theme, contrast and reduced-motion fallbacks remain available", () => {
   const styles = load("src/styles/enhancements.css");
   assert.match(app, /prefers-reduced-motion: reduce/);
   assert.match(tokens, /--focus-ring:/);
+  assert.match(tokens, /--palette-violet:\s*#c9a7bf/);
+  assert.match(tokens, /--bg:\s*#0c1229/);
+  assert.match(tokens, /--bg:\s*#96a9bf/);
   assert.match(styles, /prefers-contrast: more/);
   assert.match(styles, /forced-colors: active/);
   assert.match(styles, /Theme-inverse footer:/);
