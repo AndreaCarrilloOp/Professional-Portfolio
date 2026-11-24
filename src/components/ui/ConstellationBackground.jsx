@@ -5,10 +5,10 @@ const FRAME_INTERVAL_MS = 1000 / 30;
 const FRAME_REFERENCE_MS = 1000 / 60;
 
 const LIGHT_PALETTE = {
-  // Steel and sky blues add definition against the light ice background.
-  point: [47, 79, 122],
-  line: [47, 79, 122],
-  glow: [107, 143, 191],
+  // Plum constellations remain readable on the warm ivory background.
+  point: [102, 54, 95],
+  line: [102, 54, 95],
+  glow: [198, 155, 191],
   lineAlpha: 0.27,
   glowAlpha: 0.12,
   pointAlpha: 0.84,
@@ -16,9 +16,9 @@ const LIGHT_PALETTE = {
 };
 
 const DARK_PALETTE = {
-  point: [203, 231, 255],
-  line: [145, 193, 230],
-  glow: [126, 198, 216],
+  point: [243, 238, 231],
+  line: [198, 155, 191],
+  glow: [198, 155, 191],
   lineAlpha: 0.14,
   glowAlpha: 0.1,
   pointAlpha: 0.78,
