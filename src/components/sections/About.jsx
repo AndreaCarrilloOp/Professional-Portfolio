@@ -1,14 +1,8 @@
 import { useTranslation } from "react-i18next";
-import { FaCheckCircle } from "react-icons/fa";
 import SectionHeader from "../ui/SectionHeader";
 
 function About() {
   const { t } = useTranslation();
-  const highlights = [
-    "about.highlightOne",
-    "about.highlightTwo",
-    "about.highlightThree",
-  ];
   const stats = [
     [t("about.statOneValue"), t("about.statOneLabel")],
     [t("about.statTwoValue"), t("about.statTwoLabel")],
@@ -32,13 +26,6 @@ function About() {
                 <strong>{value}</strong>
                 <small>{label}</small>
               </div>
-            ))}
-          </div>
-          <div className="highlight-list">
-            {highlights.map((item) => (
-              <span key={item}>
-                <FaCheckCircle aria-hidden="true" /> {t(item)}
-              </span>
             ))}
           </div>
         </div>
