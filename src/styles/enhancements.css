@@ -1964,39 +1964,60 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   min-width: 0;
 }
 
+/* The tiny orbit marker echoes the ACO symbol without adding icon clutter. */
 .nav-links .nav-link {
   position: relative;
   min-height: 44px;
-  padding: 10px 2px 13px;
+  padding: 10px 7px 13px;
   border: 0;
   border-radius: 0;
   background: transparent;
   box-shadow: none;
   color: var(--muted);
-  font-size: 0.9rem;
-  font-weight: 650;
-  letter-spacing: 0.01em;
+  font-size: 0.94rem;
+  font-weight: 680;
+  letter-spacing: 0.012em;
   white-space: nowrap;
   text-decoration: none;
   transition: color var(--motion-duration-fast) ease;
 }
 
+.nav-links .nav-link::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: -11px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--primary);
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 13%, transparent);
+  opacity: 0;
+  transform: translateY(-65%) scale(0.65);
+  transition:
+    opacity var(--motion-duration-fast) ease,
+    transform var(--motion-duration-fast) var(--motion-ease-standard);
+  pointer-events: none;
+}
+
 .nav-links .nav-link::after {
   display: block;
-  inset-inline: 0;
-  left: 0;
-  right: 0;
+  inset-inline: auto;
+  left: 29%;
+  right: auto;
   bottom: 4px;
-  width: auto;
+  width: 42%;
   height: 2px;
   border-radius: 2px;
-  background: var(--primary);
+  background: linear-gradient(90deg, var(--primary), color-mix(in srgb, var(--primary) 55%, transparent));
   opacity: 0;
   transform: scaleX(0.35);
   transform-origin: center;
   transition:
     opacity var(--motion-duration-fast) ease,
     transform var(--motion-duration-fast) var(--motion-ease-standard);
+  pointer-events: none;
 }
 
 .nav-links .nav-link-active,
@@ -2015,6 +2036,13 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   font-weight: 780;
 }
 
+.nav-links .nav-link-active::before,
+.nav-links .nav-link:hover::before,
+.nav-links .nav-link:focus-visible::before {
+  opacity: 1;
+  transform: translateY(-65%) scale(1);
+}
+
 .nav-links .nav-link-active::after,
 .nav-links .nav-link:hover::after,
 .nav-links .nav-link:focus-visible::after {
@@ -2024,6 +2052,16 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
 
 .nav-actions {
   gap: 6px;
+}
+
+@media (min-width: 1025px) {
+  .nav-actions::before {
+    content: "";
+    width: 1px;
+    height: 24px;
+    margin-inline: 2px clamp(8px, 1.2vw, 16px);
+    background: color-mix(in srgb, var(--line) 30%, transparent);
+  }
 }
 
 .nav-actions .icon-button,
@@ -2112,6 +2150,12 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   font-weight: 780;
 }
 
+.mobile-bento-menu .bento-link-active svg {
+  border-radius: 50%;
+  outline: 3px solid color-mix(in srgb, var(--primary) 12%, transparent);
+  outline-offset: 2px;
+}
+
 .mobile-bento-menu .bento-contact-cta {
   border-radius: 12px;
 }
@@ -2123,6 +2167,7 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .nav-links .nav-link::before,
   .nav-links .nav-link::after {
     transition: none;
   }
