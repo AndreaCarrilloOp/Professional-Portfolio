@@ -50,47 +50,6 @@
       }
     ]
   },
-  "tallestBuildings": {
-    "aspectRatio": 1.6,
-    "original": {
-      "width": 1200,
-      "height": 750
-    },
-    "webp": [
-      {
-        "width": 480,
-        "height": 300,
-        "url": "/images/responsive/tallest-buildings-480.webp"
-      },
-      {
-        "width": 768,
-        "height": 480,
-        "url": "/images/responsive/tallest-buildings-768.webp"
-      },
-      {
-        "width": 1200,
-        "height": 750,
-        "url": "/images/responsive/tallest-buildings-1200.webp"
-      }
-    ],
-    "avif": [
-      {
-        "width": 480,
-        "height": 300,
-        "url": "/images/responsive/tallest-buildings-480.avif"
-      },
-      {
-        "width": 768,
-        "height": 480,
-        "url": "/images/responsive/tallest-buildings-768.avif"
-      },
-      {
-        "width": 1200,
-        "height": 750,
-        "url": "/images/responsive/tallest-buildings-1200.avif"
-      }
-    ]
-  },
   "scrabble": {
     "aspectRatio": 1.4207650273224044,
     "original": {
