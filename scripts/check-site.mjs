@@ -271,11 +271,11 @@ test("ivory/dark-cherry and graphite/dusty-rose themes keep browser colors in sy
   const html = load("index.html");
   const app = load("src/App.jsx");
   const paletteAudit = load("scripts/check-palette.mjs");
-  for (const hex of ["#2b2526", "#47161f", "#5b1f2a", "#c9969e", "#f3eee7", "#ded4c8", "#1a1d21", "#665B57"]) {
+  for (const hex of ["#2b2526", "#47161f", "#5b1f2a", "#c9969e", "#f3eee7", "#ded4c8", "#1a1d21", "#665b57"]) {
     assert.ok(tokens.includes(hex), `missing palette color ${hex}`);
     assert.ok(paletteAudit.includes(hex), `color not approved: ${hex}`);
   }
-  assert.ok(tokens.includes("--muted: #665B57"));
+  assert.ok(tokens.includes("--muted: #665b57"));
   assert.ok(tokens.includes("--primary: #c9969e"));
   assert.ok(html.includes("#F3EEE7") && html.includes("#1A1D21"));
   assert.ok(app.includes("#F3EEE7") && app.includes("#1A1D21"));
@@ -314,4 +314,23 @@ test("footer colors invert across themes without changing the content structure"
   assert.ok(footer.includes("<Contact />"));
   assert.ok(contact.includes('className="footer-contact"'));
   assert.ok(contact.includes('id="contact"'));
+});
+
+test("readability and accessibility preferences remain supported", () => {
+  const styles = load("src/styles/enhancements.css");
+  const base = load("src/styles/base.css");
+  const components = load("src/styles/components.css");
+  const hero = load("src/styles/hero.css");
+  const palette = load("scripts/check-palette.mjs");
+  assert.ok(styles.includes("@media (prefers-contrast: more)"));
+  assert.ok(styles.includes("@media (forced-colors: active)"));
+  assert.ok(styles.includes("outline: 3px solid Highlight"));
+  assert.ok(styles.includes(".constellation-canvas {\n    display: none;"));
+  assert.ok(styles.includes("font-size: 0.875rem;"));
+  assert.ok(styles.includes("font-size: 0.825rem;"));
+  assert.ok(components.includes("min-height: 44px;"));
+  assert.ok(hero.includes("font-size: 0.82rem;"));
+  assert.ok(base.includes(".skip-link:focus-visible"));
+  assert.ok(palette.includes('"#665b57"'));
+  assert.doesNotMatch(palette, /"#665B57"/);
 });
