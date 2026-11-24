@@ -148,11 +148,7 @@ function Navbar({ darkMode, onToggleTheme }) {
   useEffect(() => {
     // Restore the destination when using Back/Forward or entering with a hash.
     const restoreHash = () => {
-      const id = decodeURIComponent(window.location.hash.slice(1));
-      if (!id) {
-        setActiveSection("home");
-        return;
-      }
+      const id = decodeURIComponent(window.location.hash.slice(1)) || "home";
       const section = document.getElementById(id);
       if (!section) return;
 
