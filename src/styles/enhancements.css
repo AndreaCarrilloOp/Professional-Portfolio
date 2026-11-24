@@ -1571,3 +1571,48 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   box-shadow: none;
   color: var(--muted);
 }
+
+/* Hierarchy refinement: smaller section headings, prominent hero, concise badge row. */
+.section-header .section-title {
+  font-size: clamp(1.85rem, 3.2vw, 3.15rem);
+  line-height: 1.12;
+}
+
+.section-header .eyebrow {
+  font-size: 0.73rem;
+  letter-spacing: 0.065em;
+}
+
+.section-header .section-description {
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  line-height: 1.6;
+}
+
+.certifications-section .section-header {
+  margin-bottom: clamp(16px, 2vw, 24px);
+}
+
+.certifications-section .section-description {
+  max-width: 54ch;
+}
+
+.credential-badge {
+  box-shadow: none;
+}
+
+@media (max-width: 599px) {
+  .credential-badges {
+    gap: 10px;
+  }
+
+  .credential-badge {
+    min-width: 102px;
+    min-height: 116px;
+    padding: 12px;
+  }
+
+  .credential-badge img {
+    width: 52px;
+    height: 52px;
+  }
+}
