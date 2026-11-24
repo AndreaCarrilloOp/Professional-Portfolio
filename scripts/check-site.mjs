@@ -219,8 +219,8 @@ test("light-mode constellations have legible but decorative contrast", () => {
   for (const expected of ["lineAlpha: 0.14", "pointAlpha: 0.78", "lineWidth: 0.75"]) {
     assert.ok(dark.includes(expected), `dark palette changed: ${expected}`);
   }
-  assert.ok(canvas.includes("point: [91, 31, 42]"));
-  assert.ok(canvas.includes("line: [201, 150, 158]"));
+  assert.ok(canvas.includes("point: [24, 58, 70]"));
+  assert.ok(canvas.includes("line: [172, 195, 195]"));
   assert.ok(canvas.includes("context.lineWidth = palette.lineWidth;"));
   assert.ok(css.includes(":root:not(.dark) .constellation-canvas"));
   assert.ok(css.includes("@media (prefers-reduced-motion: reduce)"));
@@ -266,26 +266,33 @@ test("navigation links have breathing room and remain mobile responsive", () => 
   assert.ok(nav.includes("display: none;"), "mobile navigation must hide desktop links");
 });
 
-test("ivory/dark-cherry and graphite/dusty-rose themes keep browser colors in sync", () => {
+test("mineral slate themes keep page and browser colors synchronized", () => {
   const tokens = load("src/styles/tokens.css");
   const html = load("index.html");
   const app = load("src/App.jsx");
   const paletteAudit = load("scripts/check-palette.mjs");
-  for (const hex of ["#2b2526", "#47161f", "#5b1f2a", "#c9969e", "#f3eee7", "#ded4c8", "#1a1d21", "#665b57"]) {
+  for (const hex of ["#1d2b30", "#183a46", "#244c5a", "#acc3c3", "#aeb8b7", "#c4cdca", "#192226", "#36464e"]) {
     assert.ok(tokens.includes(hex), `missing palette color ${hex}`);
     assert.ok(paletteAudit.includes(hex), `color not approved: ${hex}`);
   }
-  assert.ok(tokens.includes("--muted: #665b57"));
-  assert.ok(tokens.includes("--primary: #c9969e"));
-  assert.ok(html.includes("#F3EEE7") && html.includes("#1A1D21"));
-  assert.ok(app.includes("#F3EEE7") && app.includes("#1A1D21"));
+  assert.ok(tokens.includes("--muted: #36464e"));
+  for (const color of ["#d8e0da", "#b7c3bd", "#303d41"]) {
+    assert.ok(tokens.includes(color));
+    assert.ok(paletteAudit.includes(color));
+  }
+  assert.ok(tokens.includes("--primary: #acc3c3"));
+  assert.ok(tokens.includes("--primary: #183a46"));
+  assert.ok(tokens.includes("--card: #c4cdca"));
+  assert.ok(tokens.includes("--card: #303d41"));
+  assert.ok(html.includes("#AEB8B7") && html.includes("#192226"));
+  assert.ok(app.includes("#AEB8B7") && app.includes("#192226"));
   for (const file of ["aco-light.svg", "aco-dark.svg", "favicon.svg"]) {
     const svg = load(`public/branding/${file}`);
-    assert.ok(svg.includes("#47161F"), `missing deep garnet in ${file}`);
-    assert.doesNotMatch(svg, /#(?:008B8B|32D8CE)/i, `obsolete turquoise in ${file}`);
+    assert.doesNotMatch(svg, /#(?:47161F|5B1F2A|C9969E|008B8B|32D8CE)/i, `legacy accent in ${file}`);
   }
-  assert.ok(load("public/branding/aco-dark.svg").includes('stroke="#C9969E"'));
-  assert.ok(load("public/branding/favicon.svg").includes('stroke="#C9969E"'));
+  assert.ok(load("public/branding/aco-light.svg").includes("#183A46"));
+  assert.ok(load("public/branding/aco-dark.svg").includes("#ACC3C3"));
+  assert.ok(load("public/branding/favicon.svg").includes('stroke="#ACC3C3"'));
   assert.doesNotMatch(paletteAudit, /008b8b|32d8ce/);
 });
 
@@ -334,6 +341,6 @@ test("readability and accessibility preferences remain supported", () => {
   assert.ok(components.includes("min-height: 44px;"));
   assert.ok(hero.includes("font-size: 0.82rem;"));
   assert.ok(base.includes(".skip-link:focus-visible"));
-  assert.ok(palette.includes('"#665b57"'));
-  assert.doesNotMatch(palette, /"#665B57"/);
+  assert.ok(palette.includes('"#36464e"'));
+  assert.doesNotMatch(palette, /"#36464E"/);
 });
