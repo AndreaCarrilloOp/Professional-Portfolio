@@ -238,6 +238,11 @@ test("navbar uses semantic lists and text-first active states", () => {
   assert.ok(!navbar.includes('className="bento-index"'));
   const navStyles = css.slice(css.indexOf("/* Navigation refinement: text links"));
   assert.ok(navStyles.includes(".nav-links .nav-link-active::after"));
+  assert.ok(navStyles.includes(".nav-links .nav-link-active::before"));
+  assert.ok(navStyles.includes("inset-inline-start: -11px;"));
+  assert.ok(navStyles.includes("width: 42%;"));
+  assert.ok(navStyles.includes(".nav-actions::before"));
+  assert.ok(navStyles.includes(".mobile-bento-menu .bento-link-active svg"));
   assert.ok(navStyles.includes("border-inline-start-color: var(--primary)"));
   assert.ok(navStyles.includes(".nav-actions .icon-button"));
   assert.ok(navStyles.includes("@media (prefers-reduced-motion: reduce)"));
