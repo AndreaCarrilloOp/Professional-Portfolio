@@ -204,3 +204,23 @@ test("SEO metadata is consistent with published projects and site URL", () => {
   assert.match(app, /document\.title = t\("seo\.title"\)/);
   assert.match(app, /setMeta\('meta\[property="og:description"\]'/);
 });
+
+test("light-mode constellations have legible but decorative contrast", () => {
+  const canvas = load("src/components/ui/ConstellationBackground.jsx");
+  const css = load("src/styles/enhancements.css");
+  const lightStart = canvas.indexOf("const LIGHT_PALETTE = {");
+  const darkStart = canvas.indexOf("const DARK_PALETTE = {");
+  assert.ok(lightStart >= 0 && darkStart > lightStart);
+  const light = canvas.slice(lightStart, darkStart);
+  const dark = canvas.slice(darkStart, canvas.indexOf("function createParticles", darkStart));
+  for (const expected of ["lineAlpha: 0.27", "pointAlpha: 0.84", "lineWidth: 1"]) {
+    assert.ok(light.includes(expected), `missing light palette: ${expected}`);
+  }
+  for (const expected of ["lineAlpha: 0.14", "pointAlpha: 0.78", "lineWidth: 0.75"]) {
+    assert.ok(dark.includes(expected), `dark palette changed: ${expected}`);
+  }
+  assert.ok(canvas.includes("context.lineWidth = palette.lineWidth;"));
+  assert.ok(css.includes(":root:not(.dark) .constellation-canvas"));
+  assert.ok(css.includes("@media (prefers-reduced-motion: reduce)"));
+  assert.ok(canvas.includes('aria-hidden="true"'));
+});
