@@ -103,14 +103,14 @@ export const SKILLS = [
     icon: FaCode,
     titleKey: "skills.frontend.title",
     descriptionKey: "skills.frontend.description",
-    items: ["React", "Vue", "HTML", "CSS", "Figma"],
+    items: ["React", "Vue", "HTML", "CSS", "Vite", "Figma"],
   },
   {
     id: "backend",
     icon: FaCode,
     titleKey: "skills.backend.title",
     descriptionKey: "skills.backend.description",
-    items: ["Python", "FastAPI", "C++", "SQLAlchemy"],
+    items: ["Python", "FastAPI", "C++", "SQLAlchemy", "API testing", "CTest"],
   },
   {
     id: "databases",
@@ -124,7 +124,7 @@ export const SKILLS = [
     icon: FaCloud,
     titleKey: "skills.cloud.title",
     descriptionKey: "skills.cloud.description",
-    items: ["Docker", "Azure", "GitHub Actions", "pytest", "Postman", "Netlify"],
+    items: ["Docker", "Azure", "GitHub Actions", "Netlify", "pytest", "Postman", "Git", "GitHub"],
   },
 ];
 
