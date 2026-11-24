@@ -1852,12 +1852,11 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   transform: scale(1.025);
 }
 
-/* A technology name is metadata, never a pill or an apparent button. */
+/* Technology tags are compact, static labels—not raised pills or buttons. */
 .tag-cloud {
   display: flex;
   flex-wrap: wrap;
-  column-gap: 14px;
-  row-gap: 6px;
+  gap: 8px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -1866,28 +1865,28 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
 .tag-cloud > .tag:nth-child(n),
 .dark .tag-cloud > .tag:nth-child(n) {
   display: inline-flex;
-  align-items: baseline;
-  gap: 6px;
+  align-items: center;
+  gap: 0;
   margin: 0;
-  padding: 0;
+  padding: 4px 9px;
   min-height: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--primary) 24%, var(--surface-soft));
+  border-inline-start: 2px solid var(--primary);
+  border-radius: 3px;
+  background: var(--surface-soft);
   box-shadow: none;
   color: var(--muted);
-  font-size: 0.86rem;
-  font-weight: 600;
-  line-height: 1.65;
+  font-size: 0.79rem;
+  font-weight: 650;
+  line-height: 1.45;
   cursor: default;
   text-transform: none;
+  transform: none;
   transition: none;
 }
 
 .tag-cloud > .tag::before {
-  content: "·";
-  color: var(--primary);
-  font-weight: 800;
+  content: none;
 }
 
 /* Explicit targets keep the existing rounded treatment and focus indication. */
