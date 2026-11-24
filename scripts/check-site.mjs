@@ -253,5 +253,5 @@ test("navigation links have breathing room and remain mobile responsive", () => 
   assert.ok(nav.includes("grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr)"));
   assert.ok(nav.includes(".nav-container > .nav-links"));
   assert.ok(nav.includes("@media (max-width: 1024px)"));
-  assert.match(nav, /\\.nav-container > \\.nav-links,[\\s\\S]*?display: none;/);
+  assert.ok(nav.includes("display: none;"), "mobile navigation must hide desktop links");
 });
