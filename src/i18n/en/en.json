@@ -8,13 +8,13 @@
     "contact": "Contact"
   },
   "hero": {
-    "eyebrow": "Backend Development · Full Stack",
+    "eyebrow": "Full Stack Developer",
     "ctaProjects": "View Projects",
     "ctaContact": "Contact Me",
     "status": "Open to opportunities",
     "descriptionLead": "I build",
-    "descriptionHighlight": "web applications and backend APIs",
-    "descriptionTail": "with a focus on data, automation, and software quality.",
+    "descriptionHighlight": "end-to-end web applications",
+    "descriptionTail": "from interfaces and APIs to databases, with a focus on quality and automation.",
     "techLabel": "TECHNOLOGIES I WORK WITH",
     "focusLabel": "Focus areas",
     "focusOne": "Backend and APIs",
@@ -129,7 +129,7 @@
   "contact": {
     "eyebrow": "Contact",
     "title": "Let's connect",
-    "description": "Open to Backend and Full Stack development opportunities in Costa Rica or remotely.",
+    "description": "Open to Full Stack development opportunities in Costa Rica or remotely.",
     "email": "Primary email",
     "github": "GitHub",
     "linkedin": "LinkedIn",
@@ -163,8 +163,8 @@
     "brandHome": "Andrea Carrillo, go to home"
   },
   "seo": {
-    "title": "Andrea Carrillo Oporto | Backend & Full Stack Developer",
-    "description": "Andrea Carrillo Oporto's portfolio: Backend and Full Stack development projects featuring C++, WebAssembly, web applications, microservices, and databases.",
+    "title": "Andrea Carrillo Oporto | Full Stack Developer",
+    "description": "Portfolio of Andrea Carrillo Oporto, Full Stack Developer. Projects spanning web applications, APIs, databases, C++, WebAssembly, and microservices.",
     "imageAlt": "Professional portfolio of Andrea Carrillo Oporto",
     "locale": "en_US"
   }
