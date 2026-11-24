@@ -12,9 +12,10 @@
     "build": "vite build && node scripts/generate-deploy-files.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
-    "check": "pnpm palette && pnpm contrast && pnpm lint && pnpm build",
+    "check": "pnpm palette && pnpm contrast && pnpm lint && pnpm test:static && pnpm build",
     "contrast": "node scripts/check-contrast.mjs",
-    "palette": "node scripts/check-palette.mjs"
+    "palette": "node scripts/check-palette.mjs",
+    "test:static": "node --test scripts/check-site.mjs"
   },
   "dependencies": {
     "i18next": "^25.1.2",
