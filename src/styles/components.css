@@ -772,18 +772,22 @@
   min-width: 0;
   width: min(100%, 520px);
   justify-self: end;
-  display: grid;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
   gap: 12px;
 }
 
 .footer-email {
-  display: flex;
+  display: inline-flex;
+  flex: 0 1 auto;
   align-items: center;
-  gap: 12px;
-  padding: 16px 18px;
-  min-height: 56px;
+  gap: 9px;
+  padding: 10px 14px;
+  min-height: 44px;
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: 12px;
   background: var(--card);
   color: var(--text);
   font-weight: 750;
@@ -841,6 +845,7 @@
 
   .footer-contact-actions {
     justify-self: stretch;
+    justify-content: flex-start;
     width: 100%;
   }
 }
