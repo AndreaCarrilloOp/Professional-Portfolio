@@ -22,7 +22,11 @@
     "focusThree": "Automation and testing",
     "techHint": "Swipe to see more",
     "primaryActionsLabel": "Primary portfolio actions",
-    "socialLabel": "Professional profiles"
+    "socialLabel": "Professional profiles",
+    "pauseAnimation": "Pause technology animation",
+    "resumeAnimation": "Resume technology animation",
+    "pause": "Pause",
+    "resume": "Resume"
   },
   "about": {
     "eyebrow": "About Me",
