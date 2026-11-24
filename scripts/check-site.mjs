@@ -219,8 +219,8 @@ test("light-mode constellations have legible but decorative contrast", () => {
   for (const expected of ["lineAlpha: 0.14", "pointAlpha: 0.78", "lineWidth: 0.75"]) {
     assert.ok(dark.includes(expected), `dark palette changed: ${expected}`);
   }
-  assert.ok(canvas.includes("point: [102, 54, 95]"));
-  assert.ok(canvas.includes("line: [198, 155, 191]"));
+  assert.ok(canvas.includes("point: [117, 44, 57]"));
+  assert.ok(canvas.includes("line: [212, 161, 165]"));
   assert.ok(canvas.includes("context.lineWidth = palette.lineWidth;"));
   assert.ok(css.includes(":root:not(.dark) .constellation-canvas"));
   assert.ok(css.includes("@media (prefers-reduced-motion: reduce)"));
@@ -266,17 +266,17 @@ test("navigation links have breathing room and remain mobile responsive", () => 
   assert.ok(nav.includes("display: none;"), "mobile navigation must hide desktop links");
 });
 
-test("ivory/plum and graphite/mauve themes keep browser colors in sync", () => {
+test("ivory/burgundy and graphite/dusty-rose themes keep browser colors in sync", () => {
   const tokens = load("src/styles/tokens.css");
   const html = load("index.html");
   const app = load("src/App.jsx");
   const paletteAudit = load("scripts/check-palette.mjs");
-  for (const hex of ["#29232b", "#4a154b", "#66365f", "#c69bbf", "#f3eee7", "#ded4c8", "#1a1d21", "#625963"]) {
+  for (const hex of ["#2b2526", "#4b1e26", "#752c39", "#d4a1a5", "#f3eee7", "#ded4c8", "#1a1d21", "#665B57"]) {
     assert.ok(tokens.includes(hex), `missing palette color ${hex}`);
     assert.ok(paletteAudit.includes(hex), `color not approved: ${hex}`);
   }
-  assert.ok(tokens.includes("--muted: #625963"));
-  assert.ok(tokens.includes("--primary: #c69bbf"));
+  assert.ok(tokens.includes("--muted: #665B57"));
+  assert.ok(tokens.includes("--primary: #d4a1a5"));
   assert.ok(html.includes("#F3EEE7") && html.includes("#1A1D21"));
   assert.ok(app.includes("#F3EEE7") && app.includes("#1A1D21"));
   assert.ok(load("public/branding/aco-light.svg").includes("#008B8B"));
