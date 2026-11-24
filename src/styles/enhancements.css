@@ -2293,3 +2293,122 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   outline: 3px solid var(--footer-focus);
   outline-offset: 3px;
 }
+
+/* Accessible readability refinements, scoped to labels rather than large headings. */
+.project-meta span,
+.dark .project-meta span {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.section-header .eyebrow,
+.skill-group-label {
+  font-size: 0.825rem;
+  line-height: 1.5;
+}
+
+.tag-cloud > .tag:nth-child(n),
+.dark .tag-cloud > .tag:nth-child(n) {
+  font-size: 0.825rem;
+  line-height: 1.5;
+}
+
+/* High-contrast preferences use solid surfaces and stronger visual boundaries.
+   Core colors remain defined by the existing theme tokens. */
+@media (prefers-contrast: more) {
+  .nav-container,
+  .mobile-bento-menu,
+  :where(.about-card, .skill-card, .project-card, .cert-card) {
+    backdrop-filter: none;
+    border-width: 2px;
+    border-color: var(--line);
+    box-shadow: none;
+  }
+
+  .footer .footer-email,
+  .footer .footer-socials a {
+    border-width: 2px;
+    border-color: var(--footer-accent);
+  }
+
+  .nav-links > li + li::before {
+    background: var(--line);
+  }
+
+  .tag-cloud > .tag:nth-child(n) {
+    border-color: var(--primary);
+  }
+
+  .constellation-canvas {
+    opacity: 0.3;
+  }
+}
+
+/* Windows forced-colors mode: retain visible system colors for borders,
+   keyboard focus and links instead of relying on brand gradients or glows. */
+@media (forced-colors: active) {
+  .constellation-canvas {
+    display: none;
+  }
+
+  .nav-container,
+  .mobile-bento-menu,
+  :where(.about-card, .skill-card, .project-card, .cert-card),
+  .footer {
+    border: 1px solid CanvasText;
+    background: Canvas;
+    color: CanvasText;
+    box-shadow: none;
+  }
+
+  .nav-links .nav-link,
+  .mobile-bento-menu .bento-link,
+  .nav-contact-cta,
+  .footer .footer-contact-title,
+  .footer .footer-contact-intro p,
+  .footer .footer-identity small,
+  .footer .footer-credit,
+  .footer .footer-identity strong {
+    color: CanvasText;
+    -webkit-text-fill-color: CanvasText;
+  }
+
+  .nav-links > li + li::before,
+  .footer .footer-contact {
+    border-color: CanvasText;
+    background: CanvasText;
+  }
+
+  .footer .footer-email,
+  .footer .footer-socials a,
+  .nav-actions .icon-button,
+  .nav-actions .language-button,
+  .nav-actions .bento-button {
+    color: LinkText;
+    background: Canvas;
+    border: 1px solid LinkText;
+    box-shadow: none;
+  }
+
+  .footer .footer-email svg,
+  .footer .footer-socials a svg {
+    color: LinkText;
+  }
+
+  :where(a, button, summary):focus-visible,
+  .footer .footer-email:focus-visible,
+  .footer .footer-socials a:focus-visible {
+    outline: 3px solid Highlight;
+    outline-offset: 3px;
+  }
+
+  .nav-links .nav-link-active::after,
+  .nav-links .nav-link:hover::after,
+  .nav-links .nav-link:focus-visible::after {
+    background: Highlight;
+  }
+
+  .footer .footer-identity strong {
+    background: none;
+  }
+}
