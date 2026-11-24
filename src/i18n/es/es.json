@@ -26,8 +26,8 @@
   },
   "about": {
     "eyebrow": "Sobre mí",
-    "title": "Desarrollo de software orientado a soluciones.",
-    "description": "Soy desarrolladora Full Stack Junior con formación en Sistemas de Información. Diseño interfaces, implemento servicios backend y trabajo con bases de datos, integración de sistemas y pruebas. Me interesa contribuir a proyectos de desarrollo con código claro, documentación y mejora continua.",
+    "title": "Desarrollo de software con enfoque práctico",
+    "description": "Soy desarrolladora de software con formación en Sistemas de Información. Trabajo con aplicaciones web, servicios backend y bases de datos.",
     "statOneValue": "Backend",
     "statOneLabel": "APIs e integración",
     "statTwoValue": "Datos",
@@ -36,12 +36,13 @@
     "statThreeLabel": "Interfaces y servicios",
     "highlightOne": "Código claro y mantenible",
     "highlightTwo": "Diseño responsive y accesible",
-    "highlightThree": "Documentación y control de versiones"
+    "highlightThree": "Documentación y control de versiones",
+    "approach": "Me enfoco en resolver problemas mediante código mantenible, integración de sistemas, pruebas y documentación."
   },
   "skills": {
-    "eyebrow": "Stack técnico",
+    "eyebrow": "Especialidades",
     "title": "Habilidades técnicas",
-    "description": "Tecnologías agrupadas por el tipo de solución que construyo.",
+    "description": "Áreas de trabajo y herramientas que utilizo en mis proyectos.",
     "frontend": {
       "title": "Frontend",
       "description": "Interfaces responsive y accesibles."
@@ -51,26 +52,26 @@
       "description": "Servicios, lógica de negocio e integración."
     },
     "databases": {
-      "title": "Databases",
+      "title": "Bases de datos",
       "description": "Modelado, consultas y persistencia."
     },
     "cloud": {
-      "title": "Cloud",
+      "title": "Cloud y DevOps",
       "description": "Despliegue, contenedores y automatización."
     },
     "tools": {
-      "title": "Tools",
+      "title": "Herramientas",
       "description": "Herramientas de trabajo y colaboración."
     },
     "testing": {
-      "title": "Testing / QA",
+      "title": "Pruebas y calidad",
       "description": "Pruebas para validar comportamiento."
     }
   },
   "projects": {
     "eyebrow": "Proyectos",
     "title": "Proyectos seleccionados",
-    "description": "Tres proyectos que muestran lógica de aplicaciones, desarrollo web y arquitectura distribuida.",
+    "description": "Tres proyectos con enfoques diferentes: lógica en C++, desarrollo web y sistemas distribuidos.",
     "repo": "GitHub",
     "demo": "Demo",
     "evidenceCta": "Ver evidencia técnica",
@@ -120,7 +121,7 @@
   "certifications": {
     "eyebrow": "Credenciales",
     "title": "Certificaciones",
-    "description": "AZ-900, GH-900 y SC-900. Selecciona una insignia para verificarla.",
+    "description": "Credenciales verificables de Microsoft y GitHub.",
     "approved": "Aprobada",
     "viewCredential": "Ver credencial",
     "credentialPending": "Certificación aprobada · enlace de verificación pendiente"
