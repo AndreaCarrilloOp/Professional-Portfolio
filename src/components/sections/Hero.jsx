@@ -39,9 +39,7 @@ function Hero({ darkMode }) {
           <div className="hero-actions hero-cta-row" role="group" aria-label={t("hero.primaryActionsLabel")}>
             <a href="#projects" className="btn btn-primary hero-cta-primary">
               <span>{t("hero.ctaProjects")}</span>
-              <span className="btn-icon-pill" aria-hidden="true">
-                <FaArrowRight />
-              </span>
+              <FaArrowRight className="hero-cta-arrow" aria-hidden="true" />
             </a>
             <a href="#contact" className="btn btn-secondary hero-cta-secondary">
               {t("hero.ctaContact")}
