@@ -21,9 +21,6 @@ function Projects() {
             className={`project-card project-card-${project.id} card ${project.featured ? "featured-project" : "compact-project"} reveal-up`}
           >
             <div className="project-media">
-              {project.featured && (
-                <span className="project-badge">{t("projects.featured")}</span>
-              )}
               <a
                 className="project-preview-link"
                 href={project.image.fallback}
@@ -65,9 +62,7 @@ function Projects() {
             </div>
             <div className="project-content">
               <div className="project-meta">
-                <span>{project.year}</span>
-                <span>{t(project.roleKey)}</span>
-                <span className="project-status">{t(project.statusKey)}</span>
+                <span>{project.year} · {t(project.roleKey)}</span>
               </div>
               <h3>{t(project.titleKey)}</h3>
               <p>{t(project.descriptionKey)}</p>
