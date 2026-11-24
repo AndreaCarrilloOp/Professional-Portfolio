@@ -8,13 +8,13 @@
     "contact": "Contacto"
   },
   "hero": {
-    "eyebrow": "Desarrolladora de software · Backend / Full Stack",
+    "eyebrow": "Desarrollo Backend · Full Stack",
     "ctaProjects": "Ver proyectos",
     "ctaContact": "Contactar",
-    "status": "Disponible para oportunidades",
-    "descriptionLead": "Construyo",
-    "descriptionHighlight": "aplicaciones web y servicios backend",
-    "descriptionTail": "con foco en datos, automatización, calidad y código mantenible.",
+    "status": "Abierta a oportunidades",
+    "descriptionLead": "Desarrollo",
+    "descriptionHighlight": "aplicaciones web y APIs backend",
+    "descriptionTail": "con énfasis en datos, automatización y calidad del software.",
     "techLabel": "TECNOLOGÍAS CON LAS QUE TRABAJO",
     "focusLabel": "Áreas de enfoque",
     "focusOne": "Backend y APIs",
