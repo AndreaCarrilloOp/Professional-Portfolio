@@ -2175,14 +2175,14 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   border-color: var(--palette-steel);
 }
 
-/* Theme-inverse footer: graphite beneath stone, medium stone beneath graphite.
+/* Theme-inverse footer: midnight navy beneath blue-grey, blue-grey beneath midnight navy.
    Local semantic tokens keep both variants legible without changing page tokens. */
 :root:not(.dark) .footer {
   --footer-background: var(--satin-black);
   --footer-background-raised: var(--palette-dark-card);
   --footer-text: var(--palette-light-text);
   --footer-muted: var(--palette-dark-muted);
-  --footer-accent: var(--palette-sky);
+  --footer-accent: var(--palette-violet);
   --footer-focus: var(--palette-light-text);
   --footer-border: color-mix(in srgb, var(--palette-sky) 34%, transparent);
   --footer-link-surface: var(--palette-dark-card);
@@ -2194,9 +2194,9 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   --footer-background-raised: var(--satin-silver);
   --footer-text: var(--palette-ink);
   --footer-muted: var(--palette-muted);
-  --footer-accent: var(--palette-navy);
-  --footer-focus: var(--palette-navy);
-  --footer-border: color-mix(in srgb, var(--palette-navy) 35%, transparent);
+  --footer-accent: var(--palette-steel);
+  --footer-focus: var(--palette-steel);
+  --footer-border: color-mix(in srgb, var(--palette-steel) 35%, transparent);
   --footer-link-surface: color-mix(in srgb, var(--palette-ice) 90%, var(--satin-silver));
   --footer-link-hover: color-mix(in srgb, var(--palette-ice) 76%, var(--satin-silver));
 }
