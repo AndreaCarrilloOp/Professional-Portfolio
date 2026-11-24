@@ -21,47 +21,47 @@ function Projects() {
             className={`project-card project-card-${project.id} card ${project.featured ? "featured-project" : "compact-project"} reveal-up`}
           >
             <div className="project-media">
-            {project.featured && (
-              <span className="project-badge">{t("projects.featured")}</span>
-            )}
-            <a
-              className="project-preview-link"
-              href={project.image.fallback}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${t("projects.viewFullImage")}: ${t(project.titleKey)}, ${t("accessibility.externalLink")}`}
-            >
-              <picture>
-                {project.image.kind === "responsive" && (
-                  <>
-                    {project.image.avifSrcSet && (
-                      <source
-                        type="image/avif"
-                        srcSet={project.image.avifSrcSet}
-                        sizes={project.image.sizes}
-                      />
-                    )}
-                    {project.image.webpSrcSet && (
-                      <source
-                        type="image/webp"
-                        srcSet={project.image.webpSrcSet}
-                        sizes={project.image.sizes}
-                      />
-                    )}
-                  </>
-                )}
-                <img
-                  src={project.image.fallback}
-                  alt={t(project.imageAltKey || project.titleKey)}
-                  loading="lazy"
-                  decoding="async"
-                  fetchPriority="low"
-                  width={project.image.width}
-                  height={project.image.height}
-                  sizes={project.image.sizes}
-                />
-              </picture>
-            </a>
+              {project.featured && (
+                <span className="project-badge">{t("projects.featured")}</span>
+              )}
+              <a
+                className="project-preview-link"
+                href={project.image.fallback}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${t("projects.viewFullImage")}: ${t(project.titleKey)}, ${t("accessibility.externalLink")}`}
+              >
+                <picture>
+                  {project.image.kind === "responsive" && (
+                    <>
+                      {project.image.avifSrcSet && (
+                        <source
+                          type="image/avif"
+                          srcSet={project.image.avifSrcSet}
+                          sizes={project.image.sizes}
+                        />
+                      )}
+                      {project.image.webpSrcSet && (
+                        <source
+                          type="image/webp"
+                          srcSet={project.image.webpSrcSet}
+                          sizes={project.image.sizes}
+                        />
+                      )}
+                    </>
+                  )}
+                  <img
+                    src={project.image.fallback}
+                    alt={t(project.imageAltKey || project.titleKey)}
+                    loading="lazy"
+                    decoding="async"
+                    fetchPriority="low"
+                    width={project.image.width}
+                    height={project.image.height}
+                    sizes={project.image.sizes}
+                  />
+                </picture>
+              </a>
             </div>
             <div className="project-content">
               <div className="project-meta">
