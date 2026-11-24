@@ -1947,7 +1947,7 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
 .nav-links,
 .dark .nav-links {
   display: flex;
-  gap: clamp(12px, 1.35vw, 22px);
+  gap: clamp(28px, 2.9vw, 48px);
   align-items: center;
   margin-block: 0;
   margin-inline: auto;
@@ -2118,12 +2118,45 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
 
 @media (max-width: 1100px) and (min-width: 1025px) {
   .nav-links {
-    gap: 12px;
+    gap: 26px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .nav-links .nav-link::after {
     transition: none;
+  }
+}
+
+/* Balanced desktop layout: center the three section links independently of
+   the unequal widths of the ACO logo and right-hand action controls. */
+@media (min-width: 1025px) {
+  .nav-container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    column-gap: clamp(16px, 2vw, 30px);
+    align-items: center;
+  }
+
+  .nav-container > .brand {
+    justify-self: start;
+  }
+
+  .nav-container > .nav-links {
+    justify-self: center;
+    margin-inline: 0;
+  }
+
+  .nav-container > .nav-actions {
+    justify-self: end;
+  }
+}
+
+/* Keep the desktop list hidden when the accessible mobile menu takes over.
+   This must come after the desktop .nav-links styles in the cascade. */
+@media (max-width: 1024px) {
+  .nav-container > .nav-links,
+  .dark .nav-container > .nav-links {
+    display: none;
   }
 }
