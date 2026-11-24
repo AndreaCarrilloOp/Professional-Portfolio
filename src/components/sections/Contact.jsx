@@ -1,77 +1,38 @@
 import { useTranslation } from "react-i18next";
 import { EMAIL, SOCIAL_LINKS } from "../../constants";
-import SectionHeader from "../ui/SectionHeader";
-
-const SOCIAL_LINKS_BY_ID = Object.fromEntries(
-  SOCIAL_LINKS.map((link) => [link.id, link]),
-);
 
 function Contact() {
   const { t } = useTranslation();
-  const contactMeta = [
-    t("contact.availability"),
-    t("contact.location"),
-    t("contact.mode"),
-  ];
-  const contactLinks = [
-    {
-      ...SOCIAL_LINKS_BY_ID.email,
-      label: t("contact.email"),
-      value: EMAIL,
-      primary: true,
-    },
-    {
-      ...SOCIAL_LINKS_BY_ID.linkedin,
-      label: t("contact.linkedin"),
-      value: "linkedin.com/in/andrea-carrillo-vlk",
-      primary: false,
-    },
-    {
-      ...SOCIAL_LINKS_BY_ID.github,
-      label: t("contact.github"),
-      value: "github.com/AndreaCarrilloOp",
-      primary: false,
-    },
-  ];
+  const emailLink = SOCIAL_LINKS.find((link) => link.id === "email");
+  const otherLinks = SOCIAL_LINKS.filter((link) => link.id !== "email");
 
   return (
-    <section id="contact" className="section-pad contact-section" aria-labelledby="contact-heading">
-      <div className="contact-card card reveal-up">
-        <SectionHeader
-          headingId="contact-heading"
-          eyebrowKey="contact.eyebrow"
-          titleKey="contact.title"
-          descriptionKey="contact.description"
-        />
-        <div className="contact-meta">
-          {contactMeta.map((item) => (
-            <span key={item}>{item}</span>
-          ))}
+    <section id="contact" className="footer-contact" aria-labelledby="contact-heading">
+      <div className="footer-contact-inner">
+        <div className="footer-contact-intro">
+          <span className="eyebrow">{t("contact.eyebrow")}</span>
+          <h2 id="contact-heading" className="footer-contact-title">{t("contact.title")}</h2>
+          <p>{t("contact.description")}</p>
         </div>
-        <div className="contact-grid" role="group" aria-label={t("contact.channelsLabel")}>
-          {contactLinks.map(({ id, label, value, href, icon: Icon, primary }) => {
-            const isExternal = !href.startsWith("mailto");
-            return (
+        <div className="footer-contact-actions">
+          <a className="footer-email" href={emailLink.href} aria-label={`${t("contact.email")}: ${EMAIL}`}>
+            <emailLink.icon aria-hidden="true" />
+            <span>{EMAIL}</span>
+          </a>
+          <div className="footer-socials" role="group" aria-label={t("contact.channelsLabel")}>
+            {otherLinks.map(({ id, href, icon: Icon }) => (
               <a
                 key={id}
                 href={href}
-                target={isExternal ? "_blank" : undefined}
-                rel={isExternal ? "noreferrer" : undefined}
-                className={`contact-link ${primary ? "contact-link-primary" : ""}`}
-                aria-label={
-                  isExternal
-                    ? `${label}: ${value}, ${t("accessibility.externalLink")}`
-                    : `${label}: ${value}`
-                }
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${t(`contact.${id}`)}, ${t("accessibility.externalLink")}`}
               >
                 <Icon aria-hidden="true" />
-                <span>
-                  <strong>{label}</strong>
-                  <small>{value}</small>
-                </span>
+                <span>{t(`contact.${id}`)}</span>
               </a>
-            );
-          })}
+            ))}
+          </div>
         </div>
       </div>
     </section>
