@@ -1,23 +1,23 @@
-/* ACO warm-ivory / plum and graphite / mauve brand palette.
- * Eight colors: #29232b ink; #4a154b deep plum; #66365f plum;
- * #c69bbf mauve; #f3eee7 ivory; #ded4c8 sand; #1a1d21 graphite;
- * #625963 stone. Legacy variable aliases retained for CSS compatibility.
+/* ACO warm-ivory / wine-red and graphite / dusty-rose brand palette.
+ * Eight colors: #2b2526 ink; #4b1e26 deep burgundy; #752c39 wine red;
+ * #d4a1a5 dusty rose; #f3eee7 ivory; #ded4c8 sand; #1a1d21 graphite;
+ * #665B57 warm taupe. Legacy variable aliases retained for CSS compatibility.
  * Turquoise is reserved for ACO logo assets.
  */
 :root {
   color-scheme: light;
 
   /* Immutable brand swatches. */
-  --palette-ink: #29232b;
-  --palette-navy: #4a154b;
-  --palette-steel: #66365f;
-  --palette-sky: #c69bbf;
+  --palette-ink: #2b2526;
+  --palette-navy: #4b1e26;
+  --palette-steel: #752c39;
+  --palette-sky: #d4a1a5;
   --palette-ice: #f3eee7;
   --satin-silver: #ded4c8;
   --satin-black: #1a1d21;
-  --palette-muted: #625963;
+  --palette-muted: #665B57;
 
-  /* Light theme — ivory surfaces, plum accents, neutral body text. */
+  /* Light theme — ivory surfaces, wine-red accents, neutral body text. */
   --bg: #f3eee7;
   --surface: color-mix(in srgb, var(--palette-ice) 86%, var(--satin-silver));
   --card: color-mix(in srgb, var(--palette-ice) 94%, var(--satin-silver));
@@ -31,37 +31,37 @@
   --surface-lowlight: color-mix(in srgb, var(--palette-navy) 16%, transparent);
   --surface-edge: color-mix(in srgb, var(--palette-steel) 70%, var(--satin-silver));
 
-  --text: #29232b;
-  --muted: #625963;
-  --line: #66365f;
-  --primary: #66365f;
-  --primary-strong: #4a154b;
+  --text: #2b2526;
+  --muted: #665B57;
+  --line: #752c39;
+  --primary: #752c39;
+  --primary-strong: #4b1e26;
   --primary-soft: color-mix(in srgb, var(--palette-steel) 14%, transparent);
-  --secondary: #4a154b;
+  --secondary: #4b1e26;
   --on-primary: #f3eee7;
-  --focus-ring: #66365f;
+  --focus-ring: #752c39;
 
   /* Component aliases inherit the same coordinated palette. */
-  --accent-blue: #66365f;
+  --accent-blue: #752c39;
   --accent-blue-soft: color-mix(in srgb, var(--palette-steel) 14%, transparent);
-  --accent-cyan: #66365f;
+  --accent-cyan: #752c39;
   --accent-cyan-soft: color-mix(in srgb, var(--palette-sky) 16%, transparent);
-  --accent-teal: #4a154b;
+  --accent-teal: #4b1e26;
   --accent-teal-soft: color-mix(in srgb, var(--palette-navy) 13%, transparent);
-  --accent-indigo: #66365f;
+  --accent-indigo: #752c39;
   --accent-indigo-soft: color-mix(in srgb, var(--palette-steel) 12%, transparent);
-  --accent-violet: #4a154b;
+  --accent-violet: #4b1e26;
   --accent-violet-soft: color-mix(in srgb, var(--palette-navy) 12%, transparent);
-  --accent-steel: #66365f;
+  --accent-steel: #752c39;
   --accent-steel-soft: color-mix(in srgb, var(--satin-silver) 24%, transparent);
 
   --ambient-primary: color-mix(in srgb, var(--palette-steel) 12%, transparent);
   --ambient-secondary: color-mix(in srgb, var(--palette-sky) 10%, transparent);
-  --canvas-point: 102, 54, 95;
-  --canvas-line: 102, 54, 95;
-  --canvas-glow: 198, 155, 191;
+  --canvas-point: 117, 44, 57;
+  --canvas-line: 117, 44, 57;
+  --canvas-glow: 212, 161, 165;
 
-  /* Material effects use the same restrained ivory, plum and graphite tones. */
+  /* Material effects use the same restrained ivory, burgundy and graphite tones. */
   --satin-silver-gradient: linear-gradient(
     135deg,
     var(--palette-ice) 0%,
@@ -135,30 +135,30 @@
 .dark {
   color-scheme: dark;
 
-  /* Dark theme — graphite surfaces with mauve text accents. */
+  /* Dark theme — graphite surfaces with dusty-rose text accents. */
   --bg: #1a1d21;
-  --surface: #29232b;
+  --surface: #2b2526;
   --card: color-mix(in srgb, var(--palette-ink) 92%, var(--palette-navy));
   --surface-soft: color-mix(in srgb, var(--palette-ink) 78%, var(--palette-navy));
-  --surface-raised: #29232b;
+  --surface-raised: #2b2526;
   --surface-glass: color-mix(in srgb, var(--palette-ink) 90%, transparent);
   --surface-deep: #1a1d21;
-  --surface-tint: #4a154b;
+  --surface-tint: #4b1e26;
   --surface-highlight: color-mix(in srgb, var(--palette-ice) 13%, transparent);
   --surface-lowlight: color-mix(in srgb, var(--satin-black) 50%, transparent);
   --surface-edge: color-mix(in srgb, var(--palette-sky) 72%, var(--satin-silver));
 
   --text: #f3eee7;
   --muted: #ded4c8;
-  --line: #c69bbf;
-  --primary: #c69bbf;
+  --line: #d4a1a5;
+  --primary: #d4a1a5;
   --primary-strong: #f3eee7;
   --primary-soft: color-mix(in srgb, var(--palette-sky) 15%, transparent);
   --secondary: #ded4c8;
   --on-primary: #1a1d21;
   --focus-ring: #f3eee7;
 
-  --accent-blue: #c69bbf;
+  --accent-blue: #d4a1a5;
   --accent-blue-soft: color-mix(in srgb, var(--palette-sky) 18%, transparent);
   --accent-cyan: #f3eee7;
   --accent-cyan-soft: color-mix(in srgb, var(--palette-sky) 15%, transparent);
@@ -166,7 +166,7 @@
   --accent-teal-soft: color-mix(in srgb, var(--satin-silver) 13%, transparent);
   --accent-indigo: #f3eee7;
   --accent-indigo-soft: color-mix(in srgb, var(--palette-steel) 20%, transparent);
-  --accent-violet: #c69bbf;
+  --accent-violet: #d4a1a5;
   --accent-violet-soft: color-mix(in srgb, var(--palette-sky) 13%, transparent);
   --accent-steel: #f3eee7;
   --accent-steel-soft: color-mix(in srgb, var(--satin-silver) 14%, transparent);
@@ -174,8 +174,8 @@
   --ambient-primary: color-mix(in srgb, var(--palette-sky) 11%, transparent);
   --ambient-secondary: color-mix(in srgb, var(--satin-silver) 8%, transparent);
   --canvas-point: 243, 238, 231;
-  --canvas-line: 198, 155, 191;
-  --canvas-glow: 198, 155, 191;
+  --canvas-line: 212, 161, 165;
+  --canvas-glow: 212, 161, 165;
 
   --plastic-inset:
     inset 0 1px 0 var(--surface-highlight),
