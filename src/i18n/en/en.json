@@ -117,17 +117,17 @@
     "viewFullImage": "View full-size screenshot"
   },
   "certifications": {
-    "eyebrow": "Certifications",
-    "title": "Featured credentials",
-    "description": "Earned certifications in cloud, GitHub, and security fundamentals.",
+    "eyebrow": "Credentials",
+    "title": "Certifications",
+    "description": "AZ-900, GH-900, and SC-900. Select a badge to verify the credential.",
     "approved": "Approved",
     "viewCredential": "View credential",
     "credentialPending": "Certification earned · verification link pending"
   },
   "contact": {
     "eyebrow": "Contact",
-    "title": "Let’s talk about junior opportunities.",
-    "description": "Open to junior backend and Full Stack developer opportunities in Costa Rica or remote.",
+    "title": "Let's connect",
+    "description": "Open to Backend and Full Stack development opportunities in Costa Rica or remotely.",
     "email": "Primary email",
     "github": "GitHub",
     "linkedin": "LinkedIn",
