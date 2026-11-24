@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { FaArrowRight, FaRegCircle } from "react-icons/fa";
+import { FaArrowRight, FaPause, FaPlay, FaRegCircle } from "react-icons/fa";
 import {
   PROFILE_IMAGE_DARK,
   PROFILE_IMAGE_LIGHT,
@@ -9,6 +10,7 @@ import {
 
 function Hero({ darkMode }) {
   const { t } = useTranslation();
+  const [isMarqueePaused, setMarqueePaused] = useState(false);
   const heroSocialLinks = SOCIAL_LINKS.filter(({ id }) => id !== "email");
   const profileImage = darkMode ? PROFILE_IMAGE_DARK : PROFILE_IMAGE_LIGHT;
 
@@ -109,8 +111,24 @@ function Hero({ darkMode }) {
         <div className="tech-strip-header">
           <span>{t("hero.techLabel")}</span>
           <small className="tech-swipe-hint">{t("hero.techHint")}</small>
+          <button
+            type="button"
+            className="tech-motion-toggle"
+            aria-label={isMarqueePaused ? t("hero.resumeAnimation") : t("hero.pauseAnimation")}
+            aria-controls="technology-marquee"
+            onClick={() => setMarqueePaused((paused) => !paused)}
+          >
+            {isMarqueePaused ? <FaPlay aria-hidden="true" /> : <FaPause aria-hidden="true" />}
+            <span>{isMarqueePaused ? t("hero.resume") : t("hero.pause")}</span>
+          </button>
         </div>
-        <div className="tech-carousel" tabIndex={0} role="region" aria-label={t("hero.techLabel")}>
+        <div
+          id="technology-marquee"
+          className={`tech-carousel ${isMarqueePaused ? "tech-carousel-paused" : ""}`}
+          tabIndex={0}
+          role="region"
+          aria-label={t("hero.techLabel")}
+        >
           <div className="tech-track">
             {TECH_STACK.map(({ id, label, icon: Icon }) => (
               <div className="tech-chip" key={id}>
