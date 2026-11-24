@@ -6,9 +6,9 @@ const FRAME_REFERENCE_MS = 1000 / 60;
 
 const LIGHT_PALETTE = {
   // Wine-red constellations remain readable on warm ivory.
-  point: [117, 44, 57],
-  line: [117, 44, 57],
-  glow: [212, 161, 165],
+  point: [91, 31, 42],
+  line: [91, 31, 42],
+  glow: [201, 150, 158],
   lineAlpha: 0.27,
   glowAlpha: 0.12,
   pointAlpha: 0.84,
@@ -17,8 +17,8 @@ const LIGHT_PALETTE = {
 
 const DARK_PALETTE = {
   point: [243, 238, 231],
-  line: [212, 161, 165],
-  glow: [212, 161, 165],
+  line: [201, 150, 158],
+  glow: [201, 150, 158],
   lineAlpha: 0.14,
   glowAlpha: 0.1,
   pointAlpha: 0.78,
