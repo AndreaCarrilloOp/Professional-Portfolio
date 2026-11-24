@@ -22,7 +22,11 @@
     "focusThree": "Automatización y pruebas",
     "techHint": "Desliza para ver más",
     "primaryActionsLabel": "Acciones principales del portafolio",
-    "socialLabel": "Perfiles profesionales"
+    "socialLabel": "Perfiles profesionales",
+    "pauseAnimation": "Pausar animación de tecnologías",
+    "resumeAnimation": "Reanudar animación de tecnologías",
+    "pause": "Pausar",
+    "resume": "Reanudar"
   },
   "about": {
     "eyebrow": "Sobre mí",
