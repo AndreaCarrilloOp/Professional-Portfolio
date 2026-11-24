@@ -17,6 +17,7 @@ function Certifications() {
         eyebrowKey="certifications.eyebrow"
         titleKey="certifications.title"
         descriptionKey="certifications.description"
+        align="center"
       />
 
       <ul className="credential-badges">
