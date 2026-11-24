@@ -210,6 +210,13 @@ function Navbar({ darkMode, onToggleTheme }) {
         </div>
 
         <div className="nav-actions">
+          <a
+            href="#contact"
+            className="nav-contact-cta"
+            onClick={(event) => handleNavClick(event, "contact")}
+          >
+            {t("nav.contact")}
+          </a>
           <button
             type="button"
             className="icon-button"
@@ -282,6 +289,14 @@ function Navbar({ darkMode, onToggleTheme }) {
             );
           })}
         </div>
+        <a
+          href="#contact"
+          className="bento-contact-cta"
+          onClick={(event) => handleNavClick(event, "contact")}
+          tabIndex={open ? 0 : -1}
+        >
+          {t("nav.contact")}
+        </a>
       </div>
     </header>
   );
