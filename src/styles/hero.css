@@ -441,3 +441,111 @@
     width: calc(100% - 20px);
   }
 }
+
+
+/* Editorial Hero hierarchy: role, identity, value, actions, availability. */
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-kicker {
+  margin: 0 0 14px;
+  color: var(--primary);
+  font-size: clamp(0.76rem, 1vw, 0.86rem);
+  font-weight: 800;
+  letter-spacing: 0.085em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.hero-copy .hero-title {
+  margin: 0 0 clamp(18px, 2.3vw, 26px);
+  line-height: 1.02;
+}
+
+.hero-copy .hero-description {
+  max-width: 49ch;
+  margin: 0;
+  font-size: clamp(1rem, 1.35vw, 1.13rem);
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+.hero-copy .hero-description strong {
+  font-weight: 750;
+}
+
+.hero-copy .hero-cta-row {
+  margin-top: clamp(22px, 2.6vw, 30px);
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 22px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.hero-meta .status-pill {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  font-size: 0.7rem;
+  line-height: 1.5;
+  letter-spacing: 0.025em;
+  white-space: normal;
+}
+
+.hero-meta .status-pill svg {
+  flex: 0 0 auto;
+}
+
+.hero-meta .hero-social-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: auto;
+  margin: 0;
+}
+
+.hero-meta .hero-social-links .social-link {
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
+  border-radius: 14px;
+}
+
+@media (max-width: 640px) {
+  .hero-kicker {
+    margin-bottom: 12px;
+    font-size: 0.73rem;
+    letter-spacing: 0.06em;
+  }
+
+  .hero-copy .hero-title {
+    margin-bottom: 18px;
+  }
+
+  .hero-copy .hero-description {
+    max-width: 48ch;
+    font-size: 0.97rem;
+    line-height: 1.6;
+  }
+
+  .hero-meta {
+    margin-top: 18px;
+    gap: 10px 18px;
+  }
+}
+
+@media (max-width: 375px) {
+  .hero-meta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
