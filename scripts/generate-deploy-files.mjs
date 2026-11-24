@@ -2,11 +2,11 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
 function normalizeSiteUrl(value) {
-  return String(value || "http://localhost:4173").replace(/\/+$/, "");
+  return String(value || "https://andreacarrillo-portafolio.netlify.app").replace(/\/+$/, "");
 }
 
 const siteUrl = normalizeSiteUrl(
-  process.env.VITE_SITE_URL || process.env.URL || "http://localhost:4173",
+  process.env.VITE_SITE_URL || process.env.URL || "https://andreacarrillo-portafolio.netlify.app",
 );
 const outputDirectory = resolve("dist");
 
