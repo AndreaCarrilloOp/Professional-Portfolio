@@ -87,9 +87,9 @@ const satinBlack = readHexToken(themes.light, "satin-black");
 const satinRatio = contrast(satinSilver, satinBlack);
 const satinPasses = satinRatio >= 4.5;
 failed ||= !satinPasses;
-console.log(`\nMINERAL NEUTRALS`);
+console.log(`\nCELESTIAL NEUTRALS`);
 console.log(
-  `${satinPasses ? "PASS" : "FAIL"}  ${satinRatio.toFixed(2)}:1  raised stone / graphite (minimum 4.5:1)`,
+  `${satinPasses ? "PASS" : "FAIL"}  ${satinRatio.toFixed(2)}:1  cool silver / midnight navy (minimum 4.5:1)`,
 );
 
 /* The footer inverts its surface against the active page theme, so these
@@ -97,11 +97,11 @@ console.log(
 const footerPairs = [
   ["light-page footer text", "palette-light-text", "satin-black", 4.5],
   ["light-page footer muted", "palette-dark-muted", "satin-black", 4.5],
-  ["light-page footer accent", "palette-sky", "satin-black", 4.5],
+  ["light-page footer accent", "palette-violet", "satin-black", 4.5],
   ["light-page footer link text", "palette-light-text", "palette-dark-card", 4.5],
   ["dark-page footer text", "palette-ink", "palette-ice", 4.5],
   ["dark-page footer muted", "palette-muted", "palette-ice", 4.5],
-  ["dark-page footer accent", "palette-navy", "palette-ice", 4.5],
+  ["dark-page footer accent", "palette-steel", "palette-ice", 4.5],
   ["dark-page footer link text", "palette-ink", "satin-silver", 4.5],
 ];
 console.log("\nINVERSE FOOTER");
