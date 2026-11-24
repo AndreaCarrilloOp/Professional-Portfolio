@@ -823,17 +823,23 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+/* Full-width footer surface with text aligned to the page content grid. */
 .footer {
+  width: 100%;
+  margin: 0;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+}
+
+.footer-inner {
   width: min(var(--content-max), calc(100% - var(--content-gutter)));
-  margin: 0 auto;
-  padding: 30px 0 44px;
+  margin-inline: auto;
+  padding-block: 30px 44px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 14px;
   flex-wrap: wrap;
-  color: var(--muted);
-  border-top: 1px solid var(--line);
 }
 .footer strong {
   color: var(--primary);
