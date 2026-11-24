@@ -279,8 +279,14 @@ test("ivory/dark-cherry and graphite/dusty-rose themes keep browser colors in sy
   assert.ok(tokens.includes("--primary: #c9969e"));
   assert.ok(html.includes("#F3EEE7") && html.includes("#1A1D21"));
   assert.ok(app.includes("#F3EEE7") && app.includes("#1A1D21"));
-  assert.ok(load("public/branding/aco-light.svg").includes("#008B8B"));
-  assert.ok(load("public/branding/aco-dark.svg").includes("#32D8CE"));
+  for (const file of ["aco-light.svg", "aco-dark.svg", "favicon.svg"]) {
+    const svg = load(`public/branding/${file}`);
+    assert.ok(svg.includes("#47161F"), `missing deep garnet in ${file}`);
+    assert.doesNotMatch(svg, /#(?:008B8B|32D8CE)/i, `obsolete turquoise in ${file}`);
+  }
+  assert.ok(load("public/branding/aco-dark.svg").includes('stroke="#C9969E"'));
+  assert.ok(load("public/branding/favicon.svg").includes('stroke="#C9969E"'));
+  assert.doesNotMatch(paletteAudit, /008b8b|32d8ce/);
 });
 
 test("contact and legal footer share a high-contrast dark surface in both themes", () => {
