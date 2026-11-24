@@ -303,10 +303,7 @@ main:focus-visible {
   .project-media {
     min-height: 0;
   }
-  .footer {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+
 }
 
 
@@ -843,10 +840,8 @@ main:focus-visible {
   }
 }
 
-/* Unified page width: navigation, sections and footer share one container.
-   A fluid gutter preserves breathing room without large unused side margins. */
-.nav-container,
-.footer {
+/* Shared fluid navigation width. Footer inner content follows the same grid. */
+.nav-container {
   width: min(var(--content-max), calc(100% - var(--content-gutter)));
 }
 
@@ -863,13 +858,8 @@ main:focus-visible {
   flex: 0 0 auto;
 }
 
-.footer {
-  padding-inline: 0;
-}
-
 @media (max-width: 720px) {
   .nav-container,
-  .footer,
   .section-pad {
     width: calc(100% - 24px);
   }
@@ -877,7 +867,6 @@ main:focus-visible {
 
 @media (max-width: 375px) {
   .nav-container,
-  .footer,
   .section-pad {
     width: calc(100% - 20px);
   }
@@ -1330,16 +1319,15 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   min-width: 0;
 }
 
-/* Use more of wide screens without stretching readable paragraph lines. */
-.footer {
-  width: min(1760px, calc(100% - var(--content-gutter)));
-  max-width: none;
+/* Footer fills the viewport while its text follows the page grid. */
+.footer-inner {
   column-gap: clamp(18px, 3vw, 48px);
   row-gap: 12px;
 }
 
-.footer > * {
+.footer-inner > * {
   min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 @media (max-width: 720px) {
@@ -1347,13 +1335,15 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
     padding-inline: 12px;
   }
 
-  .footer {
+  .footer-inner {
     width: calc(100% - 24px);
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
 @media (max-width: 375px) {
-  .footer {
+  .footer-inner {
     width: calc(100% - 20px);
   }
 }
