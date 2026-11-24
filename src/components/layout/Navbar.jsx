@@ -154,7 +154,13 @@ function Navbar({ darkMode, onToggleTheme }) {
           aria-label="Andrea Carrillo home"
           onClick={closeMenu}
         >
-          AC
+          <img
+            src={`${import.meta.env.BASE_URL}branding/aco-${darkMode ? "dark" : "light"}.svg`}
+            alt=""
+            width="64"
+            height="45"
+            className="brand-logo"
+          />
         </a>
 
         <div className="nav-links" aria-label={t("accessibility.primaryLinks")}>

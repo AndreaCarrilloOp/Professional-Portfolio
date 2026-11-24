@@ -39,6 +39,8 @@ for (const file of files) {
   for (const match of content.matchAll(hexPattern)) {
     const color = match[0].toLowerCase();
     if (allowed.has(color)) continue;
+    // The approved ACO brand accent is restricted to dedicated SVG assets.
+    if (relative(root, file).split(/[/\\]/).join('/').startsWith('public/branding/') && extname(file) === '.svg' && ['#008b8b', '#32d8ce'].includes(color)) continue;
     const line = content.slice(0, match.index).split("\n").length;
     violations.push(`${relative(root, file)}:${line}  ${match[0]}`);
   }

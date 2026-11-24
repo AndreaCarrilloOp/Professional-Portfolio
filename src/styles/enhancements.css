@@ -1192,3 +1192,11 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
     ),
     var(--satin-silver-gradient);
 }
+
+/* Personal brand: preserve the accessible home link and stable layout. */
+.brand .brand-logo {
+  display: block;
+  width: 64px;
+  height: 45px;
+  object-fit: contain;
+}
