@@ -101,21 +101,22 @@ class PortfolioSmokeTests(unittest.TestCase):
                 finally:
                     page.close()
 
-    def test_technology_pause_resume_and_mobile_swipe(self) -> None:
+    def test_technology_marquee_hover_pause_and_mobile_swipe(self) -> None:
+        """Desktop marquee pauses on hover; mobile keeps horizontal scrolling."""
         desktop = self.page_for(1366, reduced_motion="no-preference")
         try:
-            toggle = desktop.locator(".tech-motion-toggle")
+            self.assertEqual(desktop.locator(".tech-motion-toggle").count(), 0)
             track = desktop.locator(".tech-track")
-            self.assertTrue(toggle.is_visible())
-            self.assertEqual(toggle.get_attribute("aria-pressed"), "false")
-            toggle.click()
-            self.assertEqual(toggle.get_attribute("aria-pressed"), "true")
+            self.assertEqual(
+                track.evaluate("el => getComputedStyle(el).animationPlayState"),
+                "running",
+            )
+            desktop.locator(".tech-carousel").hover()
             self.assertEqual(
                 track.evaluate("el => getComputedStyle(el).animationPlayState"),
                 "paused",
             )
-            toggle.click()
-            self.assertEqual(toggle.get_attribute("aria-pressed"), "false")
+            desktop.mouse.move(2, 2)
             self.assertEqual(
                 track.evaluate("el => getComputedStyle(el).animationPlayState"),
                 "running",
@@ -125,7 +126,6 @@ class PortfolioSmokeTests(unittest.TestCase):
 
         mobile = self.page_for(390, reduced_motion="no-preference")
         try:
-            self.assertFalse(mobile.locator(".tech-motion-toggle").is_visible())
             carousel = mobile.locator(".tech-carousel")
             self.assertEqual(
                 carousel.evaluate("el => getComputedStyle(el).overflowX"), "auto"
