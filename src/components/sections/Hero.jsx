@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { FaArrowRight, FaRegCircle } from "react-icons/fa";
+import { FaArrowRight, FaPause, FaPlay, FaRegCircle } from "react-icons/fa";
 import {
   PROFILE_IMAGE_DARK,
   PROFILE_IMAGE_LIGHT,
@@ -9,6 +10,7 @@ import {
 
 function Hero({ darkMode }) {
   const { t } = useTranslation();
+  const [techPaused, setTechPaused] = useState(false);
   const heroSocialLinks = SOCIAL_LINKS.filter(({ id }) => id !== "email");
   const profileImage = darkMode ? PROFILE_IMAGE_DARK : PROFILE_IMAGE_LIGHT;
 
@@ -104,13 +106,22 @@ function Hero({ darkMode }) {
       </div>
 
       <div
-        className="tech-strip reveal-up delay-2"
+        className={`tech-strip reveal-up delay-2${techPaused ? " tech-strip-paused" : ""}`}
         role="group"
         aria-label={t("hero.techLabel")}
       >
         <div className="tech-strip-header">
           <span>{t("hero.techLabel")}</span>
           <small className="tech-swipe-hint">{t("hero.techHint")}</small>
+          <button
+            type="button"
+            className="tech-motion-toggle"
+            aria-label={t(techPaused ? "hero.techResume" : "hero.techPause")}
+            aria-pressed={techPaused}
+            onClick={() => setTechPaused((paused) => !paused)}
+          >
+            {techPaused ? <FaPlay aria-hidden="true" /> : <FaPause aria-hidden="true" />}
+          </button>
         </div>
         <div className="tech-carousel" tabIndex={0} role="region" aria-label={t("hero.techLabel")}>
           <div className="tech-track">
