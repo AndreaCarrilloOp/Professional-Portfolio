@@ -95,7 +95,7 @@ test("navigation restores history and skill tags are grouped logically", () => {
   }
 });
 
-test("noninteractive tags are semantic lists and only clickable badges stay rounded", () => {
+test("semantic technology tags remain static and editorial cards stay restrained", () => {
   const skills = load("src/components/sections/Skills.jsx");
   const projects = load("src/components/sections/Projects.jsx");
   const css = load("src/styles/enhancements.css");
@@ -104,8 +104,13 @@ test("noninteractive tags are semantic lists and only clickable badges stay roun
   assert.match(projects, /<ul className="tag-cloud"/);
   assert.match(projects, /<li className="tag" key=\{tech\}>/);
   assert.ok(css.includes(".tag-cloud > .tag:nth-child(n)"));
-  assert.match(css, /\.skills-grid \.skill-card[\s\S]*?border-radius: 0/);
-  assert.match(css, /\.projects-grid \.project-card[\s\S]*?border-radius: 0/);
+  const cardsStart = css.indexOf("/* Restrained editorial cards:");
+  const cards = css.slice(cardsStart, css.indexOf("\n.skill-icon {", cardsStart));
+  assert.ok(cardsStart >= 0);
+  assert.match(cards, /\.about-card,\s*\.skills-grid \.skill-card,\s*\.projects-grid \.project-card\s*\{[\s\S]*?border-radius: 10px/);
+  assert.match(cards, /border-block-start: 2px/);
+  assert.match(cards, /cursor: default/);
+  assert.doesNotMatch(cards, /border-radius:\s*0/);
   assert.match(load("src/styles/components.css"), /\.credential-badge \{[\s\S]*?border-radius: 16px/);
 });
 
