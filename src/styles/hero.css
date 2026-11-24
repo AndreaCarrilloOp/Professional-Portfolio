@@ -319,19 +319,6 @@
     line-height: 1.65;
   }
 
-  .hero-focus-grid {
-    justify-content: flex-start;
-    gap: 8px;
-    margin-top: 20px;
-  }
-
-  .hero-focus-item {
-    max-width: 100%;
-    padding: 8px 11px;
-    font-size: 0.77rem;
-    white-space: normal;
-  }
-
   .hero-cta-row {
     flex-direction: row;
     align-items: stretch;
@@ -436,11 +423,6 @@
 
   .hero-role {
     max-width: 22ch;
-  }
-
-  .hero-focus-item {
-    width: 100%;
-    justify-content: flex-start;
   }
 
   .hero-visual {
