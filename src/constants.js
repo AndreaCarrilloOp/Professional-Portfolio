@@ -6,7 +6,6 @@ import {
   FaGithub,
   FaLinkedin,
   FaEnvelope,
-  FaAward,
   FaHome,
   FaUser,
   FaLayerGroup,
@@ -221,28 +220,25 @@ export const PROJECTS = [
 export const CERTIFICATIONS = [
   {
     id: "az900",
-    icon: FaAward,
     title: "Microsoft Azure Fundamentals",
     code: "AZ-900",
-    statusKey: "certifications.approved",
+    badgeImage: "https://images.credly.com/images/be8fcaeb-c769-4858-b567-ffaaa73ce8cf/image.png",
     credentialUrl:
       "https://learn.microsoft.com/api/credentials/share/es-es/ANDREACARRILLOOPORTO-6553/79C80AEA4FDDB812?sharingId=4B17552443EC43C4",
   },
   {
     id: "gh900",
-    icon: FaAward,
     title: "GitHub Foundations",
     code: "GH-900",
-    statusKey: "certifications.approved",
+    badgeImage: "https://images.credly.com/images/024d0122-724d-4c5a-bd83-cfe3c4b7a073/image.png",
     credentialUrl:
       "https://learn.microsoft.com/api/credentials/share/es-es/ANDREACARRILLOOPORTO-6553/730444074E386CBE?sharingId=4B17552443EC43C4",
   },
   {
     id: "sc900",
-    icon: FaAward,
     title: "Microsoft Security, Compliance, and Identity Fundamentals",
     code: "SC-900",
-    statusKey: "certifications.approved",
+    badgeImage: "https://images.credly.com/images/fc1352af-87fa-4947-ba54-398a0e63322e/security-compliance-and-identity-fundamentals-600x600.png",
     credentialUrl:
       "https://learn.microsoft.com/es-es/users/andreacarrillooporto-6553/credentials/2dc1174f7d2f1f1b?ref=https%3A%2F%2Fgithub.com%2F",
   },
