@@ -11,7 +11,7 @@ const allowed = new Set([
   "#f3eee7", // ivory
   "#ded4c8", // sand
   "#1a1d21", // graphite
-  "#665B57", // warm taupe
+  "#665b57", // warm taupe
 ]);
 const extensions = new Set([".css", ".html", ".js", ".jsx", ".mjs", ".svg"]);
 const ignoredDirectories = new Set(["node_modules", "dist", ".git"]);
