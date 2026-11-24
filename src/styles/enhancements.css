@@ -1795,7 +1795,7 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   outline-offset: 3px;
 }
 
-.tech-strip-paused .tech-track {
+.tech-track-paused {
   animation-play-state: paused;
 }
 
