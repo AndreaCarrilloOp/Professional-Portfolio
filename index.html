@@ -23,10 +23,10 @@
         root.classList.toggle("dark", useDark);
         root.dataset.theme = useDark ? "dark" : "light";
         root.style.colorScheme = useDark ? "dark" : "light";
-        root.style.backgroundColor = useDark ? "#151e2c" : "#A9B1BF";
+        root.style.backgroundColor = useDark ? "#151E2C" : "#A9B1BF";
         document.querySelector('meta[name="theme-color"]')?.setAttribute(
           "content",
-          useDark ? "#151e2c" : "#A9B1BF",
+          useDark ? "#151E2C" : "#A9B1BF",
         );
       } catch {
         document.documentElement.style.backgroundColor = "#A9B1BF";
@@ -36,7 +36,7 @@
   <style>
     html { background: #A9B1BF; }
     html.dark,
-    html[data-theme="dark"] { background: #151e2c; }
+    html[data-theme="dark"] { background: #151E2C; }
     body,
     #root { min-height: 100vh; background: transparent; }
   </style>
