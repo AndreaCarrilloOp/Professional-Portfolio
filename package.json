@@ -17,6 +17,8 @@
     "test:static": "node --test scripts/check-site.mjs"
   },
   "dependencies": {
+    "@fontsource/ibm-plex-mono": "5.1.0",
+    "@fontsource/ibm-plex-sans": "5.2.8",
     "i18next": "^25.1.2",
     "i18next-browser-languagedetector": "^8.1.0",
     "react": "^19.1.0",
