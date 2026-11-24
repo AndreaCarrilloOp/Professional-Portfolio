@@ -4,6 +4,7 @@ import { EMAIL, SOCIAL_LINKS } from "../../constants";
 function Contact() {
   const { t } = useTranslation();
   const emailLink = SOCIAL_LINKS.find((link) => link.id === "email");
+  const EmailIcon = emailLink.icon;
   const otherLinks = SOCIAL_LINKS.filter((link) => link.id !== "email");
 
   return (
@@ -16,7 +17,7 @@ function Contact() {
         </div>
         <div className="footer-contact-actions">
           <a className="footer-email" href={emailLink.href} aria-label={`${t("contact.email")}: ${EMAIL}`}>
-            <emailLink.icon aria-hidden="true" />
+            <EmailIcon aria-hidden="true" />
             <span>{EMAIL}</span>
           </a>
           <div className="footer-socials" role="group" aria-label={t("contact.channelsLabel")}>
