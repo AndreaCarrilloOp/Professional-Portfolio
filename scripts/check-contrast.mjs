@@ -95,10 +95,10 @@ console.log(
 /* The footer inverts its surface against the active page theme, so these
    pairs must be audited separately from the page-level semantic tokens. */
 const footerPairs = [
-  ["light-page footer text", "palette-light-text", "satin-black", 4.5],
+  ["light-page footer text", "palette-white", "satin-black", 4.5],
   ["light-page footer muted", "palette-dark-muted", "satin-black", 4.5],
   ["light-page footer accent", "palette-violet", "satin-black", 4.5],
-  ["light-page footer link text", "palette-light-text", "palette-dark-card", 4.5],
+  ["light-page footer link text", "palette-white", "palette-dark-card", 4.5],
   ["dark-page footer text", "palette-ink", "palette-ice", 4.5],
   ["dark-page footer muted", "palette-muted", "palette-ice", 4.5],
   ["dark-page footer accent", "palette-steel", "palette-ice", 4.5],
