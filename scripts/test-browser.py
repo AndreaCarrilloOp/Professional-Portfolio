@@ -102,7 +102,7 @@ class PortfolioSmokeTests(unittest.TestCase):
                     page.close()
 
     def test_noninteractive_tags_are_text_and_static_cards_are_flat(self) -> None:
-        """Metadata must not look like clickable pills; credential links remain distinct."""
+        """Tags should be flat rectangular labels, not pills or buttons."""
         for width in (390, 1366):
             with self.subTest(width=width):
                 page = self.page_for(width)
@@ -132,9 +132,9 @@ class PortfolioSmokeTests(unittest.TestCase):
                           };
                         }"""
                     )
-                    self.assertEqual(computed["border"], "0px")
-                    self.assertEqual(computed["radius"], "0px")
-                    self.assertEqual(computed["background"], "rgba(0, 0, 0, 0)")
+                    self.assertEqual(computed["border"], "1px")
+                    self.assertEqual(computed["radius"], "3px")
+                    self.assertNotEqual(computed["background"], "rgba(0, 0, 0, 0)")
                     self.assertEqual(computed["cursor"], "default")
                     badge = page.locator(".credential-badge").first
                     self.assertNotEqual(
