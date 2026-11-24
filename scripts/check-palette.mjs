@@ -4,13 +4,14 @@ import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const allowed = new Set([
-  "#0b1026",
-  "#1b2a4a",
-  "#2f4f7a",
-  "#6b8fbf",
-  "#e7f0ff",
-  "#b8bec9",
-  "#111318",
+  "#29232b", // ink
+  "#4a154b", // deep plum
+  "#66365f", // plum
+  "#c69bbf", // mauve
+  "#f3eee7", // ivory
+  "#ded4c8", // sand
+  "#1a1d21", // graphite
+  "#625963", // stone
 ]);
 const extensions = new Set([".css", ".html", ".js", ".jsx", ".mjs", ".svg"]);
 const ignoredDirectories = new Set(["node_modules", "dist", ".git"]);
@@ -53,4 +54,4 @@ if (violations.length > 0) {
   process.exit(1);
 }
 
-console.log("Palette audit passed: all literal interface colors use the approved seven-color system.");
+console.log("Palette audit passed: all literal interface colors use the approved eight-color system.");
