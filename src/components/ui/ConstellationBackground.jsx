@@ -5,10 +5,10 @@ const FRAME_INTERVAL_MS = 1000 / 30;
 const FRAME_REFERENCE_MS = 1000 / 60;
 
 const LIGHT_PALETTE = {
-  // Indigo stars and lavender haze against medium-blue slate.
-  point: [67, 49, 94],
-  line: [38, 60, 101],
-  glow: [173, 186, 221],
+  // Deep-plum stars against solid steel-blue surfaces.
+  point: [75, 40, 72],
+  line: [36, 56, 101],
+  glow: [201, 167, 191],
   lineAlpha: 0.27,
   glowAlpha: 0.12,
   pointAlpha: 0.84,
@@ -16,9 +16,9 @@ const LIGHT_PALETTE = {
 };
 
 const DARK_PALETTE = {
-  point: [215, 220, 232],
-  line: [198, 174, 217],
-  glow: [173, 186, 221],
+  point: [220, 227, 238],
+  line: [201, 167, 191],
+  glow: [178, 199, 236],
   lineAlpha: 0.14,
   glowAlpha: 0.1,
   pointAlpha: 0.78,
