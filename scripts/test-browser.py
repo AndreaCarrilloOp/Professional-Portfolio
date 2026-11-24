@@ -101,6 +101,48 @@ class PortfolioSmokeTests(unittest.TestCase):
                 finally:
                     page.close()
 
+    def test_noninteractive_tags_are_text_and_static_cards_are_flat(self) -> None:
+        """Metadata must not look like clickable pills; credential links remain distinct."""
+        for width in (390, 1366):
+            with self.subTest(width=width):
+                page = self.page_for(width)
+                try:
+                    for selector in (".skills-grid .skill-card", ".projects-grid .project-card"):
+                        el = page.locator(selector).first
+                        self.assertEqual(
+                            el.evaluate("node => getComputedStyle(node).borderTopLeftRadius"), "0px"
+                        )
+                        self.assertEqual(
+                            el.evaluate("node => getComputedStyle(node).cursor"), "default"
+                        )
+
+                    tags = page.locator(".tag-cloud")
+                    self.assertGreater(tags.count(), 0)
+                    self.assertEqual(tags.first.evaluate("node => node.tagName"), "UL")
+                    tag = tags.first.locator(".tag").first
+                    self.assertEqual(tag.evaluate("node => node.tagName"), "LI")
+                    computed = tag.evaluate(
+                        """node => {
+                          const css = getComputedStyle(node);
+                          return {
+                            border: css.borderTopWidth,
+                            radius: css.borderTopLeftRadius,
+                            background: css.backgroundColor,
+                            cursor: css.cursor,
+                          };
+                        }"""
+                    )
+                    self.assertEqual(computed["border"], "0px")
+                    self.assertEqual(computed["radius"], "0px")
+                    self.assertEqual(computed["background"], "rgba(0, 0, 0, 0)")
+                    self.assertEqual(computed["cursor"], "default")
+                    badge = page.locator(".credential-badge").first
+                    self.assertNotEqual(
+                        badge.evaluate("node => getComputedStyle(node).borderTopLeftRadius"), "0px"
+                    )
+                finally:
+                    page.close()
+
     def test_technology_marquee_hover_pause_and_mobile_swipe(self) -> None:
         """Desktop marquee pauses on hover; mobile keeps horizontal scrolling."""
         desktop = self.page_for(1366, reduced_motion="no-preference")
