@@ -161,5 +161,11 @@
     "mobileNavigation": "Mobile navigation",
     "externalLink": "opens in a new tab",
     "brandHome": "Andrea Carrillo, go to home"
+  },
+  "seo": {
+    "title": "Andrea Carrillo Oporto | Backend & Full Stack Developer",
+    "description": "Andrea Carrillo Oporto's portfolio: Backend and Full Stack development projects featuring C++, WebAssembly, web applications, microservices, and databases.",
+    "imageAlt": "Professional portfolio of Andrea Carrillo Oporto",
+    "locale": "en_US"
   }
 }
