@@ -242,3 +242,16 @@ test("navbar uses semantic lists and text-first active states", () => {
   assert.ok(navStyles.includes(".nav-actions .icon-button"));
   assert.ok(navStyles.includes("@media (prefers-reduced-motion: reduce)"));
 });
+
+test("navigation links have breathing room and remain mobile responsive", () => {
+  const css = load("src/styles/enhancements.css");
+  const navStart = css.indexOf("/* Navigation refinement: text links");
+  const nav = css.slice(navStart);
+  assert.ok(navStart >= 0, "navbar refinement should exist");
+  assert.ok(nav.includes("gap: clamp(28px, 2.9vw, 48px);"));
+  assert.ok(nav.includes("gap: 26px;"));
+  assert.ok(nav.includes("grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr)"));
+  assert.ok(nav.includes(".nav-container > .nav-links"));
+  assert.ok(nav.includes("@media (max-width: 1024px)"));
+  assert.match(nav, /\\.nav-container > \\.nav-links,[\\s\\S]*?display: none;/);
+});
