@@ -119,6 +119,42 @@ class PortfolioSmokeTests(unittest.TestCase):
                 finally:
                     page.close()
 
+    def test_portrait_and_footer_typography_have_room(self) -> None:
+        """Check the reported portrait overlap and clipped footer surname."""
+        for width in (390, 768, 1366, 1920):
+            with self.subTest(width=width):
+                page = self.page_for(width)
+                try:
+                    portrait = page.locator(".portrait-image").bounding_box()
+                    band = page.locator(".tech-strip").bounding_box()
+                    self.assertIsNotNone(portrait)
+                    self.assertIsNotNone(band)
+                    self.assertLessEqual(
+                        portrait["y"] + portrait["height"],
+                        band["y"] + 1,
+                        f"Portrait overlaps technology strip at {width}px",
+                    )
+
+                    name = page.locator(".footer-identity strong")
+                    typography = name.evaluate(
+                        """el => {
+                          const cs = getComputedStyle(el);
+                          const bounds = el.getBoundingClientRect();
+                          return {
+                            text: el.textContent.trim(),
+                            paddingEnd: parseFloat(cs.paddingInlineEnd),
+                            tracking: cs.letterSpacing,
+                            width: bounds.width,
+                            scrollWidth: el.scrollWidth,
+                          };
+                        }"""
+                    )
+                    self.assertEqual(typography["text"], "Andrea Carrillo")
+                    self.assertGreaterEqual(typography["paddingEnd"], 2)
+                    self.assertLessEqual(typography["scrollWidth"], typography["width"] + 1)
+                finally:
+                    page.close()
+
     def test_footer_and_external_credentials(self) -> None:
         page = self.page_for(390)
         try:
