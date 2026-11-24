@@ -795,6 +795,9 @@
 .footer-socials a:focus-visible {
   outline: 3px solid var(--focus-ring);
   outline-offset: 3px;
+  /* Keyboard focus must not animate from a zero-width outline. */
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: 0s;
 }
 
 @media (max-width: 760px) {
