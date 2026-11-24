@@ -7,45 +7,42 @@ function Certifications() {
   const { t } = useTranslation();
 
   return (
-    <section id="certifications" className="section-pad compact-section" aria-labelledby="certifications-heading">
+    <section
+      id="certifications"
+      className="section-pad compact-section certifications-section"
+      aria-labelledby="certifications-heading"
+    >
       <SectionHeader
         headingId="certifications-heading"
         eyebrowKey="certifications.eyebrow"
         titleKey="certifications.title"
         descriptionKey="certifications.description"
       />
-      <div className="cert-grid">
-        {CERTIFICATIONS.map(({ id, icon: Icon, title, code, statusKey, credentialUrl }) => {
-          const CardElement = credentialUrl ? "a" : "article";
 
-          return (
-            <CardElement
-              key={id}
-              className={`cert-card card reveal-up ${credentialUrl ? "cert-link" : "cert-unlinked"}`}
-              href={credentialUrl || undefined}
-              target={credentialUrl ? "_blank" : undefined}
-              rel={credentialUrl ? "noopener noreferrer" : undefined}
-              aria-label={credentialUrl ? `${title}: ${t("certifications.viewCredential")}, ${t("accessibility.externalLink")}` : undefined}
-            >
-              <div className="skill-icon">
-                <Icon aria-hidden="true" />
-              </div>
-              <div className="cert-content">
-                <span className="cert-status">{t(statusKey)}</span>
-                <h3>{title}</h3>
-                <p>{code}</p>
-                {credentialUrl ? (
-                  <span className="cert-action">
-                    {t("certifications.viewCredential")}
-                    <FaExternalLinkAlt aria-hidden="true" />
-                  </span>
-                ) : (
-                  <span className="cert-unlinked-note">{t("certifications.credentialPending")}</span>
-                )}
-              </div>
-            </CardElement>
-          );
-        })}
+      <div className="credential-badges" role="list">
+        {CERTIFICATIONS.map(({ id, title, code, badgeImage, credentialUrl }) => (
+          <a
+            key={id}
+            role="listitem"
+            className="credential-badge"
+            href={credentialUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${code} — ${title}: ${t("certifications.viewCredential")}, ${t("accessibility.externalLink")}`}
+            title={title}
+          >
+            <img
+              src={badgeImage}
+              width="60"
+              height="60"
+              loading="lazy"
+              decoding="async"
+              alt=""
+            />
+            <span className="credential-code">{code}</span>
+            <FaExternalLinkAlt aria-hidden="true" className="credential-external" />
+          </a>
+        ))}
       </div>
     </section>
   );
