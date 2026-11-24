@@ -2,10 +2,13 @@
 
 Requires: pip install playwright==1.56.0
           python -m playwright install chromium
+          npm install --prefix /tmp/portfolio-axe --no-save axe-core@4.10.3
+          AXE_SOURCE=/tmp/portfolio-axe/node_modules/axe-core/axe.min.js
 Runs locally after: pnpm build
 """
 from __future__ import annotations
 
+import json
 import os
 import subprocess
 import time
@@ -19,6 +22,7 @@ from playwright.sync_api import sync_playwright
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "http://127.0.0.1:4173"
 CAPTURES = ROOT / "artifacts" / "screenshots"
+AUDITS = ROOT / "artifacts" / "accessibility"
 
 
 def await_preview(timeout_seconds: int = 30) -> None:
@@ -37,6 +41,7 @@ class PortfolioSmokeTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         CAPTURES.mkdir(parents=True, exist_ok=True)
+        AUDITS.mkdir(parents=True, exist_ok=True)
         cls.server = subprocess.Popen(
             ["pnpm", "preview", "--host", "127.0.0.1", "--port", "4173", "--strictPort"],
             cwd=ROOT,
@@ -126,6 +131,108 @@ class PortfolioSmokeTests(unittest.TestCase):
             self.assertTrue(page.locator("#contact-heading").is_visible())
         finally:
             page.close()
+
+
+    def test_axe_accessibility_in_both_themes(self) -> None:
+        """Audit actual browser-computed accessibility in light and dark themes.
+
+        axe-core detects contrast after CSS colors, transparent surfaces, and
+        component styles resolve. Gradient/image contrast may still require
+        manual review; axe marks some cases as incomplete.
+        """
+        axe_source = os.environ.get("AXE_SOURCE")
+        if not axe_source:
+            self.skipTest("Set AXE_SOURCE to a pinned axe-core/axe.min.js to run this audit")
+        self.assertTrue(Path(axe_source).is_file(), "axe-core source file is missing")
+
+        for theme in ("light", "dark"):
+            with self.subTest(theme=theme):
+                page = self.page_for(1366)
+                try:
+                    if page.locator("html").get_attribute("data-theme") != theme:
+                        page.locator(".nav-actions .icon-button").click()
+                    page.wait_for_function(
+                        "(theme) => document.documentElement.dataset.theme === theme",
+                        arg=theme,
+                    )
+                    page.add_script_tag(path=axe_source)
+                    result = page.evaluate(
+                        """async () => {
+                          const report = await window.axe.run(document, {
+                            runOnly: {
+                              type: 'tag',
+                              values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'],
+                            },
+                            rules: { 'color-contrast': { enabled: true } },
+                          });
+                          return {
+                            violations: report.violations.map(v => ({
+                              id: v.id,
+                              impact: v.impact,
+                              nodes: v.nodes.map(n => ({
+                                target: n.target,
+                                summary: n.failureSummary,
+                              })),
+                            })),
+                            incomplete: report.incomplete.map(v => ({
+                              id: v.id, count: v.nodes.length,
+                            })),
+                            passes: report.passes.map(v => v.id),
+                          };
+                        }"""
+                    )
+                    (AUDITS / f"axe-{theme}.json").write_text(
+                        json.dumps(result, ensure_ascii=False, indent=2),
+                        encoding="utf-8",
+                    )
+                    failures = json.dumps(result["violations"], ensure_ascii=False, indent=2)
+                    self.assertEqual(
+                        result["violations"], [],
+                        f"axe-core violations in {theme} theme:\\n{failures}",
+                    )
+                finally:
+                    page.close()
+
+    def test_keyboard_focus_is_visually_apparent(self) -> None:
+        """Focusable controls need a visible outline in both themes."""
+        for theme in ("light", "dark"):
+            with self.subTest(theme=theme):
+                page = self.page_for(1366)
+                try:
+                    if page.locator("html").get_attribute("data-theme") != theme:
+                        page.locator(".nav-actions .icon-button").click()
+                    page.wait_for_function(
+                        "(theme) => document.documentElement.dataset.theme === theme",
+                        theme,
+                    )
+                    # Keyboard modality activates :focus-visible.
+                    page.keyboard.press("Tab")
+                    for selector in (
+                        '.nav-links a[href="#projects"]',
+                        '.hero-cta-row a[href="#projects"]',
+                        '.credential-badge',
+                        '.footer-email',
+                    ):
+                        element = page.locator(selector).first
+                        element.focus()
+                        state = element.evaluate(
+                            """node => {
+                              const css = getComputedStyle(node);
+                              return {
+                                focusVisible: node.matches(':focus-visible'),
+                                outline: css.outlineStyle,
+                                width: parseFloat(css.outlineWidth),
+                              };
+                            }"""
+                        )
+                        self.assertTrue(
+                            state["focusVisible"] and
+                            state["outline"] not in ("none", "hidden") and
+                            state["width"] >= 2,
+                            f"Missing keyboard focus indication for {selector} in {theme}: {state}",
+                        )
+                finally:
+                    page.close()
 
     def test_theme_and_language_controls(self) -> None:
         page = self.page_for(1366)
