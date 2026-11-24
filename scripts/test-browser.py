@@ -119,6 +119,40 @@ class PortfolioSmokeTests(unittest.TestCase):
                 finally:
                     page.close()
 
+    def test_navigation_shows_one_primary_section_at_a_time(self) -> None:
+        """Short sections should occupy the visible viewport without clipping longer ones."""
+        page = self.page_for(1366, height=900)
+        try:
+            for target, next_target in (
+                ("about", "skills"),
+                ("skills", "projects"),
+                ("certifications", "contact"),
+            ):
+                with self.subTest(section=target):
+                    page.locator(f'.nav-links a[href="#{target}"]').click()
+                    self.assertTrue(page.url.endswith(f"#{target}"))
+                    bounds = page.evaluate(
+                        """([target, nextTarget]) => {
+                          const current = document.getElementById(target).getBoundingClientRect();
+                          const next = document.getElementById(nextTarget).getBoundingClientRect();
+                          return {
+                            top: current.top,
+                            nextTop: next.top,
+                            viewport: window.innerHeight,
+                          };
+                        }""",
+                        [target, next_target],
+                    )
+                    self.assertGreaterEqual(bounds["top"], 65)
+                    self.assertLessEqual(bounds["top"], 100)
+                    self.assertGreaterEqual(
+                        bounds["nextTop"],
+                        bounds["viewport"] - 3,
+                        f"Next section appears too early after navigating to {target}: {bounds}",
+                    )
+        finally:
+            page.close()
+
     def test_portrait_and_footer_typography_have_room(self) -> None:
         """Check the reported portrait overlap and clipped footer surname."""
         for width in (390, 768, 1366, 1920):
