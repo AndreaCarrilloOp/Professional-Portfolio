@@ -5,12 +5,14 @@ const FRAME_INTERVAL_MS = 1000 / 30;
 const FRAME_REFERENCE_MS = 1000 / 60;
 
 const LIGHT_PALETTE = {
-  point: [31, 79, 122],
-  line: [111, 132, 154],
-  glow: [59, 113, 143],
-  lineAlpha: 0.09,
-  glowAlpha: 0.06,
-  pointAlpha: 0.62,
+  // Steel and sky blues add definition against the light ice background.
+  point: [47, 79, 122],
+  line: [47, 79, 122],
+  glow: [107, 143, 191],
+  lineAlpha: 0.27,
+  glowAlpha: 0.12,
+  pointAlpha: 0.84,
+  lineWidth: 1,
 };
 
 const DARK_PALETTE = {
@@ -20,6 +22,7 @@ const DARK_PALETTE = {
   lineAlpha: 0.14,
   glowAlpha: 0.1,
   pointAlpha: 0.78,
+  lineWidth: 0.75,
 };
 
 function createParticles(width, height, count, isSmallViewport) {
@@ -63,6 +66,7 @@ function interpolatePalette(from, to, progress) {
     lineAlpha: interpolateValue(from.lineAlpha, to.lineAlpha, progress),
     glowAlpha: interpolateValue(from.glowAlpha, to.glowAlpha, progress),
     pointAlpha: interpolateValue(from.pointAlpha, to.pointAlpha, progress),
+    lineWidth: interpolateValue(from.lineWidth, to.lineWidth, progress),
   };
 }
 
@@ -199,7 +203,7 @@ export default function ConstellationBackground({ darkMode = true }) {
           context.moveTo(a.x, a.y);
           context.lineTo(b.x, b.y);
           context.strokeStyle = `rgba(${palette.line[0]}, ${palette.line[1]}, ${palette.line[2]}, ${alpha})`;
-          context.lineWidth = 0.75;
+          context.lineWidth = palette.lineWidth;
           context.stroke();
         }
       }
