@@ -106,7 +106,7 @@ function Hero({ darkMode }) {
       </div>
 
       <div
-        className={`tech-strip reveal-up delay-2${techPaused ? " tech-strip-paused" : ""}`}
+        className="tech-strip reveal-up delay-2"
         role="group"
         aria-label={t("hero.techLabel")}
       >
@@ -124,7 +124,7 @@ function Hero({ darkMode }) {
           </button>
         </div>
         <div className="tech-carousel" tabIndex={0} role="region" aria-label={t("hero.techLabel")}>
-          <div className="tech-track">
+          <div className={`tech-track${techPaused ? " tech-track-paused" : ""}`}>
             {TECH_STACK.map(({ id, label, icon: Icon }) => (
               <div className="tech-chip" key={id}>
                 <Icon aria-hidden="true" />
