@@ -232,24 +232,23 @@ function Navbar({ darkMode, onToggleTheme }) {
           />
         </a>
 
-        <div className="nav-links">
+        <ul className="nav-links">
           {NAV_ITEMS.map((item) => {
-            const Icon = item.icon;
             const isActive = activeSection === item.id;
             return (
-              <a
-                key={item.id}
-                href={item.href}
-                className={`nav-link ${isActive ? "nav-link-active" : ""}`}
-                aria-current={isActive ? "location" : undefined}
-                onClick={(event) => handleNavClick(event, item.id)}
-              >
-                <Icon className="nav-link-icon" aria-hidden="true" />
-                <span>{t(item.labelKey)}</span>
-              </a>
+              <li key={item.id}>
+                <a
+                  href={item.href}
+                  className={`nav-link ${isActive ? "nav-link-active" : ""}`}
+                  aria-current={isActive ? "location" : undefined}
+                  onClick={(event) => handleNavClick(event, item.id)}
+                >
+                  <span>{t(item.labelKey)}</span>
+                </a>
+              </li>
             );
           })}
-        </div>
+        </ul>
 
         <div className="nav-actions">
           <a
@@ -309,29 +308,27 @@ function Navbar({ darkMode, onToggleTheme }) {
         ref={mobileMenuRef}
       >
         <div className="bento-handle" aria-hidden="true" />
-        <div className="bento-grid">
+        <ul className="bento-grid">
           {NAV_ITEMS.map((item, index) => {
             const Icon = item.icon;
             const isActive = activeSection === item.id;
             return (
-              <a
-                key={item.id}
-                href={item.href}
-                className={`bento-link ${isActive ? "bento-link-active" : ""}`}
-                aria-current={isActive ? "location" : undefined}
-                onClick={(event) => handleNavClick(event, item.id)}
-                tabIndex={open ? 0 : -1}
-                ref={index === 0 ? firstMobileLinkRef : undefined}
-              >
-                <span className="bento-index" aria-hidden="true">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <Icon aria-hidden="true" />
-                <span>{t(item.labelKey)}</span>
-              </a>
+              <li key={item.id}>
+                <a
+                  href={item.href}
+                  className={`bento-link ${isActive ? "bento-link-active" : ""}`}
+                  aria-current={isActive ? "location" : undefined}
+                  onClick={(event) => handleNavClick(event, item.id)}
+                  tabIndex={open ? 0 : -1}
+                  ref={index === 0 ? firstMobileLinkRef : undefined}
+                >
+                  <Icon aria-hidden="true" />
+                  <span>{t(item.labelKey)}</span>
+                </a>
+              </li>
             );
           })}
-        </div>
+        </ul>
         <a
           href="#contact"
           className="bento-contact-cta"
