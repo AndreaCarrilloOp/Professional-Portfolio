@@ -48,6 +48,9 @@ test("hero carousel stays accessible without duplicated announcements", () => {
   const css = load("src/styles/components.css") + load("src/styles/enhancements.css");
   assert.match(hero, /className="tech-carousel" tabIndex=\{0\}/);
   assert.match(hero, /className="tech-track"/);
+  assert.match(hero, /className="tech-motion-toggle"/);
+  assert.match(hero, /aria-controls="technology-marquee"/);
+  assert.match(css, /tech-carousel-paused/);
   assert.ok(hero.includes("-clone"));
   assert.match(hero, /aria-hidden="true"/);
   assert.match(css, /prefers-reduced-motion: reduce/);
