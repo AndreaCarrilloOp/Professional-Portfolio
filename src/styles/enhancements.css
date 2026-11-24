@@ -2339,6 +2339,23 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   color: var(--accent-champagne);
 }
 
+/* A second, quiet layer of champagne: small cues rather than filled surfaces. */
+.hero-kicker::after {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  margin-inline-start: 12px;
+  vertical-align: middle;
+  background: var(--accent-champagne);
+}
+
+.projects-grid .project-evidence summary::before,
+.projects-grid .project-links a svg,
+.credential-badges .credential-code {
+  color: var(--accent-champagne);
+}
+
 /* High-contrast preferences use solid surfaces and stronger visual boundaries.
    Core colors remain defined by the existing theme tokens. */
 @media (prefers-contrast: more) {
