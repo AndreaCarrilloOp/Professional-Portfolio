@@ -1338,7 +1338,7 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
 .section-title {
   max-width: 24ch;
   line-height: 1.12;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.025em;
   text-wrap: balance;
 }
 
@@ -1404,7 +1404,7 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   background: var(--surface-soft);
   box-shadow: none;
   color: var(--muted);
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .dark .tag {
@@ -1425,7 +1425,7 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   box-shadow: none;
   color: var(--muted);
   font-size: 0.8rem;
-  font-weight: 650;
+  font-weight: 600;
   letter-spacing: 0.02em;
   text-transform: none;
 }
@@ -1628,7 +1628,7 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
 }
 
 .project-evidence summary {
-  font-weight: 750;
+  font-weight: 700;
 }
 
 .certifications-section .section-header-center {
@@ -1675,7 +1675,7 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   background: var(--primary-soft);
   color: var(--text);
   font-size: 0.86rem;
-  font-weight: 800;
+  font-weight: 700;
   white-space: nowrap;
   text-decoration: none;
 }
@@ -1705,7 +1705,7 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   border-radius: 14px;
   background: var(--primary-soft);
   color: var(--text);
-  font-weight: 800;
+  font-weight: 700;
   text-decoration: none;
 }
 
@@ -1774,7 +1774,7 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
 .skill-group-label {
   margin: 0;
   font-size: 0.72rem;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.02em;
   color: var(--muted);
 }
@@ -1886,7 +1886,7 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   box-shadow: none;
   color: var(--muted);
   font-size: 0.79rem;
-  font-weight: 650;
+  font-weight: 600;
   line-height: 1.45;
   cursor: default;
   text-transform: none;
@@ -1979,7 +1979,7 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   box-shadow: none;
   color: var(--muted);
   font-size: 0.94rem;
-  font-weight: 680;
+  font-weight: 600;
   letter-spacing: 0.012em;
   white-space: nowrap;
   text-decoration: none;
@@ -2018,7 +2018,7 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
 }
 
 .nav-links .nav-link-active {
-  font-weight: 780;
+  font-weight: 700;
 }
 
 .nav-links .nav-link-active::after,
@@ -2088,7 +2088,7 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   box-shadow: none;
   color: var(--muted);
   font-size: 0.94rem;
-  font-weight: 650;
+  font-weight: 600;
   text-align: start;
 }
 
@@ -2115,7 +2115,7 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
 }
 
 .mobile-bento-menu .bento-link-active {
-  font-weight: 780;
+  font-weight: 700;
 }
 
 .mobile-bento-menu .bento-contact-cta {
@@ -2354,6 +2354,24 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
 .projects-grid .project-links a svg,
 .credential-badges .credential-code {
   color: var(--accent-champagne);
+}
+
+/* Minimal engineering typography: mono only for short technical signposts, never paragraphs. */
+.hero-kicker,
+.section-header .eyebrow,
+.skill-group-label,
+.project-meta span,
+.dark .project-meta span,
+.credential-badges .credential-code {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.tag-cloud > .tag:nth-child(n),
+.dark .tag-cloud > .tag:nth-child(n),
+.tech-chip small {
+  font-family: var(--font-sans);
 }
 
 /* High-contrast preferences use solid surfaces and stronger visual boundaries.
