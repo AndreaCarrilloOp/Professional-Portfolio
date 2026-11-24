@@ -40,7 +40,7 @@ for (const file of files) {
     const color = match[0].toLowerCase();
     if (allowed.has(color)) continue;
     // The ACO accent belongs only to dedicated branding SVG assets.
-    if (relative(root, file).split(/[/\\]/).join("/").startsWith("public/branding/") && extname(file) === ".svg" && ["#008b8b", "#32d8ce"].includes(color)) continue;
+    if (relative(root, file).split(/[/\\]/).join("/").startsWith("public/branding/") && extname(file) === ".svg" && ["008b8b", "32d8ce"].includes(color.slice(1))) continue;
 
     const line = content.slice(0, match.index).split("\n").length;
     violations.push(`${relative(root, file)}:${line}  ${match[0]}`);
