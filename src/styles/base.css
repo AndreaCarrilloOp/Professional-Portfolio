@@ -91,22 +91,15 @@ main,
 .section-pad {
   width: min(var(--content-max), calc(100% - var(--content-gutter)));
   margin: 0 auto;
-  /* Each navigation destination fills the usable viewport when its content fits.
-     Tall sections retain natural height and remain fully scrollable. */
-  min-height: calc(100vh - 88px);
-  min-height: calc(100svh - 88px);
-  display: grid;
-  align-content: center;
-  padding: clamp(48px, 4.5vw, 68px) 0;
+  /* Content-led sections avoid empty full-screen panels. */
+  padding: clamp(44px, 4.2vw, 64px) 0;
   scroll-margin-top: 88px;
 }
 .compact-section {
-  padding-block: clamp(36px, 3.5vw, 52px);
+  padding-block: clamp(30px, 3.2vw, 44px);
 }
 @media (max-width: 720px) {
   .section-pad {
-    min-height: calc(100vh - 80px);
-    min-height: calc(100svh - 80px);
     scroll-margin-top: 80px;
   }
 }
