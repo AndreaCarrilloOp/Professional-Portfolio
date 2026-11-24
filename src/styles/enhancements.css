@@ -583,12 +583,6 @@ main:focus-visible {
   border-color: color-mix(in srgb, var(--primary) 24%, transparent);
 }
 
-.nav-link-active .nav-link-icon,
-.nav-link:hover .nav-link-icon,
-.nav-link:focus-visible .nav-link-icon {
-  opacity: 1;
-  transform: none;
-}
 
 .icon-button,
 .language-button,
@@ -640,12 +634,6 @@ main:focus-visible {
   text-align: left;
 }
 
-.bento-index {
-  color: var(--primary);
-  font-size: 0.72rem;
-  font-weight: 950;
-  letter-spacing: 0.08em;
-}
 
 .bento-link svg {
   font-size: 1.05rem;
@@ -801,9 +789,6 @@ main:focus-visible {
   display: none;
 }
 
-.nav-link-icon {
-  display: none;
-}
 
 .nav-link-active,
 .nav-link:hover,
