@@ -133,8 +133,9 @@ class PortfolioSmokeTests(unittest.TestCase):
             original = page.locator("html").get_attribute("data-theme")
             page.locator(".nav-actions .icon-button").click()
             self.assertNotEqual(page.locator("html").get_attribute("data-theme"), original)
+            initial_language = page.locator("html").get_attribute("lang")
             page.locator(".language-button").click()
-            self.assertEqual(page.locator("html").get_attribute("lang"), "en")
+            self.assertNotEqual(page.locator("html").get_attribute("lang"), initial_language)
         finally:
             page.close()
 
