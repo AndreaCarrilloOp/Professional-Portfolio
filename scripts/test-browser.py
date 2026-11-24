@@ -124,7 +124,7 @@ class PortfolioSmokeTests(unittest.TestCase):
                     page.close()
 
     def test_noninteractive_tags_are_text_and_static_cards_are_flat(self) -> None:
-        """Tags should be flat rectangular labels, not pills or buttons."""
+        """Static editorial cards may have discreet 10px corners; tags remain noninteractive."""
         for width in (390, 1366):
             with self.subTest(width=width):
                 page = self.page_for(width)
@@ -132,7 +132,7 @@ class PortfolioSmokeTests(unittest.TestCase):
                     for selector in (".skills-grid .skill-card", ".projects-grid .project-card"):
                         el = page.locator(selector).first
                         self.assertEqual(
-                            el.evaluate("node => getComputedStyle(node).borderTopLeftRadius"), "0px"
+                            el.evaluate("node => getComputedStyle(node).borderTopLeftRadius"), "10px"
                         )
                         self.assertEqual(
                             el.evaluate("node => getComputedStyle(node).cursor"), "default"
@@ -169,7 +169,16 @@ class PortfolioSmokeTests(unittest.TestCase):
         """Desktop marquee pauses on hover; mobile keeps horizontal scrolling."""
         desktop = self.page_for(1366, reduced_motion="no-preference")
         try:
-            self.assertEqual(desktop.locator(".tech-motion-toggle").count(), 0)
+            control = desktop.locator(".tech-motion-toggle")
+            self.assertEqual(control.count(), 1)
+            self.assertEqual(control.get_attribute("aria-controls"), "technology-marquee")
+            control.click()
+            self.assertEqual(track.evaluate("el => getComputedStyle(el).animationPlayState"), "paused")
+            self.assertIn("tech-carousel-paused", desktop.locator(".tech-carousel").get_attribute("class"))
+            desktop.mouse.move(2, 2)
+            self.assertEqual(track.evaluate("el => getComputedStyle(el).animationPlayState"), "paused")
+            control.click()
+            self.assertEqual(track.evaluate("el => getComputedStyle(el).animationPlayState"), "running")
             track = desktop.locator(".tech-track")
             self.assertEqual(
                 track.evaluate("el => getComputedStyle(el).animationPlayState"),
