@@ -76,6 +76,20 @@ test("navigation restores history and skill tags are grouped logically", () => {
   }
 });
 
+test("noninteractive tags are semantic lists and only clickable badges stay rounded", () => {
+  const skills = load("src/components/sections/Skills.jsx");
+  const projects = load("src/components/sections/Projects.jsx");
+  const css = load("src/styles/enhancements.css");
+  assert.match(skills, /<ul className="tag-cloud">/);
+  assert.match(skills, /<li key=\{item\} className="tag">/);
+  assert.match(projects, /<ul className="tag-cloud"/);
+  assert.match(projects, /<li className="tag" key=\{tech\}>/);
+  assert.match(css, /\.tag-cloud > \.tag:nth-child\(n\)/);
+  assert.match(css, /\.skills-grid \.skill-card[\s\S]*?border-radius: 0/);
+  assert.match(css, /\.projects-grid \.project-card[\s\S]*?border-radius: 0/);
+  assert.match(load("src/styles/components.css"), /\.credential-badge \{[\s\S]*?border-radius: 16px/);
+});
+
 test("portfolio prioritizes projects and preserves four skills categories", () => {
   const app = load("src/App.jsx");
   const order = ["<Hero ", "<Projects />", "<Skills />", "<About />", "<Certifications />"];
