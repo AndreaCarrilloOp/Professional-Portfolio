@@ -106,6 +106,10 @@ test("theme, contrast and reduced-motion fallbacks remain available", () => {
   assert.match(tokens, /--bg:\s*#96a9bf/);
   assert.doesNotMatch(tokens, /--bg:\s*#ffffff/);
   assert.match(tokens, /--palette-violet:\s*#c9a7bf/);
+  assert.match(tokens, /--accent-champagne:\s*#4b3620/);
+  assert.match(tokens, /--accent-champagne:\s*#d2b77e/);
+  assert.match(styles, /--footer-accent: var\(--palette-champagne\)/);
+  assert.match(styles, /--footer-accent: var\(--palette-bronze\)/);
   assert.match(tokens, /--bg:\s*#0c1229/);
   assert.match(tokens, /--bg:\s*#96a9bf/);
   assert.match(styles, /prefers-contrast: more/);
