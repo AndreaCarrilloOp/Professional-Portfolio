@@ -285,8 +285,8 @@ test("midnight nebula themes keep page and browser colors synchronized", () => {
   assert.ok(tokens.includes("--primary-strong: #43315e"));
   assert.ok(tokens.includes("--card: #bbc2cb"));
   assert.ok(tokens.includes("--card: #273245"));
-  assert.ok(html.includes("#A9B1BF") && html.includes("#151e2c"));
-  assert.ok(app.includes("#A9B1BF") && app.includes("#151e2c"));
+  assert.ok(html.includes("#A9B1BF") && html.includes("#151E2C"));
+  assert.ok(app.includes("#A9B1BF") && app.includes("#151E2C"));
   for (const file of ["aco-light.svg", "aco-dark.svg", "favicon.svg"]) {
     const svg = load(`public/branding/${file}`);
     assert.doesNotMatch(svg, /#(?:47161F|5B1F2A|C9969E|008B8B|32D8CE)/i, `legacy accent in ${file}`);
@@ -313,8 +313,8 @@ test("footer colors invert across themes without changing the content structure"
   assert.ok(rules.includes("--footer-muted: var(--palette-dark-muted)"));
   assert.ok(rules.includes("--footer-background-raised: var(--satin-silver)"));
   assert.ok(rules.includes("--footer-text: var(--palette-ink)"));
-  assert.ok(rules.includes("--footer-accent: var(--palette-sky)"));
-  assert.ok(rules.includes("--footer-accent: var(--palette-navy)"));
+  assert.ok(rules.includes("--footer-accent: var(--palette-violet)"));
+  assert.ok(rules.includes("--footer-accent: var(--palette-steel)"));
   assert.ok(rules.includes("--focus-ring: var(--footer-focus)"));
   assert.ok(rules.includes("background: var(--footer-link-surface)"));
   assert.ok(rules.includes("background: var(--footer-link-hover)"));
