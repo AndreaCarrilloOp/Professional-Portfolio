@@ -85,13 +85,13 @@ function Projects() {
                   </div>
                 </dl>
               </details>
-              <div className="tag-cloud">
+              <ul className="tag-cloud" aria-label={t("projects.technologiesLabel")}>
                 {project.techs.map((tech) => (
-                  <span className="tag" key={tech}>
+                  <li className="tag" key={tech}>
                     {tech}
-                  </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
               <div className="project-links">
                 {project.repo && (
                   <a
