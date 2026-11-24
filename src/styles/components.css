@@ -445,21 +445,6 @@
   min-width: 0;
   transition: var(--motion-duration-fast) var(--motion-ease-standard);
 }
-.project-card-no-image {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-}
-
-.project-card-no-image .project-content {
-  flex: 1;
-  justify-content: flex-start;
-}
-
-.project-card-no-image .project-content > p {
-  max-width: 64ch;
-}
-
 .featured-project {
   grid-column: 1 / -1;
   display: grid;
