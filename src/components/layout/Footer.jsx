@@ -8,9 +8,11 @@ function Footer() {
     <footer className="footer">
       <Contact />
       <div className="footer-inner">
-        <strong>{COPYRIGHT_NAME}</strong>
-        <span>{t("footer.built")}</span>
-        <small>© 2026 · {t("footer.rights")}</small>
+        <div className="footer-identity">
+          <strong>{COPYRIGHT_NAME}</strong>
+          <small>© 2026 · {t("footer.rights")}</small>
+        </div>
+        <span className="footer-credit">{t("footer.built")}</span>
       </div>
     </footer>
   );
