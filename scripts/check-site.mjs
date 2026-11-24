@@ -308,10 +308,12 @@ test("footer colors invert across themes without changing the content structure"
   assert.match(rules, /\.dark \.footer\s*\{/);
   assert.ok(rules.includes("--footer-background: var(--satin-black)"));
   assert.ok(rules.includes("--footer-background: var(--palette-ice)"));
-  assert.ok(rules.includes("--footer-text: var(--palette-ice)"));
+  assert.ok(rules.includes("--footer-text: var(--palette-light-text)"));
+  assert.ok(rules.includes("--footer-muted: var(--palette-dark-muted)"));
+  assert.ok(rules.includes("--footer-background-raised: var(--satin-silver)"));
   assert.ok(rules.includes("--footer-text: var(--palette-ink)"));
   assert.ok(rules.includes("--footer-accent: var(--palette-sky)"));
-  assert.ok(rules.includes("--footer-accent: var(--palette-steel)"));
+  assert.ok(rules.includes("--footer-accent: var(--palette-navy)"));
   assert.ok(rules.includes("--focus-ring: var(--footer-focus)"));
   assert.ok(rules.includes("background: var(--footer-link-surface)"));
   assert.ok(rules.includes("background: var(--footer-link-hover)"));
