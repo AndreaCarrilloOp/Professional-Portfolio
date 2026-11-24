@@ -9,6 +9,7 @@ const LIGHT_PALETTE = {
   point: [75, 40, 72],
   line: [36, 56, 101],
   glow: [201, 167, 191],
+  sparkle: [75, 54, 32], // dark bronze for occasional highlighted stars
   lineAlpha: 0.27,
   glowAlpha: 0.12,
   pointAlpha: 0.84,
@@ -19,6 +20,7 @@ const DARK_PALETTE = {
   point: [220, 227, 238],
   line: [201, 167, 191],
   glow: [178, 199, 236],
+  sparkle: [210, 183, 126], // muted champagne for occasional highlighted stars
   lineAlpha: 0.14,
   glowAlpha: 0.1,
   pointAlpha: 0.78,
@@ -63,6 +65,7 @@ function interpolatePalette(from, to, progress) {
     point: mixChannel(from.point, to.point),
     line: mixChannel(from.line, to.line),
     glow: mixChannel(from.glow, to.glow),
+    sparkle: mixChannel(from.sparkle, to.sparkle),
     lineAlpha: interpolateValue(from.lineAlpha, to.lineAlpha, progress),
     glowAlpha: interpolateValue(from.glowAlpha, to.glowAlpha, progress),
     pointAlpha: interpolateValue(from.pointAlpha, to.pointAlpha, progress),
@@ -208,7 +211,7 @@ export default function ConstellationBackground({ darkMode = true }) {
         }
       }
 
-      for (const particle of particles) {
+      for (const [index, particle] of particles.entries()) {
         const pulse = prefersReducedMotion
           ? 0.78
           : 0.68 + Math.sin(particle.twinkle) * 0.18;
@@ -235,7 +238,9 @@ export default function ConstellationBackground({ darkMode = true }) {
         context.fill();
 
         context.beginPath();
-        context.fillStyle = `rgba(${palette.point[0]}, ${palette.point[1]}, ${palette.point[2]}, ${palette.pointAlpha})`;
+        // One restrained champagne/bronze star per eleven existing particles.
+        const starColor = index % 11 === 0 ? palette.sparkle : palette.point;
+        context.fillStyle = `rgba(${starColor[0]}, ${starColor[1]}, ${starColor[2]}, ${palette.pointAlpha})`;
         context.arc(particle.x, particle.y, radius, 0, Math.PI * 2);
         context.fill();
       }
