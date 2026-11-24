@@ -11,7 +11,7 @@
   />
   <meta name="author" content="Andrea Carrillo Oporto" />
   <meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
-  <meta name="theme-color" content="#AEB8B7" />
+  <meta name="theme-color" content="#A9B1BF" />
   <script>
     (() => {
       try {
@@ -23,20 +23,20 @@
         root.classList.toggle("dark", useDark);
         root.dataset.theme = useDark ? "dark" : "light";
         root.style.colorScheme = useDark ? "dark" : "light";
-        root.style.backgroundColor = useDark ? "#192226" : "#AEB8B7";
+        root.style.backgroundColor = useDark ? "#151e2c" : "#A9B1BF";
         document.querySelector('meta[name="theme-color"]')?.setAttribute(
           "content",
-          useDark ? "#192226" : "#AEB8B7",
+          useDark ? "#151e2c" : "#A9B1BF",
         );
       } catch {
-        document.documentElement.style.backgroundColor = "#AEB8B7";
+        document.documentElement.style.backgroundColor = "#A9B1BF";
       }
     })();
   </script>
   <style>
-    html { background: #AEB8B7; }
+    html { background: #A9B1BF; }
     html.dark,
-    html[data-theme="dark"] { background: #192226; }
+    html[data-theme="dark"] { background: #151e2c; }
     body,
     #root { min-height: 100vh; background: transparent; }
   </style>
