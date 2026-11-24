@@ -53,26 +53,26 @@ function Hero({ darkMode }) {
               <FaRegCircle aria-hidden="true" /> {t("hero.status")}
             </p>
             <div className="social-row hero-social-links" role="group" aria-label={t("hero.socialLabel")}>
-            {heroSocialLinks.map(({ id, label, href, icon: Icon }) => {
-              const isExternal = !href.startsWith("mailto");
-              return (
-                <a
-                  key={id}
-                  href={href}
-                  target={isExternal ? "_blank" : undefined}
-                  rel={isExternal ? "noreferrer" : undefined}
-                  className="social-link"
-                  aria-label={
-                    isExternal
-                      ? `${label}: Andrea Carrillo, ${t("accessibility.externalLink")}`
-                      : `${label}: Andrea Carrillo`
-                  }
-                >
-                  <Icon aria-hidden="true" />
-                  <span className="sr-only">{label}</span>
-                </a>
-              );
-            })}
+              {heroSocialLinks.map(({ id, label, href, icon: Icon }) => {
+                const isExternal = !href.startsWith("mailto");
+                return (
+                  <a
+                    key={id}
+                    href={href}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noreferrer" : undefined}
+                    className="social-link"
+                    aria-label={
+                      isExternal
+                        ? `${label}: Andrea Carrillo, ${t("accessibility.externalLink")}`
+                        : `${label}: Andrea Carrillo`
+                    }
+                  >
+                    <Icon aria-hidden="true" />
+                    <span className="sr-only">{label}</span>
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>
