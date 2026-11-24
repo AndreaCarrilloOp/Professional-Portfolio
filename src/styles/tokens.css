@@ -1,6 +1,6 @@
-/* ACO — Azul Medianoche & Ciruela.
+/* ACO — Azul Medianoche, Ciruela & Champagne.
  * Solid steel-blue surfaces in light mode, midnight navy in dark mode.
- * Plum is a restrained accent; theme-specific tokens are contrast-audited.
+ * Champagne is a restrained tertiary accent; its bronze counterpart stays legible on steel blue.
  * Legacy palette-* names remain for existing component compatibility.
  */
 :root {
@@ -20,7 +20,9 @@
   --palette-dark-card: #24314e;
   --palette-violet: #c9a7bf;
   --palette-border: #314564;
-  --palette-white: #ffffff; /* On dark interactive surfaces only; never a page background. */
+  --palette-white: #ffffff; /* Text on dark surfaces only, never a page background. */
+  --palette-champagne: #d2b77e;
+  --palette-bronze: #4b3620;
 
   /* Defined steel-blue surfaces with navy and deep-plum text accents. */
   --bg: #96a9bf;
@@ -45,6 +47,7 @@
   --secondary: #243865;
   --on-primary: #ffffff;
   --focus-ring: #243865;
+  --accent-champagne: #4b3620;
 
   /* Component aliases inherit the same coordinated palette. */
   --accent-blue: #243865;
@@ -162,6 +165,7 @@
   --secondary: #b7c7de;
   --on-primary: #0c1229;
   --focus-ring: #dce3ee;
+  --accent-champagne: #d2b77e;
 
   --accent-blue: #b2c7ec;
   --accent-blue-soft: color-mix(in srgb, var(--palette-sky) 18%, transparent);
