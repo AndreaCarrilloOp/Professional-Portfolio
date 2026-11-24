@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 
 const PALETTE_TRANSITION_MS = 340;
+const FRAME_INTERVAL_MS = 1000 / 30;
+const FRAME_REFERENCE_MS = 1000 / 60;
 
 const LIGHT_PALETTE = {
   point: [31, 79, 122],
@@ -122,6 +124,7 @@ export default function ConstellationBackground({ darkMode = true }) {
     );
 
     let animationFrame = 0;
+    let previousFrameTime = 0;
     let width = 0;
     let height = 0;
     let particles = [];
@@ -150,7 +153,16 @@ export default function ConstellationBackground({ darkMode = true }) {
       return palette;
     };
 
-    const draw = () => {
+    const draw = (timestamp = performance.now()) => {
+      // Limit background-only rendering to 30 fps to reduce CPU work.
+      // Keep motion speed stable even when frames are skipped.
+      if (isRunning && !prefersReducedMotion && timestamp - previousFrameTime < FRAME_INTERVAL_MS) {
+        animationFrame = window.requestAnimationFrame(draw);
+        return;
+      }
+      const elapsed = previousFrameTime ? timestamp - previousFrameTime : FRAME_INTERVAL_MS;
+      previousFrameTime = timestamp;
+      const movementScale = Math.min(2.5, elapsed / FRAME_REFERENCE_MS);
       const palette = resolvePalette();
       const isSmallViewport = width <= 720;
       const connectionDistance = isSmallViewport
@@ -161,9 +173,9 @@ export default function ConstellationBackground({ darkMode = true }) {
 
       if (!prefersReducedMotion) {
         for (const particle of particles) {
-          particle.x += particle.vx;
-          particle.y += particle.vy;
-          particle.twinkle += particle.twinkleSpeed;
+          particle.x += particle.vx * movementScale;
+          particle.y += particle.vy * movementScale;
+          particle.twinkle += particle.twinkleSpeed * movementScale;
 
           if (particle.x < -16) particle.x = width + 16;
           if (particle.x > width + 16) particle.x = -16;
@@ -260,6 +272,7 @@ export default function ConstellationBackground({ darkMode = true }) {
 
     const stop = () => {
       isRunning = false;
+      previousFrameTime = 0;
       window.cancelAnimationFrame(animationFrame);
     };
 
