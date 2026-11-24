@@ -119,39 +119,57 @@ class PortfolioSmokeTests(unittest.TestCase):
                 finally:
                     page.close()
 
-    def test_navigation_shows_one_primary_section_at_a_time(self) -> None:
-        """Short sections should occupy the visible viewport without clipping longer ones."""
+    def test_project_first_sections_use_content_led_heights(self) -> None:
+        """Short sections and footer should not impose an entire empty screen."""
         page = self.page_for(1366, height=900)
         try:
-            for target, next_target in (
-                ("about", "skills"),
-                ("skills", "projects"),
-                ("certifications", "contact"),
-            ):
-                with self.subTest(section=target):
-                    page.locator(f'.nav-links a[href="#{target}"]').click()
-                    self.assertTrue(page.url.endswith(f"#{target}"))
-                    bounds = page.evaluate(
-                        """([target, nextTarget]) => {
-                          const current = document.getElementById(target).getBoundingClientRect();
-                          const next = document.getElementById(nextTarget).getBoundingClientRect();
-                          return {
-                            top: current.top,
-                            nextTop: next.top,
-                            viewport: window.innerHeight,
-                          };
-                        }""",
-                        [target, next_target],
+            layout = page.evaluate(
+                """() => {
+                  const ids = ['home', 'projects', 'skills', 'about', 'certifications', 'contact'];
+                  return ids.map(id => {
+                    const node = document.getElementById(id);
+                    const rect = node.getBoundingClientRect();
+                    return { id, top: rect.top + window.scrollY, height: rect.height };
+                  });
+                }"""
+            )
+            self.assertEqual(
+                [item["id"] for item in layout],
+                ["home", "projects", "skills", "about", "certifications", "contact"],
+            )
+            self.assertTrue(all(a["top"] < b["top"] for a, b in zip(layout, layout[1:])))
+            for item in layout:
+                if item["id"] in ("about", "certifications", "contact"):
+                    self.assertLess(
+                        item["height"], 750,
+                        f"{item['id']} still occupies nearly an entire viewport",
                     )
-                    self.assertGreaterEqual(bounds["top"], 65)
-                    self.assertLessEqual(bounds["top"], 100)
-                    self.assertGreaterEqual(
-                        bounds["nextTop"],
-                        bounds["viewport"] - 3,
-                        f"Next section appears too early after navigating to {target}: {bounds}",
-                    )
+            self.assertEqual(page.locator(".skill-card").count(), 4)
+            self.assertEqual(page.locator(".project-card").count(), 3)
         finally:
             page.close()
+
+    def test_compact_navigation_and_footer_contact_links(self) -> None:
+        for width in (390, 1366):
+            with self.subTest(width=width):
+                page = self.page_for(width)
+                try:
+                    links = page.locator(".nav-links .nav-link")
+                    self.assertEqual(links.count(), 3)
+                    self.assertEqual(
+                        [link.get_attribute("href") for link in links.all()],
+                        ["#projects", "#skills", "#about"],
+                    )
+                    if width <= 1024:
+                        page.locator(".bento-button").click()
+                        page.locator('.bento-contact-cta[href="#contact"]').click()
+                    else:
+                        page.locator('.nav-contact-cta[href="#contact"]').click()
+                    self.assertTrue(page.url.endswith("#contact"))
+                    self.assertEqual(page.locator("#contact").count(), 1)
+                    self.assertTrue(page.locator("#contact-heading").is_visible())
+                finally:
+                    page.close()
 
     def test_portrait_and_footer_typography_have_room(self) -> None:
         """Check the reported portrait overlap and clipped footer surname."""
