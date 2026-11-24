@@ -196,20 +196,10 @@ main,
   background: linear-gradient(180deg, color-mix(in srgb, var(--primary-soft) 86%, var(--surface-highlight)), color-mix(in srgb, var(--surface-raised) 72%, transparent));
   box-shadow: var(--plastic-inset);
 }
-.nav-link-icon {
-  width: 0.95rem;
-  height: 0.95rem;
-  color: var(--primary);
-  opacity: 0.92;
-  transition: 180ms ease;
-}
 .nav-link:hover,
 .nav-link:focus-visible {
   background: linear-gradient(180deg, var(--primary-soft), color-mix(in srgb, var(--surface-raised) 68%, transparent));
   box-shadow: var(--plastic-inset);
-}
-.nav-link:hover .nav-link-icon {
-  transform: translateY(-1px);
 }
 .nav-actions {
   display: flex;
