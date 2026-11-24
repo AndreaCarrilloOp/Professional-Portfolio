@@ -8,63 +8,69 @@
     "contact": "Contact"
   },
   "hero": {
-    "eyebrow": "Junior Software Developer | Python | C++ | SQL",
+    "eyebrow": "Software Developer · Backend / Full Stack",
     "ctaProjects": "View Projects",
     "ctaContact": "Contact Me",
     "status": "Available for opportunities",
-    "descriptionLead": "Building",
-    "descriptionHighlight": "responsive web solutions and maintainable code",
-    "descriptionTail": "with Python, C++, SQL, React and functional testing, focused on junior software development opportunities.",
+    "descriptionLead": "I build",
+    "descriptionHighlight": "web applications and backend services",
+    "descriptionTail": "with a focus on data, automation, quality, and maintainable code.",
     "techLabel": "TECHNOLOGIES I WORK WITH",
     "focusLabel": "Focus areas",
-    "focusOne": "Responsive web development",
-    "focusTwo": "Python, C++ and SQL",
-    "focusThree": "Functional / API testing",
+    "focusOne": "Backend and APIs",
+    "focusTwo": "Databases",
+    "focusThree": "Automation and testing",
     "techHint": "Swipe to see more",
     "primaryActionsLabel": "Primary portfolio actions",
     "socialLabel": "Professional profiles"
   },
   "about": {
     "eyebrow": "About Me",
-    "title": "Junior profile focused on web development, functional testing and continuous improvement.",
-    "description": "I am a Junior Full Stack Developer with an Information Systems background. I focus on building responsive interfaces, connecting backend logic, working with databases and validating functional flows. I am targeting Junior Developer, Full Stack Junior, SDET Junior or R&D Junior opportunities where I can contribute clear code, fast learning, documentation and continuous improvement.",
-    "statOneValue": "Full Stack Junior",
-    "statOneLabel": "Frontend, backend and SQL",
-    "statTwoValue": "SDET Junior",
-    "statTwoLabel": "Functional and API testing",
-    "statThreeValue": "R&D Junior",
-    "statThreeLabel": "Research and prototypes",
+    "title": "Software development focused on practical solutions.",
+    "description": "I am a Junior Full Stack Developer with a background in Information Systems. I build interfaces, backend services, and database integrations, and I validate features through testing. I aim to contribute clear code, documentation, and continuous improvement to software teams.",
+    "statOneValue": "Backend",
+    "statOneLabel": "APIs and integration",
+    "statTwoValue": "Data",
+    "statTwoLabel": "SQL and persistence",
+    "statThreeValue": "Full Stack",
+    "statThreeLabel": "Interfaces and services",
     "highlightOne": "Clear and maintainable code",
     "highlightTwo": "Responsive and accessible design",
     "highlightThree": "Documentation and version control"
   },
   "skills": {
     "eyebrow": "Technical stack",
-    "title": "Skills organized by area",
-    "description": "Core technologies for building interfaces, backend logic, databases, functional testing and professional workflows.",
+    "title": "Technical skills",
+    "description": "Technologies organized by the type of solution I build.",
     "frontend": {
-      "title": "Frontend"
+      "title": "Frontend",
+      "description": "Responsive, accessible interfaces."
     },
     "backend": {
-      "title": "Backend"
+      "title": "Backend",
+      "description": "Services, business logic, and integration."
     },
     "databases": {
-      "title": "Databases"
+      "title": "Databases",
+      "description": "Data models, queries, and persistence."
     },
     "cloud": {
-      "title": "Cloud"
+      "title": "Cloud",
+      "description": "Deployments, containers, and automation."
     },
     "tools": {
-      "title": "Tools"
+      "title": "Tools",
+      "description": "Development and collaboration tools."
     },
     "testing": {
-      "title": "Testing / QA"
+      "title": "Testing / QA",
+      "description": "Tests to verify application behavior."
     }
   },
   "projects": {
     "eyebrow": "Projects",
-    "title": "Projects with technical evidence",
-    "description": "Selected cases to demonstrate responsive UI, application logic, documentation, deployment, functional testing and good practices for junior development roles.",
+    "title": "Selected projects",
+    "description": "Implementations demonstrating architecture, development, and verifiable results.",
     "repo": "GitHub",
     "demo": "Demo",
     "evidenceCta": "View technical evidence",
@@ -73,7 +79,8 @@
       "frontend": "Frontend / UI Developer",
       "fullstack": "Full Stack Junior",
       "backend": "Backend / C++ Logic",
-      "wasm": "C++ / WebAssembly Development"
+      "wasm": "C++ / WebAssembly Development",
+      "distributed": "Distributed systems"
     },
     "petshop": {
       "title": "Huellita PetShop",
@@ -99,26 +106,42 @@
     },
     "status": {
       "published": "Published",
-      "completed": "Completed"
+      "completed": "Completed",
+      "inProgress": "In progress"
     },
     "labels": {
       "problem": "Problem",
       "contribution": "Contribution",
       "outcome": "Outcome"
     },
-    "viewFullImage": "View full-size screenshot"
+    "viewFullImage": "View full-size screenshot",
+    "proformas": {
+      "title": "PLN Proformas",
+      "description": "Proof of concept for structuring quotation requests from natural language, using FastAPI, spaCy processing, and relational persistence.",
+      "problem": "Turn free-form purchase requests into structured, validated data.",
+      "contribution": "Developed FastAPI endpoints, data models, and text-processing components for the request workflow.",
+      "outcome": "Prototype in progress with backend and persistence components; not presented as a finished product."
+    },
+    "bookstore": {
+      "title": "Bookstore · RabbitMQ",
+      "description": "Book, author, and publisher catalog with asynchronous operations using RabbitMQ queues, serverless functions, and MongoDB Atlas.",
+      "problem": "Separate the receipt of writes from processing and persisting changes.",
+      "contribution": "Integrated queues, entity-specific processors, CRUD operations, and separate frontend/backend deployments.",
+      "outcome": "Deployed demo with entity-specific task processors and MongoDB persistence."
+    }
   },
   "certifications": {
     "eyebrow": "Certifications",
     "title": "Featured credentials",
-    "description": "Approved credentials supporting cloud fundamentals, GitHub and modern development tools.",
+    "description": "Earned certifications in cloud, GitHub, and security fundamentals.",
     "approved": "Approved",
-    "viewCredential": "View credential"
+    "viewCredential": "View credential",
+    "credentialPending": "Certification earned · verification link pending"
   },
   "contact": {
     "eyebrow": "Contact",
     "title": "Let’s talk about junior opportunities.",
-    "description": "Available for Junior Software Developer opportunities in Costa Rica, remote or hybrid. Email is the main contact channel.",
+    "description": "Open to junior backend and Full Stack developer opportunities in Costa Rica or remote.",
     "email": "Primary email",
     "github": "GitHub",
     "linkedin": "LinkedIn",
