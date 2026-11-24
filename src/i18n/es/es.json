@@ -117,17 +117,17 @@
     "viewFullImage": "Ampliar captura"
   },
   "certifications": {
-    "eyebrow": "Certificaciones",
-    "title": "Credenciales destacadas",
-    "description": "Credenciales aprobadas de nube, GitHub y fundamentos de seguridad.",
+    "eyebrow": "Credenciales",
+    "title": "Certificaciones",
+    "description": "AZ-900, GH-900 y SC-900. Selecciona una insignia para verificarla.",
     "approved": "Aprobada",
     "viewCredential": "Ver credencial",
     "credentialPending": "Certificación aprobada · enlace de verificación pendiente"
   },
   "contact": {
     "eyebrow": "Contacto",
-    "title": "Conversemos sobre oportunidades junior.",
-    "description": "Disponible para oportunidades junior de desarrollo backend y Full Stack, en Costa Rica o en modalidad remota.",
+    "title": "Conversemos",
+    "description": "Abierta a oportunidades de desarrollo Backend y Full Stack en Costa Rica o remoto.",
     "email": "Correo principal",
     "github": "GitHub",
     "linkedin": "LinkedIn",
