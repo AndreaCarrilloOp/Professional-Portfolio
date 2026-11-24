@@ -35,13 +35,19 @@ jobs:
         run: |
           python -m pip install playwright==1.56.0
           python -m playwright install --with-deps chromium
-      - name: Test responsive layout and interactions
+      - name: Install pinned axe-core
+        run: npm install --prefix "$RUNNER_TEMP/portfolio-axe" --no-save --no-package-lock --ignore-scripts axe-core@4.10.3
+      - name: Test responsive layout, accessibility and focus
+        env:
+          AXE_SOURCE: ${{ runner.temp }}/portfolio-axe/node_modules/axe-core/axe.min.js
         run: python scripts/test-browser.py
       - name: Upload visual screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: portfolio-responsive-screenshots
-          path: artifacts/screenshots/
+          path: |
+            artifacts/screenshots/
+            artifacts/accessibility/
           if-no-files-found: ignore
           retention-days: 7
