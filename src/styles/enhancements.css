@@ -1212,6 +1212,10 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
 
 /* Compact desktop and tablet: fill the available width without crowded cards. */
 @media (min-width: 721px) and (max-width: 1100px) {
+  .cert-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .about-stats {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -1309,4 +1313,9 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   .project-card-no-image {
     min-height: 0;
   }
+}
+
+/* Unlinked certification cards are informational, not interactive. */
+.cert-unlinked:hover {
+  transform: none;
 }
