@@ -203,7 +203,7 @@ class PortfolioSmokeTests(unittest.TestCase):
                         page.locator(".nav-actions .icon-button").click()
                     page.wait_for_function(
                         "(theme) => document.documentElement.dataset.theme === theme",
-                        theme,
+                        arg=theme,
                     )
                     # Keyboard modality activates :focus-visible.
                     page.keyboard.press("Tab")
