@@ -1267,3 +1267,46 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
     transform: none;
   }
 }
+
+/* Keep the technology strip keyboard-accessible without altering
+   the existing swipeable mobile carousel. */
+.tech-carousel:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+  mask-image: none;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.tech-carousel:focus-within .tech-track {
+  animation-play-state: paused;
+}
+
+@media (hover: none) {
+  .tech-carousel .tech-track {
+    animation: none;
+  }
+
+  .tech-carousel {
+    overflow-x: auto;
+    mask-image: none;
+  }
+
+  .tech-carousel .tech-chip[aria-hidden="true"] {
+    display: none;
+  }
+}
+
+/* Keep cards readable at 200–400% browser zoom. */
+.project-card-no-image .project-content,
+.cert-content,
+.skill-card {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 599px) {
+  .project-card-no-image {
+    min-height: 0;
+  }
+}
