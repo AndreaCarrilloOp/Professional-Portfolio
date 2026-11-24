@@ -18,9 +18,10 @@ function Projects() {
         {PROJECTS.map((project) => (
           <article
             key={project.id}
-            className={`project-card project-card-${project.id} card ${project.featured ? "featured-project" : "compact-project"} reveal-up`}
+            className={`project-card project-card-${project.id} ${!project.image ? "project-card-no-image" : ""} card ${project.featured ? "featured-project" : "compact-project"} reveal-up`}
           >
-            <div className="project-media">
+            {project.image && (
+              <div className="project-media">
               {project.featured && (
                 <span className="project-badge">{t("projects.featured")}</span>
               )}
@@ -62,7 +63,8 @@ function Projects() {
                   />
                 </picture>
               </a>
-            </div>
+              </div>
+            )}
             <div className="project-content">
               <div className="project-meta">
                 <span>{project.year}</span>
