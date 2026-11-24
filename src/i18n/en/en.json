@@ -8,13 +8,13 @@
     "contact": "Contact"
   },
   "hero": {
-    "eyebrow": "Software Developer · Backend / Full Stack",
+    "eyebrow": "Backend Development · Full Stack",
     "ctaProjects": "View Projects",
     "ctaContact": "Contact Me",
-    "status": "Available for opportunities",
+    "status": "Open to opportunities",
     "descriptionLead": "I build",
-    "descriptionHighlight": "web applications and backend services",
-    "descriptionTail": "with a focus on data, automation, quality, and maintainable code.",
+    "descriptionHighlight": "web applications and backend APIs",
+    "descriptionTail": "with a focus on data, automation, and software quality.",
     "techLabel": "TECHNOLOGIES I WORK WITH",
     "focusLabel": "Focus areas",
     "focusOne": "Backend and APIs",
