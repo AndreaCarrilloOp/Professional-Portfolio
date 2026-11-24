@@ -15,15 +15,17 @@ function Certifications() {
         descriptionKey="certifications.description"
       />
       <div className="cert-grid">
-        {CERTIFICATIONS.map(
-          ({ id, icon: Icon, title, code, statusKey, credentialUrl }) => (
-            <a
+        {CERTIFICATIONS.map(({ id, icon: Icon, title, code, statusKey, credentialUrl }) => {
+          const CardElement = credentialUrl ? "a" : "article";
+
+          return (
+            <CardElement
               key={id}
-              className="cert-card cert-link card reveal-up"
-              href={credentialUrl}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={`${title}: ${t("certifications.viewCredential")}, ${t("accessibility.externalLink")}`}
+              className={`cert-card card reveal-up ${credentialUrl ? "cert-link" : "cert-unlinked"}`}
+              href={credentialUrl || undefined}
+              target={credentialUrl ? "_blank" : undefined}
+              rel={credentialUrl ? "noopener noreferrer" : undefined}
+              aria-label={credentialUrl ? `${title}: ${t("certifications.viewCredential")}, ${t("accessibility.externalLink")}` : undefined}
             >
               <div className="skill-icon">
                 <Icon aria-hidden="true" />
@@ -32,14 +34,18 @@ function Certifications() {
                 <span className="cert-status">{t(statusKey)}</span>
                 <h3>{title}</h3>
                 <p>{code}</p>
-                <span className="cert-action">
-                  {t("certifications.viewCredential")}
-                  <FaExternalLinkAlt aria-hidden="true" />
-                </span>
+                {credentialUrl ? (
+                  <span className="cert-action">
+                    {t("certifications.viewCredential")}
+                    <FaExternalLinkAlt aria-hidden="true" />
+                  </span>
+                ) : (
+                  <span className="cert-unlinked-note">{t("certifications.credentialPending")}</span>
+                )}
               </div>
-            </a>
-          ),
-        )}
+            </CardElement>
+          );
+        })}
       </div>
     </section>
   );
