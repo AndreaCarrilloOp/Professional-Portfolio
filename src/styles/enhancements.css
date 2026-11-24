@@ -2190,83 +2190,106 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   border-color: var(--palette-steel);
 }
 
-/* Shared dark footer for both themes: contact and legal strip form one surface.
-   Local tokens prevent the footer palette from altering the rest of the page. */
-.footer,
+/* Theme-inverse footer: dark beneath the ivory page, light beneath graphite.
+   Local semantic tokens keep both variants legible without changing page tokens. */
+:root:not(.dark) .footer {
+  --footer-background: var(--satin-black);
+  --footer-background-raised: var(--palette-ink);
+  --footer-text: var(--palette-ice);
+  --footer-muted: var(--satin-silver);
+  --footer-accent: var(--palette-sky);
+  --footer-focus: var(--palette-ice);
+  --footer-border: color-mix(in srgb, var(--palette-sky) 34%, transparent);
+  --footer-link-surface: color-mix(in srgb, var(--palette-ink) 94%, var(--palette-navy));
+  --footer-link-hover: color-mix(in srgb, var(--palette-ink) 78%, var(--palette-navy));
+}
+
 .dark .footer {
-  --text: var(--palette-ice);
-  --muted: var(--satin-silver);
-  --primary: var(--palette-sky);
-  --primary-strong: var(--palette-ice);
-  --primary-soft: color-mix(in srgb, var(--palette-sky) 16%, transparent);
-  --secondary: var(--satin-silver);
-  --line: var(--palette-sky);
-  --focus-ring: var(--palette-ice);
-  --card: color-mix(in srgb, var(--palette-ink) 94%, var(--palette-navy));
-  --surface-soft: color-mix(in srgb, var(--palette-ink) 88%, var(--palette-navy));
-  --surface-raised: var(--palette-ink);
-  color: var(--muted);
+  --footer-background: var(--palette-ice);
+  --footer-background-raised: color-mix(in srgb, var(--palette-ice) 90%, var(--satin-silver));
+  --footer-text: var(--palette-ink);
+  --footer-muted: var(--palette-muted);
+  --footer-accent: var(--palette-steel);
+  --footer-focus: var(--palette-steel);
+  --footer-border: color-mix(in srgb, var(--palette-steel) 28%, transparent);
+  --footer-link-surface: color-mix(in srgb, var(--palette-ice) 90%, var(--satin-silver));
+  --footer-link-hover: color-mix(in srgb, var(--palette-ice) 76%, var(--satin-silver));
+}
+
+.footer {
+  --text: var(--footer-text);
+  --muted: var(--footer-muted);
+  --primary: var(--footer-accent);
+  --primary-strong: var(--footer-text);
+  --primary-soft: color-mix(in srgb, var(--footer-accent) 14%, transparent);
+  --secondary: var(--footer-muted);
+  --line: var(--footer-accent);
+  --focus-ring: var(--footer-focus);
+  --card: var(--footer-link-surface);
+  --surface-soft: var(--footer-link-surface);
+  --surface-raised: var(--footer-background-raised);
+  color: var(--footer-muted);
   background: linear-gradient(
-    160deg,
-    var(--palette-ink) 0%,
-    var(--satin-black) 78%
+    150deg,
+    var(--footer-background-raised),
+    var(--footer-background) 74%
   );
-  border-top: 1px solid color-mix(in srgb, var(--palette-sky) 36%, transparent);
+  border-top: 1px solid var(--footer-border);
 }
 
 .footer .footer-contact {
-  border-bottom-color: color-mix(in srgb, var(--palette-sky) 25%, transparent);
+  border-bottom-color: var(--footer-border);
 }
 
 .footer .footer-contact-title {
-  color: var(--palette-ice);
+  color: var(--footer-text);
 }
 
 .footer .footer-contact-intro .eyebrow {
-  color: var(--palette-sky);
+  color: var(--footer-accent);
 }
 
 .footer .footer-contact-intro p,
 .footer .footer-identity small,
 .footer .footer-credit {
-  color: var(--satin-silver);
+  color: var(--footer-muted);
 }
 
-/* Do not reuse the hero's decorative gradient for footer identity text. */
+/* The footer identity uses theme-appropriate solid text, not the hero gradient. */
 .footer .footer-identity strong {
-  color: var(--palette-ice);
+  color: var(--footer-text);
   background: none;
   background-clip: border-box;
   -webkit-background-clip: border-box;
-  -webkit-text-fill-color: var(--palette-ice);
+  -webkit-text-fill-color: var(--footer-text);
 }
 
 .footer .footer-email,
 .footer .footer-socials a {
-  background: color-mix(in srgb, var(--palette-ink) 92%, var(--palette-navy));
-  border-color: color-mix(in srgb, var(--palette-sky) 35%, transparent);
-  color: var(--palette-ice);
+  background: var(--footer-link-surface);
+  border-color: var(--footer-border);
+  color: var(--footer-text);
   box-shadow: none;
 }
 
 .footer .footer-email svg,
 .footer .footer-socials a svg {
-  color: var(--palette-sky);
+  color: var(--footer-accent);
 }
 
 .footer .footer-email:hover,
 .footer .footer-socials a:hover,
 .footer .footer-email:focus-visible,
 .footer .footer-socials a:focus-visible {
-  background: color-mix(in srgb, var(--palette-ink) 78%, var(--palette-navy));
-  border-color: var(--palette-sky);
-  color: var(--palette-ice);
+  background: var(--footer-link-hover);
+  border-color: var(--footer-accent);
+  color: var(--footer-text);
   box-shadow: none;
   transform: none;
 }
 
 .footer .footer-email:focus-visible,
 .footer .footer-socials a:focus-visible {
-  outline: 3px solid var(--focus-ring);
+  outline: 3px solid var(--footer-focus);
   outline-offset: 3px;
 }
