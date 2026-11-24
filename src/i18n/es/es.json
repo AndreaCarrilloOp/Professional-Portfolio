@@ -70,7 +70,7 @@
   "projects": {
     "eyebrow": "Proyectos",
     "title": "Proyectos seleccionados",
-    "description": "Implementaciones que muestran arquitectura, desarrollo y resultados verificables.",
+    "description": "Tres proyectos seleccionados que muestran desarrollo web, interfaces responsivas y lógica de aplicaciones con C++ y WebAssembly.",
     "repo": "GitHub",
     "demo": "Demo",
     "evidenceCta": "Ver evidencia técnica",
@@ -114,21 +114,7 @@
       "contribution": "Aporte",
       "outcome": "Resultado"
     },
-    "viewFullImage": "Ampliar captura",
-    "proformas": {
-      "title": "PLN Proformas",
-      "description": "Prueba de concepto para estructurar solicitudes de proformas a partir de lenguaje natural, con API FastAPI, procesamiento spaCy y persistencia relacional.",
-      "problem": "Transformar solicitudes de compra en texto libre en información estructurada y validable.",
-      "contribution": "Desarrollo de endpoints FastAPI, modelos de datos y componentes de procesamiento de texto para el flujo de solicitudes.",
-      "outcome": "Prototipo en desarrollo con backend y componentes de persistencia; no se presenta como producto final."
-    },
-    "bookstore": {
-      "title": "Bookstore · RabbitMQ",
-      "description": "Catálogo de libros, autores y editoriales con operaciones asíncronas mediante colas RabbitMQ, funciones serverless y MongoDB Atlas.",
-      "problem": "Separar la recepción de escrituras del procesamiento y almacenamiento de los cambios.",
-      "contribution": "Integración de colas, procesadores por entidad, operaciones CRUD y despliegue separado de frontend y backend.",
-      "outcome": "Demostración desplegada con procesadores de tareas por entidad y persistencia en MongoDB."
-    }
+    "viewFullImage": "Ampliar captura"
   },
   "certifications": {
     "eyebrow": "Certificaciones",
