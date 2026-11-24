@@ -2,69 +2,75 @@
   "nav": {
     "home": "Inicio",
     "about": "Sobre mí",
-    "skills": "Skills",
+    "skills": "Habilidades",
     "projects": "Proyectos",
     "certifications": "Certificaciones",
     "contact": "Contacto"
   },
   "hero": {
-    "eyebrow": "Desarrolladora de Software Junior | Python | C++ | SQL",
+    "eyebrow": "Desarrolladora de software · Backend / Full Stack",
     "ctaProjects": "Ver proyectos",
     "ctaContact": "Contactar",
     "status": "Disponible para oportunidades",
-    "descriptionLead": "Desarrollo",
-    "descriptionHighlight": "soluciones web responsivas y código mantenible",
-    "descriptionTail": "con Python, C++, SQL, React y pruebas funcionales, orientada a oportunidades junior de desarrollo de software.",
+    "descriptionLead": "Construyo",
+    "descriptionHighlight": "aplicaciones web y servicios backend",
+    "descriptionTail": "con foco en datos, automatización, calidad y código mantenible.",
     "techLabel": "TECNOLOGÍAS CON LAS QUE TRABAJO",
     "focusLabel": "Áreas de enfoque",
-    "focusOne": "Desarrollo web responsive",
-    "focusTwo": "Python, C++ y SQL",
-    "focusThree": "Testing funcional / API",
+    "focusOne": "Backend y APIs",
+    "focusTwo": "Bases de datos",
+    "focusThree": "Automatización y pruebas",
     "techHint": "Desliza para ver más",
     "primaryActionsLabel": "Acciones principales del portafolio",
     "socialLabel": "Perfiles profesionales"
   },
   "about": {
     "eyebrow": "Sobre mí",
-    "title": "Perfil junior orientado a desarrollo web, testing funcional y mejora continua.",
-    "description": "Soy Junior Full Stack Developer con formación en Sistemas de Información. Me enfoco en construir interfaces responsivas, conectar lógica backend, trabajar con bases de datos y validar flujos funcionales. Busco oportunidades Junior Developer, Full Stack Junior, SDET Junior o R&D Junior donde pueda aportar código claro, aprendizaje rápido, documentación y mejora continua.",
-    "statOneValue": "Full Stack Junior",
-    "statOneLabel": "Frontend, backend y SQL",
-    "statTwoValue": "SDET Junior",
-    "statTwoLabel": "Testing funcional y API",
-    "statThreeValue": "R&D Junior",
-    "statThreeLabel": "Investigación y prototipos",
+    "title": "Desarrollo de software orientado a soluciones.",
+    "description": "Soy desarrolladora Full Stack Junior con formación en Sistemas de Información. Diseño interfaces, implemento servicios backend y trabajo con bases de datos, integración de sistemas y pruebas. Me interesa contribuir a proyectos de desarrollo con código claro, documentación y mejora continua.",
+    "statOneValue": "Backend",
+    "statOneLabel": "APIs e integración",
+    "statTwoValue": "Datos",
+    "statTwoLabel": "SQL y persistencia",
+    "statThreeValue": "Full Stack",
+    "statThreeLabel": "Interfaces y servicios",
     "highlightOne": "Código claro y mantenible",
     "highlightTwo": "Diseño responsive y accesible",
     "highlightThree": "Documentación y control de versiones"
   },
   "skills": {
     "eyebrow": "Stack técnico",
-    "title": "Skills organizadas por área",
-    "description": "Tecnologías principales para construir interfaces, lógica backend, bases de datos, pruebas funcionales y flujos de trabajo profesionales.",
+    "title": "Habilidades técnicas",
+    "description": "Tecnologías agrupadas por el tipo de solución que construyo.",
     "frontend": {
-      "title": "Frontend"
+      "title": "Frontend",
+      "description": "Interfaces responsive y accesibles."
     },
     "backend": {
-      "title": "Backend"
+      "title": "Backend",
+      "description": "Servicios, lógica de negocio e integración."
     },
     "databases": {
-      "title": "Databases"
+      "title": "Databases",
+      "description": "Modelado, consultas y persistencia."
     },
     "cloud": {
-      "title": "Cloud"
+      "title": "Cloud",
+      "description": "Despliegue, contenedores y automatización."
     },
     "tools": {
-      "title": "Tools"
+      "title": "Tools",
+      "description": "Herramientas de trabajo y colaboración."
     },
     "testing": {
-      "title": "Testing / QA"
+      "title": "Testing / QA",
+      "description": "Pruebas para validar comportamiento."
     }
   },
   "projects": {
     "eyebrow": "Proyectos",
-    "title": "Proyectos con evidencia técnica",
-    "description": "Casos seleccionados para demostrar UI responsive, lógica de aplicación, documentación, despliegue, testing funcional y buenas prácticas para roles junior de desarrollo.",
+    "title": "Proyectos seleccionados",
+    "description": "Implementaciones que muestran arquitectura, desarrollo y resultados verificables.",
     "repo": "GitHub",
     "demo": "Demo",
     "evidenceCta": "Ver evidencia técnica",
@@ -73,7 +79,8 @@
       "frontend": "Frontend / UI Developer",
       "fullstack": "Full Stack Junior",
       "backend": "Backend / Lógica C++",
-      "wasm": "Desarrollo C++ / WebAssembly"
+      "wasm": "Desarrollo C++ / WebAssembly",
+      "distributed": "Sistemas distribuidos"
     },
     "petshop": {
       "title": "Huellita PetShop",
@@ -99,26 +106,42 @@
     },
     "status": {
       "published": "Publicado",
-      "completed": "Completado"
+      "completed": "Completado",
+      "inProgress": "En desarrollo"
     },
     "labels": {
       "problem": "Problema",
       "contribution": "Aporte",
       "outcome": "Resultado"
     },
-    "viewFullImage": "Ampliar captura"
+    "viewFullImage": "Ampliar captura",
+    "proformas": {
+      "title": "PLN Proformas",
+      "description": "Prueba de concepto para estructurar solicitudes de proformas a partir de lenguaje natural, con API FastAPI, procesamiento spaCy y persistencia relacional.",
+      "problem": "Transformar solicitudes de compra en texto libre en información estructurada y validable.",
+      "contribution": "Desarrollo de endpoints FastAPI, modelos de datos y componentes de procesamiento de texto para el flujo de solicitudes.",
+      "outcome": "Prototipo en desarrollo con backend y componentes de persistencia; no se presenta como producto final."
+    },
+    "bookstore": {
+      "title": "Bookstore · RabbitMQ",
+      "description": "Catálogo de libros, autores y editoriales con operaciones asíncronas mediante colas RabbitMQ, funciones serverless y MongoDB Atlas.",
+      "problem": "Separar la recepción de escrituras del procesamiento y almacenamiento de los cambios.",
+      "contribution": "Integración de colas, procesadores por entidad, operaciones CRUD y despliegue separado de frontend y backend.",
+      "outcome": "Demostración desplegada con procesadores de tareas por entidad y persistencia en MongoDB."
+    }
   },
   "certifications": {
     "eyebrow": "Certificaciones",
     "title": "Credenciales destacadas",
-    "description": "Credenciales aprobadas que respaldan fundamentos de nube, GitHub y herramientas modernas de desarrollo.",
+    "description": "Credenciales aprobadas de nube, GitHub y fundamentos de seguridad.",
     "approved": "Aprobada",
-    "viewCredential": "Ver credencial"
+    "viewCredential": "Ver credencial",
+    "credentialPending": "Certificación aprobada · enlace de verificación pendiente"
   },
   "contact": {
     "eyebrow": "Contacto",
     "title": "Conversemos sobre oportunidades junior.",
-    "description": "Disponible para oportunidades como Desarrolladora de Software Junior en Costa Rica, en modalidad remota o híbrida. El canal principal de contacto es el correo electrónico.",
+    "description": "Disponible para oportunidades junior de desarrollo backend y Full Stack, en Costa Rica o en modalidad remota.",
     "email": "Correo principal",
     "github": "GitHub",
     "linkedin": "LinkedIn",
