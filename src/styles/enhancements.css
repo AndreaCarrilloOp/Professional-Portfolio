@@ -1797,16 +1797,34 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
 }
 
 
-/* Interaction-first shapes: noninteractive containers are flat, not button-like.
-   Keep rounded corners for real controls, links and credential badges.
-   Technology marquee selectors remain intentionally untouched. */
+/* Restrained editorial cards: soft corners, a fine top edge and gentle depth.
+   Informational containers stay static; only their actual links are interactive.
+   The technology marquee remains unchanged. */
 .about-card,
 .skills-grid .skill-card,
 .projects-grid .project-card {
-  border-radius: 0;
-  box-shadow: none;
-  background: var(--card);
+  --card-elevation:
+    inset 0 1px 0 color-mix(in srgb, var(--surface-highlight) 72%, transparent),
+    0 7px 20px color-mix(in srgb, var(--palette-navy) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--line) 45%, transparent);
+  border-block-start: 2px solid color-mix(in srgb, var(--primary) 48%, transparent);
+  border-radius: 10px;
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--surface-highlight) 26%, var(--card)),
+    var(--card) 62%,
+    color-mix(in srgb, var(--surface-soft) 30%, var(--card))
+  );
+  box-shadow: var(--card-elevation);
   cursor: default;
+}
+
+.dark .about-card,
+.dark .skills-grid .skill-card,
+.dark .projects-grid .project-card {
+  --card-elevation:
+    inset 0 1px 0 color-mix(in srgb, var(--surface-highlight) 46%, transparent),
+    0 9px 24px color-mix(in srgb, var(--satin-black) 25%, transparent);
 }
 
 .about-card:hover,
@@ -1816,8 +1834,9 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
 .dark .skills-grid .skill-card:hover,
 .dark .projects-grid .project-card:hover {
   transform: none;
-  box-shadow: none;
-  border-color: var(--line);
+  border-color: color-mix(in srgb, var(--line) 45%, transparent);
+  border-block-start-color: color-mix(in srgb, var(--primary) 48%, transparent);
+  box-shadow: var(--card-elevation);
 }
 
 .skill-icon {
