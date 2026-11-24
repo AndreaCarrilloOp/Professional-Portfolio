@@ -92,6 +92,27 @@ console.log(
   `${satinPasses ? "PASS" : "FAIL"}  ${satinRatio.toFixed(2)}:1  sand / graphite (minimum 4.5:1)`,
 );
 
+/* The footer inverts its surface against the active page theme, so these
+   pairs must be audited separately from the page-level semantic tokens. */
+const footerPairs = [
+  ["light-page footer text", "palette-ice", "satin-black", 4.5],
+  ["light-page footer muted", "satin-silver", "satin-black", 4.5],
+  ["light-page footer accent", "palette-sky", "satin-black", 4.5],
+  ["dark-page footer text", "palette-ink", "palette-ice", 4.5],
+  ["dark-page footer muted", "palette-muted", "palette-ice", 4.5],
+  ["dark-page footer accent", "palette-steel", "palette-ice", 4.5],
+  ["dark-page footer link text", "palette-ink", "satin-silver", 4.5],
+];
+console.log("\nINVERSE FOOTER");
+for (const [label, foregroundToken, backgroundToken, minimum] of footerPairs) {
+  const foreground = readHexToken(themes.light, foregroundToken);
+  const background = readHexToken(themes.light, backgroundToken);
+  const ratio = contrast(foreground, background);
+  const passes = ratio >= minimum;
+  failed ||= !passes;
+  console.log(`${passes ? "PASS" : "FAIL"}  ${ratio.toFixed(2)}:1  ${label} (minimum ${minimum}:1)`);
+}
+
 if (failed) {
   console.error("\nOne or more color pairs do not meet the configured WCAG threshold.");
   process.exit(1);
