@@ -145,6 +145,43 @@ function Navbar({ darkMode, onToggleTheme }) {
     };
   }, [open]);
 
+  useEffect(() => {
+    // Restore the destination when using Back/Forward or entering with a hash.
+    const restoreHash = () => {
+      const id = decodeURIComponent(window.location.hash.slice(1));
+      if (!id) {
+        setActiveSection("home");
+        return;
+      }
+      const section = document.getElementById(id);
+      if (!section) return;
+
+      navigatingToSectionRef.current = open;
+      setOpen(false);
+      setActiveSection(id);
+      const navOffset = window.innerWidth <= 720 ? 80 : 88;
+      const top = section.getBoundingClientRect().top + window.scrollY - navOffset;
+      window.scrollTo({ top: Math.max(0, top), behavior: "instant" });
+      window.requestAnimationFrame(() => {
+        const target = section.querySelector("h1, h2") || section;
+        target.setAttribute("tabindex", "-1");
+        target.focus({ preventScroll: true });
+        navigatingToSectionRef.current = false;
+      });
+    };
+
+    window.addEventListener("popstate", restoreHash);
+    window.addEventListener("hashchange", restoreHash);
+    // The initial document may contain a deep link.
+    if (window.location.hash) {
+      window.requestAnimationFrame(restoreHash);
+    }
+    return () => {
+      window.removeEventListener("popstate", restoreHash);
+      window.removeEventListener("hashchange", restoreHash);
+    };
+  }, []);
+
   const changeLanguage = () => {
     i18n.changeLanguage(i18n.language?.startsWith("es") ? "en" : "es");
   };
@@ -165,7 +202,9 @@ function Navbar({ darkMode, onToggleTheme }) {
     const navOffset = window.innerWidth <= 720 ? 80 : 88;
     const destination = section.getBoundingClientRect().top + window.scrollY - navOffset;
     window.scrollTo({ top: Math.max(0, destination), behavior: "instant" });
-    window.history.pushState(null, "", `#${id}`);
+    if (window.location.hash !== `#${id}`) {
+      window.history.pushState(null, "", `#${id}`);
+    }
 
     // Focus follows navigation, including when the mobile dialog is closing.
     window.requestAnimationFrame(() => {
