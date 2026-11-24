@@ -8,6 +8,11 @@ const SOCIAL_LINKS_BY_ID = Object.fromEntries(
 
 function Contact() {
   const { t } = useTranslation();
+  const contactMeta = [
+    t("contact.availability"),
+    t("contact.location"),
+    t("contact.mode"),
+  ];
   const contactLinks = [
     {
       ...SOCIAL_LINKS_BY_ID.email,
@@ -38,6 +43,11 @@ function Contact() {
           titleKey="contact.title"
           descriptionKey="contact.description"
         />
+        <div className="contact-meta">
+          {contactMeta.map((item) => (
+            <span key={item}>{item}</span>
+          ))}
+        </div>
         <div className="contact-grid" role="group" aria-label={t("contact.channelsLabel")}>
           {contactLinks.map(({ id, label, value, href, icon: Icon, primary }) => {
             const isExternal = !href.startsWith("mailto");

@@ -4,10 +4,12 @@ import {
   PROFILE_IMAGE_DARK,
   PROFILE_IMAGE_LIGHT,
   SOCIAL_LINKS,
+  TECH_STACK,
 } from "../../constants";
 
 function Hero({ darkMode }) {
   const { t } = useTranslation();
+  const focusItems = ["hero.focusOne", "hero.focusTwo", "hero.focusThree"];
   const heroSocialLinks = SOCIAL_LINKS.filter(({ id }) => id !== "email");
   const profileImage = darkMode ? PROFILE_IMAGE_DARK : PROFILE_IMAGE_LIGHT;
 
@@ -37,6 +39,14 @@ function Hero({ darkMode }) {
             <strong>{t("hero.descriptionHighlight")}</strong>{" "}
             {t("hero.descriptionTail")}
           </p>
+
+          <div className="hero-focus-grid" role="group" aria-label={t("hero.focusLabel")}>
+            {focusItems.map((item) => (
+              <span key={item} className="hero-focus-item">
+                {t(item)}
+              </span>
+            ))}
+          </div>
 
           <div className="hero-actions hero-cta-row" role="group" aria-label={t("hero.primaryActionsLabel")}>
             <a href="#projects" className="btn btn-primary hero-cta-primary">
@@ -100,6 +110,32 @@ function Hero({ darkMode }) {
         </div>
       </div>
 
+      <div
+        className="tech-strip reveal-up delay-2"
+        role="group"
+        aria-label={t("hero.techLabel")}
+      >
+        <div className="tech-strip-header">
+          <span>{t("hero.techLabel")}</span>
+          <small className="tech-swipe-hint">{t("hero.techHint")}</small>
+        </div>
+        <div className="tech-carousel">
+          <div className="tech-track">
+            {TECH_STACK.map(({ id, label, icon: Icon }) => (
+              <div className="tech-chip" key={id}>
+                <Icon aria-hidden="true" />
+                <small>{label}</small>
+              </div>
+            ))}
+            {TECH_STACK.map(({ id, label, icon: Icon }) => (
+              <div className="tech-chip" key={`${id}-clone`} aria-hidden="true">
+                <Icon aria-hidden="true" />
+                <small>{label}</small>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

@@ -26,8 +26,8 @@
   },
   "about": {
     "eyebrow": "Sobre mí",
-    "title": "Desarrollo de software con enfoque práctico.",
-    "description": "Soy desarrolladora Full Stack Junior con formación en Sistemas de Información. Trabajo con interfaces web, lógica backend, bases de datos y pruebas funcionales. Me interesa crear soluciones claras, útiles y mantenibles.",
+    "title": "Perfil junior orientado a desarrollo web, testing funcional y mejora continua.",
+    "description": "Soy Junior Full Stack Developer con formación en Sistemas de Información. Me enfoco en construir interfaces responsivas, conectar lógica backend, trabajar con bases de datos y validar flujos funcionales. Busco oportunidades Junior Developer, Full Stack Junior, SDET Junior o R&D Junior donde pueda aportar código claro, aprendizaje rápido, documentación y mejora continua.",
     "statOneValue": "Full Stack Junior",
     "statOneLabel": "Frontend, backend y SQL",
     "statTwoValue": "SDET Junior",
@@ -40,8 +40,8 @@
   },
   "skills": {
     "eyebrow": "Stack técnico",
-    "title": "Tecnologías y habilidades",
-    "description": "Herramientas organizadas por especialidad.",
+    "title": "Skills organizadas por área",
+    "description": "Tecnologías principales para construir interfaces, lógica backend, bases de datos, pruebas funcionales y flujos de trabajo profesionales.",
     "frontend": {
       "title": "Frontend"
     },
@@ -63,11 +63,11 @@
   },
   "projects": {
     "eyebrow": "Proyectos",
-    "title": "Proyectos seleccionados",
-    "description": "Aplicaciones con código, demostraciones y resultados verificables.",
+    "title": "Proyectos con evidencia técnica",
+    "description": "Casos seleccionados para demostrar UI responsive, lógica de aplicación, documentación, despliegue, testing funcional y buenas prácticas para roles junior de desarrollo.",
     "repo": "GitHub",
     "demo": "Demo",
-    "evidenceCta": "Detalles técnicos",
+    "evidenceCta": "Ver evidencia técnica",
     "featured": "Proyecto destacado",
     "roles": {
       "frontend": "Frontend / UI Developer",
@@ -110,15 +110,15 @@
   },
   "certifications": {
     "eyebrow": "Certificaciones",
-    "title": "Certificaciones",
-    "description": "Credenciales verificables en tecnologías de desarrollo y nube.",
+    "title": "Credenciales destacadas",
+    "description": "Credenciales aprobadas que respaldan fundamentos de nube, GitHub y herramientas modernas de desarrollo.",
     "approved": "Aprobada",
     "viewCredential": "Ver credencial"
   },
   "contact": {
     "eyebrow": "Contacto",
-    "title": "Hablemos",
-    "description": "Disponible para oportunidades de desarrollo de software en Costa Rica, remotas o híbridas.",
+    "title": "Conversemos sobre oportunidades junior.",
+    "description": "Disponible para oportunidades como Desarrolladora de Software Junior en Costa Rica, en modalidad remota o híbrida. El canal principal de contacto es el correo electrónico.",
     "email": "Correo principal",
     "github": "GitHub",
     "linkedin": "LinkedIn",
