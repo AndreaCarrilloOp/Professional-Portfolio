@@ -70,7 +70,7 @@
   "projects": {
     "eyebrow": "Projects",
     "title": "Selected projects",
-    "description": "Three selected projects showcasing web development, responsive interfaces, and application logic with C++ and WebAssembly.",
+    "description": "Three projects demonstrating application logic, web development, and distributed architecture.",
     "repo": "GitHub",
     "demo": "Demo",
     "evidenceCta": "View technical evidence",
@@ -88,13 +88,6 @@
       "outcome": "Published site with clearer structure, simple navigation and consistent mobile/desktop experience.",
       "problem": "A static catalog needed stronger visual hierarchy, product organization and simple navigation.",
       "contribution": "Responsive layout, section structure, reusable visual components and GitHub Pages publishing."
-    },
-    "tallestBuildings": {
-      "title": "Tallest Buildings Catalog",
-      "description": "Web application built with Nuxt.js 3 and Vue.js presenting the world’s 12 tallest skyscrapers, their cities and architectural firms through related navigation and structured data.",
-      "problem": "Organize building, city and architect information into a clear, responsive and easy-to-explore experience.",
-      "contribution": "Entity-based navigation, dynamic pages, Markdown and JSON content, reusable components and Netlify deployment.",
-      "outcome": "Published catalog featuring 12 skyscrapers, 11 cities and 6 architecture firms with cross-navigation and responsive design."
     },
     "scrabble": {
       "title": "Scrabble · Web Edition",
@@ -114,7 +107,15 @@
       "contribution": "Contribution",
       "outcome": "Outcome"
     },
-    "viewFullImage": "View full-size screenshot"
+    "viewFullImage": "View full-size screenshot",
+    "distributedLibrary": {
+      "title": "Distributed Library Platform",
+      "description": "Distributed architecture with four microfrontends, independent microservices, and persistence in PostgreSQL, Cloudflare D1, and Turso.",
+      "problem": "Integrate book, author, publisher, and review modules running as independent services.",
+      "contribution": "Built and integrated web interfaces, serverless endpoints, independent databases, and cross-entity navigation.",
+      "outcome": "Academic platform deployed with an integration shell and individually published services.",
+      "imageAlt": "Preview of the distributed library platform integrated through its web application shell."
+    }
   },
   "certifications": {
     "eyebrow": "Credentials",
