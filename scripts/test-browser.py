@@ -136,6 +136,39 @@ class PortfolioSmokeTests(unittest.TestCase):
         finally:
             mobile.close()
 
+    def test_mobile_menu_focus_trap_and_escape(self) -> None:
+        """The modal navigation must preserve keyboard operation at mobile size."""
+        page = self.page_for(390)
+        try:
+            trigger = page.locator(".bento-button")
+            trigger.click()
+            dialog = page.locator("#mobile-menu")
+            self.assertTrue(dialog.is_visible())
+            self.assertEqual(dialog.get_attribute("aria-modal"), "true")
+            self.assertEqual(trigger.get_attribute("aria-expanded"), "true")
+            self.assertTrue(
+                page.locator('.bento-link[href="#projects"]').evaluate(
+                    "el => document.activeElement === el"
+                )
+            )
+            # Tab from the last focusable control wraps to the first.
+            last = page.locator(".bento-contact-cta")
+            last.focus()
+            page.keyboard.press("Tab")
+            self.assertTrue(
+                page.locator('.bento-link[href="#projects"]').evaluate(
+                    "el => document.activeElement === el"
+                )
+            )
+            page.keyboard.press("Escape")
+            dialog.wait_for(state="hidden")
+            self.assertEqual(trigger.get_attribute("aria-expanded"), "false")
+            page.wait_for_function(
+                "() => document.activeElement?.classList.contains('bento-button')"
+            )
+        finally:
+            page.close()
+
     def test_history_back_forward_and_deep_links(self) -> None:
         page = self.page_for(1366)
         try:
