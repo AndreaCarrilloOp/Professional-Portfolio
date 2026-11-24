@@ -18,8 +18,8 @@ import Certifications from "./components/sections/Certifications";
 import ConstellationBackground from "./components/ui/ConstellationBackground";
 
 const THEME_COLORS = {
-  light: "#F3EEE7",
-  dark: "#1A1D21",
+  light: "#AEB8B7",
+  dark: "#192226",
 };
 
 function getInitialDarkMode() {
