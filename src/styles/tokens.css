@@ -2,7 +2,7 @@
  * Eight colors: #2b2526 ink; #47161f deep garnet; #5b1f2a dark cherry;
  * #c9969e dusty rose; #f3eee7 ivory; #ded4c8 sand; #1a1d21 graphite;
  * #665B57 warm taupe. Legacy variable aliases retained for CSS compatibility.
- * Turquoise is reserved for ACO logo assets.
+ * The ACO identity uses the same deep garnet (#47161f) as this palette.
  */
 :root {
   color-scheme: light;
