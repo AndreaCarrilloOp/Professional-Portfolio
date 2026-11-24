@@ -4,14 +4,14 @@ import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const allowed = new Set([
-  "#29232b", // ink
-  "#4a154b", // deep plum
-  "#66365f", // plum
-  "#c69bbf", // mauve
+  "#2b2526", // ink
+  "#4b1e26", // deep burgundy
+  "#752c39", // wine red
+  "#d4a1a5", // dusty rose
   "#f3eee7", // ivory
   "#ded4c8", // sand
   "#1a1d21", // graphite
-  "#625963", // stone
+  "#665B57", // warm taupe
 ]);
 const extensions = new Set([".css", ".html", ".js", ".jsx", ".mjs", ".svg"]);
 const ignoredDirectories = new Set(["node_modules", "dist", ".git"]);
