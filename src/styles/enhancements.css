@@ -1302,18 +1302,12 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
 }
 
 /* Keep cards readable at 200–400% browser zoom. */
-.project-card-no-image .project-content,
 .cert-content,
 .skill-card {
   min-width: 0;
   overflow-wrap: anywhere;
 }
 
-@media (max-width: 599px) {
-  .project-card-no-image {
-    min-height: 0;
-  }
-}
 
 /* Unlinked certification cards are informational, not interactive. */
 .cert-unlinked:hover {
