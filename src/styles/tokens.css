@@ -1,7 +1,7 @@
 /* ACO warm-ivory / dark cherry-garnet and graphite / dusty-rose brand palette.
  * Eight colors: #2b2526 ink; #47161f deep garnet; #5b1f2a dark cherry;
  * #c9969e dusty rose; #f3eee7 ivory; #ded4c8 sand; #1a1d21 graphite;
- * #665B57 warm taupe. Legacy variable aliases retained for CSS compatibility.
+ * #665b57 warm taupe. Legacy variable aliases retained for CSS compatibility.
  * The ACO identity uses the same deep garnet (#47161f) as this palette.
  */
 :root {
@@ -15,7 +15,7 @@
   --palette-ice: #f3eee7;
   --satin-silver: #ded4c8;
   --satin-black: #1a1d21;
-  --palette-muted: #665B57;
+  --palette-muted: #665b57;
 
   /* Light theme — ivory surfaces, dark cherry accents, neutral body text. */
   --bg: #f3eee7;
@@ -32,7 +32,7 @@
   --surface-edge: color-mix(in srgb, var(--palette-steel) 70%, var(--satin-silver));
 
   --text: #2b2526;
-  --muted: #665B57;
+  --muted: #665b57;
   --line: #5b1f2a;
   --primary: #5b1f2a;
   --primary-strong: #47161f;
