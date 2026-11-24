@@ -1319,3 +1319,47 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
 .cert-unlinked:hover {
   transform: none;
 }
+
+/* Fluid-width technology band and expanded footer. */
+/* The main grid stays bounded for readable content, while this strip
+   visually spans the viewport. The carousel itself remains scrollable on mobile. */
+.hero-section .tech-strip {
+  width: 100vw;
+  max-width: none;
+  margin-inline: calc(50% - 50vw);
+  padding-inline: max(12px, calc((100vw - var(--content-max)) / 2), calc(var(--content-gutter) / 2));
+}
+
+.hero-section .tech-strip-header,
+.hero-section .tech-carousel {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Use more of wide screens without stretching readable paragraph lines. */
+.footer {
+  width: min(1760px, calc(100% - var(--content-gutter)));
+  max-width: none;
+  column-gap: clamp(18px, 3vw, 48px);
+  row-gap: 12px;
+}
+
+.footer > * {
+  min-width: 0;
+}
+
+@media (max-width: 720px) {
+  .hero-section .tech-strip {
+    padding-inline: 12px;
+  }
+
+  .footer {
+    width: calc(100% - 24px);
+  }
+}
+
+@media (max-width: 375px) {
+  .footer {
+    width: calc(100% - 20px);
+  }
+}
