@@ -444,11 +444,11 @@
 }
 .project-card-scrabble .project-media {
   aspect-ratio: 1300 / 915;
-  background: #0a110d;
+  background: var(--satin-black);
 }
 .project-card-scrabble .project-media img {
   object-fit: contain;
-  background: #0a110d;
+  background: var(--satin-black);
 }
 .project-card-scrabble:hover .project-media img {
   transform: none;
