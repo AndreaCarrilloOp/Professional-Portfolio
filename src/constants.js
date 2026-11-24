@@ -167,33 +167,6 @@ export const SKILLS = [
 
 export const PROJECTS = [
   {
-    id: "pln-proformas",
-    titleKey: "projects.proformas.title",
-    descriptionKey: "projects.proformas.description",
-    problemKey: "projects.proformas.problem",
-    contributionKey: "projects.proformas.contribution",
-    outcomeKey: "projects.proformas.outcome",
-    repo: "https://github.com/AndreaCarrilloOp/PLN-Proformas",
-    year: "2026",
-    roleKey: "projects.roles.backend",
-    techs: ["Python", "FastAPI", "spaCy", "PostgreSQL"],
-    statusKey: "projects.status.inProgress",
-  },
-  {
-    id: "bookstore-rabbitmq",
-    titleKey: "projects.bookstore.title",
-    descriptionKey: "projects.bookstore.description",
-    problemKey: "projects.bookstore.problem",
-    contributionKey: "projects.bookstore.contribution",
-    outcomeKey: "projects.bookstore.outcome",
-    repo: "https://github.com/AndreaCarrilloOp/bookstore-RabbitMQ",
-    demo: "https://bookstore-rabbitmq.vercel.app/",
-    year: "2026",
-    roleKey: "projects.roles.distributed",
-    techs: ["Node.js", "RabbitMQ", "MongoDB", "Vue 3"],
-    statusKey: "projects.status.published",
-  },
-  {
     id: "scrabble",
     titleKey: "projects.scrabble.title",
     descriptionKey: "projects.scrabble.description",
@@ -270,6 +243,7 @@ export const CERTIFICATIONS = [
     title: "Microsoft Security, Compliance, and Identity Fundamentals",
     code: "SC-900",
     statusKey: "certifications.approved",
-    credentialUrl: null,
+    credentialUrl:
+      "https://learn.microsoft.com/es-es/users/andreacarrillooporto-6553/credentials/2dc1174f7d2f1f1b?ref=https%3A%2F%2Fgithub.com%2F",
   },
 ];
