@@ -24,7 +24,9 @@ test("technology carousel contents remain intact with an accessible pause contro
   assert.ok(start >= 0 && end > start, "carousel must remain in Hero");
   assert.equal(hash(hero.slice(start, end + "        </div>".length)), "c516d65e",
     "do not change the technology list, duplication or mobile scrolling");
-  assert.match(hero, /tech-strip-paused/);
+  assert.match(hero, /className="tech-strip reveal-up delay-2"/);
+  assert.match(hero, /tech-track-paused/);
+  assert.doesNotMatch(hero, /tech-strip-paused/);
   assert.match(hero, /aria-pressed=\{techPaused\}/);
   assert.match(hero, /hero\.techPause/);
   assert.match(hero, /hero\.techResume/);
