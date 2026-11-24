@@ -439,6 +439,18 @@
   outline: 3px solid var(--focus-ring);
   outline-offset: -5px;
 }
+.project-card-distributed-library .project-media {
+  background: var(--surface-soft);
+}
+
+.project-card-distributed-library .project-media img {
+  object-fit: contain;
+}
+
+.project-card-distributed-library:hover .project-media img {
+  transform: none;
+}
+
 .project-card-scrabble {
   grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr);
 }
