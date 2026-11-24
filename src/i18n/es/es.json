@@ -42,13 +42,13 @@
   "skills": {
     "eyebrow": "Especialidades",
     "title": "Habilidades técnicas",
-    "description": "Áreas de trabajo y herramientas que utilizo en mis proyectos.",
+    "description": "Cuatro áreas que resumen mi trabajo en frontend, backend, datos y entrega de software.",
     "frontend": {
       "title": "Frontend",
       "description": "Interfaces responsive y accesibles."
     },
     "backend": {
-      "title": "Backend",
+      "title": "Backend y APIs",
       "description": "Servicios, lógica de negocio e integración."
     },
     "databases": {
@@ -56,8 +56,8 @@
       "description": "Modelado, consultas y persistencia."
     },
     "cloud": {
-      "title": "Cloud y DevOps",
-      "description": "Despliegue, contenedores y automatización."
+      "title": "Cloud, DevOps y calidad",
+      "description": "Despliegue, automatización y validación de aplicaciones."
     },
     "tools": {
       "title": "Herramientas",
