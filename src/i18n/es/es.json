@@ -119,7 +119,8 @@
       "contribution": "Implementación e integración de interfaces web, endpoints serverless, bases de datos independientes y navegación entre entidades.",
       "outcome": "Plataforma académica desplegada con shell de integración y servicios publicados por separado.",
       "imageAlt": "Vista previa de la plataforma de biblioteca distribuida y su interfaz integrada mediante un shell web."
-    }
+    },
+    "technologiesLabel": "Tecnologías utilizadas"
   },
   "certifications": {
     "eyebrow": "Credenciales",
