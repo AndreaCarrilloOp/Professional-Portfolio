@@ -2175,7 +2175,7 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   border-color: var(--palette-steel);
 }
 
-/* Theme-inverse footer: midnight navy beneath blue-grey, blue-grey beneath midnight navy.
+/* Theme-inverse footer: midnight navy beneath steel blue, steel blue beneath midnight navy.
    Local semantic tokens keep both variants legible without changing page tokens. */
 :root:not(.dark) .footer {
   --footer-background: var(--satin-black);
