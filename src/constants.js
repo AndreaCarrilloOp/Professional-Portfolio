@@ -68,7 +68,7 @@ export const PROFILE_IMAGE_DARK = {
 
 export const GITHUB_URL = "https://github.com/AndreaCarrilloOp";
 export const LINKEDIN_URL = "https://www.linkedin.com/in/andrea-carrillo-vlk/";
-export const EMAIL = "valkstack@gmail.com";
+export const EMAIL = "acarrillo.vlk@gmail.com";
 export const EMAIL_URL = `mailto:${EMAIL}`;
 export const COPYRIGHT_NAME = "Andrea Carrillo";
 
