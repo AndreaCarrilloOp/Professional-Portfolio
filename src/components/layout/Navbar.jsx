@@ -148,7 +148,13 @@ function Navbar({ darkMode, onToggleTheme }) {
   useEffect(() => {
     // Restore the destination when using Back/Forward or entering with a hash.
     const restoreHash = () => {
-      const id = decodeURIComponent(window.location.hash.slice(1)) || "home";
+      let id = "home";
+      try {
+        id = decodeURIComponent(window.location.hash.slice(1)) || "home";
+      } catch {
+        // Malformed URL fragments should not interrupt navigation.
+        return;
+      }
       const section = document.getElementById(id);
       if (!section) return;
 
