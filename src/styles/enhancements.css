@@ -1671,3 +1671,99 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   outline: 3px solid var(--focus-ring);
   outline-offset: 4px;
 }
+
+
+/* Portfolio navigation and content-density refinement. */
+.nav-contact-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 8px 16px;
+  border: 1px solid color-mix(in srgb, var(--primary) 38%, var(--line));
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--text);
+  font-size: 0.86rem;
+  font-weight: 800;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.nav-contact-cta:hover,
+.nav-contact-cta:focus-visible,
+.bento-contact-cta:hover,
+.bento-contact-cta:focus-visible {
+  border-color: var(--primary);
+  background: var(--surface-raised);
+}
+
+.nav-contact-cta:focus-visible,
+.bento-contact-cta:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+.bento-contact-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  margin-top: 12px;
+  padding: 12px 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--primary-soft);
+  color: var(--text);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+@media (max-width: 1024px) {
+  .nav-contact-cta {
+    display: none;
+  }
+}
+
+@media (min-width: 1025px) {
+  .bento-contact-cta {
+    display: none;
+  }
+}
+
+/* Content-led sections: readable spacing rather than full-viewport placeholders. */
+#about.section-pad,
+#skills.section-pad,
+#projects.section-pad {
+  padding-block: clamp(44px, 4.2vw, 62px);
+}
+
+.certifications-section.section-pad {
+  padding-block: clamp(30px, 3.2vw, 44px);
+}
+
+.skills-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.skills-grid .skill-card {
+  padding: clamp(18px, 1.7vw, 24px);
+}
+
+@media (max-width: 1100px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 599px) {
+  .skills-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #about.section-pad,
+  #skills.section-pad,
+  #projects.section-pad {
+    padding-block: 38px;
+  }
+}
