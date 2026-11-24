@@ -70,7 +70,7 @@
   "projects": {
     "eyebrow": "Proyectos",
     "title": "Proyectos seleccionados",
-    "description": "Tres proyectos seleccionados que muestran desarrollo web, interfaces responsivas y lógica de aplicaciones con C++ y WebAssembly.",
+    "description": "Tres proyectos que muestran lógica de aplicaciones, desarrollo web y arquitectura distribuida.",
     "repo": "GitHub",
     "demo": "Demo",
     "evidenceCta": "Ver evidencia técnica",
@@ -88,13 +88,6 @@
       "outcome": "Sitio publicado con estructura clara, navegación simple y experiencia consistente en mobile/desktop.",
       "problem": "Catálogo estático que necesitaba mejor jerarquía visual, orden de productos y navegación sencilla.",
       "contribution": "Maquetación responsive, estructura de secciones, componentes visuales reutilizables y publicación en GitHub Pages."
-    },
-    "tallestBuildings": {
-      "title": "Catálogo de rascacielos",
-      "description": "Aplicación web desarrollada con Nuxt.js 3 y Vue.js que presenta los 12 rascacielos más altos del mundo, sus ciudades y firmas arquitectónicas mediante navegación relacionada y datos estructurados.",
-      "problem": "Organizar información de edificios, ciudades y arquitectos en una experiencia clara, responsiva y fácil de explorar.",
-      "contribution": "Diseño de navegación entre entidades, páginas dinámicas, contenido en Markdown y JSON, componentes reutilizables y despliegue en Netlify.",
-      "outcome": "Catálogo publicado con 12 rascacielos, 11 ciudades y 6 oficinas de arquitectura, con navegación cruzada y diseño responsive."
     },
     "scrabble": {
       "title": "Scrabble · Web Edition",
@@ -114,7 +107,15 @@
       "contribution": "Aporte",
       "outcome": "Resultado"
     },
-    "viewFullImage": "Ampliar captura"
+    "viewFullImage": "Ampliar captura",
+    "distributedLibrary": {
+      "title": "Plataforma de Biblioteca Distribuida",
+      "description": "Arquitectura distribuida con cuatro microfrontends, microservicios independientes y persistencia en PostgreSQL, Cloudflare D1 y Turso.",
+      "problem": "Integrar módulos de libros, autores, editoriales y reseñas que operan como servicios independientes.",
+      "contribution": "Implementación e integración de interfaces web, endpoints serverless, bases de datos independientes y navegación entre entidades.",
+      "outcome": "Plataforma académica desplegada con shell de integración y servicios publicados por separado.",
+      "imageAlt": "Vista previa de la plataforma de biblioteca distribuida y su interfaz integrada mediante un shell web."
+    }
   },
   "certifications": {
     "eyebrow": "Credenciales",
