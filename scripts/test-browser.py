@@ -101,6 +101,61 @@ class PortfolioSmokeTests(unittest.TestCase):
                 finally:
                     page.close()
 
+    def test_technology_pause_resume_and_mobile_swipe(self) -> None:
+        desktop = self.page_for(1366, reduced_motion="no-preference")
+        try:
+            toggle = desktop.locator(".tech-motion-toggle")
+            track = desktop.locator(".tech-track")
+            self.assertTrue(toggle.is_visible())
+            self.assertEqual(toggle.get_attribute("aria-pressed"), "false")
+            toggle.click()
+            self.assertEqual(toggle.get_attribute("aria-pressed"), "true")
+            self.assertEqual(
+                track.evaluate("el => getComputedStyle(el).animationPlayState"),
+                "paused",
+            )
+            toggle.click()
+            self.assertEqual(toggle.get_attribute("aria-pressed"), "false")
+            self.assertEqual(
+                track.evaluate("el => getComputedStyle(el).animationPlayState"),
+                "running",
+            )
+        finally:
+            desktop.close()
+
+        mobile = self.page_for(390, reduced_motion="no-preference")
+        try:
+            self.assertFalse(mobile.locator(".tech-motion-toggle").is_visible())
+            carousel = mobile.locator(".tech-carousel")
+            self.assertEqual(
+                carousel.evaluate("el => getComputedStyle(el).overflowX"), "auto"
+            )
+            self.assertGreater(
+                carousel.evaluate("el => el.scrollWidth - el.clientWidth"), 0
+            )
+        finally:
+            mobile.close()
+
+    def test_history_back_forward_and_deep_links(self) -> None:
+        page = self.page_for(1366)
+        try:
+            page.locator('.nav-links a[href="#projects"]').click()
+            page.locator('.nav-links a[href="#skills"]').click()
+            self.assertTrue(page.url.endswith("#skills"))
+            page.go_back(wait_until="domcontentloaded")
+            page.wait_for_url("**/#projects")
+            self.assertLess(page.locator("#projects-heading").bounding_box()["y"], 220)
+            page.go_forward(wait_until="domcontentloaded")
+            page.wait_for_url("**/#skills")
+            self.assertLess(page.locator("#skills-heading").bounding_box()["y"], 220)
+            page.goto(BASE_URL + "/#about", wait_until="domcontentloaded")
+            page.locator("#about-heading").wait_for()
+            page.wait_for_function(
+                "() => document.activeElement?.id === 'about-heading'"
+            )
+        finally:
+            page.close()
+
     def test_section_navigation_directly_reaches_target(self) -> None:
         for width in (390, 1366):
             with self.subTest(width=width):
