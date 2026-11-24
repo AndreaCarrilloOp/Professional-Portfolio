@@ -461,8 +461,20 @@
 }
 
 .hero-copy .hero-title {
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   margin: 0 0 clamp(18px, 2.3vw, 26px);
-  line-height: 1.02;
+  padding-inline-end: clamp(8px, 1.1vw, 16px);
+  line-height: 1.05;
+  overflow: visible;
+}
+
+/* Reserve space for the rounded final glyph and gradient/drop-shadow paint. */
+.hero-copy .hero-name-last {
+  box-sizing: border-box;
+  max-width: 100%;
+  padding-inline-end: 0.12em;
 }
 
 .hero-copy .hero-description {
