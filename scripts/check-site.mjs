@@ -289,21 +289,27 @@ test("ivory/dark-cherry and graphite/dusty-rose themes keep browser colors in sy
   assert.doesNotMatch(paletteAudit, /008b8b|32d8ce/);
 });
 
-test("contact and legal footer share a high-contrast dark surface in both themes", () => {
+test("footer colors invert across themes without changing the content structure", () => {
   const css = load("src/styles/enhancements.css");
   const footer = load("src/components/layout/Footer.jsx");
   const contact = load("src/components/sections/Contact.jsx");
-  const start = css.indexOf("/* Shared dark footer for both themes:");
-  assert.ok(start >= 0);
+  const start = css.indexOf("/* Theme-inverse footer:");
+  assert.ok(start >= 0, "inverse footer theme rules should exist");
   const rules = css.slice(start);
-  assert.match(rules, /\.footer,\s*\.dark \.footer\s*\{/);
-  assert.ok(rules.includes("--text: var(--palette-ice)"));
-  assert.ok(rules.includes("--muted: var(--satin-silver)"));
-  assert.ok(rules.includes("--focus-ring: var(--palette-ice)"));
-  assert.ok(rules.includes("var(--satin-black) 78%"));
-  assert.ok(rules.includes(".footer .footer-email"));
-  assert.ok(rules.includes(".footer .footer-socials a"));
-  assert.ok(rules.includes("-webkit-text-fill-color: var(--palette-ice)"));
+
+  assert.match(rules, /:root:not\(\.dark\) \.footer\s*\{/);
+  assert.match(rules, /\.dark \.footer\s*\{/);
+  assert.ok(rules.includes("--footer-background: var(--satin-black)"));
+  assert.ok(rules.includes("--footer-background: var(--palette-ice)"));
+  assert.ok(rules.includes("--footer-text: var(--palette-ice)"));
+  assert.ok(rules.includes("--footer-text: var(--palette-ink)"));
+  assert.ok(rules.includes("--footer-accent: var(--palette-sky)"));
+  assert.ok(rules.includes("--footer-accent: var(--palette-steel)"));
+  assert.ok(rules.includes("--focus-ring: var(--footer-focus)"));
+  assert.ok(rules.includes("background: var(--footer-link-surface)"));
+  assert.ok(rules.includes("background: var(--footer-link-hover)"));
+  assert.ok(rules.includes("-webkit-text-fill-color: var(--footer-text)"));
+  assert.ok(rules.includes("outline: 3px solid var(--footer-focus)"));
   assert.ok(footer.includes('<footer className="footer">'));
   assert.ok(footer.includes("<Contact />"));
   assert.ok(contact.includes('className="footer-contact"'));
