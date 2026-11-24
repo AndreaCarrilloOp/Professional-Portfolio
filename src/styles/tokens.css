@@ -20,6 +20,7 @@
   --palette-dark-card: #24314e;
   --palette-violet: #c9a7bf;
   --palette-border: #314564;
+  --palette-white: #ffffff; /* On dark interactive surfaces only; never a page background. */
 
   /* Defined steel-blue surfaces with navy and deep-plum text accents. */
   --bg: #96a9bf;
@@ -42,7 +43,7 @@
   --primary-strong: #4b2848;
   --primary-soft: color-mix(in srgb, var(--palette-steel) 14%, transparent);
   --secondary: #243865;
-  --on-primary: #dce3ee;
+  --on-primary: #ffffff;
   --focus-ring: #243865;
 
   /* Component aliases inherit the same coordinated palette. */
