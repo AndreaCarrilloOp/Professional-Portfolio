@@ -1923,3 +1923,21 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   height: 45px;
   object-fit: contain;
 }
+
+/* Light-mode constellation contrast, with a quieter mobile presentation.
+   The dark-mode canvas remains at its existing opacity. */
+:root:not(.dark) .constellation-canvas {
+  opacity: 0.92;
+}
+
+@media (max-width: 720px) {
+  :root:not(.dark) .constellation-canvas {
+    opacity: 0.8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root:not(.dark) .constellation-canvas {
+    opacity: 0.72;
+  }
+}
