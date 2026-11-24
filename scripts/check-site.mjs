@@ -282,3 +282,24 @@ test("ivory/dark-cherry and graphite/dusty-rose themes keep browser colors in sy
   assert.ok(load("public/branding/aco-light.svg").includes("#008B8B"));
   assert.ok(load("public/branding/aco-dark.svg").includes("#32D8CE"));
 });
+
+test("contact and legal footer share a high-contrast dark surface in both themes", () => {
+  const css = load("src/styles/enhancements.css");
+  const footer = load("src/components/layout/Footer.jsx");
+  const contact = load("src/components/sections/Contact.jsx");
+  const start = css.indexOf("/* Shared dark footer for both themes:");
+  assert.ok(start >= 0);
+  const rules = css.slice(start);
+  assert.match(rules, /\.footer,\s*\.dark \.footer\s*\{/);
+  assert.ok(rules.includes("--text: var(--palette-ice)"));
+  assert.ok(rules.includes("--muted: var(--satin-silver)"));
+  assert.ok(rules.includes("--focus-ring: var(--palette-ice)"));
+  assert.ok(rules.includes("var(--satin-black) 78%"));
+  assert.ok(rules.includes(".footer .footer-email"));
+  assert.ok(rules.includes(".footer .footer-socials a"));
+  assert.ok(rules.includes("-webkit-text-fill-color: var(--palette-ice)"));
+  assert.ok(footer.includes('<footer className="footer">'));
+  assert.ok(footer.includes("<Contact />"));
+  assert.ok(contact.includes('className="footer-contact"'));
+  assert.ok(contact.includes('id="contact"'));
+});
