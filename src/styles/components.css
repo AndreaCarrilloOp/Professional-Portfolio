@@ -377,6 +377,14 @@
   padding: 24px;
   transition: var(--motion-duration-fast) var(--motion-ease-standard);
 }
+.skill-description {
+  margin: -6px 0 16px;
+  max-width: 52ch;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
 .skill-card:hover,
 .project-card:hover,
 .cert-card:hover {
@@ -437,6 +445,21 @@
   min-width: 0;
   transition: var(--motion-duration-fast) var(--motion-ease-standard);
 }
+.project-card-no-image {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.project-card-no-image .project-content {
+  flex: 1;
+  justify-content: flex-start;
+}
+
+.project-card-no-image .project-content > p {
+  max-width: 64ch;
+}
+
 .featured-project {
   grid-column: 1 / -1;
   display: grid;
@@ -682,6 +705,19 @@
   outline: 3px solid var(--focus-ring);
   outline-offset: 4px;
 }
+.cert-unlinked {
+  cursor: default;
+}
+
+.cert-unlinked-note {
+  display: block;
+  margin-top: 12px;
+  max-width: 34ch;
+  color: var(--muted);
+  font-size: 0.83rem;
+  line-height: 1.5;
+}
+
 .cert-content {
   min-width: 0;
 }
