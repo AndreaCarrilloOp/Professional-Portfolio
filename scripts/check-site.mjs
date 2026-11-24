@@ -18,21 +18,13 @@ const hash = (str) => {
   return value.toString(16).padStart(8, "0");
 };
 
-test("technology carousel contents remain intact with an accessible pause control", () => {
-  const start = hero.indexOf('        <div className="tech-carousel"');
-  const end = hero.indexOf("\n        </div>\n      </div>\n    </section>", start);
+test("technology carousel original structure is preserved", () => {
+  const start = hero.indexOf('      <div\n        className="tech-strip reveal-up delay-2"');
+  const end = hero.lastIndexOf("    </section>");
   assert.ok(start >= 0 && end > start, "carousel must remain in Hero");
-  assert.equal(hash(hero.slice(start, end + "        </div>".length)), "c516d65e",
-    "do not change the technology list, duplication or mobile scrolling");
-  assert.match(hero, /className="tech-strip reveal-up delay-2"/);
-  assert.match(hero, /tech-track-paused/);
-  assert.doesNotMatch(hero, /tech-strip-paused/);
-  assert.match(hero, /aria-pressed=\{techPaused\}/);
-  assert.match(hero, /hero\.techPause/);
-  assert.match(hero, /hero\.techResume/);
-  for (const locale of [spanish, english]) {
-    assert.ok(locale.hero.techPause && locale.hero.techResume);
-  }
+  assert.equal(hash(hero.slice(start, end)), "460411eb",
+    "do not change the original continuous technology carousel");
+  assert.doesNotMatch(hero, /techPaused|tech-motion-toggle|tech-track-paused/);
 });
 
 test("only the three approved projects are listed", () => {
