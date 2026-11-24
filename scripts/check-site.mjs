@@ -18,11 +18,19 @@ const hash = (str) => {
   return value.toString(16).padStart(8, "0");
 };
 
-test("technology carousel structure is unchanged", () => {
-  const start = hero.indexOf('      <div\n        className="tech-strip reveal-up delay-2"');
-  const end = hero.lastIndexOf("    </section>");
+test("technology carousel contents remain intact with an accessible pause control", () => {
+  const start = hero.indexOf('        <div className="tech-carousel"');
+  const end = hero.indexOf("\n        </div>\n      </div>\n    </section>", start);
   assert.ok(start >= 0 && end > start, "carousel must remain in Hero");
-  assert.equal(hash(hero.slice(start, end)), "460411eb", "do not alter the carousel without approval");
+  assert.equal(hash(hero.slice(start, end + "        </div>".length)), "c516d65e",
+    "do not change the technology list, duplication or mobile scrolling");
+  assert.match(hero, /tech-strip-paused/);
+  assert.match(hero, /aria-pressed=\{techPaused\}/);
+  assert.match(hero, /hero\.techPause/);
+  assert.match(hero, /hero\.techResume/);
+  for (const locale of [spanish, english]) {
+    assert.ok(locale.hero.techPause && locale.hero.techResume);
+  }
 });
 
 test("only the three approved projects are listed", () => {
@@ -58,6 +66,20 @@ test("both translations preserve page sections and accessible navigation", () =>
   assert.match(navbar, /handleNavClick\(event, "contact"\)/);
   assert.match(load("src/components/sections/Hero.jsx"), /href="#contact"/);
   assert.match(load("src/components/sections/Contact.jsx"), /id="contact"/);
+});
+
+test("navigation restores history and skill tags are grouped logically", () => {
+  const navbar = load("src/components/layout/Navbar.jsx");
+  assert.match(navbar, /addEventListener\("popstate", restoreHash\)/);
+  assert.match(navbar, /addEventListener\("hashchange", restoreHash\)/);
+  assert.match(navbar, /location\.hash !==/);
+  const skills = load("src/components/sections/Skills.jsx");
+  assert.match(skills, /className="skill-groups"/);
+  const config = constants.slice(constants.indexOf("export const SKILLS = ["),
+    constants.indexOf("export const PROJECTS = ["));
+  for (const key of ["skills.cloud.delivery", "skills.cloud.testing", "skills.cloud.versionControl"]) {
+    assert.ok(config.includes(key));
+  }
 });
 
 test("portfolio prioritizes projects and preserves four skills categories", () => {
