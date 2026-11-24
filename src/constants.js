@@ -2,16 +2,12 @@ import {
   FaCode,
   FaDatabase,
   FaCloud,
-  FaTools,
   FaGithub,
   FaLinkedin,
   FaEnvelope,
-  FaHome,
   FaUser,
   FaLayerGroup,
   FaBriefcase,
-  FaCertificate,
-  FaBug,
 } from "react-icons/fa";
 import {
   SiReact,
@@ -77,27 +73,9 @@ export const EMAIL_URL = `mailto:${EMAIL}`;
 export const COPYRIGHT_NAME = "Andrea Carrillo";
 
 export const NAV_ITEMS = [
-  { id: "home", labelKey: "nav.home", href: "#home", icon: FaHome },
-  { id: "about", labelKey: "nav.about", href: "#about", icon: FaUser },
+  { id: "projects", labelKey: "nav.projects", href: "#projects", icon: FaBriefcase },
   { id: "skills", labelKey: "nav.skills", href: "#skills", icon: FaLayerGroup },
-  {
-    id: "projects",
-    labelKey: "nav.projects",
-    href: "#projects",
-    icon: FaBriefcase,
-  },
-  {
-    id: "certifications",
-    labelKey: "nav.certifications",
-    href: "#certifications",
-    icon: FaCertificate,
-  },
-  {
-    id: "contact",
-    labelKey: "nav.contact",
-    href: "#contact",
-    icon: FaEnvelope,
-  },
+  { id: "about", labelKey: "nav.about", href: "#about", icon: FaUser },
 ];
 
 export const SOCIAL_LINKS = [
@@ -121,6 +99,13 @@ export const TECH_STACK = [
 
 export const SKILLS = [
   {
+    id: "frontend",
+    icon: FaCode,
+    titleKey: "skills.frontend.title",
+    descriptionKey: "skills.frontend.description",
+    items: ["React", "Vue", "HTML", "CSS", "Figma"],
+  },
+  {
     id: "backend",
     icon: FaCode,
     titleKey: "skills.backend.title",
@@ -135,32 +120,11 @@ export const SKILLS = [
     items: ["PostgreSQL", "MySQL", "MongoDB", "SQL Server"],
   },
   {
-    id: "frontend",
-    icon: FaCode,
-    titleKey: "skills.frontend.title",
-    descriptionKey: "skills.frontend.description",
-    items: ["React", "Vue", "HTML", "CSS"],
-  },
-  {
     id: "cloud",
     icon: FaCloud,
     titleKey: "skills.cloud.title",
     descriptionKey: "skills.cloud.description",
-    items: ["Docker", "Azure", "GitHub Actions", "Netlify"],
-  },
-  {
-    id: "testing",
-    icon: FaBug,
-    titleKey: "skills.testing.title",
-    descriptionKey: "skills.testing.description",
-    items: ["pytest", "Postman", "API testing", "CTest"],
-  },
-  {
-    id: "tools",
-    icon: FaTools,
-    titleKey: "skills.tools.title",
-    descriptionKey: "skills.tools.description",
-    items: ["Git", "GitHub", "Vite", "Figma"],
+    items: ["Docker", "Azure", "GitHub Actions", "pytest", "Postman", "Netlify"],
   },
 ];
 
