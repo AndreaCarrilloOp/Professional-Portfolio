@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-function SectionHeader({ eyebrowKey, titleKey, descriptionKey, align = "center", headingId }) {
+function SectionHeader({ eyebrowKey, titleKey, descriptionKey, align = "left", headingId }) {
   const { t } = useTranslation();
   const alignmentClass =
     align === "left" ? "section-header-left" : "section-header-center";
