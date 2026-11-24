@@ -457,7 +457,7 @@
   margin: 0 0 14px;
   color: var(--accent-champagne);
   font-size: clamp(0.76rem, 1vw, 0.86rem);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.085em;
   line-height: 1.5;
   text-transform: uppercase;
@@ -489,7 +489,7 @@
 }
 
 .hero-copy .hero-description strong {
-  font-weight: 750;
+  font-weight: 700;
 }
 
 .hero-copy .hero-cta-row {
