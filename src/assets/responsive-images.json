@@ -162,5 +162,19 @@
         "url": "/images/responsive/profile-dark-1200.webp"
       }
     ]
+  },
+  "distributedLibrary": {
+    "aspectRatio": 2.048025613660619,
+    "original": {
+      "width": 1919,
+      "height": 937
+    },
+    "png": [
+      {
+        "width": 1919,
+        "height": 937,
+        "url": "/images/responsive/distributed-library.png"
+      }
+    ]
   }
 }
