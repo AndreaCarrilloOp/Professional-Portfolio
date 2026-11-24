@@ -90,10 +90,27 @@ function App() {
   }, [darkMode]);
 
   useEffect(() => {
-    document.documentElement.lang = i18n.language?.startsWith("es")
-      ? "es"
-      : "en";
-  }, [i18n.language]);
+    const isSpanish = i18n.language?.startsWith("es");
+    document.documentElement.lang = isSpanish ? "es" : "en";
+    document.title = t("seo.title");
+
+    const setMeta = (selector, content) => {
+      document.querySelector(selector)?.setAttribute("content", content);
+    };
+
+    const description = t("seo.description");
+    const title = t("seo.title");
+    const imageAlt = t("seo.imageAlt");
+
+    setMeta('meta[name="description"]', description);
+    setMeta('meta[property="og:title"]', title);
+    setMeta('meta[property="og:description"]', description);
+    setMeta('meta[property="og:locale"]', t("seo.locale"));
+    setMeta('meta[property="og:image:alt"]', imageAlt);
+    setMeta('meta[name="twitter:title"]', title);
+    setMeta('meta[name="twitter:description"]', description);
+    setMeta('meta[name="twitter:image:alt"]', imageAlt);
+  }, [i18n.language, t]);
 
   useEffect(() => {
     const revealItems = document.querySelectorAll(".reveal-up");
