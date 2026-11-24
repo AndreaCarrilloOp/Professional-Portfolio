@@ -102,6 +102,13 @@ test("theme, contrast and reduced-motion fallbacks remain available", () => {
   const styles = load("src/styles/enhancements.css");
   assert.match(app, /prefers-reduced-motion: reduce/);
   assert.match(tokens, /--focus-ring:/);
+  assert.match(tokens, /--font-sans:\s*"IBM Plex Sans"/);
+  assert.match(tokens, /--font-mono:\s*"IBM Plex Mono"/);
+  assert.match(app, /@fontsource\/ibm-plex-sans\/latin-400\.css/);
+  assert.match(app, /@fontsource\/ibm-plex-mono\/latin-500\.css/);
+  const packageInfo = json("package.json");
+  assert.equal(packageInfo.dependencies["@fontsource/ibm-plex-sans"], "5.2.8");
+  assert.equal(packageInfo.dependencies["@fontsource/ibm-plex-mono"], "5.1.0");
   assert.match(tokens, /--on-primary:\s*#ffffff/);
   assert.match(tokens, /--bg:\s*#96a9bf/);
   assert.doesNotMatch(tokens, /--bg:\s*#ffffff/);
