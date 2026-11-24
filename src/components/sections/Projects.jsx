@@ -62,7 +62,7 @@ function Projects() {
             </div>
             <div className="project-content">
               <div className="project-meta">
-                <span>{project.year} · {t(project.roleKey)}</span>
+                <span>{t(project.roleKey)} · {project.year}</span>
               </div>
               <h3>{t(project.titleKey)}</h3>
               <p>{t(project.descriptionKey)}</p>
