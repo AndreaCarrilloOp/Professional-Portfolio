@@ -118,7 +118,7 @@
       "imageAlt": "Vista previa de la plataforma de biblioteca distribuida y su interfaz integrada mediante un shell web."
     },
     "technologiesLabel": "Tecnologías utilizadas",
-    "architectureLabel": "Flujo de arquitectura",
+    "architectureLabel": "Flujo de escritura asíncrona",
     "bookstore": {
       "title": "Bookstore · RabbitMQ",
       "description": "Catálogo distribuido con operaciones de lectura en MongoDB y escrituras asíncronas mediante colas RabbitMQ, implementado con Vue 3 y funciones serverless.",
