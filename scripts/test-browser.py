@@ -169,6 +169,7 @@ class PortfolioSmokeTests(unittest.TestCase):
         """Desktop marquee pauses on hover; mobile keeps horizontal scrolling."""
         desktop = self.page_for(1366, reduced_motion="no-preference")
         try:
+            track = desktop.locator(".tech-track")
             control = desktop.locator(".tech-motion-toggle")
             self.assertEqual(control.count(), 1)
             self.assertEqual(control.get_attribute("aria-controls"), "technology-marquee")
@@ -179,7 +180,6 @@ class PortfolioSmokeTests(unittest.TestCase):
             self.assertEqual(track.evaluate("el => getComputedStyle(el).animationPlayState"), "paused")
             control.click()
             self.assertEqual(track.evaluate("el => getComputedStyle(el).animationPlayState"), "running")
-            track = desktop.locator(".tech-track")
             self.assertEqual(
                 track.evaluate("el => getComputedStyle(el).animationPlayState"),
                 "running",
