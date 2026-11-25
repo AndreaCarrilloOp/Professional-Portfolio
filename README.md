@@ -1,20 +1,39 @@
-# Professional Portfolio — Andrea Carrillo
+# Andrea Carrillo Oporto · Professional Portfolio
 
-Bilingual (ES/EN) professional portfolio built with **React 19, Vite 6 and CSS**, deployed on Netlify. The design uses the **Azul Medianoche · Ciruela · Champagne** palette (midnight navy `#0C1229`, steel-blue `#96A9BF`, deep plum `#4B2848` and restrained gold `#D2B77E` / bronze `#4B3620` accents), responsive images and accessible light/dark themes.
+A bilingual (English / Spanish) software development portfolio featuring selected projects, technical skills, and verifiable credentials. Built with **React 19, Vite 6, and CSS**, and deployed on Netlify.
 
-## Features
+**[Live portfolio](https://andreacarrillo-portafolio.netlify.app/)** · **[GitHub profile](https://github.com/AndreaCarrilloOp)** · **[LinkedIn](https://www.linkedin.com/in/andrea-carrillo-vlk/)**
 
-- Semantic one-page layout with responsive navigation and keyboard focus management.
-- Spanish and English content with i18next.
-- Minimal Engineering typography: self-hosted IBM Plex Sans (400–700) and selective IBM Plex Mono (500), with system fallbacks.
-- Light/dark themes, reduced-motion support and a decorative constellation canvas.
-- Four selected projects: Distributed Library (featured), SCRABBLE, Bookstore RabbitMQ and Huellita PetShop, plus a link to additional public GitHub repositories.
-- Responsive local images with WebP/AVIF when available; locally rendered award fallbacks if externally hosted certification images fail.
-- Canonical metadata, JSON-LD, social previews, sitemap and robots directives.
+## Preview
 
-## Development
+| Light mode | Dark mode |
+| :---: | :---: |
+| ![Portfolio homepage in light mode](docs/screenshots/portfolio-light.webp) | ![Portfolio homepage in dark mode](docs/screenshots/portfolio-dark.webp) |
 
-**Requirements:** Node.js 24 LTS, Corepack and pnpm 9.15.0.
+The interface uses a restrained midnight-blue, steel-blue, plum, and champagne palette with self-hosted IBM Plex typography.
+
+## Highlights
+
+- **Selected work:** Distributed Library Platform, SCRABBLE (C++ / WebAssembly), Bookstore RabbitMQ, and Huellita PetShop.
+- **Responsive experience:** layouts for mobile, tablet, and desktop, with light and dark themes.
+- **Bilingual content:** English and Spanish via i18next and react-i18next.
+- **Accessibility-aware UI:** semantic landmarks, keyboard navigation, visible focus indicators, reduced-motion support, and accessible theme and language controls.
+- **SEO and sharing:** canonical metadata, Open Graph and Twitter Cards, JSON-LD, sitemap, and robots directives.
+- **Deployment:** Netlify SPA routing, production security headers, and automated quality checks.
+
+## Tech stack
+
+| Area | Technologies |
+| --- | --- |
+| Frontend | React 19, Vite 6, JavaScript, CSS |
+| Localization | i18next, react-i18next |
+| UI | React Icons, IBM Plex Sans, IBM Plex Mono |
+| Tooling | Node.js 24 LTS, pnpm 9.15.0, ESLint |
+| Delivery | Netlify, GitHub Actions |
+
+## Run locally
+
+**Requirements:** Node.js 24 LTS, Corepack, and pnpm 9.15.0.
 
 ```bash
 corepack enable
@@ -22,65 +41,49 @@ pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-Preview the production build locally:
+Build and preview the production version:
 
 ```bash
 pnpm build
 pnpm preview
 ```
 
-## Quality checks
+## Quality and accessibility
 
 ```bash
 pnpm check
 ```
 
-The check command runs **ESLint, WCAG contrast checks for the defined semantic colors, seven focused static smoke tests and the production build**. These are regression safeguards, **not a substitute for browser-based accessibility testing or a WCAG certification**.
+The check script runs ESLint, contrast-token validation, static regression tests, and a production build. The GitHub Actions workflow additionally runs Chromium browser checks, including automated accessibility checks, and publishes temporary test artifacts.
 
-The smoke tests cover translation parity, semantic navigation/contact, carousel accessibility, local image fallbacks, outbound links, SEO/deployment configuration and reduced-motion/theme support. There is no additional test framework or recurring automation.
-
-For a production release, also verify keyboard navigation, 200%/400% zoom, both themes, mobile layouts, screen-reader announcements and Lighthouse/axe results in a real browser.
+Automated checks **do not establish WCAG conformance**. Before a release, also review keyboard-only navigation, screen-reader behavior, contrast in rendered components, 200%/400% zoom, responsive layouts, and both themes.
 
 ## Project structure
 
 ```text
+public/                # Static assets, social preview, and branding
 src/
+  assets/              # Local project imagery
+  components/
+    layout/            # Navigation and footer
+    sections/          # Portfolio content
+    ui/                # Reusable interface components
+  i18n/                # English and Spanish translations
+  styles/              # Theme, layout, and component CSS
   App.jsx
   constants.js
-  components/
-    layout/
-    sections/
-    ui/
-  i18n/
-  styles/
-  assets/
-public/
-  branding/
-  images/
-scripts/
-  check-contrast.mjs
-  check-site.mjs
-  generate-deploy-files.mjs
+docs/screenshots/       # README previews
+scripts/               # Static checks and deploy-file generation
+.github/workflows/      # CI quality pipeline
+netlify.toml            # Build, redirects, and security headers
 ```
 
 ## Deployment
 
-Netlify reads `netlify.toml`:
+Netlify uses `pnpm build`, publishes `dist/`, and builds with Node.js 24. The production build generates `robots.txt` and `sitemap.xml` from `VITE_SITE_URL` or Netlify's `URL`.
 
-- **Build:** `pnpm build`
-- **Publish directory:** `dist`
-- **Node:** 24 LTS
-
-The build generates `robots.txt` and `sitemap.xml` for the configured origin. If using a custom domain, set `VITE_SITE_URL` to its public HTTPS origin, or use Netlify's `URL` variable.
-
-For deployment details, see the Netlify configuration in `netlify.toml` and the [official Netlify documentation](https://docs.netlify.com/).
-
-## Accessibility and maintenance
-
-The site uses HTML landmarks, visible keyboard focus, reduced-motion preferences, high-contrast and forced-color fallbacks. Color checks test declared semantic tokens and the inverse footer, but translucent overlays still require a browser review.
-
-Keep content, styles, and asset paths synchronized when adding a project. Avoid adding third-party dependencies or tests for purely cosmetic CSS changes unless they protect a user-facing behavior.
+Set `VITE_SITE_URL` to the public HTTPS origin when deploying to a custom domain. Social preview metadata is defined in `index.html`, and the share image lives at `public/og-image.jpg`.
 
 ---
 
-Portfolio maintained by **Andrea Carrillo Oporto**.
+Designed and developed by **Andrea Carrillo Oporto**.
