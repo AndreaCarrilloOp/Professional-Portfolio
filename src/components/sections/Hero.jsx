@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { FaArrowRight, FaRegCircle } from "react-icons/fa";
+import { FaArrowRight, FaPause, FaPlay, FaRegCircle } from "react-icons/fa";
 import {
   PROFILE_IMAGE_DARK,
   PROFILE_IMAGE_LIGHT,
@@ -9,7 +10,7 @@ import {
 
 function Hero({ darkMode }) {
   const { t } = useTranslation();
-  const focusItems = ["hero.focusOne", "hero.focusTwo", "hero.focusThree"];
+  const [isMarqueePaused, setMarqueePaused] = useState(false);
   const heroSocialLinks = SOCIAL_LINKS.filter(({ id }) => id !== "email");
   const profileImage = darkMode ? PROFILE_IMAGE_DARK : PROFILE_IMAGE_LIGHT;
 
@@ -23,64 +24,56 @@ function Hero({ darkMode }) {
   };
 
   return (
-    <section id="home" className="hero-section section-pad">
+    <section id="home" className="hero-section section-pad" aria-labelledby="home-heading">
       <div className="hero-grid">
         <div className="hero-copy reveal-up">
-          <div className="status-pill">
-            <FaRegCircle aria-hidden="true" /> {t("hero.status")}
-          </div>
-          <h1 className="hero-title">
+          <p className="hero-kicker">{t("hero.eyebrow")}</p>
+          <h1 id="home-heading" className="hero-title">
             <span className="hero-name-first">Andrea</span>
             <span className="hero-name-last">Carrillo</span>
           </h1>
-          <p className="hero-role">{t("hero.eyebrow")}</p>
           <p className="hero-description">
             {t("hero.descriptionLead")} {" "}
             <strong>{t("hero.descriptionHighlight")}</strong>{" "}
             {t("hero.descriptionTail")}
           </p>
 
-          <div className="hero-focus-grid" aria-label={t("hero.focusLabel")}>
-            {focusItems.map((item) => (
-              <span key={item} className="hero-focus-item">
-                {t(item)}
-              </span>
-            ))}
-          </div>
-
           <div className="hero-actions hero-cta-row" role="group" aria-label={t("hero.primaryActionsLabel")}>
             <a href="#projects" className="btn btn-primary hero-cta-primary">
               <span>{t("hero.ctaProjects")}</span>
-              <span className="btn-icon-pill" aria-hidden="true">
-                <FaArrowRight />
-              </span>
+              <FaArrowRight className="hero-cta-arrow" aria-hidden="true" />
             </a>
             <a href="#contact" className="btn btn-secondary hero-cta-secondary">
               {t("hero.ctaContact")}
             </a>
           </div>
 
-          <div className="social-row hero-social-links" role="group" aria-label={t("hero.socialLabel")}>
-            {heroSocialLinks.map(({ id, label, href, icon: Icon }) => {
-              const isExternal = !href.startsWith("mailto");
-              return (
-                <a
-                  key={id}
-                  href={href}
-                  target={isExternal ? "_blank" : undefined}
-                  rel={isExternal ? "noreferrer" : undefined}
-                  className="social-link"
-                  aria-label={
-                    isExternal
-                      ? `${label}: Andrea Carrillo, ${t("accessibility.externalLink")}`
-                      : `${label}: Andrea Carrillo`
-                  }
-                >
-                  <Icon aria-hidden="true" />
-                  <span className="sr-only">{label}</span>
-                </a>
-              );
-            })}
+          <div className="hero-meta">
+            <p className="status-pill">
+              <FaRegCircle aria-hidden="true" /> {t("hero.status")}
+            </p>
+            <div className="social-row hero-social-links" role="group" aria-label={t("hero.socialLabel")}>
+              {heroSocialLinks.map(({ id, label, href, icon: Icon }) => {
+                const isExternal = !href.startsWith("mailto");
+                return (
+                  <a
+                    key={id}
+                    href={href}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noreferrer" : undefined}
+                    className="social-link"
+                    aria-label={
+                      isExternal
+                        ? `${label}: Andrea Carrillo, ${t("accessibility.externalLink")}`
+                        : `${label}: Andrea Carrillo`
+                    }
+                  >
+                    <Icon aria-hidden="true" />
+                    <span className="sr-only">{label}</span>
+                  </a>
+                );
+              })}
+            </div>
           </div>
         </div>
 
@@ -112,13 +105,30 @@ function Hero({ darkMode }) {
 
       <div
         className="tech-strip reveal-up delay-2"
+        role="group"
         aria-label={t("hero.techLabel")}
       >
         <div className="tech-strip-header">
           <span>{t("hero.techLabel")}</span>
           <small className="tech-swipe-hint">{t("hero.techHint")}</small>
+          <button
+            type="button"
+            className="tech-motion-toggle"
+            aria-label={isMarqueePaused ? t("hero.resumeAnimation") : t("hero.pauseAnimation")}
+            title={isMarqueePaused ? t("hero.resumeAnimation") : t("hero.pauseAnimation")}
+            aria-controls="technology-marquee"
+            onClick={() => setMarqueePaused((paused) => !paused)}
+          >
+            {isMarqueePaused ? <FaPlay aria-hidden="true" /> : <FaPause aria-hidden="true" />}
+          </button>
         </div>
-        <div className="tech-carousel">
+        <div
+          id="technology-marquee"
+          className={`tech-carousel ${isMarqueePaused ? "tech-carousel-paused" : ""}`}
+          tabIndex={0}
+          role="region"
+          aria-label={t("hero.techLabel")}
+        >
           <div className="tech-track">
             {TECH_STACK.map(({ id, label, icon: Icon }) => (
               <div className="tech-chip" key={id}>

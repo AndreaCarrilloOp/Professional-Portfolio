@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-function SectionHeader({ eyebrowKey, titleKey, descriptionKey, align = "center" }) {
+function SectionHeader({ eyebrowKey, titleKey, descriptionKey, align = "left", headingId }) {
   const { t } = useTranslation();
   const alignmentClass =
     align === "left" ? "section-header-left" : "section-header-center";
@@ -8,7 +8,7 @@ function SectionHeader({ eyebrowKey, titleKey, descriptionKey, align = "center" 
   return (
     <div className={`section-header ${alignmentClass}`}>
       <span className="eyebrow">{t(eyebrowKey)}</span>
-      <h2 className="section-title">{t(titleKey)}</h2>
+      <h2 id={headingId} className="section-title">{t(titleKey)}</h2>
       {descriptionKey && (
         <p className="section-description">{t(descriptionKey)}</p>
       )}

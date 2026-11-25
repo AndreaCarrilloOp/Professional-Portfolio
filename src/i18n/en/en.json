@@ -8,63 +8,77 @@
     "contact": "Contact"
   },
   "hero": {
-    "eyebrow": "Junior Software Developer | Python | C++ | SQL",
+    "eyebrow": "Full Stack Developer",
     "ctaProjects": "View Projects",
     "ctaContact": "Contact Me",
-    "status": "Available for opportunities",
-    "descriptionLead": "Building",
-    "descriptionHighlight": "responsive web solutions and maintainable code",
-    "descriptionTail": "with Python, C++, SQL, React and functional testing, focused on junior software development opportunities.",
+    "status": "Open to opportunities",
+    "descriptionLead": "I build",
+    "descriptionHighlight": "end-to-end web applications",
+    "descriptionTail": "from interfaces and APIs to databases, with a focus on quality and automation.",
     "techLabel": "TECHNOLOGIES I WORK WITH",
     "focusLabel": "Focus areas",
-    "focusOne": "Responsive web development",
-    "focusTwo": "Python, C++ and SQL",
-    "focusThree": "Functional / API testing",
+    "focusOne": "Backend and APIs",
+    "focusTwo": "Databases",
+    "focusThree": "Automation and testing",
     "techHint": "Swipe to see more",
     "primaryActionsLabel": "Primary portfolio actions",
-    "socialLabel": "Professional profiles"
+    "socialLabel": "Professional profiles",
+    "pauseAnimation": "Pause technology animation",
+    "resumeAnimation": "Resume technology animation",
+    "pause": "Pause",
+    "resume": "Resume"
   },
   "about": {
     "eyebrow": "About Me",
-    "title": "Junior profile focused on web development, functional testing and continuous improvement.",
-    "description": "I am a Junior Full Stack Developer with an Information Systems background. I focus on building responsive interfaces, connecting backend logic, working with databases and validating functional flows. I am targeting Junior Developer, Full Stack Junior, SDET Junior or R&D Junior opportunities where I can contribute clear code, fast learning, documentation and continuous improvement.",
-    "statOneValue": "Full Stack Junior",
-    "statOneLabel": "Frontend, backend and SQL",
-    "statTwoValue": "SDET Junior",
-    "statTwoLabel": "Functional and API testing",
-    "statThreeValue": "R&D Junior",
-    "statThreeLabel": "Research and prototypes",
+    "title": "Practical software development",
+    "description": "I am a software developer with an Information Systems background. I work on web applications, backend services, and databases.",
+    "statOneValue": "Backend",
+    "statOneLabel": "APIs and integration",
+    "statTwoValue": "Data",
+    "statTwoLabel": "SQL and persistence",
+    "statThreeValue": "Full Stack",
+    "statThreeLabel": "Interfaces and services",
     "highlightOne": "Clear and maintainable code",
     "highlightTwo": "Responsive and accessible design",
-    "highlightThree": "Documentation and version control"
+    "highlightThree": "Documentation and version control",
+    "approach": "I focus on solving problems through maintainable code, system integration, testing, and documentation."
   },
   "skills": {
-    "eyebrow": "Technical stack",
-    "title": "Skills organized by area",
-    "description": "Core technologies for building interfaces, backend logic, databases, functional testing and professional workflows.",
+    "eyebrow": "Expertise",
+    "title": "Technical skills",
+    "description": "Four areas covering frontend, backend, data, and software delivery.",
     "frontend": {
-      "title": "Frontend"
+      "title": "Frontend",
+      "description": "Responsive, accessible interfaces."
     },
     "backend": {
-      "title": "Backend"
+      "title": "Backend & APIs",
+      "description": "Services, business logic, and integration."
     },
     "databases": {
-      "title": "Databases"
+      "title": "Databases",
+      "description": "SQL and NoSQL modeling, including managed database services."
     },
     "cloud": {
-      "title": "Cloud"
+      "title": "Cloud, DevOps & quality",
+      "description": "Deployment, automation, and application validation.",
+      "delivery": "Deployment and automation",
+      "testing": "Testing",
+      "versionControl": "Version control"
     },
     "tools": {
-      "title": "Tools"
+      "title": "Tools",
+      "description": "Development and collaboration tools."
     },
     "testing": {
-      "title": "Testing / QA"
+      "title": "Testing & quality",
+      "description": "Tests to verify application behavior."
     }
   },
   "projects": {
     "eyebrow": "Projects",
-    "title": "Projects with technical evidence",
-    "description": "Selected cases to demonstrate responsive UI, application logic, documentation, deployment, functional testing and good practices for junior development roles.",
+    "title": "Selected projects",
+    "description": "Four Full Stack projects spanning distributed systems, C++/WebAssembly, asynchronous messaging, and web interfaces.",
     "repo": "GitHub",
     "demo": "Demo",
     "evidenceCta": "View technical evidence",
@@ -72,7 +86,45 @@
     "roles": {
       "frontend": "Frontend / UI Developer",
       "fullstack": "Full Stack Junior",
-      "backend": "Backend / C++ Logic"
+      "backend": "Backend / C++ Logic",
+      "wasm": "C++ / WebAssembly Development",
+      "distributed": "Distributed systems"
+    },
+    "scrabble": {
+      "title": "Scrabble · Web Edition",
+      "description": "Word game powered by a C++17 rules engine adapted for the browser with WebAssembly. Features a 15 × 15 board, bonus squares, and local games for 2–4 players.",
+      "outcome": "Playable on GitHub Pages, sharing its rules engine between console and browser, with tests covering both versions.",
+      "problem": "Bring an academic C++ word game to the browser without duplicating its rules engine.",
+      "contribution": "Built the C++ game engine, integrated Emscripten and WebAssembly, and developed a responsive web interface.",
+      "imageAlt": "Scrabble Web Edition screenshot showing a 15 × 15 board with bonus squares and a local multiplayer new-game form."
+    },
+    "status": {
+      "published": "Published",
+      "completed": "Completed",
+      "inProgress": "In progress"
+    },
+    "labels": {
+      "problem": "Problem",
+      "contribution": "Contribution",
+      "outcome": "Outcome"
+    },
+    "viewFullImage": "View full-size screenshot",
+    "distributedLibrary": {
+      "title": "Distributed Library Platform",
+      "description": "Distributed architecture with four microfrontends, independent microservices, and persistence in PostgreSQL, Cloudflare D1, and Turso.",
+      "problem": "Integrate book, author, publisher, and review modules running as independent services.",
+      "contribution": "Built and integrated web interfaces, serverless endpoints, independent databases, and cross-entity navigation.",
+      "outcome": "Academic platform deployed with an integration shell and individually published services.",
+      "imageAlt": "Preview of the distributed library platform integrated through its web application shell."
+    },
+    "technologiesLabel": "Technologies used",
+    "architectureLabel": "Asynchronous write pipeline",
+    "bookstore": {
+      "title": "Bookstore · RabbitMQ",
+      "description": "Distributed catalog with reads from MongoDB and asynchronous writes through RabbitMQ queues, built with Vue 3 and serverless functions.",
+      "problem": "Manage books, authors, and publishers without tightly coupling writes to direct database persistence.",
+      "contribution": "Integrated Vue interfaces, Netlify Functions endpoints, three entity queues, and task processors.",
+      "outcome": "Published application with an independent API, asynchronous messaging, and MongoDB Atlas persistence."
     },
     "petshop": {
       "title": "Huellita PetShop",
@@ -81,41 +133,20 @@
       "problem": "A static catalog needed stronger visual hierarchy, product organization and simple navigation.",
       "contribution": "Responsive layout, section structure, reusable visual components and GitHub Pages publishing."
     },
-    "tallestBuildings": {
-      "title": "Tallest Buildings Catalog",
-      "description": "Web application built with Nuxt.js 3 and Vue.js presenting the world’s 12 tallest skyscrapers, their cities and architectural firms through related navigation and structured data.",
-      "problem": "Organize building, city and architect information into a clear, responsive and easy-to-explore experience.",
-      "contribution": "Entity-based navigation, dynamic pages, Markdown and JSON content, reusable components and Netlify deployment.",
-      "outcome": "Published catalog featuring 12 skyscrapers, 11 cities and 6 architecture firms with cross-navigation and responsive design."
-    },
-    "scrabble": {
-      "title": "Scrabble C++",
-      "description": "Interactive console board implementation developed in C++, applying object-oriented programming, data structures and algorithmic logic.",
-      "outcome": "Improved algorithmic thinking, rule modeling and logical robustness.",
-      "problem": "Model game rules and data structures while keeping clear logic in a console application.",
-      "contribution": "Class design, board handling, move validation and object-oriented logic organization."
-    },
-    "status": {
-      "published": "Published",
-      "completed": "Completed"
-    },
-    "labels": {
-      "problem": "Problem",
-      "contribution": "Contribution",
-      "outcome": "Outcome"
-    }
+    "moreOnGithub": "View more projects on GitHub"
   },
   "certifications": {
-    "eyebrow": "Certifications",
-    "title": "Featured credentials",
-    "description": "Approved credentials supporting cloud fundamentals, GitHub and modern development tools.",
+    "eyebrow": "Credentials",
+    "title": "Certifications",
+    "description": "Verifiable credentials from Microsoft and GitHub.",
     "approved": "Approved",
-    "viewCredential": "View credential"
+    "viewCredential": "View credential",
+    "credentialPending": "Certification earned · verification link pending"
   },
   "contact": {
     "eyebrow": "Contact",
-    "title": "Let’s talk about junior opportunities.",
-    "description": "Available for Junior Software Developer opportunities in Costa Rica, remote or hybrid. Email is the main contact channel.",
+    "title": "Let's connect",
+    "description": "Open to Full Stack development opportunities in Costa Rica or remotely.",
     "email": "Primary email",
     "github": "GitHub",
     "linkedin": "LinkedIn",
@@ -133,7 +164,10 @@
     "dark": "Dark mode"
   },
   "language": {
-    "label": "Language"
+    "label": "Language",
+    "switchTo": "Switch language to {{language}}",
+    "es": "Spanish",
+    "en": "English"
   },
   "accessibility": {
     "skipToContent": "Skip to main content",
@@ -142,6 +176,13 @@
     "mainNavigation": "Main navigation",
     "primaryLinks": "Primary links",
     "mobileNavigation": "Mobile navigation",
-    "externalLink": "opens in a new tab"
+    "externalLink": "opens in a new tab",
+    "brandHome": "Andrea Carrillo, go to home"
+  },
+  "seo": {
+    "title": "Andrea Carrillo Oporto | Full Stack Developer",
+    "description": "Portfolio of Andrea Carrillo Oporto, Full Stack Developer. Projects spanning web applications, APIs, databases, C++, WebAssembly, and microservices.",
+    "imageAlt": "Professional portfolio of Andrea Carrillo Oporto",
+    "locale": "en_US"
   }
 }

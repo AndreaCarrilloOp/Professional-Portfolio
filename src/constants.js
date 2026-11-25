@@ -2,17 +2,12 @@ import {
   FaCode,
   FaDatabase,
   FaCloud,
-  FaTools,
   FaGithub,
   FaLinkedin,
   FaEnvelope,
-  FaAward,
-  FaHome,
   FaUser,
   FaLayerGroup,
   FaBriefcase,
-  FaCertificate,
-  FaBug,
 } from "react-icons/fa";
 import {
   SiReact,
@@ -42,7 +37,8 @@ const toSrcSet = (variants) =>
 
 const buildResponsiveImage = (key, sizes) => {
   const image = responsiveImages[key];
-  const fallback = image.webp[image.webp.length - 1];
+  const fallbackVariants = image.webp?.length ? image.webp : image.png;
+  const fallback = fallbackVariants[fallbackVariants.length - 1];
 
   return {
     kind: "responsive",
@@ -51,7 +47,7 @@ const buildResponsiveImage = (key, sizes) => {
     height: fallback.height,
     sizes,
     avifSrcSet: image.avif?.length ? toSrcSet(image.avif) : null,
-    webpSrcSet: toSrcSet(image.webp),
+    webpSrcSet: image.webp?.length ? toSrcSet(image.webp) : null,
   };
 };
 
@@ -72,32 +68,14 @@ export const PROFILE_IMAGE_DARK = {
 
 export const GITHUB_URL = "https://github.com/AndreaCarrilloOp";
 export const LINKEDIN_URL = "https://www.linkedin.com/in/andrea-carrillo-vlk/";
-export const EMAIL = "valkstack@gmail.com";
+export const EMAIL = "acarrillo.vlk@gmail.com";
 export const EMAIL_URL = `mailto:${EMAIL}`;
 export const COPYRIGHT_NAME = "Andrea Carrillo";
 
 export const NAV_ITEMS = [
-  { id: "home", labelKey: "nav.home", href: "#home", icon: FaHome },
-  { id: "about", labelKey: "nav.about", href: "#about", icon: FaUser },
+  { id: "projects", labelKey: "nav.projects", href: "#projects", icon: FaBriefcase },
   { id: "skills", labelKey: "nav.skills", href: "#skills", icon: FaLayerGroup },
-  {
-    id: "projects",
-    labelKey: "nav.projects",
-    href: "#projects",
-    icon: FaBriefcase,
-  },
-  {
-    id: "certifications",
-    labelKey: "nav.certifications",
-    href: "#certifications",
-    icon: FaCertificate,
-  },
-  {
-    id: "contact",
-    labelKey: "nav.contact",
-    href: "#contact",
-    icon: FaEnvelope,
-  },
+  { id: "about", labelKey: "nav.about", href: "#about", icon: FaUser },
 ];
 
 export const SOCIAL_LINKS = [
@@ -124,73 +102,56 @@ export const SKILLS = [
     id: "frontend",
     icon: FaCode,
     titleKey: "skills.frontend.title",
-    items: ["React", "Tailwind", "JavaScript", "HTML", "CSS"],
+    descriptionKey: "skills.frontend.description",
+    items: ["React", "Vue", "HTML", "CSS", "Vite", "Figma"],
   },
   {
     id: "backend",
     icon: FaCode,
     titleKey: "skills.backend.title",
-    items: ["Laravel", "PHP", "Python", "Java", "C#", "C++"],
+    descriptionKey: "skills.backend.description",
+    items: ["Python", "FastAPI", "C++", "SQLAlchemy", "API testing", "CTest"],
   },
   {
     id: "databases",
     icon: FaDatabase,
     titleKey: "skills.databases.title",
-    items: ["MySQL", "SQL Server", "PostgreSQL"],
-  },
-  {
-    id: "testing",
-    icon: FaBug,
-    titleKey: "skills.testing.title",
-    items: ["API testing", "Postman", "Test cases", "Functional QA"],
+    descriptionKey: "skills.databases.description",
+    items: ["PostgreSQL", "MySQL", "MongoDB Atlas", "SQL Server"],
   },
   {
     id: "cloud",
     icon: FaCloud,
     titleKey: "skills.cloud.title",
-    items: ["Microsoft Azure", "AZ-900", "GitHub Foundations"],
-  },
-  {
-    id: "tools",
-    icon: FaTools,
-    titleKey: "skills.tools.title",
-    items: ["Git", "GitHub", "VS Code", "GitHub Pages"],
+    descriptionKey: "skills.cloud.description",
+    items: ["Docker", "Azure", "GitHub Actions", "Netlify", "pytest", "Postman", "Git", "GitHub"],
+    groups: [
+      { labelKey: "skills.cloud.delivery", items: ["Docker", "Azure", "Netlify", "GitHub Actions"] },
+      { labelKey: "skills.cloud.testing", items: ["pytest", "Postman"] },
+      { labelKey: "skills.cloud.versionControl", items: ["Git", "GitHub"] },
+    ],
   },
 ];
 
 export const PROJECTS = [
   {
-    id: "petshop",
-    titleKey: "projects.petshop.title",
-    descriptionKey: "projects.petshop.description",
-    problemKey: "projects.petshop.problem",
-    contributionKey: "projects.petshop.contribution",
-    outcomeKey: "projects.petshop.outcome",
-    image: buildResponsiveImage("petshop", "(max-width: 1024px) 100vw, 56vw"),
-    repo: "https://github.com/AndreaCarrilloOp/PetShop",
-    demo: "https://andreacarrilloop.github.io/PetShop/",
-    year: "2025",
-    roleKey: "projects.roles.frontend",
-    techs: ["Bootstrap", "HTML", "CSS", "JavaScript"],
-    featured: true,
-    statusKey: "projects.status.published",
-  },
-  {
-    id: "tallest-buildings",
-    titleKey: "projects.tallestBuildings.title",
-    descriptionKey: "projects.tallestBuildings.description",
-    problemKey: "projects.tallestBuildings.problem",
-    contributionKey: "projects.tallestBuildings.contribution",
-    outcomeKey: "projects.tallestBuildings.outcome",
+    id: "distributed-library",
+    titleKey: "projects.distributedLibrary.title",
+    descriptionKey: "projects.distributedLibrary.description",
+    problemKey: "projects.distributedLibrary.problem",
+    contributionKey: "projects.distributedLibrary.contribution",
+    outcomeKey: "projects.distributedLibrary.outcome",
     image: buildResponsiveImage(
-      "tallestBuildings",
-      "(max-width: 1024px) 100vw, 44vw",
+      "distributedLibrary",
+      "(max-width: 1024px) 100vw, 65vw",
     ),
-    repo: "https://github.com/AndreaCarrilloOp/tallest-buildings",
-    demo: "https://tallestbuildings.netlify.app/",
-    year: "2025",
-    roleKey: "projects.roles.frontend",
-    techs: ["Nuxt.js 3", "Vue.js 3", "JSON", "Netlify"],
+    imageAltKey: "projects.distributedLibrary.imageAlt",
+    repo: "https://github.com/AndreaCarrilloOp/library-microfrontends-microservices",
+    demo: "https://iframe-shell.vercel.app/",
+    year: "2026",
+    roleKey: "projects.roles.distributed",
+    techs: ["Vue 3", "Microservices", "PostgreSQL", "Cloudflare D1"],
+    featured: true,
     statusKey: "projects.status.published",
   },
   {
@@ -200,33 +161,70 @@ export const PROJECTS = [
     problemKey: "projects.scrabble.problem",
     contributionKey: "projects.scrabble.contribution",
     outcomeKey: "projects.scrabble.outcome",
-    image: buildResponsiveImage("scrabble", "(max-width: 1024px) 100vw, 44vw"),
+    image: buildResponsiveImage("scrabble", "(max-width: 1024px) 100vw, 30vw"),
+    imageAltKey: "projects.scrabble.imageAlt",
     repo: "https://github.com/AndreaCarrilloOp/SCRABBLE",
-    demo: null,
-    year: "2024",
-    roleKey: "projects.roles.backend",
-    techs: ["C++", "POO", "Algoritmos", "Consola"],
-    statusKey: "projects.status.completed",
+    demo: "https://andreacarrilloop.github.io/SCRABBLE/",
+    year: "2024–2026",
+    roleKey: "projects.roles.wasm",
+    techs: ["C++17", "WebAssembly", "Emscripten", "JavaScript"],
+    statusKey: "projects.status.published",
+  },
+  {
+    id: "bookstore-rabbitmq",
+    titleKey: "projects.bookstore.title",
+    descriptionKey: "projects.bookstore.description",
+    problemKey: "projects.bookstore.problem",
+    contributionKey: "projects.bookstore.contribution",
+    outcomeKey: "projects.bookstore.outcome",
+    architecture: ["Vue 3", "Netlify Functions", "RabbitMQ", "Task processors", "MongoDB Atlas"],
+    repo: "https://github.com/AndreaCarrilloOp/bookstore-RabbitMQ",
+    demo: "https://bookstore-rabbitmq.vercel.app/",
+    year: "2026",
+    roleKey: "projects.roles.distributed",
+    techs: ["Vue 3", "RabbitMQ", "MongoDB Atlas", "Serverless"],
+    statusKey: "projects.status.published",
+  },
+  {
+    id: "petshop",
+    titleKey: "projects.petshop.title",
+    descriptionKey: "projects.petshop.description",
+    problemKey: "projects.petshop.problem",
+    contributionKey: "projects.petshop.contribution",
+    outcomeKey: "projects.petshop.outcome",
+    image: buildResponsiveImage("petshop", "(max-width: 1024px) 100vw, 30vw"),
+    repo: "https://github.com/AndreaCarrilloOp/PetShop",
+    demo: "https://andreacarrilloop.github.io/PetShop/",
+    year: "2025",
+    roleKey: "projects.roles.frontend",
+    techs: ["Bootstrap", "HTML", "CSS", "JavaScript"],
+    statusKey: "projects.status.published",
   },
 ];
 
 export const CERTIFICATIONS = [
   {
     id: "az900",
-    icon: FaAward,
     title: "Microsoft Azure Fundamentals",
     code: "AZ-900",
-    statusKey: "certifications.approved",
+    badgeImage: "https://images.credly.com/images/be8fcaeb-c769-4858-b567-ffaaa73ce8cf/image.png",
     credentialUrl:
       "https://learn.microsoft.com/api/credentials/share/es-es/ANDREACARRILLOOPORTO-6553/79C80AEA4FDDB812?sharingId=4B17552443EC43C4",
   },
   {
     id: "gh900",
-    icon: FaAward,
     title: "GitHub Foundations",
     code: "GH-900",
-    statusKey: "certifications.approved",
+    badgeImage: "https://images.credly.com/images/024d0122-724d-4c5a-bd83-cfe3c4b7a073/image.png",
     credentialUrl:
       "https://learn.microsoft.com/api/credentials/share/es-es/ANDREACARRILLOOPORTO-6553/730444074E386CBE?sharingId=4B17552443EC43C4",
+  },
+  {
+    id: "sc900",
+    title: "Microsoft Security, Compliance, and Identity Fundamentals",
+    code: "SC-900",
+    badgeImage: "https://images.credly.com/images/fc1352af-87fa-4947-ba54-398a0e63322e/security-compliance-and-identity-fundamentals-600x600.png",
+    credentialUrl:
+      "https://learn.microsoft.com/es-es/users/andreacarrillooporto-6553/credentials/2dc1174f7d2f1f1b?ref=https%3A%2F%2Fgithub.com%2F",
   },
 ];

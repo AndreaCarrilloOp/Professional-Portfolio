@@ -1,0 +1,53 @@
+name: Portfolio quality
+
+on:
+  push:
+    branches:
+      - main
+      - accessibility/wcag-navigation-improvements
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 9.15.0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: pnpm
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Check contrast, lint, static tests, and build
+        run: pnpm check
+      - name: Install browser test dependencies
+        run: |
+          python -m pip install playwright==1.56.0
+          python -m playwright install --with-deps chromium
+      - name: Install pinned axe-core
+        run: npm install --prefix "$RUNNER_TEMP/portfolio-axe" --no-save --no-package-lock --ignore-scripts axe-core@4.10.3
+      - name: Test responsive layout, accessibility and focus
+        env:
+          AXE_SOURCE: ${{ runner.temp }}/portfolio-axe/node_modules/axe-core/axe.min.js
+        run: python scripts/test-browser.py
+      - name: Upload visual screenshots
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: portfolio-responsive-screenshots
+          path: |
+            artifacts/screenshots/
+            artifacts/accessibility/
+          if-no-files-found: ignore
+          retention-days: 7

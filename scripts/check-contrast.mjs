@@ -52,10 +52,12 @@ const checks = [
   ["primary text / background", "primary", "bg", 4.5],
   ["secondary text / background", "secondary", "bg", 4.5],
   ["light accent / background", "accent-cyan", "bg", 4.5],
-  ["navy/silver accent / background", "accent-teal", "bg", 4.5],
+  ["neutral accent / background", "accent-teal", "bg", 4.5],
   ["alternate light accent / background", "accent-indigo", "bg", 4.5],
   ["alternate dark accent / background", "accent-violet", "bg", 4.5],
-  ["steel/silver accent / background", "accent-steel", "bg", 4.5],
+  ["warm accent / background", "accent-steel", "bg", 4.5],
+  ["tertiary champagne / background", "accent-champagne", "bg", 4.5],
+  ["tertiary champagne / raised surface", "accent-champagne", "surface-raised", 4.5],
   ["text / raised surface", "text", "surface-raised", 4.5],
   ["muted text / raised surface", "muted", "surface-raised", 4.5],
   ["button text / primary", "on-primary", "primary", 4.5],
@@ -87,10 +89,32 @@ const satinBlack = readHexToken(themes.light, "satin-black");
 const satinRatio = contrast(satinSilver, satinBlack);
 const satinPasses = satinRatio >= 4.5;
 failed ||= !satinPasses;
-console.log(`\nSATIN NEUTRALS`);
+console.log(`\nCELESTIAL NEUTRALS`);
 console.log(
-  `${satinPasses ? "PASS" : "FAIL"}  ${satinRatio.toFixed(2)}:1  satin silver / satin black (minimum 4.5:1)`,
+  `${satinPasses ? "PASS" : "FAIL"}  ${satinRatio.toFixed(2)}:1  cool silver / midnight navy (minimum 4.5:1)`,
 );
+
+/* The footer inverts its surface against the active page theme, so these
+   pairs must be audited separately from the page-level semantic tokens. */
+const footerPairs = [
+  ["light-page footer text", "palette-white", "satin-black", 4.5],
+  ["light-page footer muted", "palette-dark-muted", "satin-black", 4.5],
+  ["light-page footer accent", "palette-champagne", "satin-black", 4.5],
+  ["light-page footer link text", "palette-white", "palette-dark-card", 4.5],
+  ["dark-page footer text", "palette-ink", "palette-ice", 4.5],
+  ["dark-page footer muted", "palette-muted", "palette-ice", 4.5],
+  ["dark-page footer accent", "palette-bronze", "palette-ice", 4.5],
+  ["dark-page footer link text", "palette-ink", "satin-silver", 4.5],
+];
+console.log("\nINVERSE FOOTER");
+for (const [label, foregroundToken, backgroundToken, minimum] of footerPairs) {
+  const foreground = readHexToken(themes.light, foregroundToken);
+  const background = readHexToken(themes.light, backgroundToken);
+  const ratio = contrast(foreground, background);
+  const passes = ratio >= minimum;
+  failed ||= !passes;
+  console.log(`${passes ? "PASS" : "FAIL"}  ${ratio.toFixed(2)}:1  ${label} (minimum ${minimum}:1)`);
+}
 
 if (failed) {
   console.error("\nOne or more color pairs do not meet the configured WCAG threshold.");

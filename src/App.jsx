@@ -1,3 +1,9 @@
+/* Fontsource bundles only these Latin WOFF2 subsets; no runtime CDN dependency. */
+import "@fontsource/ibm-plex-sans/latin-400.css";
+import "@fontsource/ibm-plex-sans/latin-500.css";
+import "@fontsource/ibm-plex-sans/latin-600.css";
+import "@fontsource/ibm-plex-sans/latin-700.css";
+import "@fontsource/ibm-plex-mono/latin-500.css";
 import "./i18n/i18n";
 import "./styles/tokens.css";
 import "./styles/theme.css";
@@ -15,12 +21,11 @@ import About from "./components/sections/About";
 import Skills from "./components/sections/Skills";
 import Projects from "./components/sections/Projects";
 import Certifications from "./components/sections/Certifications";
-import Contact from "./components/sections/Contact";
 import ConstellationBackground from "./components/ui/ConstellationBackground";
 
 const THEME_COLORS = {
-  light: "#E7F0FF",
-  dark: "#0B1026",
+  light: "#96A9BF",
+  dark: "#0C1229",
 };
 
 function getInitialDarkMode() {
@@ -28,9 +33,14 @@ function getInitialDarkMode() {
   if (documentTheme === "dark") return true;
   if (documentTheme === "light") return false;
 
-  const storedTheme = localStorage.getItem("theme");
-  if (storedTheme === "dark") return true;
-  if (storedTheme === "light") return false;
+  // Storage can be unavailable in privacy-restricted browser contexts.
+  try {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme === "dark") return true;
+    if (storedTheme === "light") return false;
+  } catch {
+    // Fall back to the OS preference.
+  }
 
   return window.matchMedia("(prefers-color-scheme: dark)").matches;
 }
@@ -45,7 +55,11 @@ function applyDocumentTheme(darkMode) {
   root.style.colorScheme = theme;
   root.style.backgroundColor = themeColor;
   document.querySelector('meta[name="theme-color"]')?.setAttribute("content", themeColor);
-  localStorage.setItem("theme", theme);
+  try {
+    localStorage.setItem("theme", theme);
+  } catch {
+    // Theme switching still works for this session without persistence.
+  }
 }
 
 function App() {
@@ -74,9 +88,11 @@ function App() {
     if (!reduceMotion && typeof document.startViewTransition === "function") {
       themeTransitionRef.current = true;
       const transition = document.startViewTransition(commitTheme);
-      transition.finished.finally(() => {
-        themeTransitionRef.current = false;
-      });
+      // A skipped view transition may reject; either way unlock the toggle.
+      transition.finished.then(
+        () => { themeTransitionRef.current = false; },
+        () => { themeTransitionRef.current = false; },
+      );
       return;
     }
 
@@ -91,10 +107,27 @@ function App() {
   }, [darkMode]);
 
   useEffect(() => {
-    document.documentElement.lang = i18n.language?.startsWith("es")
-      ? "es"
-      : "en";
-  }, [i18n.language]);
+    const isSpanish = i18n.language?.startsWith("es");
+    document.documentElement.lang = isSpanish ? "es" : "en";
+    document.title = t("seo.title");
+
+    const setMeta = (selector, content) => {
+      document.querySelector(selector)?.setAttribute("content", content);
+    };
+
+    const description = t("seo.description");
+    const title = t("seo.title");
+    const imageAlt = t("seo.imageAlt");
+
+    setMeta('meta[name="description"]', description);
+    setMeta('meta[property="og:title"]', title);
+    setMeta('meta[property="og:description"]', description);
+    setMeta('meta[property="og:locale"]', t("seo.locale"));
+    setMeta('meta[property="og:image:alt"]', imageAlt);
+    setMeta('meta[name="twitter:title"]', title);
+    setMeta('meta[name="twitter:description"]', description);
+    setMeta('meta[name="twitter:image:alt"]', imageAlt);
+  }, [i18n.language, t]);
 
   useEffect(() => {
     const revealItems = document.querySelectorAll(".reveal-up");
@@ -136,11 +169,10 @@ function App() {
       <Navbar darkMode={darkMode} onToggleTheme={toggleTheme} />
       <main id="main-content" tabIndex="-1">
         <Hero darkMode={darkMode} />
-        <About />
-        <Skills />
         <Projects />
+        <Skills />
+        <About />
         <Certifications />
-        <Contact />
       </main>
       <Footer />
     </div>

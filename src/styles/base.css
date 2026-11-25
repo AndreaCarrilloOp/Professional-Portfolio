@@ -3,9 +3,15 @@
   box-sizing: border-box;
 }
 html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 92px;
+  /* Anchor navigation jumps directly to the target section. */
+  scroll-behavior: auto;
+  scroll-padding-top: 88px;
   background: var(--bg);
+}
+@media (max-width: 720px) {
+  html {
+    scroll-padding-top: 80px;
+  }
 }
 body {
   margin: 0;
@@ -58,7 +64,7 @@ button {
   background: linear-gradient(145deg, var(--surface-raised), color-mix(in srgb, var(--card) 86%, var(--surface-soft)));
   box-shadow: var(--plastic-inset), var(--shadow-md);
   color: var(--text);
-  font-weight: 800;
+  font-weight: 700;
   transition: top 180ms ease;
 }
 .skip-link:focus-visible {
@@ -85,11 +91,17 @@ main,
 .section-pad {
   width: min(var(--content-max), calc(100% - var(--content-gutter)));
   margin: 0 auto;
-  padding: 88px 0;
+  /* Content-led sections avoid empty full-screen panels. */
+  padding: clamp(44px, 4.2vw, 64px) 0;
+  scroll-margin-top: 88px;
 }
 .compact-section {
-  padding-top: 60px;
-  padding-bottom: 60px;
+  padding-block: clamp(30px, 3.2vw, 44px);
+}
+@media (max-width: 720px) {
+  .section-pad {
+    scroll-margin-top: 80px;
+  }
 }
 .sr-only {
   position: absolute;
@@ -103,10 +115,7 @@ main,
   border: 0;
 }
 
-section.section-pad:not(.hero-section) {
-  content-visibility: auto;
-  contain-intrinsic-size: 720px;
-}
+/* Sections retain their real height so hash links land accurately. */
 
 .nav-shell {
   position: fixed;
@@ -142,8 +151,8 @@ section.section-pad:not(.hero-section) {
   color: var(--primary);
   font-family: var(--font-display);
   font-size: 1.55rem;
-  font-weight: 900;
-  letter-spacing: -0.08em;
+  font-weight: 700;
+  letter-spacing: -0.035em;
   line-height: 1;
   text-shadow: 0 0 22px color-mix(in srgb, var(--primary) 42%, transparent);
 }
@@ -161,7 +170,7 @@ section.section-pad:not(.hero-section) {
   border-radius: var(--button-radius);
   color: var(--text);
   font-size: 0.88rem;
-  font-weight: 800;
+  font-weight: 700;
   transition: var(--motion-duration-fast) var(--motion-ease-standard);
 }
 .nav-link::after {
@@ -187,20 +196,10 @@ section.section-pad:not(.hero-section) {
   background: linear-gradient(180deg, color-mix(in srgb, var(--primary-soft) 86%, var(--surface-highlight)), color-mix(in srgb, var(--surface-raised) 72%, transparent));
   box-shadow: var(--plastic-inset);
 }
-.nav-link-icon {
-  width: 0.95rem;
-  height: 0.95rem;
-  color: var(--primary);
-  opacity: 0.92;
-  transition: 180ms ease;
-}
 .nav-link:hover,
 .nav-link:focus-visible {
   background: linear-gradient(180deg, var(--primary-soft), color-mix(in srgb, var(--surface-raised) 68%, transparent));
   box-shadow: var(--plastic-inset);
-}
-.nav-link:hover .nav-link-icon {
-  transform: translateY(-1px);
 }
 .nav-actions {
   display: flex;
@@ -236,7 +235,7 @@ section.section-pad:not(.hero-section) {
 }
 .language-button {
   padding: 0 13px;
-  font-weight: 900;
+  font-weight: 700;
   font-size: 0.82rem;
 }
 .bento-button {
@@ -289,7 +288,7 @@ section.section-pad:not(.hero-section) {
   background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 72%, var(--surface-highlight)), color-mix(in srgb, var(--surface-raised) 58%, transparent));
   box-shadow: var(--plastic-shadow);
   color: var(--text);
-  font-weight: 850;
+  font-weight: 700;
   transition: var(--motion-duration-fast) var(--motion-ease-standard);
   text-align: center;
 }

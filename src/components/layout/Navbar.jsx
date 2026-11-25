@@ -12,6 +12,7 @@ function Navbar({ darkMode, onToggleTheme }) {
   const firstMobileLinkRef = useRef(null);
   const mobileMenuRef = useRef(null);
   const wasOpenRef = useRef(false);
+  const navigatingToSectionRef = useRef(false);
 
   useEffect(() => {
     let ticking = false;
@@ -43,10 +44,11 @@ function Navbar({ darkMode, onToggleTheme }) {
   }, []);
 
   useEffect(() => {
-    const sectionIds = NAV_ITEMS.map((item) => item.href.replace("#", ""));
-    const sections = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter(Boolean);
+    // Track all sections, including anchors that are deliberately absent
+    // from the compact navigation, so hidden links never appear active.
+    const sections = Array.from(
+      document.querySelectorAll("main section[id], footer #contact"),
+    );
 
     if (sections.length === 0) return undefined;
 
@@ -76,8 +78,8 @@ function Navbar({ darkMode, onToggleTheme }) {
       firstMobileLinkRef.current?.focus();
     } else {
       document.body.style.overflow = "";
-      if (wasOpenRef.current) {
-        menuButtonRef.current?.focus();
+      if (wasOpenRef.current && !navigatingToSectionRef.current) {
+        window.requestAnimationFrame(() => menuButtonRef.current?.focus());
       }
     }
 
@@ -128,19 +130,92 @@ function Navbar({ darkMode, onToggleTheme }) {
       }
     };
 
+    // Keep keyboard and programmatic focus inside the open modal menu.
+    const onFocusIn = (event) => {
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
+        firstMobileLinkRef.current?.focus();
+      }
+    };
+
     document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
+    document.addEventListener("focusin", onFocusIn);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("focusin", onFocusIn);
+    };
   }, [open]);
+
+  useEffect(() => {
+    // Restore the destination when using Back/Forward or entering with a hash.
+    const restoreHash = () => {
+      let id = "home";
+      try {
+        id = decodeURIComponent(window.location.hash.slice(1)) || "home";
+      } catch {
+        // Malformed URL fragments should not interrupt navigation.
+        return;
+      }
+      const section = document.getElementById(id);
+      if (!section) return;
+
+      navigatingToSectionRef.current = true;
+      setOpen(false);
+      setActiveSection(id);
+      const navOffset = window.innerWidth <= 720 ? 80 : 88;
+      const top = section.getBoundingClientRect().top + window.scrollY - navOffset;
+      window.scrollTo({ top: Math.max(0, top), behavior: "instant" });
+      window.requestAnimationFrame(() => {
+        const target = section.querySelector("h1, h2") || section;
+        target.setAttribute("tabindex", "-1");
+        target.focus({ preventScroll: true });
+        navigatingToSectionRef.current = false;
+      });
+    };
+
+    window.addEventListener("popstate", restoreHash);
+    window.addEventListener("hashchange", restoreHash);
+    // The initial document may contain a deep link.
+    if (window.location.hash) {
+      window.requestAnimationFrame(restoreHash);
+    }
+    return () => {
+      window.removeEventListener("popstate", restoreHash);
+      window.removeEventListener("hashchange", restoreHash);
+    };
+  }, []);
 
   const changeLanguage = () => {
     i18n.changeLanguage(i18n.language?.startsWith("es") ? "en" : "es");
   };
 
   const closeMenu = () => setOpen(false);
+  const nextLanguage = i18n.language?.startsWith("es") ? "en" : "es";
 
-  const handleNavClick = (id) => {
+  const handleNavClick = (event, id) => {
+    const section = document.getElementById(id);
+    if (!section) return;
+
+    event.preventDefault();
+    navigatingToSectionRef.current = open;
     setActiveSection(id);
     closeMenu();
+
+    // Jump directly to the destination instead of scrolling across the page.
+    const navOffset = window.innerWidth <= 720 ? 80 : 88;
+    const destination = section.getBoundingClientRect().top + window.scrollY - navOffset;
+    window.scrollTo({ top: Math.max(0, destination), behavior: "instant" });
+    if (window.location.hash !== `#${id}`) {
+      window.history.pushState(null, "", `#${id}`);
+    }
+
+    // Focus follows navigation, including when the mobile dialog is closing.
+    window.requestAnimationFrame(() => {
+      const heading = section.querySelector("h1, h2");
+      const destinationFocus = heading || section;
+      destinationFocus.setAttribute("tabindex", "-1");
+      destinationFocus.focus({ preventScroll: true });
+      navigatingToSectionRef.current = false;
+    });
   };
 
   return (
@@ -151,38 +226,50 @@ function Navbar({ darkMode, onToggleTheme }) {
         <a
           href="#home"
           className="brand"
-          aria-label="Andrea Carrillo home"
-          onClick={closeMenu}
+          aria-label={t("accessibility.brandHome")}
+          onClick={(event) => handleNavClick(event, "home")}
         >
-          AC
+          <img
+            src={`${import.meta.env.BASE_URL}branding/aco-${darkMode ? "dark" : "light"}.svg`}
+            alt=""
+            width="64"
+            height="45"
+            className="brand-logo"
+          />
         </a>
 
-        <div className="nav-links" aria-label={t("accessibility.primaryLinks")}>
+        <ul className="nav-links">
           {NAV_ITEMS.map((item) => {
-            const Icon = item.icon;
             const isActive = activeSection === item.id;
             return (
-              <a
-                key={item.id}
-                href={item.href}
-                className={`nav-link ${isActive ? "nav-link-active" : ""}`}
-                aria-current={isActive ? "location" : undefined}
-                onClick={() => handleNavClick(item.id)}
-              >
-                <Icon className="nav-link-icon" aria-hidden="true" />
-                <span>{t(item.labelKey)}</span>
-              </a>
+              <li key={item.id}>
+                <a
+                  href={item.href}
+                  className={`nav-link ${isActive ? "nav-link-active" : ""}`}
+                  aria-current={isActive ? "location" : undefined}
+                  onClick={(event) => handleNavClick(event, item.id)}
+                >
+                  <span>{t(item.labelKey)}</span>
+                </a>
+              </li>
             );
           })}
-        </div>
+        </ul>
 
         <div className="nav-actions">
+          <a
+            href="#contact"
+            className="nav-contact-cta"
+            aria-current={activeSection === "contact" ? "location" : undefined}
+            onClick={(event) => handleNavClick(event, "contact")}
+          >
+            {t("nav.contact")}
+          </a>
           <button
             type="button"
             className="icon-button"
             onClick={onToggleTheme}
             aria-label={darkMode ? t("theme.light") : t("theme.dark")}
-            aria-pressed={darkMode}
           >
             {darkMode ? (
               <FaSun aria-hidden="true" />
@@ -194,7 +281,7 @@ function Navbar({ darkMode, onToggleTheme }) {
             type="button"
             className="language-button"
             onClick={changeLanguage}
-            aria-label={t("language.label")}
+            aria-label={t("language.switchTo", { language: t(`language.${nextLanguage}`) })}
           >
             {i18n.language?.startsWith("es") ? "EN" : "ES"}
           </button>
@@ -227,29 +314,36 @@ function Navbar({ darkMode, onToggleTheme }) {
         ref={mobileMenuRef}
       >
         <div className="bento-handle" aria-hidden="true" />
-        <div className="bento-grid">
+        <ul className="bento-grid">
           {NAV_ITEMS.map((item, index) => {
             const Icon = item.icon;
             const isActive = activeSection === item.id;
             return (
-              <a
-                key={item.id}
-                href={item.href}
-                className={`bento-link ${isActive ? "bento-link-active" : ""}`}
-                aria-current={isActive ? "location" : undefined}
-                onClick={() => handleNavClick(item.id)}
-                tabIndex={open ? 0 : -1}
-                ref={index === 0 ? firstMobileLinkRef : undefined}
-              >
-                <span className="bento-index" aria-hidden="true">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <Icon aria-hidden="true" />
-                <span>{t(item.labelKey)}</span>
-              </a>
+              <li key={item.id}>
+                <a
+                  href={item.href}
+                  className={`bento-link ${isActive ? "bento-link-active" : ""}`}
+                  aria-current={isActive ? "location" : undefined}
+                  onClick={(event) => handleNavClick(event, item.id)}
+                  tabIndex={open ? 0 : -1}
+                  ref={index === 0 ? firstMobileLinkRef : undefined}
+                >
+                  <Icon aria-hidden="true" />
+                  <span>{t(item.labelKey)}</span>
+                </a>
+              </li>
             );
           })}
-        </div>
+        </ul>
+        <a
+          href="#contact"
+          className="bento-contact-cta"
+          aria-current={activeSection === "contact" ? "location" : undefined}
+          onClick={(event) => handleNavClick(event, "contact")}
+          tabIndex={open ? 0 : -1}
+        >
+          {t("nav.contact")}
+        </a>
       </div>
     </header>
   );

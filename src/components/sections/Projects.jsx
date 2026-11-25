@@ -1,14 +1,15 @@
 import { useTranslation } from "react-i18next";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
-import { PROJECTS } from "../../constants";
+import { GITHUB_URL, PROJECTS } from "../../constants";
 import SectionHeader from "../ui/SectionHeader";
 
 function Projects() {
   const { t } = useTranslation();
 
   return (
-    <section id="projects" className="section-pad">
+    <section id="projects" className="section-pad" aria-labelledby="projects-heading">
       <SectionHeader
+        headingId="projects-heading"
         eyebrowKey="projects.eyebrow"
         titleKey="projects.title"
         descriptionKey="projects.description"
@@ -17,46 +18,62 @@ function Projects() {
         {PROJECTS.map((project) => (
           <article
             key={project.id}
-            className={`project-card card ${project.featured ? "featured-project" : "compact-project"} reveal-up`}
+            className={`project-card project-card-${project.id} card ${project.featured ? "featured-project" : "compact-project"} reveal-up`}
           >
             <div className="project-media">
-              {project.featured && (
-                <span className="project-badge">{t("projects.featured")}</span>
-              )}
-              <picture>
-                {project.image.kind === "responsive" && (
-                  <>
-                    {project.image.avifSrcSet && (
-                      <source
-                        type="image/avif"
-                        srcSet={project.image.avifSrcSet}
-                        sizes={project.image.sizes}
-                      />
+              {project.image ? (
+                <a
+                  className="project-preview-link"
+                  href={project.image.fallback}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${t("projects.viewFullImage")}: ${t(project.titleKey)}, ${t("accessibility.externalLink")}`}
+                >
+                  <picture>
+                    {project.image.kind === "responsive" && (
+                      <>
+                        {project.image.avifSrcSet && (
+                          <source
+                            type="image/avif"
+                            srcSet={project.image.avifSrcSet}
+                            sizes={project.image.sizes}
+                          />
+                        )}
+                        {project.image.webpSrcSet && (
+                          <source
+                            type="image/webp"
+                            srcSet={project.image.webpSrcSet}
+                            sizes={project.image.sizes}
+                          />
+                        )}
+                      </>
                     )}
-                    <source
-                      type="image/webp"
-                      srcSet={project.image.webpSrcSet}
-                      sizes={project.image.sizes}
+                    <img
+                      src={project.image.fallback}
+                      alt={t(project.imageAltKey || project.titleKey)}
+                      loading="lazy"
+                      decoding="async"
+                      fetchPriority="low"
+                      width={project.image.width || undefined}
+                      height={project.image.height || undefined}
+                      sizes={project.image.sizes || undefined}
                     />
-                  </>
-                )}
-                <img
-                  src={project.image.fallback}
-                  alt={t(project.titleKey)}
-                  loading="lazy"
-                  decoding="async"
-                  fetchPriority="low"
-                  width={project.image.width}
-                  height={project.image.height}
-                  sizes={project.image.sizes}
-                />
-              </picture>
+                  </picture>
+                </a>
+              ) : (
+                <div className="project-architecture">
+                  <p className="project-architecture-heading">{t("projects.architectureLabel")}</p>
+                  <ol className="project-architecture-flow">
+                    {project.architecture.map((layer) => (
+                      <li key={layer}>{layer}</li>
+                    ))}
+                  </ol>
+                </div>
+              )}
             </div>
             <div className="project-content">
               <div className="project-meta">
-                <span>{project.year}</span>
-                <span>{t(project.roleKey)}</span>
-                <span className="project-status">{t(project.statusKey)}</span>
+                <span>{t(project.roleKey)} · {project.year}</span>
               </div>
               <h3>{t(project.titleKey)}</h3>
               <p>{t(project.descriptionKey)}</p>
@@ -79,13 +96,13 @@ function Projects() {
                   </div>
                 </dl>
               </details>
-              <div className="tag-cloud">
+              <ul className="tag-cloud" aria-label={t("projects.technologiesLabel")}>
                 {project.techs.map((tech) => (
-                  <span className="tag" key={tech}>
+                  <li className="tag" key={tech}>
                     {tech}
-                  </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
               <div className="project-links">
                 {project.repo && (
                   <a
@@ -115,6 +132,19 @@ function Projects() {
             </div>
           </article>
         ))}
+      </div>
+      <div className="projects-more">
+        <a
+          className="projects-more-link"
+          href={`${GITHUB_URL}?tab=repositories`}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${t("projects.moreOnGithub")}, ${t("accessibility.externalLink")}`}
+        >
+          <FaGithub aria-hidden="true" />
+          <span>{t("projects.moreOnGithub")}</span>
+          <FaExternalLinkAlt aria-hidden="true" className="projects-more-external" />
+        </a>
       </div>
     </section>
   );

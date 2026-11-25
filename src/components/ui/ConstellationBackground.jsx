@@ -1,23 +1,30 @@
 import { useEffect, useRef } from "react";
 
 const PALETTE_TRANSITION_MS = 340;
+const FRAME_INTERVAL_MS = 1000 / 30;
+const FRAME_REFERENCE_MS = 1000 / 60;
 
 const LIGHT_PALETTE = {
-  point: [31, 79, 122],
-  line: [111, 132, 154],
-  glow: [59, 113, 143],
-  lineAlpha: 0.09,
-  glowAlpha: 0.06,
-  pointAlpha: 0.62,
+  // Deep-plum stars against solid steel-blue surfaces.
+  point: [75, 40, 72],
+  line: [36, 56, 101],
+  glow: [201, 167, 191],
+  sparkle: [75, 54, 32], // dark bronze for occasional highlighted stars
+  lineAlpha: 0.27,
+  glowAlpha: 0.12,
+  pointAlpha: 0.84,
+  lineWidth: 1,
 };
 
 const DARK_PALETTE = {
-  point: [203, 231, 255],
-  line: [145, 193, 230],
-  glow: [126, 198, 216],
+  point: [220, 227, 238],
+  line: [201, 167, 191],
+  glow: [178, 199, 236],
+  sparkle: [210, 183, 126], // muted champagne for occasional highlighted stars
   lineAlpha: 0.14,
   glowAlpha: 0.1,
   pointAlpha: 0.78,
+  lineWidth: 0.75,
 };
 
 function createParticles(width, height, count, isSmallViewport) {
@@ -58,9 +65,11 @@ function interpolatePalette(from, to, progress) {
     point: mixChannel(from.point, to.point),
     line: mixChannel(from.line, to.line),
     glow: mixChannel(from.glow, to.glow),
+    sparkle: mixChannel(from.sparkle, to.sparkle),
     lineAlpha: interpolateValue(from.lineAlpha, to.lineAlpha, progress),
     glowAlpha: interpolateValue(from.glowAlpha, to.glowAlpha, progress),
     pointAlpha: interpolateValue(from.pointAlpha, to.pointAlpha, progress),
+    lineWidth: interpolateValue(from.lineWidth, to.lineWidth, progress),
   };
 }
 
@@ -122,6 +131,7 @@ export default function ConstellationBackground({ darkMode = true }) {
     );
 
     let animationFrame = 0;
+    let previousFrameTime = 0;
     let width = 0;
     let height = 0;
     let particles = [];
@@ -150,7 +160,16 @@ export default function ConstellationBackground({ darkMode = true }) {
       return palette;
     };
 
-    const draw = () => {
+    const draw = (timestamp = performance.now()) => {
+      // Limit background-only rendering to 30 fps to reduce CPU work.
+      // Keep motion speed stable even when frames are skipped.
+      if (isRunning && !prefersReducedMotion && timestamp - previousFrameTime < FRAME_INTERVAL_MS) {
+        animationFrame = window.requestAnimationFrame(draw);
+        return;
+      }
+      const elapsed = previousFrameTime ? timestamp - previousFrameTime : FRAME_INTERVAL_MS;
+      previousFrameTime = timestamp;
+      const movementScale = Math.min(2.5, elapsed / FRAME_REFERENCE_MS);
       const palette = resolvePalette();
       const isSmallViewport = width <= 720;
       const connectionDistance = isSmallViewport
@@ -161,9 +180,9 @@ export default function ConstellationBackground({ darkMode = true }) {
 
       if (!prefersReducedMotion) {
         for (const particle of particles) {
-          particle.x += particle.vx;
-          particle.y += particle.vy;
-          particle.twinkle += particle.twinkleSpeed;
+          particle.x += particle.vx * movementScale;
+          particle.y += particle.vy * movementScale;
+          particle.twinkle += particle.twinkleSpeed * movementScale;
 
           if (particle.x < -16) particle.x = width + 16;
           if (particle.x > width + 16) particle.x = -16;
@@ -187,12 +206,12 @@ export default function ConstellationBackground({ darkMode = true }) {
           context.moveTo(a.x, a.y);
           context.lineTo(b.x, b.y);
           context.strokeStyle = `rgba(${palette.line[0]}, ${palette.line[1]}, ${palette.line[2]}, ${alpha})`;
-          context.lineWidth = 0.75;
+          context.lineWidth = palette.lineWidth;
           context.stroke();
         }
       }
 
-      for (const particle of particles) {
+      for (const [index, particle] of particles.entries()) {
         const pulse = prefersReducedMotion
           ? 0.78
           : 0.68 + Math.sin(particle.twinkle) * 0.18;
@@ -219,7 +238,9 @@ export default function ConstellationBackground({ darkMode = true }) {
         context.fill();
 
         context.beginPath();
-        context.fillStyle = `rgba(${palette.point[0]}, ${palette.point[1]}, ${palette.point[2]}, ${palette.pointAlpha})`;
+        // One restrained champagne/bronze star per eleven existing particles.
+        const starColor = index % 11 === 0 ? palette.sparkle : palette.point;
+        context.fillStyle = `rgba(${starColor[0]}, ${starColor[1]}, ${starColor[2]}, ${palette.pointAlpha})`;
         context.arc(particle.x, particle.y, radius, 0, Math.PI * 2);
         context.fill();
       }
@@ -260,6 +281,7 @@ export default function ConstellationBackground({ darkMode = true }) {
 
     const stop = () => {
       isRunning = false;
+      previousFrameTime = 0;
       window.cancelAnimationFrame(animationFrame);
     };
 

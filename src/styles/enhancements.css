@@ -150,7 +150,7 @@ main:focus-visible {
 }
 
 
-.dark .btn-primary {
+.dark .btn-primary:not(.hero-cta-primary) {
   box-shadow:
     inset 0 1px 0 color-mix(in srgb, var(--palette-ice) 36%, transparent),
     inset 0 -4px 0 color-mix(in srgb, var(--satin-black) 30%, transparent),
@@ -227,7 +227,11 @@ main:focus-visible {
   }
   .section-pad {
     width: min(100% - 24px, var(--content-max));
-    padding: 74px 0;
+    padding-block: clamp(38px, 6vw, 48px);
+  }
+
+  .compact-section {
+    padding-block: 36px;
   }
   
   
@@ -303,10 +307,7 @@ main:focus-visible {
   .project-media {
     min-height: 0;
   }
-  .footer {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+
 }
 
 
@@ -582,12 +583,6 @@ main:focus-visible {
   border-color: color-mix(in srgb, var(--primary) 24%, transparent);
 }
 
-.nav-link-active .nav-link-icon,
-.nav-link:hover .nav-link-icon,
-.nav-link:focus-visible .nav-link-icon {
-  opacity: 1;
-  transform: none;
-}
 
 .icon-button,
 .language-button,
@@ -639,12 +634,6 @@ main:focus-visible {
   text-align: left;
 }
 
-.bento-index {
-  color: var(--primary);
-  font-size: 0.72rem;
-  font-weight: 950;
-  letter-spacing: 0.08em;
-}
 
 .bento-link svg {
   font-size: 1.05rem;
@@ -702,34 +691,39 @@ main:focus-visible {
 }
 
 .hero-cta-row .btn {
-  min-height: 54px;
-  border-radius: 999px;
+  min-height: 52px;
+  border-radius: 10px;
+  font-weight: 700;
 }
 
 .hero-cta-primary {
   min-width: 176px;
-  padding-inline: 22px 13px;
-  justify-content: space-between;
-  box-shadow:
-    inset 0 1px 0 color-mix(in srgb, var(--palette-ice) 38%, transparent),
-    inset 0 -3px 0 color-mix(in srgb, var(--satin-black) 18%, transparent),
-    0 18px 36px color-mix(in srgb, var(--primary) 22%, transparent);
+  justify-content: center;
+  gap: 10px;
+  padding-inline: 22px;
+  color: var(--on-primary);
+  background: var(--primary);
+  border: 1px solid var(--primary);
+  box-shadow: none;
 }
 
-.btn-icon-pill {
-  display: inline-grid;
-  place-items: center;
-  width: 32px;
-  height: 32px;
-  margin-left: 4px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--on-primary) 18%, transparent);
-  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--palette-ice) 20%, transparent);
+.hero-cta-arrow {
+  width: 0.88rem;
+  height: 0.88rem;
+  flex-shrink: 0;
 }
 
-.btn-icon-pill svg {
-  width: 0.92rem;
-  height: 0.92rem;
+.hero-cta-primary:hover,
+.hero-cta-primary:focus-visible {
+  color: var(--on-primary);
+  background: var(--primary-strong);
+  border-color: var(--primary-strong);
+  box-shadow: none;
+  transform: none;
+}
+
+.hero-cta-primary:active {
+  transform: none;
 }
 
 .hero-cta-secondary {
@@ -800,9 +794,6 @@ main:focus-visible {
   display: none;
 }
 
-.nav-link-icon {
-  display: none;
-}
 
 .nav-link-active,
 .nav-link:hover,
@@ -843,18 +834,13 @@ main:focus-visible {
   }
 }
 
-:root {
-  --chrome-max: 1560px;
-  --chrome-gutter: clamp(20px, 3vw, 48px);
-}
-
-.nav-container,
-.footer {
-  width: min(var(--chrome-max), calc(100% - var(--chrome-gutter)));
+/* Shared fluid navigation width. Footer inner content follows the same grid. */
+.nav-container {
+  width: min(var(--content-max), calc(100% - var(--content-gutter)));
 }
 
 .nav-container {
-  padding-inline: clamp(18px, 2vw, 30px) clamp(12px, 1.6vw, 24px);
+  padding-inline: clamp(16px, 2vw, 30px);
 }
 
 .nav-links {
@@ -866,28 +852,17 @@ main:focus-visible {
   flex: 0 0 auto;
 }
 
-.footer {
-  padding-inline: clamp(2px, 0.8vw, 12px);
-}
-
-@media (min-width: 1440px) {
-  :root {
-    --chrome-max: 1640px;
-  }
-
-  .nav-container {
-    padding-inline: clamp(22px, 2.2vw, 36px) clamp(16px, 1.8vw, 30px);
-  }
-}
-
 @media (max-width: 720px) {
   .nav-container,
-  .footer {
-    width: min(100% - 20px, var(--chrome-max));
+  .section-pad {
+    width: calc(100% - 24px);
   }
+}
 
-  .footer {
-    padding-inline: 0;
+@media (max-width: 375px) {
+  .nav-container,
+  .section-pad {
+    width: calc(100% - 20px);
   }
 }
 
@@ -896,7 +871,7 @@ main:focus-visible {
     radial-gradient(circle at 78% 10%, color-mix(in srgb, var(--accent-cyan-soft) 82%, transparent), transparent 30rem),
     radial-gradient(circle at 12% 26%, color-mix(in srgb, var(--accent-indigo-soft) 70%, transparent), transparent 34rem),
     radial-gradient(circle at 92% 72%, color-mix(in srgb, var(--accent-teal-soft) 52%, transparent), transparent 28rem),
-    linear-gradient(180deg, var(--bg) 0%, var(--surface) 58%, var(--surface-deep) 100%);
+    linear-gradient(180deg, var(--bg) 0%, var(--surface) 58%, color-mix(in srgb, var(--palette-ice) 78%, var(--satin-silver)) 100%);
 }
 .dark .app-shell {
   background:
@@ -1096,8 +1071,7 @@ main:focus-visible {
   color: var(--component-accent, var(--primary));
 }
 
-.btn-primary,
-.hero-cta-primary {
+.btn-primary:not(.hero-cta-primary) {
   background:
     linear-gradient(180deg, color-mix(in srgb, var(--palette-ice) 38%, transparent), color-mix(in srgb, var(--palette-ice) 10%, transparent) 28%, transparent 50%),
     var(--gradient-primary);
@@ -1181,7 +1155,7 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
     var(--satin-black-gradient);
 }
 
-.dark :where(.btn-primary, .hero-cta-primary) {
+.dark .btn-primary:not(.hero-cta-primary) {
   color: var(--on-primary);
   background:
     linear-gradient(
@@ -1191,4 +1165,1515 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
       transparent 52%
     ),
     var(--satin-silver-gradient);
+}
+
+/* Fluid layout refinements — use the shared container instead of viewport-wide cards. */
+.section-header {
+  max-width: 100%;
+}
+
+.section-header-center .section-description {
+  max-width: min(100%, 75ch);
+}
+
+.content-grid > *,
+.skills-grid > *,
+.projects-grid > *,
+.cert-grid > *,
+.contact-grid > * {
+  min-width: 0;
+}
+
+/* Compact desktop and tablet: fill the available width without crowded cards. */
+@media (min-width: 721px) and (max-width: 1100px) {
+
+  .about-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+
+/* Preserve a useful two-column rhythm on wider phones and narrow tablets. */
+@media (min-width: 600px) and (max-width: 720px) {
+  .skills-grid,
+  .cert-grid,
+  .contact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Small phones: full-width readable controls and comfortably spaced cards. */
+@media (max-width: 599px) {
+  .skills-grid,
+  .cert-grid,
+  .contact-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Do not rely on hover effects for touch interfaces. */
+@media (hover: none) {
+  .skill-card:hover,
+  .project-card:hover,
+  .cert-card:hover,
+  .contact-card:hover {
+    transform: none;
+  }
+}
+
+/* Keep the technology strip keyboard-accessible without altering
+   the existing swipeable mobile carousel. */
+.tech-carousel:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+  mask-image: none;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.tech-carousel:focus-within .tech-track {
+  animation-play-state: paused;
+}
+
+@media (hover: none) {
+  .tech-carousel .tech-track {
+    animation: none;
+  }
+
+  .tech-carousel {
+    overflow-x: auto;
+    mask-image: none;
+  }
+
+  .tech-carousel .tech-chip[aria-hidden="true"] {
+    display: none;
+  }
+}
+
+/* Keep cards readable at 200–400% browser zoom. */
+.cert-content,
+.skill-card {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* Fluid-width technology band and expanded footer. */
+/* The main grid stays bounded for readable content, while this strip
+   visually spans the viewport. The carousel itself remains scrollable on mobile. */
+.hero-section .tech-strip {
+  width: 100vw;
+  max-width: none;
+  margin-inline: calc(50% - 50vw);
+  padding-inline: max(12px, calc((100vw - var(--content-max)) / 2), calc(var(--content-gutter) / 2));
+}
+
+.hero-section .tech-strip-header,
+.hero-section .tech-carousel {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Footer fills the viewport while its text follows the page grid. */
+.footer-inner {
+  column-gap: clamp(18px, 3vw, 48px);
+  row-gap: 12px;
+}
+
+.footer-inner > * {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 720px) {
+  .hero-section .tech-strip {
+    padding-inline: 12px;
+  }
+
+  .footer-contact-inner,
+  .footer-inner {
+    width: calc(100% - 24px);
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-block: 20px 28px;
+  }
+
+  .footer-credit {
+    text-align: left;
+  }
+}
+
+@media (max-width: 375px) {
+  .footer-contact-inner,
+  .footer-inner {
+    width: calc(100% - 20px);
+  }
+}
+
+
+/* Portfolio clarity: quieter surfaces and stronger content hierarchy. */
+/* The technology carousel and its breakpoints intentionally remain unchanged. */
+:where(.about-card, .skill-card, .project-card, .cert-card, .contact-card) {
+  border: 1px solid var(--line);
+  background: var(--card);
+  box-shadow: var(--shadow-sm);
+}
+
+:where(.about-card, .skill-card, .project-card, .cert-card, .contact-card)::before,
+:where(.about-card, .skill-card, .project-card, .cert-card, .contact-card)::after {
+  content: none;
+}
+
+:where(.about-card, .skill-card, .project-card, .cert-card, .contact-card):hover,
+.dark :where(.about-card, .skill-card, .project-card, .cert-card, .contact-card):hover {
+  transform: none;
+  box-shadow: var(--shadow-sm);
+  border-color: var(--line);
+}
+
+.section-title {
+  max-width: 24ch;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.section-description,
+.about-card > p,
+.project-content > p {
+  max-width: 68ch;
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+.section-header {
+  gap: 10px;
+}
+
+.hero-description {
+  max-width: 54ch;
+  line-height: 1.65;
+}
+
+.hero-role {
+  font-weight: 600;
+}
+
+.about-card {
+  padding: clamp(24px, 3vw, 36px);
+}
+
+.about-stats {
+  margin-top: 20px;
+  gap: 12px;
+}
+
+.about-stat {
+  padding: 14px;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  box-shadow: none;
+}
+
+.skill-card,
+.cert-card {
+  padding: clamp(18px, 2vw, 26px);
+}
+
+.skill-icon,
+.cert-card .skill-icon {
+  box-shadow: none;
+  border: 1px solid var(--line);
+  background: var(--surface-soft);
+}
+
+.skill-card h3,
+.project-content h3,
+.cert-card h3 {
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.tag {
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  background: var(--surface-soft);
+  box-shadow: none;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.dark .tag {
+  background: var(--surface-soft);
+  border-color: var(--line);
+}
+
+.project-meta {
+  margin-bottom: 12px;
+}
+
+.project-meta span,
+.dark .project-meta span {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.project-content {
+  padding: clamp(20px, 2.8vw, 32px);
+}
+
+.project-content > p {
+  margin-bottom: 16px;
+}
+
+.project-evidence-list div,
+.dark .project-evidence-list div {
+  border-radius: 12px;
+  border-color: var(--line);
+  background: var(--surface-soft);
+  box-shadow: none;
+}
+
+.project-links {
+  margin-top: 18px;
+}
+
+.project-links a {
+  box-shadow: none;
+}
+
+.project-links a:hover,
+.project-links a:focus-visible {
+  box-shadow: none;
+}
+
+@media (max-width: 720px) {
+  .section-title {
+    max-width: 100%;
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr));
+  }
+}
+
+
+/* Final specificity pass for earlier alternating and accent rules. */
+:root:not(.dark) .skills-grid .skill-card:nth-child(even),
+:root:not(.dark) .projects-grid .project-card:nth-child(even),
+:root:not(.dark) .cert-grid .cert-card:nth-child(even),
+:root:not(.dark) .contact-grid .contact-link:nth-child(even) {
+  background: var(--card);
+  border-color: var(--line);
+}
+
+.skills-grid .skill-card,
+.projects-grid .project-card,
+.cert-grid .cert-card,
+.contact-section .contact-card {
+  border-color: var(--line);
+  background: var(--card);
+  box-shadow: var(--shadow-sm);
+}
+
+.skills-grid .skill-card:hover,
+.projects-grid .project-card:hover,
+.cert-grid .cert-card:hover,
+.contact-section .contact-card:hover,
+.dark .skills-grid .skill-card:hover,
+.dark .projects-grid .project-card:hover,
+.dark .cert-grid .cert-card:hover,
+.dark .contact-section .contact-card:hover {
+  transform: none;
+  border-color: var(--line);
+  box-shadow: var(--shadow-sm);
+}
+
+.tag-cloud .tag:nth-child(n) {
+  background: var(--surface-soft);
+  border-color: var(--line);
+  box-shadow: none;
+  color: var(--muted);
+}
+
+.project-content .project-meta span,
+.dark .project-content .project-meta span {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--muted);
+}
+
+/* Hierarchy refinement: smaller section headings, prominent hero, concise badge row. */
+.section-header .section-title {
+  font-size: clamp(1.85rem, 3.2vw, 3.15rem);
+  line-height: 1.12;
+}
+
+.section-header .eyebrow {
+  color: var(--accent-champagne);
+  font-size: 0.73rem;
+  letter-spacing: 0.065em;
+}
+
+.section-header .section-description {
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  line-height: 1.6;
+}
+
+.certifications-section .section-header {
+  margin-bottom: clamp(16px, 2vw, 24px);
+}
+
+.certifications-section .section-description {
+  max-width: 54ch;
+}
+
+.credential-badge {
+  box-shadow: none;
+}
+
+@media (max-width: 599px) {
+  .credential-badges {
+    gap: 10px;
+  }
+
+  .credential-badge {
+    min-width: 102px;
+    min-height: 116px;
+    padding: 12px;
+  }
+
+  .credential-badge img {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+
+/* Scan-friendly section rhythm (no technology carousel changes). */
+.section-header-left,
+.section-header-center {
+  gap: 8px;
+}
+
+.section-header-left .section-description {
+  margin-inline: 0;
+  max-width: 60ch;
+  text-align: left;
+}
+
+.section-header .section-title {
+  max-width: 28ch;
+  text-wrap: balance;
+}
+
+.about-card {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+
+.about-card > p {
+  margin: 0;
+  max-width: 60ch;
+  font-size: clamp(1rem, 1.2vw, 1.08rem);
+  line-height: 1.7;
+}
+
+.about-card > p + p {
+  color: var(--muted);
+}
+
+.skills-grid {
+  gap: clamp(12px, 1.8vw, 20px);
+}
+
+.skills-grid .skill-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-height: 100%;
+}
+
+.skill-description {
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+
+.skill-card .tag-cloud {
+  margin-top: auto;
+}
+
+.projects-grid {
+  gap: clamp(16px, 2vw, 24px);
+}
+
+.project-content > p {
+  max-width: 58ch;
+  line-height: 1.65;
+}
+
+.project-evidence summary {
+  font-weight: 700;
+}
+
+.certifications-section .section-header-center {
+  align-items: center;
+  text-align: center;
+}
+
+@media (max-width: 720px) {
+  .section-header-left,
+  .section-header-center:not(.certifications-section .section-header) {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .section-header .section-title {
+    max-width: 100%;
+  }
+
+  .about-card {
+    gap: 12px;
+  }
+}
+
+/* Keep keyboard focus rings immediate; never animate outline width. */
+.nav-link {
+  transition-property: color, background-color, border-color, box-shadow;
+}
+
+.nav-link:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 4px;
+}
+
+
+/* Portfolio navigation and content-density refinement. */
+.nav-contact-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 8px 16px;
+  border: 1px solid color-mix(in srgb, var(--primary) 38%, var(--line));
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--text);
+  font-size: 0.86rem;
+  font-weight: 700;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.nav-contact-cta:hover,
+.nav-contact-cta:focus-visible,
+.bento-contact-cta:hover,
+.bento-contact-cta:focus-visible {
+  border-color: var(--primary);
+  background: var(--surface-raised);
+}
+
+.nav-contact-cta:focus-visible,
+.bento-contact-cta:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+.bento-contact-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  margin-top: 12px;
+  padding: 12px 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--primary-soft);
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+@media (max-width: 1024px) {
+  .nav-contact-cta {
+    display: none;
+  }
+}
+
+@media (min-width: 1025px) {
+  .bento-contact-cta {
+    display: none;
+  }
+}
+
+/* Content-led sections: readable spacing rather than full-viewport placeholders. */
+#about.section-pad,
+#skills.section-pad,
+#projects.section-pad {
+  padding-block: clamp(44px, 4.2vw, 62px);
+}
+
+.certifications-section.section-pad {
+  padding-block: clamp(30px, 3.2vw, 44px);
+}
+
+.skills-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.skills-grid .skill-card {
+  padding: clamp(18px, 1.7vw, 24px);
+}
+
+@media (max-width: 1100px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 599px) {
+  .skills-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #about.section-pad,
+  #skills.section-pad,
+  #projects.section-pad {
+    padding-block: 38px;
+  }
+}
+
+
+/* Preserve four skill cards; use readable sub-groups in the delivery card. */
+.skill-groups {
+  display: grid;
+  gap: 14px;
+  margin-top: auto;
+}
+
+.skill-group {
+  display: grid;
+  gap: 8px;
+}
+
+.skill-group-label {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+/* Zoom/reflow: avoid relying on a fixed minimum viewport width. */
+@media (max-width: 340px) {
+  .skills-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+
+/* Restrained editorial cards: soft corners, a fine top edge and gentle depth.
+   Informational containers stay static; only their actual links are interactive.
+   The technology marquee remains unchanged. */
+.about-card,
+.skills-grid .skill-card,
+.projects-grid .project-card {
+  --card-elevation:
+    inset 0 1px 0 color-mix(in srgb, var(--surface-highlight) 72%, transparent),
+    0 7px 20px color-mix(in srgb, var(--palette-navy) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--line) 45%, transparent);
+  border-block-start: 2px solid color-mix(in srgb, var(--primary) 48%, transparent);
+  border-radius: 10px;
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--surface-highlight) 26%, var(--card)),
+    var(--card) 62%,
+    color-mix(in srgb, var(--surface-soft) 30%, var(--card))
+  );
+  box-shadow: var(--card-elevation);
+  cursor: default;
+}
+
+.dark .about-card,
+.dark .skills-grid .skill-card,
+.dark .projects-grid .project-card {
+  --card-elevation:
+    inset 0 1px 0 color-mix(in srgb, var(--surface-highlight) 46%, transparent),
+    0 9px 24px color-mix(in srgb, var(--satin-black) 25%, transparent);
+}
+
+.about-card:hover,
+.skills-grid .skill-card:hover,
+.projects-grid .project-card:hover,
+.dark .about-card:hover,
+.dark .skills-grid .skill-card:hover,
+.dark .projects-grid .project-card:hover {
+  transform: none;
+  border-color: color-mix(in srgb, var(--line) 45%, transparent);
+  border-block-start-color: color-mix(in srgb, var(--primary) 48%, transparent);
+  box-shadow: var(--card-elevation);
+}
+
+.skill-icon {
+  width: auto;
+  height: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 16px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.skill-icon svg {
+  filter: none;
+}
+
+.project-evidence-list div,
+.dark .project-evidence-list div {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.projects-grid .project-card:hover .project-media img {
+  transform: none;
+}
+
+.project-preview-link:hover img,
+.project-preview-link:focus-visible img {
+  transform: scale(1.025);
+}
+
+/* Technology tags are compact, static labels—not raised pills or buttons. */
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tag-cloud > .tag:nth-child(n),
+.dark .tag-cloud > .tag:nth-child(n) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  margin: 0;
+  padding: 4px 9px;
+  min-height: 0;
+  border: 1px solid color-mix(in srgb, var(--primary) 24%, var(--surface-soft));
+  border-inline-start: 2px solid var(--primary);
+  border-radius: 3px;
+  background: var(--surface-soft);
+  box-shadow: none;
+  color: var(--muted);
+  font-size: 0.79rem;
+  font-weight: 600;
+  line-height: 1.45;
+  cursor: default;
+  text-transform: none;
+  transform: none;
+  transition: none;
+}
+
+.tag-cloud > .tag::before {
+  content: none;
+}
+
+/* Explicit targets keep the existing rounded treatment and focus indication. */
+.credential-badges .credential-badge,
+.project-links a,
+.footer-email,
+.footer-socials a {
+  cursor: pointer;
+}
+
+/* ACO brand images retain the home link's accessible name. */
+.brand .brand-logo {
+  display: block;
+  width: 64px;
+  height: 45px;
+  object-fit: contain;
+}
+
+/* Light-mode constellation contrast, with a quieter mobile presentation.
+   The dark-mode canvas remains at its existing opacity. */
+:root:not(.dark) .constellation-canvas {
+  opacity: 0.92;
+}
+
+@media (max-width: 720px) {
+  :root:not(.dark) .constellation-canvas {
+    opacity: 0.8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root:not(.dark) .constellation-canvas {
+    opacity: 0.72;
+  }
+}
+
+/* Navigation refinement: text links with a small active rule rather than
+   button-like pills; real actions keep their clear control affordances. */
+.nav-links,
+.dark .nav-links {
+  --nav-item-gap: clamp(28px, 2.9vw, 48px);
+  display: flex;
+  gap: var(--nav-item-gap);
+  align-items: center;
+  margin-block: 0;
+  margin-inline: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  list-style: none;
+}
+
+.nav-links > li {
+  position: relative;
+  display: flex;
+  min-width: 0;
+}
+
+/* Fine vertical dividers define larger hit areas without creating pills. */
+.nav-links > li + li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: calc(var(--nav-item-gap) * -0.5);
+  top: 50%;
+  width: 1px;
+  height: 22px;
+  background: color-mix(in srgb, var(--line) 28%, transparent);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.nav-links .nav-link {
+  position: relative;
+  min-height: 48px;
+  padding: 12px 14px 15px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--muted);
+  font-size: 0.94rem;
+  font-weight: 600;
+  letter-spacing: 0.012em;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color var(--motion-duration-fast) ease;
+}
+
+.nav-links .nav-link::after {
+  display: block;
+  inset-inline: 14px;
+  left: 14px;
+  right: 14px;
+  bottom: 4px;
+  width: auto;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--primary);
+  opacity: 0;
+  transform: scaleX(0.35);
+  transform-origin: center;
+  transition:
+    opacity var(--motion-duration-fast) ease,
+    transform var(--motion-duration-fast) var(--motion-ease-standard);
+  pointer-events: none;
+}
+
+.nav-links .nav-link-active,
+.nav-links .nav-link:hover,
+.nav-links .nav-link:focus-visible,
+.dark .nav-links .nav-link-active,
+.dark .nav-links .nav-link:hover,
+.dark .nav-links .nav-link:focus-visible {
+  color: var(--text);
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+.nav-links .nav-link-active {
+  font-weight: 700;
+}
+
+.nav-links .nav-link-active::after,
+.nav-links .nav-link:hover::after,
+.nav-links .nav-link:focus-visible::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.nav-actions {
+  gap: 6px;
+}
+
+.nav-actions .icon-button,
+.nav-actions .language-button,
+.nav-actions .bento-button {
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 12px;
+  border-color: color-mix(in srgb, var(--primary) 24%, transparent);
+  background: color-mix(in srgb, var(--card) 52%, transparent);
+  box-shadow: none;
+}
+
+.nav-actions .icon-button:hover,
+.nav-actions .language-button:hover,
+.nav-actions .bento-button:hover,
+.nav-actions .icon-button:focus-visible,
+.nav-actions .language-button:focus-visible,
+.nav-actions .bento-button:focus-visible {
+  background: var(--primary-soft);
+  border-color: color-mix(in srgb, var(--primary) 48%, transparent);
+  box-shadow: none;
+}
+
+.nav-contact-cta {
+  min-height: 44px;
+  padding-inline: 18px;
+  border-color: color-mix(in srgb, var(--primary) 42%, transparent);
+  border-radius: 12px;
+}
+
+.mobile-bento-menu .bento-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mobile-bento-menu .bento-grid > li {
+  min-width: 0;
+}
+
+.mobile-bento-menu .bento-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 54px;
+  padding: 12px 14px;
+  border: 0;
+  border-inline-start: 2px solid transparent;
+  border-block-end: 1px solid color-mix(in srgb, var(--line) 24%, transparent);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--muted);
+  font-size: 0.94rem;
+  font-weight: 600;
+  text-align: start;
+}
+
+.mobile-bento-menu .bento-grid > li:last-child .bento-link {
+  border-block-end-color: transparent;
+}
+
+.mobile-bento-menu .bento-link svg {
+  flex: 0 0 auto;
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--primary);
+  filter: none;
+}
+
+.mobile-bento-menu .bento-link-active,
+.mobile-bento-menu .bento-link:hover,
+.mobile-bento-menu .bento-link:focus-visible {
+  transform: none;
+  border-inline-start-color: var(--primary);
+  background: color-mix(in srgb, var(--primary-soft) 65%, transparent);
+  box-shadow: none;
+  color: var(--text);
+}
+
+.mobile-bento-menu .bento-link-active {
+  font-weight: 700;
+}
+
+.mobile-bento-menu .bento-contact-cta {
+  border-radius: 12px;
+}
+
+@media (max-width: 1100px) and (min-width: 1025px) {
+  .nav-links,
+  .dark .nav-links {
+    --nav-item-gap: 26px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-links .nav-link::after {
+    transition: none;
+  }
+}
+
+/* Balanced desktop layout: center the three section links independently of
+   the unequal widths of the ACO logo and right-hand action controls. */
+@media (min-width: 1025px) {
+  .nav-container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    column-gap: clamp(16px, 2vw, 30px);
+    align-items: center;
+  }
+
+  .nav-container > .brand {
+    justify-self: start;
+  }
+
+  .nav-container > .nav-links {
+    justify-self: center;
+    margin-inline: 0;
+  }
+
+  .nav-container > .nav-actions {
+    justify-self: end;
+  }
+}
+
+/* Keep the desktop list hidden when the accessible mobile menu takes over.
+   This must come after the desktop .nav-links styles in the cascade. */
+@media (max-width: 1024px) {
+  .nav-container > .nav-links,
+  .dark .nav-container > .nav-links {
+    display: none;
+  }
+}
+
+/* Other primary buttons keep their existing dark-theme treatment; the Hero CTA is solid. */
+.dark .btn-primary:not(.hero-cta-primary) {
+  color: var(--palette-ice);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--palette-steel) 88%, var(--palette-sky)),
+    var(--palette-steel) 56%,
+    var(--palette-navy)
+  );
+  border-color: var(--palette-steel);
+}
+
+/* Theme-inverse footer: midnight navy beneath steel blue, steel blue beneath midnight navy.
+   Local semantic tokens keep both variants legible without changing page tokens. */
+:root:not(.dark) .footer {
+  --footer-background: var(--satin-black);
+  --footer-background-raised: var(--palette-dark-card);
+  --footer-text: var(--palette-white);
+  --footer-muted: var(--palette-dark-muted);
+  --footer-accent: var(--palette-champagne);
+  --footer-focus: var(--palette-light-text);
+  --footer-border: color-mix(in srgb, var(--palette-sky) 34%, transparent);
+  --footer-link-surface: var(--palette-dark-card);
+  --footer-link-hover: color-mix(in srgb, var(--palette-dark-card) 78%, var(--palette-navy));
+}
+
+.dark .footer {
+  --footer-background: var(--palette-ice);
+  --footer-background-raised: var(--satin-silver);
+  --footer-text: var(--palette-ink);
+  --footer-muted: var(--palette-muted);
+  --footer-accent: var(--palette-bronze);
+  --footer-focus: var(--palette-steel);
+  --footer-border: color-mix(in srgb, var(--palette-steel) 35%, transparent);
+  --footer-link-surface: color-mix(in srgb, var(--palette-ice) 90%, var(--satin-silver));
+  --footer-link-hover: color-mix(in srgb, var(--palette-ice) 76%, var(--satin-silver));
+}
+
+.footer {
+  --text: var(--footer-text);
+  --muted: var(--footer-muted);
+  --primary: var(--footer-accent);
+  --primary-strong: var(--footer-text);
+  --primary-soft: color-mix(in srgb, var(--footer-accent) 14%, transparent);
+  --secondary: var(--footer-muted);
+  --line: var(--footer-accent);
+  --focus-ring: var(--footer-focus);
+  --card: var(--footer-link-surface);
+  --surface-soft: var(--footer-link-surface);
+  --surface-raised: var(--footer-background-raised);
+  color: var(--footer-muted);
+  background: linear-gradient(
+    150deg,
+    var(--footer-background-raised),
+    var(--footer-background) 74%
+  );
+  border-top: 1px solid var(--footer-border);
+}
+
+.footer .footer-contact {
+  border-bottom-color: var(--footer-border);
+}
+
+.footer .footer-contact-title {
+  color: var(--footer-text);
+}
+
+.footer .footer-contact-intro .eyebrow {
+  color: var(--footer-accent);
+}
+
+.footer .footer-contact-intro p,
+.footer .footer-identity small,
+.footer .footer-credit {
+  color: var(--footer-muted);
+}
+
+/* The footer identity uses theme-appropriate solid text, not the hero gradient. */
+.footer .footer-identity strong {
+  color: var(--footer-text);
+  background: none;
+  background-clip: border-box;
+  -webkit-background-clip: border-box;
+  -webkit-text-fill-color: var(--footer-text);
+}
+
+.footer .footer-email,
+.footer .footer-socials a {
+  background: var(--footer-link-surface);
+  border-color: var(--footer-border);
+  color: var(--footer-text);
+  box-shadow: none;
+}
+
+.footer .footer-email svg,
+.footer .footer-socials a svg {
+  color: var(--footer-accent);
+}
+
+.footer .footer-email:hover,
+.footer .footer-socials a:hover,
+.footer .footer-email:focus-visible,
+.footer .footer-socials a:focus-visible {
+  background: var(--footer-link-hover);
+  border-color: var(--footer-accent);
+  color: var(--footer-text);
+  box-shadow: none;
+  transform: none;
+}
+
+.footer .footer-email:focus-visible,
+.footer .footer-socials a:focus-visible {
+  outline: 3px solid var(--footer-focus);
+  outline-offset: 3px;
+}
+
+/* Accessible readability refinements, scoped to labels rather than large headings. */
+.project-meta span,
+.dark .project-meta span {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.section-header .eyebrow,
+.skill-group-label {
+  font-size: 0.825rem;
+  line-height: 1.5;
+}
+
+.tag-cloud > .tag:nth-child(n),
+.dark .tag-cloud > .tag:nth-child(n) {
+  font-size: 0.825rem;
+  line-height: 1.5;
+}
+
+/* Tertiary brand rhythm: repeated accents, never decorative buttons or large gold fills.
+   Bronze in light mode and champagne in dark mode share the same semantic token. */
+.nav-links .nav-link-active,
+.dark .nav-links .nav-link-active {
+  color: var(--accent-champagne);
+}
+
+.nav-links .nav-link-active::after,
+.nav-links .nav-link:hover::after,
+.nav-links .nav-link:focus-visible::after {
+  background: var(--accent-champagne);
+}
+
+.mobile-bento-menu .bento-link-active {
+  border-inline-start-color: var(--accent-champagne);
+}
+
+.mobile-bento-menu .bento-link-active svg,
+.hero-meta .status-pill svg,
+.credential-external {
+  color: var(--accent-champagne);
+}
+
+.projects-grid .project-card,
+.projects-grid .project-card:hover,
+.dark .projects-grid .project-card:hover {
+  border-block-start-color: var(--accent-champagne);
+}
+
+.project-meta span,
+.dark .project-meta span,
+.projects-grid .project-evidence-list dt,
+.skill-group-label {
+  color: var(--accent-champagne);
+}
+
+/* A second, quiet layer of champagne: small cues rather than filled surfaces. */
+.hero-kicker::after {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  margin-inline-start: 12px;
+  vertical-align: middle;
+  background: var(--accent-champagne);
+}
+
+.projects-grid .project-evidence summary::before,
+.projects-grid .project-links a svg,
+.credential-badges .credential-code {
+  color: var(--accent-champagne);
+}
+
+/* Minimal engineering typography: mono only for short technical signposts, never paragraphs. */
+.hero-kicker,
+.section-header .eyebrow,
+.skill-group-label,
+.project-meta span,
+.dark .project-meta span,
+.credential-badges .credential-code {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.tag-cloud > .tag:nth-child(n),
+.dark .tag-cloud > .tag:nth-child(n),
+.tech-chip small {
+  font-family: var(--font-sans);
+}
+
+/* Four curated projects: featured architecture + three evenly sized cards. */
+@media (min-width: 1025px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.projects-more {
+  display: flex;
+  justify-content: center;
+  margin-block-start: clamp(22px, 3vw, 32px);
+}
+
+.projects-more-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 8px 10px;
+  border-bottom: 2px solid var(--accent-champagne);
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+}
+
+.projects-more-link svg {
+  flex-shrink: 0;
+  color: var(--accent-champagne);
+  width: 1rem;
+  height: 1rem;
+}
+
+.projects-more-link .projects-more-external {
+  width: 0.78rem;
+  height: 0.78rem;
+}
+
+.projects-more-link:hover {
+  color: var(--primary);
+}
+
+.projects-more-link:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+/* Real architecture diagram in place of a fabricated screenshot. */
+.project-card-bookstore-rabbitmq .project-media {
+  display: grid;
+  place-items: center;
+  aspect-ratio: auto;
+  min-height: clamp(350px, 34vw, 400px);
+  padding: clamp(16px, 3vw, 30px);
+  background: var(--surface-soft);
+}
+
+.project-architecture {
+  width: min(100%, 320px);
+  color: var(--text);
+}
+
+.project-architecture-heading {
+  margin: 0 0 14px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--accent-champagne);
+}
+
+.project-architecture-flow {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-architecture-flow li {
+  position: relative;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-inline-start: 3px solid var(--accent-champagne);
+  border-radius: 5px;
+  background: var(--card);
+  font-family: var(--font-sans);
+  font-size: clamp(0.82rem, 1vw, 0.98rem);
+  font-weight: 600;
+  text-align: center;
+}
+
+.project-architecture-flow li + li::before {
+  content: "";
+  position: absolute;
+  inset-block-start: -12px;
+  inset-inline-start: 50%;
+  height: 11px;
+  border-inline-start: 1px solid var(--accent-champagne);
+}
+
+/* Scan-first layouts: three concise skills plus a wide, grouped delivery card. */
+@media (min-width: 1101px) {
+  .skills-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .skills-grid .skill-card-cloud {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(180px, 0.8fr) minmax(0, 2.6fr);
+    grid-template-areas:
+      "icon groups"
+      "title groups"
+      "description groups";
+    align-content: start;
+    align-items: start;
+    column-gap: clamp(24px, 3.5vw, 52px);
+  }
+
+  .skill-card-cloud > .skill-icon { grid-area: icon; }
+  .skill-card-cloud > h3 { grid-area: title; }
+  .skill-card-cloud > .skill-description {
+    grid-area: description;
+    margin-bottom: 0;
+  }
+
+  .skill-card-cloud > .skill-groups {
+    grid-area: groups;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+    gap: clamp(14px, 2vw, 26px);
+    margin-top: 0;
+  }
+
+  .skills-grid .skill-card:not(.skill-card-cloud) .tag-cloud {
+    margin-top: 16px;
+  }
+}
+
+/* All three secondary projects begin with an identical media frame. */
+@media (min-width: 1025px) {
+  .projects-grid .compact-project .project-media,
+  .projects-grid .project-card-bookstore-rabbitmq .project-media {
+    aspect-ratio: auto;
+    height: 320px;
+    min-height: 320px;
+  }
+
+  .projects-grid .compact-project .project-media img {
+    object-fit: contain;
+  }
+
+  .projects-grid .compact-project .project-meta {
+    min-height: 2.75rem;
+    align-content: start;
+  }
+}
+
+/* Self-contained award symbol stays visible when a provider image cannot load. */
+.credential-art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  flex: 0 0 60px;
+  color: var(--accent-champagne);
+}
+
+.credential-art .credential-fallback {
+  width: 42px;
+  height: 42px;
+}
+
+.credential-art img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+}
+
+.credential-art img.credential-logo-ready {
+  opacity: 1;
+}
+
+@media (max-width: 599px) {
+  .credential-art {
+    width: 52px;
+    height: 52px;
+    flex-basis: 52px;
+  }
+
+  .credential-art .credential-fallback {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* High-contrast preferences use solid surfaces and stronger visual boundaries.
+   Core colors remain defined by the existing theme tokens. */
+@media (prefers-contrast: more) {
+  .nav-container,
+  .mobile-bento-menu,
+  :where(.about-card, .skill-card, .project-card, .cert-card) {
+    backdrop-filter: none;
+    border-width: 2px;
+    border-color: var(--line);
+    box-shadow: none;
+  }
+
+  .footer .footer-email,
+  .footer .footer-socials a {
+    border-width: 2px;
+    border-color: var(--footer-accent);
+  }
+
+  .nav-links > li + li::before {
+    background: var(--line);
+  }
+
+  .tag-cloud > .tag:nth-child(n) {
+    border-color: var(--primary);
+  }
+
+  .constellation-canvas {
+    opacity: 0.3;
+  }
+}
+
+/* Windows forced-colors mode: retain visible system colors for borders,
+   keyboard focus and links instead of relying on brand gradients or glows. */
+@media (forced-colors: active) {
+  .constellation-canvas {
+    display: none;
+  }
+
+  .nav-container,
+  .mobile-bento-menu,
+  :where(.about-card, .skill-card, .project-card, .cert-card),
+  :root:not(.dark) .footer,
+  .dark .footer {
+    border: 1px solid CanvasText;
+    background: Canvas;
+    color: CanvasText;
+    box-shadow: none;
+  }
+
+  .nav-links .nav-link,
+  .mobile-bento-menu .bento-link,
+  .nav-contact-cta,
+  .footer .footer-contact-title,
+  .footer .footer-contact-intro p,
+  .footer .footer-identity small,
+  .footer .footer-credit,
+  .footer .footer-identity strong {
+    color: CanvasText;
+    -webkit-text-fill-color: CanvasText;
+  }
+
+  .nav-links > li + li::before {
+    background: CanvasText;
+  }
+
+  .footer .footer-contact {
+    border-color: CanvasText;
+    background: transparent;
+  }
+
+  .footer .footer-email,
+  .footer .footer-socials a,
+  .nav-actions .icon-button,
+  .nav-actions .language-button,
+  .nav-actions .bento-button {
+    color: LinkText;
+    background: Canvas;
+    border: 1px solid LinkText;
+    box-shadow: none;
+  }
+
+  .footer .footer-email svg,
+  .footer .footer-socials a svg {
+    color: LinkText;
+  }
+
+  :where(a, button, summary):focus-visible,
+  .footer .footer-email:focus-visible,
+  .footer .footer-socials a:focus-visible {
+    outline: 3px solid Highlight;
+    outline-offset: 3px;
+  }
+
+  .nav-links .nav-link-active::after,
+  .nav-links .nav-link:hover::after,
+  .nav-links .nav-link:focus-visible::after {
+    background: Highlight;
+  }
+
+  .footer .footer-identity strong {
+    background: none;
+  }
 }

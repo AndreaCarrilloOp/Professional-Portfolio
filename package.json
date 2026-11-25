@@ -5,18 +5,20 @@
   "type": "module",
   "packageManager": "pnpm@9.15.0",
   "engines": {
-    "node": ">=20"
+    "node": ">=24 <25"
   },
   "scripts": {
     "dev": "vite",
     "build": "vite build && node scripts/generate-deploy-files.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
-    "check": "pnpm palette && pnpm contrast && pnpm lint && pnpm build",
+    "check": "pnpm lint && pnpm contrast && pnpm test:static && pnpm build",
     "contrast": "node scripts/check-contrast.mjs",
-    "palette": "node scripts/check-palette.mjs"
+    "test:static": "node --test scripts/check-site.mjs"
   },
   "dependencies": {
+    "@fontsource/ibm-plex-mono": "5.1.0",
+    "@fontsource/ibm-plex-sans": "5.2.8",
     "i18next": "^25.1.2",
     "i18next-browser-languagedetector": "^8.1.0",
     "react": "^19.1.0",
