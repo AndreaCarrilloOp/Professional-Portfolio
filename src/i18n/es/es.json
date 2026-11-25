@@ -57,7 +57,7 @@
     },
     "databases": {
       "title": "Bases de datos",
-      "description": "Modelado, consultas y persistencia."
+      "description": "Modelado SQL, NoSQL y servicios administrados."
     },
     "cloud": {
       "title": "Cloud, DevOps y calidad",
@@ -78,7 +78,7 @@
   "projects": {
     "eyebrow": "Proyectos",
     "title": "Proyectos seleccionados",
-    "description": "Tres proyectos que demuestran sistemas distribuidos, lógica en C++ y comunicación asíncrona entre servicios.",
+    "description": "Cuatro proyectos de desarrollo Full Stack: sistemas distribuidos, C++/WebAssembly, mensajería asíncrona e interfaces web.",
     "repo": "GitHub",
     "demo": "Demo",
     "evidenceCta": "Ver evidencia técnica",
@@ -125,7 +125,15 @@
       "problem": "Gestionar libros, autores y editoriales evitando acoplar las escrituras a la persistencia directa.",
       "contribution": "Integración de interfaces Vue, endpoints Netlify Functions, tres colas de entidades y procesadores de tareas.",
       "outcome": "Aplicación publicada con API independiente, mensajería asíncrona y persistencia en MongoDB Atlas."
-    }
+    },
+    "petshop": {
+      "title": "Huellita PetShop",
+      "description": "Aplicación web responsiva para organizar un catálogo de productos para mascotas con navegación clara y una experiencia consistente en distintos tamaños de pantalla.",
+      "outcome": "Sitio publicado con estructura clara, navegación simple y experiencia consistente en mobile/desktop.",
+      "problem": "Catálogo estático que necesitaba mejor jerarquía visual, orden de productos y navegación sencilla.",
+      "contribution": "Maquetación responsive, estructura de secciones, componentes visuales reutilizables y publicación en GitHub Pages."
+    },
+    "moreOnGithub": "Ver más proyectos en GitHub"
   },
   "certifications": {
     "eyebrow": "Credenciales",

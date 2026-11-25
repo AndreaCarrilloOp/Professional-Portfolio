@@ -2372,6 +2372,54 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   font-family: var(--font-sans);
 }
 
+/* Four curated projects: featured architecture + three evenly sized cards. */
+@media (min-width: 1025px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.projects-more {
+  display: flex;
+  justify-content: center;
+  margin-block-start: clamp(22px, 3vw, 32px);
+}
+
+.projects-more-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 8px 10px;
+  border-bottom: 2px solid var(--accent-champagne);
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+}
+
+.projects-more-link svg {
+  flex-shrink: 0;
+  color: var(--accent-champagne);
+  width: 1rem;
+  height: 1rem;
+}
+
+.projects-more-link .projects-more-external {
+  width: 0.78rem;
+  height: 0.78rem;
+}
+
+.projects-more-link:hover {
+  color: var(--primary);
+}
+
+.projects-more-link:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
 /* Real architecture diagram in place of a fabricated screenshot. */
 .project-card-bookstore-rabbitmq .project-media {
   display: grid;

@@ -108,8 +108,12 @@ class PortfolioSmokeTests(unittest.TestCase):
                 page = self.page_for(width)
                 try:
                     self.assertEqual(page.locator("#contact").count(), 1)
-                    self.assertEqual(page.locator(".project-card").count(), 3)
+                    self.assertEqual(page.locator(".project-card").count(), 4)
                     self.assertEqual(page.locator(".credential-badge").count(), 3)
+                    self.assertEqual(page.locator(".project-card-petshop").count(), 1)
+                    self.assertTrue(
+                        page.locator(".projects-more-link").get_attribute("href").endswith("?tab=repositories")
+                    )
                     carousel = page.locator(".tech-carousel")
                     self.assertEqual(carousel.count(), 1)
                     self.assertEqual(carousel.get_attribute("tabindex"), "0")
@@ -314,7 +318,7 @@ class PortfolioSmokeTests(unittest.TestCase):
                         f"{item['id']} still occupies nearly an entire viewport",
                     )
             self.assertEqual(page.locator(".skill-card").count(), 4)
-            self.assertEqual(page.locator(".project-card").count(), 3)
+            self.assertEqual(page.locator(".project-card").count(), 4)
         finally:
             page.close()
 

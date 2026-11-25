@@ -60,7 +60,7 @@ test("hero carousel stays accessible without duplicated announcements", () => {
 
 test("project and profile image fallbacks exist", () => {
   const manifest = json("src/assets/responsive-images.json");
-  for (const key of ["profileLight", "profileDark", "scrabble", "distributedLibrary"]) {
+  for (const key of ["profileLight", "profileDark", "scrabble", "petshop", "distributedLibrary"]) {
     const entry = manifest[key];
     assert.ok(entry, "Missing image metadata: " + key);
     const images = entry.webp ?? entry.png;
@@ -80,6 +80,9 @@ test("published projects and certificates have outbound destinations", () => {
   assert.ok(projectConfig && certificateConfig);
   assert.match(projectConfig, /https:\/\/github\.com\/AndreaCarrilloOp\//);
   assert.match(projectConfig, /id: "bookstore-rabbitmq"/);
+  assert.match(projectConfig, /id: "petshop"/);
+  assert.match(constants, /MongoDB Atlas/);
+  assert.match(load("src/components/sections/Projects.jsx"), /projects\.moreOnGithub/);
   assert.match(projectConfig, /id: "distributed-library"/);
   assert.match(projectConfig, /demo: "https:\/\//);
   assert.match(certificateConfig, /https:\/\/learn\.microsoft\.com\//);

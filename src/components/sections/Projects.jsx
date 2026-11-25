@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
-import { PROJECTS } from "../../constants";
+import { GITHUB_URL, PROJECTS } from "../../constants";
 import SectionHeader from "../ui/SectionHeader";
 
 function Projects() {
@@ -132,6 +132,19 @@ function Projects() {
             </div>
           </article>
         ))}
+      </div>
+      <div className="projects-more">
+        <a
+          className="projects-more-link"
+          href={`${GITHUB_URL}?tab=repositories`}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${t("projects.moreOnGithub")}, ${t("accessibility.externalLink")}`}
+        >
+          <FaGithub aria-hidden="true" />
+          <span>{t("projects.moreOnGithub")}</span>
+          <FaExternalLinkAlt aria-hidden="true" className="projects-more-external" />
+        </a>
       </div>
     </section>
   );
