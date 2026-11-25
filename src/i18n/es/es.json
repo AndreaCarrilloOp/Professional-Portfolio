@@ -78,7 +78,7 @@
   "projects": {
     "eyebrow": "Proyectos",
     "title": "Proyectos seleccionados",
-    "description": "Tres proyectos con enfoques diferentes: lógica en C++, desarrollo web y sistemas distribuidos.",
+    "description": "Tres proyectos que demuestran sistemas distribuidos, lógica en C++ y comunicación asíncrona entre servicios.",
     "repo": "GitHub",
     "demo": "Demo",
     "evidenceCta": "Ver evidencia técnica",
@@ -89,13 +89,6 @@
       "backend": "Backend / Lógica C++",
       "wasm": "Desarrollo C++ / WebAssembly",
       "distributed": "Sistemas distribuidos"
-    },
-    "petshop": {
-      "title": "Huellita PetShop",
-      "description": "Aplicación web responsiva para organizar un catálogo de productos para mascotas con navegación clara y una experiencia consistente en distintos tamaños de pantalla.",
-      "outcome": "Sitio publicado con estructura clara, navegación simple y experiencia consistente en mobile/desktop.",
-      "problem": "Catálogo estático que necesitaba mejor jerarquía visual, orden de productos y navegación sencilla.",
-      "contribution": "Maquetación responsive, estructura de secciones, componentes visuales reutilizables y publicación en GitHub Pages."
     },
     "scrabble": {
       "title": "Scrabble · Web Edition",
@@ -124,7 +117,15 @@
       "outcome": "Plataforma académica desplegada con shell de integración y servicios publicados por separado.",
       "imageAlt": "Vista previa de la plataforma de biblioteca distribuida y su interfaz integrada mediante un shell web."
     },
-    "technologiesLabel": "Tecnologías utilizadas"
+    "technologiesLabel": "Tecnologías utilizadas",
+    "architectureLabel": "Flujo de arquitectura",
+    "bookstore": {
+      "title": "Bookstore · RabbitMQ",
+      "description": "Catálogo distribuido con operaciones de lectura en MongoDB y escrituras asíncronas mediante colas RabbitMQ, implementado con Vue 3 y funciones serverless.",
+      "problem": "Gestionar libros, autores y editoriales evitando acoplar las escrituras a la persistencia directa.",
+      "contribution": "Integración de interfaces Vue, endpoints Netlify Functions, tres colas de entidades y procesadores de tareas.",
+      "outcome": "Aplicación publicada con API independiente, mensajería asíncrona y persistencia en MongoDB Atlas."
+    }
   },
   "certifications": {
     "eyebrow": "Credenciales",
