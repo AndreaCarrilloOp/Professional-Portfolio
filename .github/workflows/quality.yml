@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - accessibility/wcag-navigation-improvements
   pull_request:
   workflow_dispatch:
 
