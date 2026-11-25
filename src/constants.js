@@ -177,7 +177,7 @@ export const PROJECTS = [
     problemKey: "projects.bookstore.problem",
     contributionKey: "projects.bookstore.contribution",
     outcomeKey: "projects.bookstore.outcome",
-    architecture: ["Vue 3", "Netlify Functions", "RabbitMQ", "MongoDB Atlas"],
+    architecture: ["Vue 3", "Netlify Functions", "RabbitMQ", "Task processors", "MongoDB Atlas"],
     repo: "https://github.com/AndreaCarrilloOp/bookstore-RabbitMQ",
     demo: "https://bookstore-rabbitmq.vercel.app/",
     year: "2026",
