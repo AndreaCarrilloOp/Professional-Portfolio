@@ -115,11 +115,11 @@ function Hero({ darkMode }) {
             type="button"
             className="tech-motion-toggle"
             aria-label={isMarqueePaused ? t("hero.resumeAnimation") : t("hero.pauseAnimation")}
+            title={isMarqueePaused ? t("hero.resumeAnimation") : t("hero.pauseAnimation")}
             aria-controls="technology-marquee"
             onClick={() => setMarqueePaused((paused) => !paused)}
           >
             {isMarqueePaused ? <FaPlay aria-hidden="true" /> : <FaPause aria-hidden="true" />}
-            <span>{isMarqueePaused ? t("hero.resume") : t("hero.pause")}</span>
           </button>
         </div>
         <div
