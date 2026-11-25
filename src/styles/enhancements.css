@@ -2374,6 +2374,57 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   font-family: var(--font-sans);
 }
 
+/* Real architecture diagram in place of a fabricated screenshot. */
+.project-card-bookstore-rabbitmq .project-media {
+  display: grid;
+  place-items: center;
+  padding: clamp(16px, 3vw, 30px);
+  background: var(--surface-soft);
+}
+
+.project-architecture {
+  width: min(100%, 320px);
+  color: var(--text);
+}
+
+.project-architecture-heading {
+  margin: 0 0 14px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--accent-champagne);
+}
+
+.project-architecture-flow {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-architecture-flow li {
+  position: relative;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-inline-start: 3px solid var(--accent-champagne);
+  border-radius: 5px;
+  background: var(--card);
+  font-family: var(--font-sans);
+  font-size: clamp(0.82rem, 1vw, 0.98rem);
+  font-weight: 600;
+  text-align: center;
+}
+
+.project-architecture-flow li + li::before {
+  content: "";
+  position: absolute;
+  inset-block-start: -12px;
+  inset-inline-start: 50%;
+  height: 11px;
+  border-inline-start: 1px solid var(--accent-champagne);
+}
+
 /* High-contrast preferences use solid surfaces and stronger visual boundaries.
    Core colors remain defined by the existing theme tokens. */
 @media (prefers-contrast: more) {
