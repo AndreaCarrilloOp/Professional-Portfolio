@@ -78,7 +78,7 @@
   "projects": {
     "eyebrow": "Projects",
     "title": "Selected projects",
-    "description": "Three projects covering C++ application logic, web development, and distributed systems.",
+    "description": "Three projects demonstrating distributed systems, C++ application logic, and asynchronous service communication.",
     "repo": "GitHub",
     "demo": "Demo",
     "evidenceCta": "View technical evidence",
@@ -89,13 +89,6 @@
       "backend": "Backend / C++ Logic",
       "wasm": "C++ / WebAssembly Development",
       "distributed": "Distributed systems"
-    },
-    "petshop": {
-      "title": "Huellita PetShop",
-      "description": "Responsive web application for organizing a pet product catalog with clear navigation and a consistent experience across screen sizes.",
-      "outcome": "Published site with clearer structure, simple navigation and consistent mobile/desktop experience.",
-      "problem": "A static catalog needed stronger visual hierarchy, product organization and simple navigation.",
-      "contribution": "Responsive layout, section structure, reusable visual components and GitHub Pages publishing."
     },
     "scrabble": {
       "title": "Scrabble · Web Edition",
@@ -124,7 +117,15 @@
       "outcome": "Academic platform deployed with an integration shell and individually published services.",
       "imageAlt": "Preview of the distributed library platform integrated through its web application shell."
     },
-    "technologiesLabel": "Technologies used"
+    "technologiesLabel": "Technologies used",
+    "architectureLabel": "Architecture flow",
+    "bookstore": {
+      "title": "Bookstore · RabbitMQ",
+      "description": "Distributed catalog with reads from MongoDB and asynchronous writes through RabbitMQ queues, built with Vue 3 and serverless functions.",
+      "problem": "Manage books, authors, and publishers without tightly coupling writes to direct database persistence.",
+      "contribution": "Integrated Vue interfaces, Netlify Functions endpoints, three entity queues, and task processors.",
+      "outcome": "Published application with an independent API, asynchronous messaging, and MongoDB Atlas persistence."
+    }
   },
   "certifications": {
     "eyebrow": "Credentials",
