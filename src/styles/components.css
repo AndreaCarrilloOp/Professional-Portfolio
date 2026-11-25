@@ -181,40 +181,38 @@
   white-space: nowrap;
 }
 
-/* Persistent, WCAG 2.2.2-friendly motion control. */
+/* Icon-only motion control: unobtrusive visually, with a 44px target and clear focus. */
 .tech-motion-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  min-width: 94px;
-  min-height: 44px;
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
   margin-inline-start: auto;
-  padding: 7px 10px;
-  border: 1px solid var(--line);
+  padding: 0;
+  border: 1px solid transparent;
   border-radius: 8px;
-  color: var(--text);
-  background: var(--card);
-  font: inherit;
-  font-size: 0.83rem;
-  font-weight: 600;
+  color: var(--muted);
+  background: transparent;
+  box-shadow: none;
   cursor: pointer;
 }
 
 .tech-motion-toggle svg {
-  width: 0.8rem;
-  height: 0.8rem;
-  color: var(--accent-champagne);
+  width: 0.94rem;
+  height: 0.94rem;
+  color: currentColor;
 }
 
 .tech-motion-toggle:hover {
-  border-color: var(--accent-champagne);
-  background: var(--surface-raised);
+  color: var(--accent-champagne);
+  background: var(--surface-soft);
 }
 
 .tech-motion-toggle:focus-visible {
+  color: var(--accent-champagne);
   outline: 3px solid var(--focus-ring);
-  outline-offset: 3px;
+  outline-offset: 2px;
 }
 
 @media (hover: none), (max-width: 720px), (prefers-reduced-motion: reduce) {
