@@ -2377,7 +2377,7 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   display: grid;
   place-items: center;
   aspect-ratio: auto;
-  min-height: clamp(290px, 32vw, 350px);
+  min-height: clamp(350px, 34vw, 400px);
   padding: clamp(16px, 3vw, 30px);
   background: var(--surface-soft);
 }
