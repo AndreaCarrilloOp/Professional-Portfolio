@@ -10,7 +10,7 @@ function Skills() {
       <SectionHeader headingId="skills-heading" eyebrowKey="skills.eyebrow" titleKey="skills.title" descriptionKey="skills.description" />
       <div className="skills-grid">
         {SKILLS.map(({ id, icon: Icon, titleKey, items, groups }) => (
-          <article key={id} className="skill-card card reveal-up">
+          <article key={id} className={`skill-card skill-card-${id} card reveal-up`}>
             <div className="skill-icon"><Icon aria-hidden="true" /></div>
             <h3>{t(titleKey)}</h3>
             <p className="skill-description">{t(`skills.${id}.description`)}</p>

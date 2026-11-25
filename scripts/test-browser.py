@@ -110,6 +110,7 @@ class PortfolioSmokeTests(unittest.TestCase):
                     self.assertEqual(page.locator("#contact").count(), 1)
                     self.assertEqual(page.locator(".project-card").count(), 4)
                     self.assertEqual(page.locator(".credential-badge").count(), 3)
+                    self.assertEqual(page.locator(".credential-fallback").count(), 3)
                     self.assertEqual(page.locator(".project-card-petshop").count(), 1)
                     self.assertTrue(
                         page.locator(".projects-more-link").get_attribute("href").endswith("?tab=repositories")
@@ -318,6 +319,19 @@ class PortfolioSmokeTests(unittest.TestCase):
                         f"{item['id']} still occupies nearly an entire viewport",
                     )
             self.assertEqual(page.locator(".skill-card").count(), 4)
+            desktop_media = page.locator(".compact-project .project-media")
+            self.assertEqual(desktop_media.count(), 3)
+            media_heights = desktop_media.evaluate_all(
+                "(nodes) => nodes.map(node => Math.round(node.getBoundingClientRect().height))"
+            )
+            self.assertEqual(len(set(media_heights)), 1, f"Uneven project media: {media_heights}")
+            self.assertEqual(page.locator(".skill-card-cloud .skill-group").count(), 3)
+            self.assertEqual(
+                page.locator(".skill-card-cloud").evaluate(
+                    "node => getComputedStyle(node).gridColumnStart"
+                ),
+                "1",
+            )
             self.assertEqual(page.locator(".project-card").count(), 4)
         finally:
             page.close()

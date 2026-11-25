@@ -2473,6 +2473,107 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   border-inline-start: 1px solid var(--accent-champagne);
 }
 
+/* Scan-first layouts: three concise skills plus a wide, grouped delivery card. */
+@media (min-width: 1101px) {
+  .skills-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .skills-grid .skill-card-cloud {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(180px, 0.8fr) minmax(0, 2.6fr);
+    grid-template-areas:
+      "icon groups"
+      "title groups"
+      "description groups";
+    align-content: start;
+    align-items: start;
+    column-gap: clamp(24px, 3.5vw, 52px);
+  }
+
+  .skill-card-cloud > .skill-icon { grid-area: icon; }
+  .skill-card-cloud > h3 { grid-area: title; }
+  .skill-card-cloud > .skill-description {
+    grid-area: description;
+    margin-bottom: 0;
+  }
+
+  .skill-card-cloud > .skill-groups {
+    grid-area: groups;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+    gap: clamp(14px, 2vw, 26px);
+    margin-top: 0;
+  }
+
+  .skills-grid .skill-card:not(.skill-card-cloud) .tag-cloud {
+    margin-top: 16px;
+  }
+}
+
+/* All three secondary projects begin with an identical media frame. */
+@media (min-width: 1025px) {
+  .projects-grid .compact-project .project-media,
+  .projects-grid .project-card-bookstore-rabbitmq .project-media {
+    aspect-ratio: auto;
+    height: 320px;
+    min-height: 320px;
+  }
+
+  .projects-grid .compact-project .project-media img {
+    object-fit: contain;
+  }
+
+  .projects-grid .compact-project .project-meta {
+    min-height: 2.75rem;
+    align-content: start;
+  }
+}
+
+/* Self-contained award symbol stays visible when a provider image cannot load. */
+.credential-art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  flex: 0 0 60px;
+  color: var(--accent-champagne);
+}
+
+.credential-art .credential-fallback {
+  width: 42px;
+  height: 42px;
+}
+
+.credential-art img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+}
+
+.credential-art img.credential-logo-ready {
+  opacity: 1;
+}
+
+@media (max-width: 599px) {
+  .credential-art {
+    width: 52px;
+    height: 52px;
+    flex-basis: 52px;
+  }
+
+  .credential-art .credential-fallback {
+    width: 38px;
+    height: 38px;
+  }
+}
+
 /* High-contrast preferences use solid surfaces and stronger visual boundaries.
    Core colors remain defined by the existing theme tokens. */
 @media (prefers-contrast: more) {
