@@ -21,44 +21,56 @@ function Projects() {
             className={`project-card project-card-${project.id} card ${project.featured ? "featured-project" : "compact-project"} reveal-up`}
           >
             <div className="project-media">
-              <a
-                className="project-preview-link"
-                href={project.image.fallback}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${t("projects.viewFullImage")}: ${t(project.titleKey)}, ${t("accessibility.externalLink")}`}
-              >
-                <picture>
-                  {project.image.kind === "responsive" && (
-                    <>
-                      {project.image.avifSrcSet && (
-                        <source
-                          type="image/avif"
-                          srcSet={project.image.avifSrcSet}
-                          sizes={project.image.sizes}
-                        />
-                      )}
-                      {project.image.webpSrcSet && (
-                        <source
-                          type="image/webp"
-                          srcSet={project.image.webpSrcSet}
-                          sizes={project.image.sizes}
-                        />
-                      )}
-                    </>
-                  )}
-                  <img
-                    src={project.image.fallback}
-                    alt={t(project.imageAltKey || project.titleKey)}
-                    loading="lazy"
-                    decoding="async"
-                    fetchPriority="low"
-                    width={project.image.width || undefined}
-                    height={project.image.height || undefined}
-                    sizes={project.image.sizes || undefined}
-                  />
-                </picture>
-              </a>
+              {project.image ? (
+  
+                <a
+                  className="project-preview-link"
+                  href={project.image.fallback}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${t("projects.viewFullImage")}: ${t(project.titleKey)}, ${t("accessibility.externalLink")}`}
+                >
+                  <picture>
+                    {project.image.kind === "responsive" && (
+                      <>
+                        {project.image.avifSrcSet && (
+                          <source
+                            type="image/avif"
+                            srcSet={project.image.avifSrcSet}
+                            sizes={project.image.sizes}
+                          />
+                        )}
+                        {project.image.webpSrcSet && (
+                          <source
+                            type="image/webp"
+                            srcSet={project.image.webpSrcSet}
+                            sizes={project.image.sizes}
+                          />
+                        )}
+                      </>
+                    )}
+                    <img
+                      src={project.image.fallback}
+                      alt={t(project.imageAltKey || project.titleKey)}
+                      loading="lazy"
+                      decoding="async"
+                      fetchPriority="low"
+                      width={project.image.width || undefined}
+                      height={project.image.height || undefined}
+                      sizes={project.image.sizes || undefined}
+                    />
+                  </picture>
+                </a>
+              ) : (
+                <div className="project-architecture" aria-label={t("projects.architectureLabel")}>
+                  <p className="project-architecture-heading">{t("projects.architectureLabel")}</p>
+                  <ol className="project-architecture-flow">
+                    {project.architecture.map((layer) => (
+                      <li key={layer}>{layer}</li>
+                    ))}
+                  </ol>
+                </div>
+              )}
             </div>
             <div className="project-content">
               <div className="project-meta">
