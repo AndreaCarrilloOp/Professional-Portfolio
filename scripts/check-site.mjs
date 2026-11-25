@@ -49,6 +49,8 @@ test("hero carousel stays accessible without duplicated announcements", () => {
   assert.match(hero, /className=\{`tech-carousel/);
   assert.match(hero, /className="tech-track"/);
   assert.match(hero, /className="tech-motion-toggle"/);
+  assert.match(hero, /title=\{isMarqueePaused \?/);
+  assert.match(css, /\.tech-motion-toggle \{/);
   assert.match(hero, /aria-controls="technology-marquee"/);
   assert.match(css, /tech-carousel-paused/);
   assert.ok(hero.includes("-clone"));
