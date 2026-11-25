@@ -118,7 +118,7 @@
       "imageAlt": "Preview of the distributed library platform integrated through its web application shell."
     },
     "technologiesLabel": "Technologies used",
-    "architectureLabel": "Architecture flow",
+    "architectureLabel": "Asynchronous write pipeline",
     "bookstore": {
       "title": "Bookstore · RabbitMQ",
       "description": "Distributed catalog with reads from MongoDB and asynchronous writes through RabbitMQ queues, built with Vue 3 and serverless functions.",
