@@ -46,7 +46,7 @@ test("navigation and contact retain accessible landmarks and keyboard handling",
 test("hero carousel stays accessible without duplicated announcements", () => {
   const hero = load("src/components/sections/Hero.jsx");
   const css = load("src/styles/components.css") + load("src/styles/enhancements.css");
-  assert.match(hero, /className="tech-carousel" tabIndex=\{0\}/);
+  assert.match(hero, /className=\{`tech-carousel/);
   assert.match(hero, /className="tech-track"/);
   assert.match(hero, /className="tech-motion-toggle"/);
   assert.match(hero, /aria-controls="technology-marquee"/);
@@ -58,7 +58,7 @@ test("hero carousel stays accessible without duplicated announcements", () => {
 
 test("project and profile image fallbacks exist", () => {
   const manifest = json("src/assets/responsive-images.json");
-  for (const key of ["profileLight", "profileDark", "scrabble", "petshop", "distributedLibrary"]) {
+  for (const key of ["profileLight", "profileDark", "scrabble", "distributedLibrary"]) {
     const entry = manifest[key];
     assert.ok(entry, "Missing image metadata: " + key);
     const images = entry.webp ?? entry.png;
@@ -77,6 +77,8 @@ test("published projects and certificates have outbound destinations", () => {
   const certificateConfig = constants.split("export const CERTIFICATIONS = [")[1];
   assert.ok(projectConfig && certificateConfig);
   assert.match(projectConfig, /https:\/\/github\.com\/AndreaCarrilloOp\//);
+  assert.match(projectConfig, /id: "bookstore-rabbitmq"/);
+  assert.match(projectConfig, /id: "distributed-library"/);
   assert.match(projectConfig, /demo: "https:\/\//);
   assert.match(certificateConfig, /https:\/\/learn\.microsoft\.com\//);
   assert.doesNotMatch(projectConfig + certificateConfig, /https:\/\/example\.com|href: "#"/);
