@@ -43,6 +43,10 @@ pnpm preview
 
 Netlify builds with `pnpm build` and publishes the `dist/` directory. Deployment settings are in [`netlify.toml`](netlify.toml).
 
+## License
+
+Source code is available under the [MIT License](LICENSE). Personal photographs, ACO logos/branding, and original portfolio content are excluded from that license.
+
 ---
 
 Designed and developed by **Andrea Carrillo Oporto**.
