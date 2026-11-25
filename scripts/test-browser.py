@@ -122,6 +122,26 @@ class PortfolioSmokeTests(unittest.TestCase):
                         "() => document.documentElement.scrollWidth - window.innerWidth"
                     )
                     self.assertLessEqual(overflow, 1, f"horizontal overflow at {width}px")
+                    # Decode local responsive images before capturing the whole page.
+                    # Loading=lazy otherwise makes off-screen thumbnails look absent.
+                    local_images = page.evaluate(
+                        """async () => {
+                          await document.fonts.ready;
+                          const imgs = [...document.images].filter(img =>
+                            new URL(img.src, location.href).origin === location.origin
+                          );
+                          for (const img of imgs) img.loading = 'eager';
+                          await Promise.all(imgs.map(img => img.decode().catch(() => null)));
+                          return imgs.map(img => ({
+                            src: img.getAttribute('src'),
+                            loaded: img.complete && img.naturalWidth > 0,
+                          }));
+                        }"""
+                    )
+                    self.assertTrue(
+                        all(img["loaded"] for img in local_images),
+                        f"Undecoded local images at {width}px: {local_images}",
+                    )
                     page.screenshot(
                         path=str(CAPTURES / f"portfolio-{width}.png"), full_page=True
                     )

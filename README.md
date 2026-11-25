@@ -9,7 +9,7 @@ Bilingual (ES/EN) professional portfolio built with **React 19, Vite 6 and CSS**
 - Minimal Engineering typography: self-hosted IBM Plex Sans (400–700) and selective IBM Plex Mono (500), with system fallbacks.
 - Light/dark themes, reduced-motion support and a decorative constellation canvas.
 - Four selected projects: Distributed Library (featured), SCRABBLE, Bookstore RabbitMQ and Huellita PetShop, plus a link to additional public GitHub repositories.
-- Responsive local images with WebP/AVIF when available.
+- Responsive local images with WebP/AVIF when available; locally rendered award fallbacks if externally hosted certification images fail.
 - Canonical metadata, JSON-LD, social previews, sitemap and robots directives.
 
 ## Development
