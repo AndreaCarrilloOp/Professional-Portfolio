@@ -61,7 +61,7 @@ function Projects() {
                 </picture>
               </a>
               ) : (
-                <div className="project-architecture" aria-label={t("projects.architectureLabel")}>
+                <div className="project-architecture">
                   <p className="project-architecture-heading">{t("projects.architectureLabel")}</p>
                   <ol className="project-architecture-flow">
                     {project.architecture.map((layer) => (
