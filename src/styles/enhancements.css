@@ -1192,8 +1192,6 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
   }
 }
 
-@media (min-width: 721px) and (max-width: 1024px) {
-}
 
 /* Preserve a useful two-column rhythm on wider phones and narrow tablets. */
 @media (min-width: 600px) and (max-width: 720px) {
@@ -2378,6 +2376,8 @@ html:not(.dark) :where(.btn-secondary, .hero-cta-secondary, .social-link, .proje
 .project-card-bookstore-rabbitmq .project-media {
   display: grid;
   place-items: center;
+  aspect-ratio: auto;
+  min-height: clamp(290px, 32vw, 350px);
   padding: clamp(16px, 3vw, 30px);
   background: var(--surface-soft);
 }
